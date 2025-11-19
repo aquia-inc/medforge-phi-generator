@@ -1,0 +1,4169 @@
+{
+  "reorganized_at": "2025-11-19T13:13:16.498524",
+  "source_directory": "output/production_batch_1000",
+  "total_files": 832,
+  "phi_positive": 600,
+  "phi_negative": 232,
+  "files": [
+    {
+      "file_path": "phi_negative/Announcement_0121.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0121.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0131.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0131.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0329.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0329.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0420.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0420.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0069.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0069.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0463.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0463.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0573.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0573.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0511.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0511.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0149.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0149.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0009.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0009.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0027.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0027.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0022.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0022.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0207.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0207.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0105.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0105.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0411.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0411.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0064.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0064.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0336.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0336.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0509.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0509.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0011.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0011.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0512.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0512.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0241.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0241.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0331.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0331.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0245.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0245.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0474.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0474.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0324.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0324.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0193.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0193.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0291.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0291.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0282.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0282.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0283.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0283.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0517.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0517.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0189.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0189.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0394.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0394.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0067.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0067.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0413.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0413.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0018.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0018.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0242.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0242.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0016.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0016.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0584.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0584.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0586.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0586.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0345.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0345.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0002.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0002.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0046.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0046.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0336.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0336.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0561.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0561.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0154.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0154.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0114.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0114.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0436.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0436.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0171.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0171.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0097.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0097.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0453.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0453.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0402.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0402.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0354.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0354.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0209.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0209.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0267.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0267.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0041.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0041.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0091.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0091.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0374.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0374.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0094.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0094.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0551.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0551.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0083.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0083.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0020.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0020.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0481.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0481.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0286.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0286.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0544.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0544.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0364.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0364.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0255.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0255.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0196.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0196.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0306.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0306.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0159.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0159.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0464.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0464.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0520.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0520.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0116.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0116.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0285.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0285.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0317.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0317.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0238.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0238.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0184.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0184.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0301.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0301.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0538.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0538.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0062.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0062.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0026.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0026.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0331.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0331.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0101.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0101.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0008.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0008.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0425.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0425.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0455.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0455.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0224.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0224.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0003.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0003.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0112.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0112.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0337.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0337.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0502.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0502.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0098.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0098.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0259.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0259.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0057.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0057.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0181.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0181.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0146.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0146.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0386.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0386.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0422.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0422.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0174.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0174.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0275.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0275.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0548.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0548.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0096.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0096.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0194.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0194.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0371.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0371.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0252.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0252.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0491.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0491.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0303.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0303.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0359.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0359.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0127.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0127.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0078.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0078.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0579.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0579.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0334.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0334.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0118.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0118.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0104.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0104.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0281.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0281.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0042.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0042.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0004.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0004.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0188.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0188.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0228.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0228.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0233.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0233.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0376.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0376.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0031.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0031.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0103.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0103.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0110.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0110.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0381.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0381.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0315.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0315.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0469.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0469.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0498.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0498.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0266.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0266.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0026.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0026.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0162.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0162.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0007.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0007.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0315.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0315.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0328.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0328.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0340.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0340.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0077.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0077.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0249.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0249.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0014.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0014.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0451.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0451.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0068.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0068.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0300.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0300.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0262.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0262.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0383.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0383.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0108.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0108.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0039.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0039.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0369.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0369.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0253.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0253.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0143.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0143.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0056.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0056.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0205.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0205.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0195.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0195.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0071.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0071.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0397.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0397.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0222.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0222.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0472.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0472.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0429.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0429.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0168.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0168.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0138.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0138.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0013.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0013.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0400.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0400.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0535.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0535.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0182.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0182.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0200.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0200.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0398.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0398.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0370.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0370.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0090.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0090.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0293.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0293.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0539.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0539.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0341.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0341.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0278.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0278.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0343.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0343.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0349.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0349.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0204.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0204.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0050.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0050.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0306.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0306.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0065.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0065.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0215.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0215.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0169.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0169.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0244.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0244.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0034.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0034.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0393.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0393.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0075.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0075.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0311.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0311.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0040.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0040.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0313.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0313.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0103.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0103.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0188.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0188.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0193.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0193.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0052.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0052.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0514.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0514.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0391.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0391.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0576.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0576.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0281.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0281.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0170.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0170.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0360.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0360.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0326.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0326.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0092.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0092.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0126.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0126.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0073.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0073.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0091.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0091.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0070.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0070.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0099.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0099.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0355.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0355.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0288.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0288.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0433.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0433.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0169.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0169.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0125.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0125.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0347.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0347.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0096.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0096.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0203.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0203.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0525.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0525.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0443.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0443.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0248.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0248.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0102.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0102.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0156.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0156.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0277.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0277.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0237.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0237.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0219.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0219.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0295.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0295.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0587.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0587.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0440.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0440.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0012.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0012.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0284.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0284.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0357.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0357.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0238.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0238.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0258.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0258.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0536.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0536.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0088.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0088.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0289.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0289.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0348.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0348.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0452.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0452.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0438.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0438.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0308.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0308.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0181.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0181.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0211.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0211.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0085.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0085.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0493.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0493.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0136.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0136.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0377.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0377.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0267.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0267.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0272.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0272.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0399.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0399.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0373.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0373.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0552.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0552.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0214.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0214.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0501.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0501.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0035.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0035.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0330.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0330.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0588.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0588.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0355.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0355.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0570.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0570.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0562.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0562.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0600.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0600.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0045.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0045.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0048.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0048.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0156.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0156.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0093.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0093.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0199.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0199.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0353.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0353.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0116.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0116.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0248.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0248.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0266.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0266.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0209.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0209.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0022.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0022.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0247.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0247.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0523.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0523.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0567.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0567.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0287.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0287.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0308.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0308.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0365.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0365.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0178.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0178.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0081.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0081.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0038.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0038.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0024.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0024.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0115.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0115.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0053.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0053.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0025.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0025.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0222.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0222.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0041.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0041.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0326.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0326.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0208.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0208.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0110.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0110.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0284.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0284.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0384.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0384.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0368.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0368.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0349.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0349.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0521.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0521.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0163.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0163.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0077.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0077.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0386.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0386.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0228.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0228.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0319.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0319.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0081.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0081.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0442.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0442.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0310.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0310.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0320.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0320.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0083.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0083.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0161.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0161.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0575.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0575.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0527.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0527.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0589.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0589.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0145.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0145.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0239.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0239.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0158.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0158.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0072.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0072.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0221.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0221.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0590.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0590.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0578.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0578.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0388.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0388.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0318.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0318.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0526.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0526.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0513.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0513.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0111.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0111.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0371.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0371.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0406.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0406.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0237.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0237.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0449.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0449.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0382.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0382.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0194.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0194.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0598.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0598.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0312.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0312.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0475.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0475.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0418.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0418.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0447.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0447.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0321.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0321.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0231.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0231.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0172.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0172.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0015.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0015.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0547.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0547.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0100.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0100.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0302.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0302.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0367.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0367.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0029.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0029.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0114.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0114.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0379.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0379.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0123.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0123.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0265.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0265.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0016.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0016.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0553.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0553.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0087.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0087.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0040.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0040.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0431.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0431.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0218.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0218.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0047.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0047.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0273.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0273.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0127.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0127.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0255.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0255.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0577.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0577.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0099.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0099.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0505.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0505.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0042.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0042.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0465.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0465.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0122.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0122.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0478.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0478.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0390.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0390.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0113.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0113.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0165.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0165.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0070.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0070.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0202.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0202.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0128.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0128.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0446.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0446.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0572.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0572.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0135.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0135.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0473.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0473.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0396.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0396.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0568.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0568.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0368.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0368.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0269.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0269.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0082.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0082.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0271.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0271.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0458.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0458.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0007.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0007.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0214.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0214.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0247.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0247.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0079.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0079.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0312.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0312.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0376.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0376.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0432.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0432.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0141.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0141.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0487.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0487.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0583.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0583.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0137.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0137.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0401.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0401.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0456.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0456.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0134.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0134.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0055.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0055.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0191.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0191.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0028.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0028.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0260.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0260.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0388.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0388.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0333.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0333.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0327.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0327.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0019.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0019.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0268.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0268.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0232.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0232.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0021.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0021.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0332.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0332.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0080.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0080.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0001.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0001.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0347.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0347.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0471.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0471.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0117.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0117.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0322.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0322.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0213.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0213.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0170.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0170.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0036.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0036.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0229.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0229.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0008.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0008.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0278.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0278.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0220.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0220.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0470.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0470.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0139.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0139.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0108.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0108.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0132.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0132.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0519.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0519.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0591.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0591.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0289.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0289.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0139.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0139.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0410.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0410.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0227.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0227.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0185.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0185.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0516.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0516.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0017.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0017.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0120.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0120.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0192.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0192.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0206.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0206.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0235.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0235.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0033.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0033.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0274.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0274.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0106.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0106.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0557.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0557.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0226.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0226.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0342.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0342.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0148.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0148.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0154.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0154.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0367.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0367.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0494.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0494.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0136.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0136.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0183.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0183.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0363.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0363.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0426.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0426.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0205.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0205.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0032.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0032.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0346.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0346.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0528.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0528.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0299.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0299.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0275.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0275.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0507.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0507.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0187.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0187.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0265.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0265.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0056.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0056.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0565.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0565.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0105.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0105.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0423.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0423.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0264.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0264.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0339.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0339.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0403.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0403.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0037.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0037.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0153.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0153.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0541.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0541.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0129.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0129.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0062.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0062.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0323.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0323.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0217.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0217.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0316.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0316.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0346.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0346.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0187.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0187.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0412.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0412.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0358.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0358.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0045.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0045.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0234.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0234.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0011.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0011.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0294.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0294.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0025.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0025.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0064.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0064.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0531.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0531.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0297.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0297.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0001.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0001.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0580.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0580.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0550.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0550.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0185.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0185.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0117.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0117.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0225.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0225.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0339.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0339.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0430.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0430.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0599.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0599.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0503.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0503.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0560.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0560.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0391.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0391.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0375.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0375.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0416.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0416.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0178.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0178.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0321.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0321.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0019.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0019.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0290.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0290.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0508.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0508.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0333.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0333.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0076.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0076.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0087.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0087.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0107.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0107.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0424.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0424.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0177.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0177.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0104.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0104.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0448.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0448.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0571.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0571.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0021.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0021.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0338.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0338.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0335.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0335.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0257.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0257.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0409.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0409.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0059.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0059.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0479.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0479.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0005.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0005.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0111.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0111.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0594.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0594.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0304.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0304.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0421.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0421.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0065.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0065.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0058.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0058.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0113.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0113.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0408.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0408.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0444.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0444.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0595.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0595.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0006.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0006.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0177.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0177.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0305.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0305.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0003.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0003.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0298.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0298.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0276.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0276.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0461.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0461.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0063.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0063.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0467.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0467.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0393.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0393.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0176.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0176.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0179.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0179.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0130.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0130.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0208.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0208.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0417.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0417.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0252.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0252.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0319.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0319.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0197.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0197.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0381.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0381.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0150.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0150.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0484.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0484.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0428.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0428.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0457.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0457.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0404.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0404.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0361.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0361.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0229.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0229.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0495.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0495.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0006.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0006.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0592.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0592.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0282.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0282.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0529.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0529.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0047.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0047.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0145.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0145.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0031.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0031.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0563.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0563.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0486.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0486.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0161.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0161.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0263.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0263.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0280.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0280.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0049.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0049.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0534.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0534.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0057.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0057.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0084.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0084.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0012.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0012.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0121.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0121.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0325.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0325.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0518.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0518.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0066.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0066.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0515.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0515.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0414.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0414.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0236.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0236.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0186.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0186.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0311.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0311.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0497.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0497.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0061.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0061.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0353.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0353.eml"
+    },
+    {
+      "file_path": "phi_negative/Education_0036.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0036.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0279.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0279.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0038.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0038.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0359.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0359.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0462.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0462.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0130.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0130.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0106.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0106.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0437.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0437.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0137.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0137.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0084.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0084.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0231.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0231.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0157.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0157.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0280.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0280.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0089.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0089.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0060.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0060.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0532.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0532.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0054.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0054.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0286.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0286.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0223.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0223.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0135.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0135.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0109.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0109.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0387.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0387.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0434.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0434.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0175.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0175.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0102.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0102.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0074.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0074.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0085.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0085.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0342.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0342.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0234.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0234.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0427.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0427.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0309.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0309.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0166.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0166.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0483.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0483.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0445.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0445.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0076.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0076.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0152.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0152.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0151.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0151.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0165.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0165.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0093.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0093.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0035.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0035.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0034.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0034.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0151.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0151.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0370.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0370.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0046.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0046.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0522.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0522.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0173.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0173.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0251.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0251.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0356.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0356.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0395.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0395.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0343.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0343.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0504.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0504.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0314.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0314.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0124.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0124.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0596.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0596.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0559.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0559.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0216.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0216.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0322.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0322.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0439.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0439.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0164.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0164.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0441.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0441.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0202.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0202.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0201.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0201.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0558.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0558.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0317.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0317.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0466.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0466.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0378.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0378.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0354.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0354.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0292.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0292.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0593.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0593.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0250.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0250.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0476.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0476.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0597.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0597.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0362.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0362.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0095.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0095.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0294.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0294.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0190.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0190.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0337.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0337.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0489.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0489.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0309.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0309.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0133.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0133.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0138.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0138.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0357.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0357.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0143.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0143.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0155.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0155.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0415.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0415.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0159.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0159.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0043.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0043.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0524.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0524.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0183.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0183.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0132.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0132.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0039.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0039.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0199.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0199.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0052.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0052.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0369.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0369.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0172.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0172.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0569.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0569.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0435.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0435.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0044.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0044.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0191.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0191.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0246.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0246.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0392.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0392.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0030.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0030.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0246.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0246.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0171.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0171.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0029.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0029.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0382.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0382.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0015.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0015.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0196.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0196.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0037.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0037.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0380.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0380.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0496.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0496.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0090.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0090.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0273.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0273.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0211.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0211.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0352.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0352.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0372.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0372.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0107.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0107.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0254.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0254.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0068.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0068.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0055.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0055.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0160.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0160.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0365.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0365.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0210.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0210.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0240.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0240.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0348.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0348.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0150.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0150.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0004.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0004.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0554.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0554.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0270.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0270.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0320.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0320.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0454.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0454.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0287.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0287.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0379.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0379.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0366.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0366.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0549.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0549.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0044.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0044.pptx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0399.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0399.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0488.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0488.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0350.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0350.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0054.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0054.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0490.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0490.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0302.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0302.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0086.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0086.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0477.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0477.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0335.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0335.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0023.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0023.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0258.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0258.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0506.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0506.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0088.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0088.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0351.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0351.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0014.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0014.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0122.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0122.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0540.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0540.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0556.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0556.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0010.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0010.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0356.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0356.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0162.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0162.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0203.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0203.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0264.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0264.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0239.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0239.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0384.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0384.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0555.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0555.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0310.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0310.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0144.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0144.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0030.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0030.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0492.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0492.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0468.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0468.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0361.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0361.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0119.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0119.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0296.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0296.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0213.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0213.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0574.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0574.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0142.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0142.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0220.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0220.eml"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0323.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0323.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0564.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0564.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0207.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0207.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0225.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0225.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0298.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0298.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0230.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0230.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0405.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0405.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0460.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0460.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0543.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0543.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0419.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0419.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0537.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0537.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0533.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0533.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0344.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0344.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0480.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0480.eml"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0485.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0485.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0158.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0158.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0245.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0245.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0546.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0546.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0013.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0013.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0277.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0277.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0002.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0002.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0098.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0098.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0299.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0299.pptx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0051.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0051.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0243.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0243.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0244.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0244.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0542.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0542.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0459.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0459.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0272.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0272.docx"
+    },
+    {
+      "file_path": "phi_negative/Education_0274.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0274.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0048.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0048.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0328.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0328.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0180.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0180.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0232.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0232.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0236.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0236.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0094.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0094.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0582.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0582.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0261.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0261.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0186.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0186.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0545.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0545.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0330.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0330.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0071.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0071.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0316.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0316.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0530.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0530.eml"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0482.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0482.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0387.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0387.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0101.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0101.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0224.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0224.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0086.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0086.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0147.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0147.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0066.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0066.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0380.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0380.pdf"
+    },
+    {
+      "file_path": "phi_negative/Policy_0313.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0313.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0385.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0385.eml"
+    },
+    {
+      "file_path": "phi_negative/Policy_0341.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0341.pdf"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0198.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0198.docx"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0499.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0499.eml"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0581.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0581.pptx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0500.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0500.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0144.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0144.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0295.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0295.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0585.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0585.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0566.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0566.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0450.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0450.pdf"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0140.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0140.pptx"
+    },
+    {
+      "file_path": "phi_negative/Education_0256.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0256.pptx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0212.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0212.docx"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0360.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0360.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0167.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0167.docx"
+    },
+    {
+      "file_path": "phi_positive/CaseStudy_0256.pptx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_CaseStudy_0256.pptx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0206.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0206.pdf"
+    },
+    {
+      "file_path": "phi_positive/ProviderEmail_0389.eml",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProviderEmail_0389.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0385.pdf",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0385.pdf"
+    },
+    {
+      "file_path": "phi_negative/Announcement_0362.eml",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Announcement_0362.eml"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0510.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0510.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0307.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0307.docx"
+    },
+    {
+      "file_path": "phi_positive/LabResult_0407.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_LabResult_0407.docx"
+    },
+    {
+      "file_path": "phi_positive/ProgressNote_0109.docx",
+      "phi_status": "positive",
+      "original_name": "PHI_POS_ProgressNote_0109.docx"
+    },
+    {
+      "file_path": "phi_negative/Policy_0027.pdf",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Policy_0027.pdf"
+    },
+    {
+      "file_path": "phi_negative/Education_0398.pptx",
+      "phi_status": "negative",
+      "original_name": "PHI_NEG_Education_0398.pptx"
+    }
+  ]
+}
