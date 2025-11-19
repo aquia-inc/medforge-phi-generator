@@ -1,0 +1,63 @@
+# Environment variables (contains API keys)
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+*.pyc
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# uv
+.uv/
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+*.cache
+
+# Test and development files
+_archive/test_outputs/*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated state files
+.generation_state.json
+.checkpoint_*.json
+
+# Customer sensitive files (real PHI if accidentally added)
+customer_requirements/*
+!customer_requirements/.gitkeep
+
+# Outputs are synthetic so they CAN be committed
+# Uncomment below if you want to exclude large output batches:
+# output/*/
+# !output/.gitkeep

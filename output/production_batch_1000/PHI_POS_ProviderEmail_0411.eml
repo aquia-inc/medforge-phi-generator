@@ -1,0 +1,98 @@
+Content-Type: multipart/alternative; boundary="===============7473879810238184889=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Smith, Frank
+From: Joseph Solis <brian64@example.org>
+To: Matthew Ochoa <changemily@example.com>
+Date: Tue, 18 Nov 2025 23:54:38 
+Message-ID: <878008@healthsystem.org>
+
+--===============7473879810238184889==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Ochoa,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Frank Smith
+Date of Birth: 06/22/2001
+MRN: MRN949524
+Phone: (805)836-5045
+
+Current Diagnoses:
+- Hyperlipidemia (ICD-10: E78.5)
+
+Current Medications:
+- Atorvastatin 20mg daily
+
+Allergies: Penicillin, Aspirin
+
+I would appreciate your input on management of this patient's Hyperlipidemia.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Joseph Solis, NP
+Gastroenterology
+NPI: 7947345952
+Phone: 568.761.2779x333
+Fax: (894)420-1844x57661
+
+--===============7473879810238184889==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Ochoa,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Frank Smith</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>06/22/2001</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN949524</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(805)836-5045</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hyperlipidemia (ICD-10: E78.5)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Atorvastatin 20mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Penicillin, Aspirin</p>
+
+    <p>I would appreciate your input on management of this patient's Hyperlipidemia.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Joseph Solis, NP</strong><br/>
+        Gastroenterology<br/>
+        NPI: 7947345952<br/>
+        Phone: 568.761.2779x333<br/>
+        Fax: (894)420-1844x57661
+    </div>
+</body>
+</html>
+
+--===============7473879810238184889==--

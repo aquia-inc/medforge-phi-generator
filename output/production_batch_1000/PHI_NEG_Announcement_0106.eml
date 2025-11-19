@@ -1,0 +1,75 @@
+Content-Type: multipart/alternative; boundary="===============0515375165476388983=="
+MIME-Version: 1.0
+Subject: Office Closure Notice - Holiday Schedule
+From: Office Administrator <admin@westjuliehealthsystem.org>
+To: All Staff <staff@{facility['name'].lower().replace(' ', '')}.org>
+Date: Tue, 18 Nov 2025 23:55:06 
+Message-ID: <114671@healthsystem.org>
+
+--===============0515375165476388983==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dear Staff,
+
+This is to inform you of our upcoming holiday schedule for West Julie Health System.
+
+OFFICE CLOSURES:
+- December 24-25, 2024: Christmas Holiday
+- January 1, 2025: New Year's Day
+- January 15, 2025: Martin Luther King Jr. Day
+
+During these closures, emergency services will be available through our on-call system.
+Please refer patients to the emergency contact number: 480.459.5155x67464
+
+REGULAR HOURS RESUME:
+Normal business hours will resume on the next business day following each holiday.
+
+Thank you for your attention to this matter.
+
+West Julie Health System
+8299 Carroll Parkway
+West Julie, CA 37611
+Phone: 480.459.5155x67464
+
+--===============0515375165476388983==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<body style="font-family: Arial, sans-serif;">
+    <h2 style="color: #2c3e50;">Holiday Office Hours</h2>
+
+    <p>Dear Staff,</p>
+
+    <p>This is to inform you of our upcoming holiday schedule for <strong>West Julie Health System</strong>.</p>
+
+    <h3>OFFICE CLOSURES:</h3>
+    <ul>
+        <li>December 24-25, 2024: Christmas Holiday</li>
+        <li>January 1, 2025: New Year's Day</li>
+        <li>January 15, 2025: Martin Luther King Jr. Day</li>
+    </ul>
+
+    <p>During these closures, emergency services will be available through our on-call system.
+    Please refer patients to the emergency contact number: <strong>480.459.5155x67464</strong></p>
+
+    <h3>REGULAR HOURS RESUME:</h3>
+    <p>Normal business hours will resume on the next business day following each holiday.</p>
+
+    <p>Thank you for your attention to this matter.</p>
+
+    <div style="border-top: 2px solid #3498db; margin-top: 20px; padding-top: 10px;">
+        <strong>West Julie Health System</strong><br/>
+        8299 Carroll Parkway<br/>
+        West Julie, CA 37611<br/>
+        Phone: 480.459.5155x67464
+    </div>
+</body>
+</html>
+
+--===============0515375165476388983==--

@@ -1,0 +1,108 @@
+Content-Type: multipart/alternative; boundary="===============6614345926373348833=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Clarke, Gary
+From: Sarah Fisher <wattsjennifer@example.com>
+To: Linda Johnson <rachelrodriguez@example.com>
+Date: Tue, 18 Nov 2025 23:55:06 
+Message-ID: <673293@healthsystem.org>
+
+--===============6614345926373348833==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Johnson,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Gary Clarke
+Date of Birth: 01/24/1936
+MRN: MRN549218
+Phone: 300.419.0624x652
+
+Current Diagnoses:
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+- Hyperlipidemia (ICD-10: E78.5)
+- Hypothyroidism (ICD-10: E03.9)
+
+Current Medications:
+- Amlodipine 5mg daily
+- Metformin 500mg twice daily
+- Levothyroxine 50mcg daily
+- Metoprolol 25mg twice daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Sarah Fisher, PA
+Family Medicine
+NPI: 1142840593
+Phone: 703.570.7010x9557
+Fax: 782.857.8437x11718
+
+--===============6614345926373348833==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Johnson,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Gary Clarke</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>01/24/1936</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN549218</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>300.419.0624x652</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+<li>Hyperlipidemia (ICD-10: E78.5)</li>
+<li>Hypothyroidism (ICD-10: E03.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Amlodipine 5mg daily</li>
+<li>Metformin 500mg twice daily</li>
+<li>Levothyroxine 50mcg daily</li>
+<li>Metoprolol 25mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Sarah Fisher, PA</strong><br/>
+        Family Medicine<br/>
+        NPI: 1142840593<br/>
+        Phone: 703.570.7010x9557<br/>
+        Fax: 782.857.8437x11718
+    </div>
+</body>
+</html>
+
+--===============6614345926373348833==--

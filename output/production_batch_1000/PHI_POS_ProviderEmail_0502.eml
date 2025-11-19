@@ -1,0 +1,106 @@
+Content-Type: multipart/alternative; boundary="===============9013540363033019315=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Cobb, Nathaniel
+From: Joseph Cook <parrishcynthia@example.com>
+To: Andrew Griffin <edward48@example.com>
+Date: Tue, 18 Nov 2025 23:54:57 
+Message-ID: <486669@healthsystem.org>
+
+--===============9013540363033019315==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Griffin,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Nathaniel Cobb
+Date of Birth: 08/21/1945
+MRN: MRN824880
+Phone: 862-467-2408
+
+Current Diagnoses:
+- Osteoarthritis (ICD-10: M19.90)
+
+Current Medications:
+- Lisinopril 10mg daily
+- Levothyroxine 50mcg daily
+- Gabapentin 300mg three times daily
+- Metoprolol 25mg twice daily
+- Sertraline 50mg daily
+
+Allergies: Aspirin
+
+I would appreciate your input on management of this patient's Osteoarthritis.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Joseph Cook, MD
+Pulmonology
+NPI: 5754329742
+Phone: +1-499-320-7189x802
+Fax: 618.896.0503
+
+--===============9013540363033019315==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Griffin,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Nathaniel Cobb</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>08/21/1945</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN824880</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>862-467-2408</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Osteoarthritis (ICD-10: M19.90)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Lisinopril 10mg daily</li>
+<li>Levothyroxine 50mcg daily</li>
+<li>Gabapentin 300mg three times daily</li>
+<li>Metoprolol 25mg twice daily</li>
+<li>Sertraline 50mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Aspirin</p>
+
+    <p>I would appreciate your input on management of this patient's Osteoarthritis.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Joseph Cook, MD</strong><br/>
+        Pulmonology<br/>
+        NPI: 5754329742<br/>
+        Phone: +1-499-320-7189x802<br/>
+        Fax: 618.896.0503
+    </div>
+</body>
+</html>
+
+--===============9013540363033019315==--

@@ -1,0 +1,75 @@
+Content-Type: multipart/alternative; boundary="===============1950927300016578236=="
+MIME-Version: 1.0
+Subject: Office Closure Notice - Holiday Schedule
+From: Office Administrator <admin@westjoseregionalhospital.org>
+To: All Staff <staff@{facility['name'].lower().replace(' ', '')}.org>
+Date: Tue, 18 Nov 2025 23:55:07 
+Message-ID: <721202@healthsystem.org>
+
+--===============1950927300016578236==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dear Staff,
+
+This is to inform you of our upcoming holiday schedule for West Jose Regional Hospital.
+
+OFFICE CLOSURES:
+- December 24-25, 2024: Christmas Holiday
+- January 1, 2025: New Year's Day
+- January 15, 2025: Martin Luther King Jr. Day
+
+During these closures, emergency services will be available through our on-call system.
+Please refer patients to the emergency contact number: 001-922-296-2584
+
+REGULAR HOURS RESUME:
+Normal business hours will resume on the next business day following each holiday.
+
+Thank you for your attention to this matter.
+
+West Jose Regional Hospital
+1898 Kelly Mount
+West Jose, WY 52149
+Phone: 001-922-296-2584
+
+--===============1950927300016578236==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<body style="font-family: Arial, sans-serif;">
+    <h2 style="color: #2c3e50;">Holiday Office Hours</h2>
+
+    <p>Dear Staff,</p>
+
+    <p>This is to inform you of our upcoming holiday schedule for <strong>West Jose Regional Hospital</strong>.</p>
+
+    <h3>OFFICE CLOSURES:</h3>
+    <ul>
+        <li>December 24-25, 2024: Christmas Holiday</li>
+        <li>January 1, 2025: New Year's Day</li>
+        <li>January 15, 2025: Martin Luther King Jr. Day</li>
+    </ul>
+
+    <p>During these closures, emergency services will be available through our on-call system.
+    Please refer patients to the emergency contact number: <strong>001-922-296-2584</strong></p>
+
+    <h3>REGULAR HOURS RESUME:</h3>
+    <p>Normal business hours will resume on the next business day following each holiday.</p>
+
+    <p>Thank you for your attention to this matter.</p>
+
+    <div style="border-top: 2px solid #3498db; margin-top: 20px; padding-top: 10px;">
+        <strong>West Jose Regional Hospital</strong><br/>
+        1898 Kelly Mount<br/>
+        West Jose, WY 52149<br/>
+        Phone: 001-922-296-2584
+    </div>
+</body>
+</html>
+
+--===============1950927300016578236==--

@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============7045298801633573992=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Osborne, Matthew
+From: Jodi Thompson <taylor81@example.com>
+To: Catherine Anderson <pedro98@example.org>
+Date: Tue, 18 Nov 2025 23:54:57 
+Message-ID: <496453@healthsystem.org>
+
+--===============7045298801633573992==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Anderson,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Matthew Osborne
+Date of Birth: 11/15/1937
+MRN: MRN155613
+Phone: 001-378-856-3716x43611
+
+Current Diagnoses:
+- Coronary Artery Disease (ICD-10: I25.10)
+
+Current Medications:
+- Gabapentin 300mg three times daily
+- Atorvastatin 20mg daily
+- Sertraline 50mg daily
+- Lisinopril 10mg daily
+
+Allergies: Bee stings, Morphine, Penicillin
+
+I would appreciate your input on management of this patient's Coronary Artery Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Jodi Thompson, NP
+Nephrology
+NPI: 3765002991
+Phone: 301-610-2883
+Fax: 001-314-910-1120
+
+--===============7045298801633573992==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Anderson,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Matthew Osborne</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>11/15/1937</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN155613</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-378-856-3716x43611</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Coronary Artery Disease (ICD-10: I25.10)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Gabapentin 300mg three times daily</li>
+<li>Atorvastatin 20mg daily</li>
+<li>Sertraline 50mg daily</li>
+<li>Lisinopril 10mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Bee stings, Morphine, Penicillin</p>
+
+    <p>I would appreciate your input on management of this patient's Coronary Artery Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Jodi Thompson, NP</strong><br/>
+        Nephrology<br/>
+        NPI: 3765002991<br/>
+        Phone: 301-610-2883<br/>
+        Fax: 001-314-910-1120
+    </div>
+</body>
+</html>
+
+--===============7045298801633573992==--

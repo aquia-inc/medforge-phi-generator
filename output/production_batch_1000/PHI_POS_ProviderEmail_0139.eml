@@ -1,0 +1,102 @@
+Content-Type: multipart/alternative; boundary="===============3471020345814153104=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Obrien, Cody
+From: Jennifer Graham <wbarrett@example.net>
+To: Ryan Dodson <elizabethriley@example.com>
+Date: Tue, 18 Nov 2025 23:54:17 
+Message-ID: <641760@healthsystem.org>
+
+--===============3471020345814153104==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Dodson,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Cody Obrien
+Date of Birth: 06/22/1984
+MRN: MRN253300
+Phone: (752)577-5844x6634
+
+Current Diagnoses:
+- Major Depressive Disorder (ICD-10: F33.1)
+- Hypothyroidism (ICD-10: E03.9)
+
+Current Medications:
+- Levothyroxine 50mcg daily
+- Lisinopril 10mg daily
+
+Allergies: Ibuprofen, Sulfa drugs, Codeine
+
+I would appreciate your input on management of this patient's Major Depressive Disorder.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Jennifer Graham, NP
+Nephrology
+NPI: 3448819206
+Phone: 889-543-7052
+Fax: (410)704-6277x657
+
+--===============3471020345814153104==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Dodson,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Cody Obrien</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>06/22/1984</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN253300</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(752)577-5844x6634</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Major Depressive Disorder (ICD-10: F33.1)</li>
+<li>Hypothyroidism (ICD-10: E03.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Levothyroxine 50mcg daily</li>
+<li>Lisinopril 10mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Ibuprofen, Sulfa drugs, Codeine</p>
+
+    <p>I would appreciate your input on management of this patient's Major Depressive Disorder.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Jennifer Graham, NP</strong><br/>
+        Nephrology<br/>
+        NPI: 3448819206<br/>
+        Phone: 889-543-7052<br/>
+        Fax: (410)704-6277x657
+    </div>
+</body>
+</html>
+
+--===============3471020345814153104==--

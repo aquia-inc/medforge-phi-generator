@@ -1,0 +1,106 @@
+Content-Type: multipart/alternative; boundary="===============1719115932950346563=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Delgado, Stephanie
+From: Lori Pearson <wrightbrandon@example.net>
+To: Erica Bentley <ojones@example.org>
+Date: Tue, 18 Nov 2025 23:54:07 
+Message-ID: <760351@healthsystem.org>
+
+--===============1719115932950346563==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Bentley,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Stephanie Delgado
+Date of Birth: 07/17/1983
+MRN: MRN409783
+Phone: 001-276-947-5011x11783
+
+Current Diagnoses:
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+- Essential Hypertension (ICD-10: I10)
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+
+Current Medications:
+- Levothyroxine 50mcg daily
+- Gabapentin 300mg three times daily
+- Losartan 50mg daily
+
+Allergies: Codeine, Morphine
+
+I would appreciate your input on management of this patient's Gastroesophageal Reflux Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Lori Pearson, NP
+Family Medicine
+NPI: 5982744929
+Phone: 001-531-429-2087x51029
+Fax: 484-801-1845
+
+--===============1719115932950346563==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Bentley,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Stephanie Delgado</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>07/17/1983</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN409783</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-276-947-5011x11783</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+<li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Levothyroxine 50mcg daily</li>
+<li>Gabapentin 300mg three times daily</li>
+<li>Losartan 50mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Codeine, Morphine</p>
+
+    <p>I would appreciate your input on management of this patient's Gastroesophageal Reflux Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Lori Pearson, NP</strong><br/>
+        Family Medicine<br/>
+        NPI: 5982744929<br/>
+        Phone: 001-531-429-2087x51029<br/>
+        Fax: 484-801-1845
+    </div>
+</body>
+</html>
+
+--===============1719115932950346563==--

@@ -1,0 +1,100 @@
+Content-Type: multipart/alternative; boundary="===============3427101746329528267=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Hudson, Vickie
+From: William Briggs <rgross@example.com>
+To: Brandon Taylor <ystout@example.com>
+Date: Tue, 18 Nov 2025 23:54:55 
+Message-ID: <847519@healthsystem.org>
+
+--===============3427101746329528267==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Taylor,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Vickie Hudson
+Date of Birth: 01/16/2003
+MRN: MRN982844
+Phone: +1-381-291-9487x46123
+
+Current Diagnoses:
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+
+Current Medications:
+- Losartan 50mg daily
+- Levothyroxine 50mcg daily
+
+Allergies: Codeine, Morphine, Penicillin
+
+I would appreciate your input on management of this patient's Chronic Kidney Disease, Stage 3.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+William Briggs, PA
+Endocrinology
+NPI: 1611239695
+Phone: +1-366-868-6858x431
+Fax: (910)565-1494
+
+--===============3427101746329528267==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Taylor,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Vickie Hudson</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>01/16/2003</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN982844</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>+1-381-291-9487x46123</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Losartan 50mg daily</li>
+<li>Levothyroxine 50mcg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Codeine, Morphine, Penicillin</p>
+
+    <p>I would appreciate your input on management of this patient's Chronic Kidney Disease, Stage 3.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>William Briggs, PA</strong><br/>
+        Endocrinology<br/>
+        NPI: 1611239695<br/>
+        Phone: +1-366-868-6858x431<br/>
+        Fax: (910)565-1494
+    </div>
+</body>
+</html>
+
+--===============3427101746329528267==--

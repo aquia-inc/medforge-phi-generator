@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============1583441473483341584=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Hart, Hannah
+From: Brandy Shaffer <luis01@example.com>
+To: James Evans <christina03@example.com>
+Date: Tue, 18 Nov 2025 23:55:06 
+Message-ID: <155407@healthsystem.org>
+
+--===============1583441473483341584==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Evans,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Hannah Hart
+Date of Birth: 03/13/1941
+MRN: MRN178064
+Phone: (352)805-6567
+
+Current Diagnoses:
+- Hypothyroidism (ICD-10: E03.9)
+
+Current Medications:
+- Metoprolol 25mg twice daily
+- Amlodipine 5mg daily
+- Sertraline 50mg daily
+- Levothyroxine 50mcg daily
+
+Allergies: Aspirin, Sulfa drugs
+
+I would appreciate your input on management of this patient's Hypothyroidism.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Brandy Shaffer, MD
+Orthopedics
+NPI: 4153868951
+Phone: 430.268.6887x861
+Fax: 001-822-885-4040x261
+
+--===============1583441473483341584==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Evans,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Hannah Hart</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>03/13/1941</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN178064</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(352)805-6567</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hypothyroidism (ICD-10: E03.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metoprolol 25mg twice daily</li>
+<li>Amlodipine 5mg daily</li>
+<li>Sertraline 50mg daily</li>
+<li>Levothyroxine 50mcg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Aspirin, Sulfa drugs</p>
+
+    <p>I would appreciate your input on management of this patient's Hypothyroidism.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Brandy Shaffer, MD</strong><br/>
+        Orthopedics<br/>
+        NPI: 4153868951<br/>
+        Phone: 430.268.6887x861<br/>
+        Fax: 001-822-885-4040x261
+    </div>
+</body>
+</html>
+
+--===============1583441473483341584==--

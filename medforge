@@ -1,0 +1,12 @@
+#!/bin/bash
+# MedForge CLI wrapper script
+# This script activates the virtual environment and runs the CLI
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Activate virtual environment
+source "$SCRIPT_DIR/.venv/bin/activate"
+
+# Run the CLI with all arguments
+python "$SCRIPT_DIR/src/cli.py" "$@"

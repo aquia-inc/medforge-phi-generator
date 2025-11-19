@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============2703050318886939766=="
+MIME-Version: 1.0
+Subject: Patient Consultation: White, Anne
+From: Billy Maxwell <igarcia@example.org>
+To: Bianca Hess <hannahhernandez@example.com>
+Date: Tue, 18 Nov 2025 23:54:36 
+Message-ID: <976618@healthsystem.org>
+
+--===============2703050318886939766==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Hess,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Anne White
+Date of Birth: 11/05/1948
+MRN: MRN257352
+Phone: 974.737.2123x8487
+
+Current Diagnoses:
+- Hyperlipidemia (ICD-10: E78.5)
+
+Current Medications:
+- Metoprolol 25mg twice daily
+- Levothyroxine 50mcg daily
+- Omeprazole 20mg daily
+- Losartan 50mg daily
+
+Allergies: Peanuts, Bee stings
+
+I would appreciate your input on management of this patient's Hyperlipidemia.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Billy Maxwell, MD
+Psychiatry
+NPI: 4428266738
+Phone: 5598054517
+Fax: 885-440-5919x34424
+
+--===============2703050318886939766==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Hess,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Anne White</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>11/05/1948</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN257352</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>974.737.2123x8487</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hyperlipidemia (ICD-10: E78.5)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metoprolol 25mg twice daily</li>
+<li>Levothyroxine 50mcg daily</li>
+<li>Omeprazole 20mg daily</li>
+<li>Losartan 50mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Peanuts, Bee stings</p>
+
+    <p>I would appreciate your input on management of this patient's Hyperlipidemia.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Billy Maxwell, MD</strong><br/>
+        Psychiatry<br/>
+        NPI: 4428266738<br/>
+        Phone: 5598054517<br/>
+        Fax: 885-440-5919x34424
+    </div>
+</body>
+</html>
+
+--===============2703050318886939766==--

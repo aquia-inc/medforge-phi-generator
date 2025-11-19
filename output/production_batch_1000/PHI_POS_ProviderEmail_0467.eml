@@ -1,0 +1,106 @@
+Content-Type: multipart/alternative; boundary="===============9027808276238565137=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Goodman, George
+From: Anthony Marshall <steven86@example.com>
+To: Brandy Ingram <ihutchinson@example.org>
+Date: Tue, 18 Nov 2025 23:54:48 
+Message-ID: <238410@healthsystem.org>
+
+--===============9027808276238565137==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Ingram,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: George Goodman
+Date of Birth: 02/04/2005
+MRN: MRN223384
+Phone: 3607363235
+
+Current Diagnoses:
+- Essential Hypertension (ICD-10: I10)
+- Hyperlipidemia (ICD-10: E78.5)
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+
+Current Medications:
+- Sertraline 50mg daily
+- Metoprolol 25mg twice daily
+
+Allergies: Aspirin, Penicillin
+
+I would appreciate your input on management of this patient's Essential Hypertension.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Anthony Marshall, DO
+Endocrinology
+NPI: 8926527167
+Phone: 357-877-4146x5183
+Fax: 732.953.3630
+
+--===============9027808276238565137==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Ingram,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>George Goodman</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>02/04/2005</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN223384</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>3607363235</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Essential Hypertension (ICD-10: I10)</li>
+<li>Hyperlipidemia (ICD-10: E78.5)</li>
+<li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+<li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Sertraline 50mg daily</li>
+<li>Metoprolol 25mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Aspirin, Penicillin</p>
+
+    <p>I would appreciate your input on management of this patient's Essential Hypertension.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Anthony Marshall, DO</strong><br/>
+        Endocrinology<br/>
+        NPI: 8926527167<br/>
+        Phone: 357-877-4146x5183<br/>
+        Fax: 732.953.3630
+    </div>
+</body>
+</html>
+
+--===============9027808276238565137==--

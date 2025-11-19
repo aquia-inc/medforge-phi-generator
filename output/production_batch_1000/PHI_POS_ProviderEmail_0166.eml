@@ -1,0 +1,102 @@
+Content-Type: multipart/alternative; boundary="===============4628501272369421884=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Martinez, Brooke
+From: Emily Davenport <joseph21@example.net>
+To: Brian Washington <edwardsronald@example.net>
+Date: Tue, 18 Nov 2025 23:54:25 
+Message-ID: <189211@healthsystem.org>
+
+--===============4628501272369421884==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Washington,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Brooke Martinez
+Date of Birth: 09/14/1931
+MRN: MRN111989
+Phone: 001-257-789-8260x418
+
+Current Diagnoses:
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Osteoarthritis (ICD-10: M19.90)
+
+Current Medications:
+- Gabapentin 300mg three times daily
+- Levothyroxine 50mcg daily
+
+Allergies: Peanuts, Aspirin
+
+I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Emily Davenport, PA
+Cardiology
+NPI: 5862714930
+Phone: +1-624-419-9626
+Fax: (229)675-8917
+
+--===============4628501272369421884==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Washington,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Brooke Martinez</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>09/14/1931</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN111989</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-257-789-8260x418</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Osteoarthritis (ICD-10: M19.90)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Gabapentin 300mg three times daily</li>
+<li>Levothyroxine 50mcg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Peanuts, Aspirin</p>
+
+    <p>I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Emily Davenport, PA</strong><br/>
+        Cardiology<br/>
+        NPI: 5862714930<br/>
+        Phone: +1-624-419-9626<br/>
+        Fax: (229)675-8917
+    </div>
+</body>
+</html>
+
+--===============4628501272369421884==--

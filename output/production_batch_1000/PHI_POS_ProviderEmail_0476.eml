@@ -1,0 +1,98 @@
+Content-Type: multipart/alternative; boundary="===============4027388078201257552=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Rodriguez, James
+From: Raymond Hernandez <mathismaria@example.org>
+To: Jacob Lowe <mitchell23@example.com>
+Date: Tue, 18 Nov 2025 23:54:55 
+Message-ID: <806017@healthsystem.org>
+
+--===============4027388078201257552==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Lowe,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: James Rodriguez
+Date of Birth: 07/13/1973
+MRN: MRN986447
+Phone: 3486589654
+
+Current Diagnoses:
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+
+Current Medications:
+- Amlodipine 5mg daily
+
+Allergies: Aspirin
+
+I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Raymond Hernandez, MD
+Family Medicine
+NPI: 7202504314
+Phone: 3057609446
+Fax: 8128350665
+
+--===============4027388078201257552==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Lowe,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>James Rodriguez</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>07/13/1973</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN986447</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>3486589654</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Amlodipine 5mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Aspirin</p>
+
+    <p>I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Raymond Hernandez, MD</strong><br/>
+        Family Medicine<br/>
+        NPI: 7202504314<br/>
+        Phone: 3057609446<br/>
+        Fax: 8128350665
+    </div>
+</body>
+</html>
+
+--===============4027388078201257552==--

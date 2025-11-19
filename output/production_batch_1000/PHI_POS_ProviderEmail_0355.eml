@@ -1,0 +1,102 @@
+Content-Type: multipart/alternative; boundary="===============6043235905382641565=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Mayo, Cody
+From: Mark Pena <robert21@example.org>
+To: Peter Henry <victoriabarry@example.net>
+Date: Tue, 18 Nov 2025 23:54:36 
+Message-ID: <466652@healthsystem.org>
+
+--===============6043235905382641565==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Henry,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Cody Mayo
+Date of Birth: 08/25/1982
+MRN: MRN676239
+Phone: 001-612-597-1988x408
+
+Current Diagnoses:
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+- Essential Hypertension (ICD-10: I10)
+
+Current Medications:
+- Omeprazole 20mg daily
+- Lisinopril 10mg daily
+
+Allergies: Morphine, Ibuprofen
+
+I would appreciate your input on management of this patient's Chronic Kidney Disease, Stage 3.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Mark Pena, DO
+Internal Medicine
+NPI: 1329044656
+Phone: 208.714.0334x05081
+Fax: (835)886-9902x1311
+
+--===============6043235905382641565==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Henry,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Cody Mayo</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>08/25/1982</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN676239</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-612-597-1988x408</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Omeprazole 20mg daily</li>
+<li>Lisinopril 10mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Morphine, Ibuprofen</p>
+
+    <p>I would appreciate your input on management of this patient's Chronic Kidney Disease, Stage 3.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Mark Pena, DO</strong><br/>
+        Internal Medicine<br/>
+        NPI: 1329044656<br/>
+        Phone: 208.714.0334x05081<br/>
+        Fax: (835)886-9902x1311
+    </div>
+</body>
+</html>
+
+--===============6043235905382641565==--

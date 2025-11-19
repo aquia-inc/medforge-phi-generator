@@ -1,0 +1,100 @@
+Content-Type: multipart/alternative; boundary="===============6069461702139682874=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Kim, Christopher
+From: Sara Martinez <donnawelch@example.org>
+To: Gerald Mcdaniel <cassandra85@example.com>
+Date: Tue, 18 Nov 2025 23:54:15 
+Message-ID: <798435@healthsystem.org>
+
+--===============6069461702139682874==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Mcdaniel,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Christopher Kim
+Date of Birth: 10/09/1945
+MRN: MRN141761
+Phone: (909)781-9602
+
+Current Diagnoses:
+- Major Depressive Disorder (ICD-10: F33.1)
+
+Current Medications:
+- Metformin 500mg twice daily
+- Amlodipine 5mg daily
+
+Allergies: Latex, Sulfa drugs, Aspirin
+
+I would appreciate your input on management of this patient's Major Depressive Disorder.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Sara Martinez, PA
+Endocrinology
+NPI: 1248704157
+Phone: (844)321-1753
+Fax: 606.217.1366x5722
+
+--===============6069461702139682874==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Mcdaniel,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Christopher Kim</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>10/09/1945</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN141761</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(909)781-9602</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Major Depressive Disorder (ICD-10: F33.1)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metformin 500mg twice daily</li>
+<li>Amlodipine 5mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Latex, Sulfa drugs, Aspirin</p>
+
+    <p>I would appreciate your input on management of this patient's Major Depressive Disorder.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Sara Martinez, PA</strong><br/>
+        Endocrinology<br/>
+        NPI: 1248704157<br/>
+        Phone: (844)321-1753<br/>
+        Fax: 606.217.1366x5722
+    </div>
+</body>
+</html>
+
+--===============6069461702139682874==--
