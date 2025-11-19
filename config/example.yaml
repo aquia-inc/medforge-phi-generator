@@ -1,0 +1,29 @@
+# MedForge Configuration Example
+# Use this file with: medforge generate --config config/example.yaml
+
+# Total number of documents to generate
+count: 200
+
+# Specific PHI positive/negative counts (if not set, uses 80/20 split from count)
+phi_positive: 160
+phi_negative: 40
+
+# Comma-separated list of formats to generate
+# Valid options: pdf, docx, xlsx, eml, pptx
+formats: "pdf,docx,xlsx,eml,pptx"
+
+# Output directory for generated documents
+output: "output/medforge"
+
+# Percentage of documents to enhance with LLM (0.0 to 1.0)
+# Requires ANTHROPIC_API_KEY environment variable
+llm_percentage: 0.2
+
+# Random seed for reproducibility (optional)
+# Set to a specific number for consistent results across runs
+seed: 42
+
+# Number of parallel workers for generation
+# 1 = sequential (slower but uses less memory)
+# >1 = parallel (faster but uses more memory)
+parallel_workers: 4
