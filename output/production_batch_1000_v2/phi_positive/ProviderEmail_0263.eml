@@ -1,0 +1,102 @@
+Content-Type: multipart/alternative; boundary="===============1826416997611836938=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Greene, Tiffany
+From: Sara Sanders <stephanie67@example.net>
+To: Sandra Adams <paulpowell@example.com>
+Date: Thu, 20 Nov 2025 10:15:32 
+Message-ID: <838246@healthsystem.org>
+
+--===============1826416997611836938==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Adams,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Tiffany Greene
+Date of Birth: 06/24/1955
+MRN: MRN273878
+Phone: 001-240-533-7449x9987
+
+Current Diagnoses:
+- Hyperlipidemia (ICD-10: E78.5)
+- Coronary Artery Disease (ICD-10: I25.10)
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+
+Current Medications:
+- None
+
+Allergies: Latex, Sulfa drugs
+
+I would appreciate your input on management of this patient's Hyperlipidemia.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Sara Sanders, MD
+Pulmonology
+NPI: 7549661883
+Phone: 801-308-9654
+Fax: (653)960-6400
+
+--===============1826416997611836938==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Adams,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Tiffany Greene</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>06/24/1955</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN273878</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-240-533-7449x9987</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hyperlipidemia (ICD-10: E78.5)</li>
+<li>Coronary Artery Disease (ICD-10: I25.10)</li>
+<li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>None</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Latex, Sulfa drugs</p>
+
+    <p>I would appreciate your input on management of this patient's Hyperlipidemia.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Sara Sanders, MD</strong><br/>
+        Pulmonology<br/>
+        NPI: 7549661883<br/>
+        Phone: 801-308-9654<br/>
+        Fax: (653)960-6400
+    </div>
+</body>
+</html>
+
+--===============1826416997611836938==--

@@ -1,0 +1,98 @@
+Content-Type: multipart/alternative; boundary="===============5419681492103408640=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Howard, Alex
+From: Thomas Jones <erinhughes@example.org>
+To: Timothy Alexander <nruiz@example.net>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <731024@healthsystem.org>
+
+--===============5419681492103408640==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Alexander,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Alex Howard
+Date of Birth: 03/26/1989
+MRN: MRN824619
+Phone: (836)626-8904x723
+
+Current Diagnoses:
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+
+Current Medications:
+- None
+
+Allergies: Codeine
+
+I would appreciate your input on management of this patient's Chronic Kidney Disease, Stage 3.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Thomas Jones, MD
+Pulmonology
+NPI: 4367382040
+Phone: +1-560-947-6143x78844
+Fax: 8669187564
+
+--===============5419681492103408640==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Alexander,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Alex Howard</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>03/26/1989</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN824619</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(836)626-8904x723</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>None</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Codeine</p>
+
+    <p>I would appreciate your input on management of this patient's Chronic Kidney Disease, Stage 3.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Thomas Jones, MD</strong><br/>
+        Pulmonology<br/>
+        NPI: 4367382040<br/>
+        Phone: +1-560-947-6143x78844<br/>
+        Fax: 8669187564
+    </div>
+</body>
+</html>
+
+--===============5419681492103408640==--

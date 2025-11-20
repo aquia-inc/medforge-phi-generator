@@ -1,0 +1,106 @@
+Content-Type: multipart/alternative; boundary="===============2752182375795348803=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Lopez, Jeffrey
+From: Kim Todd <davismeghan@example.com>
+To: Tyler Ward <ralphneal@example.org>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <139286@healthsystem.org>
+
+--===============2752182375795348803==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Ward,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Jeffrey Lopez
+Date of Birth: 12/10/1941
+MRN: MRN344146
+Phone: +1-981-767-1120
+
+Current Diagnoses:
+- Coronary Artery Disease (ICD-10: I25.10)
+- Hypothyroidism (ICD-10: E03.9)
+
+Current Medications:
+- Atorvastatin 20mg daily
+- Omeprazole 20mg daily
+- Losartan 50mg daily
+- Levothyroxine 50mcg daily
+
+Allergies: Sulfa drugs, Aspirin, Penicillin
+
+I would appreciate your input on management of this patient's Coronary Artery Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Kim Todd, MD
+Cardiology
+NPI: 4597485607
+Phone: 6312089071
+Fax: 440-711-9393
+
+--===============2752182375795348803==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Ward,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Jeffrey Lopez</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>12/10/1941</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN344146</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>+1-981-767-1120</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Coronary Artery Disease (ICD-10: I25.10)</li>
+<li>Hypothyroidism (ICD-10: E03.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Atorvastatin 20mg daily</li>
+<li>Omeprazole 20mg daily</li>
+<li>Losartan 50mg daily</li>
+<li>Levothyroxine 50mcg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Sulfa drugs, Aspirin, Penicillin</p>
+
+    <p>I would appreciate your input on management of this patient's Coronary Artery Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Kim Todd, MD</strong><br/>
+        Cardiology<br/>
+        NPI: 4597485607<br/>
+        Phone: 6312089071<br/>
+        Fax: 440-711-9393
+    </div>
+</body>
+</html>
+
+--===============2752182375795348803==--

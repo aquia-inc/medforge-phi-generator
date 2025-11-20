@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============5101641583015406806=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Mills, Emily
+From: Stephen Hamilton <perry19@example.org>
+To: Jeff Rios <vmooney@example.com>
+Date: Thu, 20 Nov 2025 10:15:32 
+Message-ID: <433799@healthsystem.org>
+
+--===============5101641583015406806==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Rios,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Emily Mills
+Date of Birth: 08/22/1998
+MRN: MRN399212
+Phone: 860.238.9173
+
+Current Diagnoses:
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+
+Current Medications:
+- Atorvastatin 20mg daily
+- Lisinopril 10mg daily
+- Metoprolol 25mg twice daily
+
+Allergies: Codeine
+
+I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Stephen Hamilton, MD
+Internal Medicine
+NPI: 1869986241
+Phone: 785-308-9512x370
+Fax: 001-819-719-4454x56972
+
+--===============5101641583015406806==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Rios,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Emily Mills</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>08/22/1998</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN399212</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>860.238.9173</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Atorvastatin 20mg daily</li>
+<li>Lisinopril 10mg daily</li>
+<li>Metoprolol 25mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Codeine</p>
+
+    <p>I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Stephen Hamilton, MD</strong><br/>
+        Internal Medicine<br/>
+        NPI: 1869986241<br/>
+        Phone: 785-308-9512x370<br/>
+        Fax: 001-819-719-4454x56972
+    </div>
+</body>
+</html>
+
+--===============5101641583015406806==--

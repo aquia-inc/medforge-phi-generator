@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============1906999234137936259=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Kent, Isabella
+From: Joseph Ramos <rodriguezchristina@example.net>
+To: Kelly Bennett <johncasey@example.com>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <668573@healthsystem.org>
+
+--===============1906999234137936259==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Bennett,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Isabella Kent
+Date of Birth: 09/15/1990
+MRN: MRN880550
+Phone: 824.819.1650x3440
+
+Current Diagnoses:
+- Major Depressive Disorder (ICD-10: F33.1)
+
+Current Medications:
+- Amlodipine 5mg daily
+- Lisinopril 10mg daily
+- Sertraline 50mg daily
+- Levothyroxine 50mcg daily
+
+Allergies: Codeine, Ibuprofen
+
+I would appreciate your input on management of this patient's Major Depressive Disorder.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Joseph Ramos, PA
+Psychiatry
+NPI: 6271763012
+Phone: (581)835-9266x48698
+Fax: 001-698-774-8694x155
+
+--===============1906999234137936259==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Bennett,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Isabella Kent</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>09/15/1990</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN880550</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>824.819.1650x3440</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Major Depressive Disorder (ICD-10: F33.1)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Amlodipine 5mg daily</li>
+<li>Lisinopril 10mg daily</li>
+<li>Sertraline 50mg daily</li>
+<li>Levothyroxine 50mcg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Codeine, Ibuprofen</p>
+
+    <p>I would appreciate your input on management of this patient's Major Depressive Disorder.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Joseph Ramos, PA</strong><br/>
+        Psychiatry<br/>
+        NPI: 6271763012<br/>
+        Phone: (581)835-9266x48698<br/>
+        Fax: 001-698-774-8694x155
+    </div>
+</body>
+</html>
+
+--===============1906999234137936259==--

@@ -1,0 +1,100 @@
+Content-Type: multipart/alternative; boundary="===============7763186304940514702=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Hill, Ashley
+From: Michael Simpson <matthewpeterson@example.com>
+To: Brianna White <tina03@example.com>
+Date: Thu, 20 Nov 2025 10:15:35 
+Message-ID: <253327@healthsystem.org>
+
+--===============7763186304940514702==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. White,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Ashley Hill
+Date of Birth: 04/22/1935
+MRN: MRN105194
+Phone: 464.935.7161x70297
+
+Current Diagnoses:
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+- Hyperlipidemia (ICD-10: E78.5)
+
+Current Medications:
+- Metformin 500mg twice daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Michael Simpson, MD
+Pulmonology
+NPI: 9998899945
+Phone: 608.696.1269
+Fax: (455)517-3723x4238
+
+--===============7763186304940514702==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. White,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Ashley Hill</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>04/22/1935</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN105194</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>464.935.7161x70297</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+<li>Hyperlipidemia (ICD-10: E78.5)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metformin 500mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Michael Simpson, MD</strong><br/>
+        Pulmonology<br/>
+        NPI: 9998899945<br/>
+        Phone: 608.696.1269<br/>
+        Fax: (455)517-3723x4238
+    </div>
+</body>
+</html>
+
+--===============7763186304940514702==--

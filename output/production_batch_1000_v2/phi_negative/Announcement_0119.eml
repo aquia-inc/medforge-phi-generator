@@ -1,0 +1,75 @@
+Content-Type: multipart/alternative; boundary="===============5503433840622190624=="
+MIME-Version: 1.0
+Subject: Office Closure Notice - Holiday Schedule
+From: Office Administrator <admin@singhportcommunityhospital.org>
+To: All Staff <staff@{facility['name'].lower().replace(' ', '')}.org>
+Date: Thu, 20 Nov 2025 10:15:36 
+Message-ID: <208376@healthsystem.org>
+
+--===============5503433840622190624==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dear Staff,
+
+This is to inform you of our upcoming holiday schedule for Singhport Community Hospital.
+
+OFFICE CLOSURES:
+- December 24-25, 2024: Christmas Holiday
+- January 1, 2025: New Year's Day
+- January 15, 2025: Martin Luther King Jr. Day
+
+During these closures, emergency services will be available through our on-call system.
+Please refer patients to the emergency contact number: 728.884.3597x903
+
+REGULAR HOURS RESUME:
+Normal business hours will resume on the next business day following each holiday.
+
+Thank you for your attention to this matter.
+
+Singhport Community Hospital
+8046 Gibson Club
+Singhport, CT 72866
+Phone: 728.884.3597x903
+
+--===============5503433840622190624==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<body style="font-family: Arial, sans-serif;">
+    <h2 style="color: #2c3e50;">Holiday Office Hours</h2>
+
+    <p>Dear Staff,</p>
+
+    <p>This is to inform you of our upcoming holiday schedule for <strong>Singhport Community Hospital</strong>.</p>
+
+    <h3>OFFICE CLOSURES:</h3>
+    <ul>
+        <li>December 24-25, 2024: Christmas Holiday</li>
+        <li>January 1, 2025: New Year's Day</li>
+        <li>January 15, 2025: Martin Luther King Jr. Day</li>
+    </ul>
+
+    <p>During these closures, emergency services will be available through our on-call system.
+    Please refer patients to the emergency contact number: <strong>728.884.3597x903</strong></p>
+
+    <h3>REGULAR HOURS RESUME:</h3>
+    <p>Normal business hours will resume on the next business day following each holiday.</p>
+
+    <p>Thank you for your attention to this matter.</p>
+
+    <div style="border-top: 2px solid #3498db; margin-top: 20px; padding-top: 10px;">
+        <strong>Singhport Community Hospital</strong><br/>
+        8046 Gibson Club<br/>
+        Singhport, CT 72866<br/>
+        Phone: 728.884.3597x903
+    </div>
+</body>
+</html>
+
+--===============5503433840622190624==--

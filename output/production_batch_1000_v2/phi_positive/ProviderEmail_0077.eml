@@ -1,0 +1,98 @@
+Content-Type: multipart/alternative; boundary="===============3985736838991402179=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Chapman, Danielle
+From: Alexander Wise <jonesheather@example.net>
+To: Kathleen Smith <smithmonica@example.com>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <771590@healthsystem.org>
+
+--===============3985736838991402179==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Smith,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Danielle Chapman
+Date of Birth: 01/26/1968
+MRN: MRN823975
+Phone: (592)536-4587x5066
+
+Current Diagnoses:
+- Hyperlipidemia (ICD-10: E78.5)
+
+Current Medications:
+- None
+
+Allergies: Sulfa drugs, Codeine, Latex
+
+I would appreciate your input on management of this patient's Hyperlipidemia.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Alexander Wise, PA
+Family Medicine
+NPI: 8287542751
+Phone: +1-866-691-8362x6448
+Fax: 001-961-219-5243x6402
+
+--===============3985736838991402179==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Smith,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Danielle Chapman</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>01/26/1968</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN823975</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(592)536-4587x5066</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hyperlipidemia (ICD-10: E78.5)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>None</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Sulfa drugs, Codeine, Latex</p>
+
+    <p>I would appreciate your input on management of this patient's Hyperlipidemia.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Alexander Wise, PA</strong><br/>
+        Family Medicine<br/>
+        NPI: 8287542751<br/>
+        Phone: +1-866-691-8362x6448<br/>
+        Fax: 001-961-219-5243x6402
+    </div>
+</body>
+</html>
+
+--===============3985736838991402179==--

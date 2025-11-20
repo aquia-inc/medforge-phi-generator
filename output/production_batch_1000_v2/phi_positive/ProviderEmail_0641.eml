@@ -1,0 +1,98 @@
+Content-Type: multipart/alternative; boundary="===============0217999973982266347=="
+MIME-Version: 1.0
+Subject: Patient Consultation: House, Michelle
+From: Richard Payne <ericaherrera@example.net>
+To: Douglas Kirby <matthew90@example.net>
+Date: Thu, 20 Nov 2025 10:15:34 
+Message-ID: <578346@healthsystem.org>
+
+--===============0217999973982266347==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Kirby,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Michelle House
+Date of Birth: 03/23/1934
+MRN: MRN476533
+Phone: 673.202.9620x56336
+
+Current Diagnoses:
+- Hypothyroidism (ICD-10: E03.9)
+
+Current Medications:
+- None
+
+Allergies: Penicillin, Aspirin, Sulfa drugs
+
+I would appreciate your input on management of this patient's Hypothyroidism.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Richard Payne, PA
+Nephrology
+NPI: 8191770328
+Phone: (354)807-7488
+Fax: 920.643.2812x77317
+
+--===============0217999973982266347==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Kirby,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Michelle House</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>03/23/1934</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN476533</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>673.202.9620x56336</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hypothyroidism (ICD-10: E03.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>None</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Penicillin, Aspirin, Sulfa drugs</p>
+
+    <p>I would appreciate your input on management of this patient's Hypothyroidism.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Richard Payne, PA</strong><br/>
+        Nephrology<br/>
+        NPI: 8191770328<br/>
+        Phone: (354)807-7488<br/>
+        Fax: 920.643.2812x77317
+    </div>
+</body>
+</html>
+
+--===============0217999973982266347==--

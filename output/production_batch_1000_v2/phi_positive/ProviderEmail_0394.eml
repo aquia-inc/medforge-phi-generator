@@ -1,0 +1,100 @@
+Content-Type: multipart/alternative; boundary="===============2766949048579139926=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Wilson, Deanna
+From: Joseph Johnson <ifarley@example.org>
+To: Frances Thomas <grossamber@example.org>
+Date: Thu, 20 Nov 2025 10:15:33 
+Message-ID: <856597@healthsystem.org>
+
+--===============2766949048579139926==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Thomas,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Deanna Wilson
+Date of Birth: 02/10/1955
+MRN: MRN730127
+Phone: 202.436.0741x706
+
+Current Diagnoses:
+- Essential Hypertension (ICD-10: I10)
+- Hyperlipidemia (ICD-10: E78.5)
+
+Current Medications:
+- Metoprolol 25mg twice daily
+
+Allergies: Peanuts
+
+I would appreciate your input on management of this patient's Essential Hypertension.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Joseph Johnson, DO
+Nephrology
+NPI: 7016703050
+Phone: (537)590-5848x2817
+Fax: 896.791.0829
+
+--===============2766949048579139926==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Thomas,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Deanna Wilson</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>02/10/1955</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN730127</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>202.436.0741x706</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Essential Hypertension (ICD-10: I10)</li>
+<li>Hyperlipidemia (ICD-10: E78.5)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metoprolol 25mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Peanuts</p>
+
+    <p>I would appreciate your input on management of this patient's Essential Hypertension.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Joseph Johnson, DO</strong><br/>
+        Nephrology<br/>
+        NPI: 7016703050<br/>
+        Phone: (537)590-5848x2817<br/>
+        Fax: 896.791.0829
+    </div>
+</body>
+</html>
+
+--===============2766949048579139926==--

@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============7293113184710914305=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Stark, Danny
+From: Mary Cain <bradleyhunt@example.com>
+To: Susan Greene <jphillips@example.com>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <670053@healthsystem.org>
+
+--===============7293113184710914305==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Greene,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Danny Stark
+Date of Birth: 09/21/1930
+MRN: MRN441716
+Phone: 371.418.3727x4220
+
+Current Diagnoses:
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+
+Current Medications:
+- Levothyroxine 50mcg daily
+- Gabapentin 300mg three times daily
+- Atorvastatin 20mg daily
+- Metoprolol 25mg twice daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Gastroesophageal Reflux Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Mary Cain, NP
+Endocrinology
+NPI: 2619163247
+Phone: +1-516-547-0900x6335
+Fax: 306-400-5313
+
+--===============7293113184710914305==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Greene,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Danny Stark</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>09/21/1930</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN441716</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>371.418.3727x4220</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Levothyroxine 50mcg daily</li>
+<li>Gabapentin 300mg three times daily</li>
+<li>Atorvastatin 20mg daily</li>
+<li>Metoprolol 25mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Gastroesophageal Reflux Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Mary Cain, NP</strong><br/>
+        Endocrinology<br/>
+        NPI: 2619163247<br/>
+        Phone: +1-516-547-0900x6335<br/>
+        Fax: 306-400-5313
+    </div>
+</body>
+</html>
+
+--===============7293113184710914305==--

@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============2068894517693025361=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Morris, Krista
+From: Kevin Lin <lindsey76@example.net>
+To: Amber Sanders <montoyaamanda@example.org>
+Date: Thu, 20 Nov 2025 10:15:32 
+Message-ID: <424333@healthsystem.org>
+
+--===============2068894517693025361==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Sanders,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Krista Morris
+Date of Birth: 05/25/1997
+MRN: MRN502890
+Phone: 9176518007
+
+Current Diagnoses:
+- Hypothyroidism (ICD-10: E03.9)
+- Major Depressive Disorder (ICD-10: F33.1)
+- Osteoarthritis (ICD-10: M19.90)
+
+Current Medications:
+- Atorvastatin 20mg daily
+- Lisinopril 10mg daily
+
+Allergies: Bee stings
+
+I would appreciate your input on management of this patient's Hypothyroidism.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Kevin Lin, NP
+Pulmonology
+NPI: 7550842481
+Phone: 930-592-1527x259
+Fax: 267.740.8912
+
+--===============2068894517693025361==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Sanders,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Krista Morris</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>05/25/1997</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN502890</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>9176518007</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hypothyroidism (ICD-10: E03.9)</li>
+<li>Major Depressive Disorder (ICD-10: F33.1)</li>
+<li>Osteoarthritis (ICD-10: M19.90)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Atorvastatin 20mg daily</li>
+<li>Lisinopril 10mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Bee stings</p>
+
+    <p>I would appreciate your input on management of this patient's Hypothyroidism.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Kevin Lin, NP</strong><br/>
+        Pulmonology<br/>
+        NPI: 7550842481<br/>
+        Phone: 930-592-1527x259<br/>
+        Fax: 267.740.8912
+    </div>
+</body>
+</html>
+
+--===============2068894517693025361==--

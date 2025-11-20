@@ -1,0 +1,75 @@
+Content-Type: multipart/alternative; boundary="===============4410792204635623462=="
+MIME-Version: 1.0
+Subject: Office Closure Notice - Holiday Schedule
+From: Office Administrator <admin@caitlinstadregionalhospital.org>
+To: All Staff <staff@{facility['name'].lower().replace(' ', '')}.org>
+Date: Thu, 20 Nov 2025 10:15:36 
+Message-ID: <574817@healthsystem.org>
+
+--===============4410792204635623462==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dear Staff,
+
+This is to inform you of our upcoming holiday schedule for Caitlinstad Regional Hospital.
+
+OFFICE CLOSURES:
+- December 24-25, 2024: Christmas Holiday
+- January 1, 2025: New Year's Day
+- January 15, 2025: Martin Luther King Jr. Day
+
+During these closures, emergency services will be available through our on-call system.
+Please refer patients to the emergency contact number: 981.832.0160
+
+REGULAR HOURS RESUME:
+Normal business hours will resume on the next business day following each holiday.
+
+Thank you for your attention to this matter.
+
+Caitlinstad Regional Hospital
+2072 Peters Mall Apt. 113
+Caitlinstad, KY 26979
+Phone: 981.832.0160
+
+--===============4410792204635623462==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<body style="font-family: Arial, sans-serif;">
+    <h2 style="color: #2c3e50;">Holiday Office Hours</h2>
+
+    <p>Dear Staff,</p>
+
+    <p>This is to inform you of our upcoming holiday schedule for <strong>Caitlinstad Regional Hospital</strong>.</p>
+
+    <h3>OFFICE CLOSURES:</h3>
+    <ul>
+        <li>December 24-25, 2024: Christmas Holiday</li>
+        <li>January 1, 2025: New Year's Day</li>
+        <li>January 15, 2025: Martin Luther King Jr. Day</li>
+    </ul>
+
+    <p>During these closures, emergency services will be available through our on-call system.
+    Please refer patients to the emergency contact number: <strong>981.832.0160</strong></p>
+
+    <h3>REGULAR HOURS RESUME:</h3>
+    <p>Normal business hours will resume on the next business day following each holiday.</p>
+
+    <p>Thank you for your attention to this matter.</p>
+
+    <div style="border-top: 2px solid #3498db; margin-top: 20px; padding-top: 10px;">
+        <strong>Caitlinstad Regional Hospital</strong><br/>
+        2072 Peters Mall Apt. 113<br/>
+        Caitlinstad, KY 26979<br/>
+        Phone: 981.832.0160
+    </div>
+</body>
+</html>
+
+--===============4410792204635623462==--

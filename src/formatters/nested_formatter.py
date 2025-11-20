@@ -10,6 +10,15 @@ from email import encoders
 from datetime import datetime
 import os
 import random
+import io
+import zipfile
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.units import inch
+from reportlab.lib import colors
+from docx import Document
+from docx.shared import Pt, Inches
 
 
 class NestedEmailFormatter:
@@ -357,3 +366,389 @@ Phone: {facility['phone']}
     def _list_attachments(self, attachment_paths):
         """Helper to create a bullet list of attachment filenames"""
         return '\n'.join([f"- {os.path.basename(path)}" for path in attachment_paths])
+
+    # ========================================
+    # NEW: In-memory attachment generation
+    # ========================================
+
+    def _generate_phi_positive_pdf_in_memory(self, patient, provider, lab_data):
+        """Generate PHI positive lab result PDF in memory"""
+        buffer = io.BytesIO()
+        doc = SimpleDocTemplate(buffer, pagesize=letter)
+        styles = getSampleStyleSheet()
+        story = []
+
+        # Header
+        story.append(Paragraph(f"<b>{provider['specialty']} - Laboratory Results</b>", styles['Title']))
+        story.append(Spacer(1, 0.2*inch))
+
+        # Patient info
+        patient_data = [
+            ['Patient Information', ''],
+            ['Name:', f"{patient['first_name']} {patient['last_name']}"],
+            ['MRN:', patient['mrn']],
+            ['Date of Birth:', patient['dob'].strftime('%m/%d/%Y')],
+            ['Collection Date:', datetime.now().strftime('%m/%d/%Y')],
+        ]
+        patient_table = Table(patient_data, colWidths=[2*inch, 4*inch])
+        patient_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 0), (-1, 0), 12),
+            ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+            ('GRID', (0, 0), (-1, -1), 1, colors.black)
+        ]))
+        story.append(patient_table)
+        story.append(Spacer(1, 0.3*inch))
+
+        # Lab results
+        lab_table_data = [['Test', 'Result', 'Reference Range', 'Flag']]
+        for test in lab_data:
+            lab_table_data.append([
+                test['name'],
+                f"{test['value']} {test['unit']}",
+                test['reference_range'],
+                test.get('flag', '')
+            ])
+
+        lab_table = Table(lab_table_data, colWidths=[2.5*inch, 1.5*inch, 1.5*inch, 0.5*inch])
+        lab_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.lightblue),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.black),
+            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('GRID', (0, 0), (-1, -1), 1, colors.black)
+        ]))
+        story.append(lab_table)
+
+        doc.build(story)
+        buffer.seek(0)
+        return buffer.getvalue()
+
+    def _generate_phi_negative_pdf_in_memory(self, facility):
+        """Generate PHI negative policy PDF in memory"""
+        buffer = io.BytesIO()
+        doc = SimpleDocTemplate(buffer, pagesize=letter)
+        styles = getSampleStyleSheet()
+        story = []
+
+        # Header
+        story.append(Paragraph(f"<b>{facility['name']}</b>", styles['Title']))
+        story.append(Paragraph("<b>Clinical Documentation Policy</b>", styles['Heading1']))
+        story.append(Spacer(1, 0.3*inch))
+
+        # Policy content (no patient data)
+        policy_text = """
+        <b>POLICY NUMBER:</b> CPG-2024-001<br/>
+        <b>EFFECTIVE DATE:</b> January 1, 2025<br/>
+        <b>DEPARTMENT:</b> Clinical Operations<br/>
+        <br/>
+        <b>PURPOSE:</b><br/>
+        To establish standardized procedures for clinical documentation across all departments.<br/>
+        <br/>
+        <b>SCOPE:</b><br/>
+        This policy applies to all clinical staff including physicians, nurses, and allied health professionals.<br/>
+        <br/>
+        <b>POLICY STATEMENTS:</b><br/>
+        1. All clinical encounters must be documented within 24 hours<br/>
+        2. Electronic signatures are required for all clinical notes<br/>
+        3. Medication reconciliation must be completed at each visit<br/>
+        4. Patient education must be documented with standardized templates<br/>
+        <br/>
+        <b>COMPLIANCE:</b><br/>
+        Failure to comply with this policy may result in disciplinary action.
+        """
+        story.append(Paragraph(policy_text, styles['Normal']))
+
+        doc.build(story)
+        buffer.seek(0)
+        return buffer.getvalue()
+
+    def _generate_phi_positive_docx_in_memory(self, patient, provider):
+        """Generate PHI positive progress note DOCX in memory"""
+        buffer = io.BytesIO()
+        doc = Document()
+
+        # Header
+        doc.add_heading(f'Progress Note - {patient["first_name"]} {patient["last_name"]}', 0)
+
+        # Patient info table
+        table = doc.add_table(rows=5, cols=2)
+        table.style = 'Light Grid Accent 1'
+
+        cells = table.rows[0].cells
+        cells[0].text = 'Patient Name:'
+        cells[1].text = f"{patient['first_name']} {patient['last_name']}"
+
+        cells = table.rows[1].cells
+        cells[0].text = 'MRN:'
+        cells[1].text = patient['mrn']
+
+        cells = table.rows[2].cells
+        cells[0].text = 'Date of Birth:'
+        cells[1].text = patient['dob'].strftime('%m/%d/%Y')
+
+        cells = table.rows[3].cells
+        cells[0].text = 'Visit Date:'
+        cells[1].text = datetime.now().strftime('%m/%d/%Y')
+
+        cells = table.rows[4].cells
+        cells[0].text = 'Provider:'
+        cells[1].text = f"{provider['first_name']} {provider['last_name']}, {provider['title']}"
+
+        doc.add_paragraph()
+
+        # SOAP note
+        doc.add_heading('Subjective:', level=2)
+        # Get first diagnosis safely
+        first_diagnosis = "chronic condition"
+        if 'diagnoses' in patient and len(patient['diagnoses']) > 0:
+            if isinstance(patient['diagnoses'][0], dict):
+                first_diagnosis = patient['diagnoses'][0].get('name', 'chronic condition')
+            else:
+                first_diagnosis = str(patient['diagnoses'][0])
+
+        doc.add_paragraph(f"Patient presents for follow-up of {first_diagnosis}. "
+                         f"Reports adherence to current medication regimen.")
+
+        doc.add_heading('Objective:', level=2)
+        # Handle vital signs
+        if 'vital_signs' in patient and isinstance(patient['vital_signs'], dict):
+            vitals = patient['vital_signs']
+            vitals_text = f"BP: {vitals.get('blood_pressure', '120/80')}, HR: {vitals.get('heart_rate', '72')}, "
+            vitals_text += f"Temp: {vitals.get('temperature', '98.6')}°F"
+        else:
+            vitals_text = "BP: 120/80, HR: 72, Temp: 98.6°F"
+        doc.add_paragraph(vitals_text)
+
+        doc.add_heading('Assessment:', level=2)
+        doc.add_paragraph(f"1. {first_diagnosis} - stable")
+
+        doc.add_heading('Plan:', level=2)
+        # Get first medication safely
+        first_med = "current medications"
+        if 'medications' in patient and len(patient['medications']) > 0:
+            first_med = patient['medications'][0]
+        doc.add_paragraph(f"Continue {first_med}")
+        doc.add_paragraph("Follow-up in 3 months or sooner if symptoms worsen.")
+
+        doc.save(buffer)
+        buffer.seek(0)
+        return buffer.getvalue()
+
+    def _generate_phi_negative_docx_in_memory(self, facility):
+        """Generate PHI negative blank form DOCX in memory"""
+        buffer = io.BytesIO()
+        doc = Document()
+
+        doc.add_heading(f'{facility["name"]} - Patient Registration Form', 0)
+        doc.add_paragraph('Please complete all fields below:')
+        doc.add_paragraph()
+
+        # Blank form fields (no actual patient data)
+        doc.add_heading('Patient Information', level=2)
+        doc.add_paragraph('Last Name: _______________________________')
+        doc.add_paragraph('First Name: _______________________________')
+        doc.add_paragraph('Date of Birth: ____/____/________')
+        doc.add_paragraph('Phone Number: (_____) _____-_______')
+        doc.add_paragraph('Email: _______________________________')
+        doc.add_paragraph()
+
+        doc.add_heading('Emergency Contact', level=2)
+        doc.add_paragraph('Name: _______________________________')
+        doc.add_paragraph('Relationship: _______________________________')
+        doc.add_paragraph('Phone: (_____) _____-_______')
+        doc.add_paragraph()
+
+        doc.add_heading('Insurance Information', level=2)
+        doc.add_paragraph('Insurance Company: _______________________________')
+        doc.add_paragraph('Policy Number: _______________________________')
+        doc.add_paragraph('Group Number: _______________________________')
+
+        doc.save(buffer)
+        buffer.seek(0)
+        return buffer.getvalue()
+
+    def _create_zip_with_phi_positive_docs(self, patient, provider, lab_data):
+        """Create ZIP file with 2-3 PHI positive documents in memory"""
+        buffer = io.BytesIO()
+
+        with zipfile.ZipFile(buffer, 'w', zipfile.ZIP_DEFLATED) as zipf:
+            # Add lab result PDF
+            lab_pdf = self._generate_phi_positive_pdf_in_memory(patient, provider, lab_data)
+            zipf.writestr(f"LabResults_{patient['mrn']}.pdf", lab_pdf)
+
+            # Add progress note DOCX
+            progress_note = self._generate_phi_positive_docx_in_memory(patient, provider)
+            zipf.writestr(f"ProgressNote_{patient['mrn']}.docx", progress_note)
+
+            # Randomly add a third document (50% chance)
+            if random.random() < 0.5:
+                # Add another lab result with different data
+                zipf.writestr(f"PreviousLab_{patient['mrn']}.pdf", lab_pdf)
+
+        buffer.seek(0)
+        return buffer.getvalue()
+
+    def _create_zip_with_phi_negative_docs(self, facility):
+        """Create ZIP file with 2-3 PHI negative documents in memory"""
+        buffer = io.BytesIO()
+
+        with zipfile.ZipFile(buffer, 'w', zipfile.ZIP_DEFLATED) as zipf:
+            # Add policy PDF
+            policy_pdf = self._generate_phi_negative_pdf_in_memory(facility)
+            zipf.writestr("ClinicalDocumentationPolicy.pdf", policy_pdf)
+
+            # Add blank form DOCX
+            blank_form = self._generate_phi_negative_docx_in_memory(facility)
+            zipf.writestr("PatientRegistrationForm.docx", blank_form)
+
+            # Randomly add a third document (50% chance)
+            if random.random() < 0.5:
+                zipf.writestr("HIPAAConsentForm.docx", blank_form)
+
+        buffer.seek(0)
+        return buffer.getvalue()
+
+    def create_phi_positive_email_with_attachment(self, patient, provider, facility, lab_data, filename):
+        """
+        Create PHI POSITIVE email with embedded attachment (PDF or ZIP)
+        20% chance of ZIP, 80% chance of single PDF/DOCX
+        """
+        msg = MIMEMultipart('mixed')
+
+        # Email headers with PHI
+        msg['Subject'] = f"Lab Results - {patient['first_name']} {patient['last_name']}"
+        msg['From'] = f"{provider['first_name']} {provider['last_name']} <{provider['email']}>"
+        msg['To'] = f"{patient['first_name']} {patient['last_name']} <{patient['email']}>"
+        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
+
+        # Email body with PHI
+        body_text = f"""
+Dear {patient['first_name']} {patient['last_name']},
+
+Please find attached your recent laboratory results.
+
+Patient: {patient['first_name']} {patient['last_name']}
+MRN: {patient['mrn']}
+Date of Birth: {patient['dob'].strftime('%m/%d/%Y')}
+
+Please review and contact our office if you have any questions.
+
+Best regards,
+
+{provider['first_name']} {provider['last_name']}, {provider['title']}
+{provider['specialty']}
+Phone: {provider['phone']}
+
+---
+CONFIDENTIAL: This email contains protected health information (PHI).
+"""
+
+        body = MIMEText(body_text, 'plain')
+        msg.attach(body)
+
+        # Decide on attachment type (20% ZIP, 80% single doc)
+        use_zip = random.random() < 0.2
+
+        if use_zip:
+            # Attach ZIP with multiple PHI documents
+            zip_data = self._create_zip_with_phi_positive_docs(patient, provider, lab_data)
+            attachment = MIMEApplication(zip_data, _subtype='zip')
+            attachment.add_header('Content-Disposition', 'attachment',
+                                filename=f"MedicalRecords_{patient['mrn']}.zip")
+            msg.attach(attachment)
+        else:
+            # Attach single PDF or DOCX (50/50 split)
+            if random.random() < 0.5:
+                # PDF lab result
+                pdf_data = self._generate_phi_positive_pdf_in_memory(patient, provider, lab_data)
+                attachment = MIMEApplication(pdf_data, _subtype='pdf')
+                attachment.add_header('Content-Disposition', 'attachment',
+                                    filename=f"LabResults_{patient['mrn']}.pdf")
+            else:
+                # DOCX progress note
+                docx_data = self._generate_phi_positive_docx_in_memory(patient, provider)
+                attachment = MIMEApplication(docx_data,
+                    _subtype='vnd.openxmlformats-officedocument.wordprocessingml.document')
+                attachment.add_header('Content-Disposition', 'attachment',
+                                    filename=f"ProgressNote_{patient['mrn']}.docx")
+            msg.attach(attachment)
+
+        # Save as EML
+        filepath = os.path.join(self.output_dir, filename)
+        with open(filepath, 'w') as f:
+            f.write(msg.as_string())
+
+        return filepath
+
+    def create_phi_negative_email_with_attachment(self, facility, filename):
+        """
+        Create PHI NEGATIVE email with embedded attachment (PDF or ZIP)
+        20% chance of ZIP, 80% chance of single PDF/DOCX
+        """
+        msg = MIMEMultipart('mixed')
+
+        # Email headers with NO patient data
+        msg['Subject'] = "Updated Clinical Documentation Policy"
+        msg['From'] = f"Compliance <compliance@{facility['name'].lower().replace(' ', '')}.org>"
+        msg['To'] = "All Staff <staff@{facility['name'].lower().replace(' ', '')}.org>"
+        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
+
+        # Email body with NO patient data
+        body_text = f"""
+Dear Team,
+
+Please find attached the updated clinical documentation policy and forms.
+
+This policy is effective January 1, 2025. All staff must review and acknowledge by December 31, 2024.
+
+Training sessions will be scheduled in the coming weeks.
+
+Thank you,
+
+Compliance Department
+{facility['name']}
+Phone: {facility['phone']}
+"""
+
+        body = MIMEText(body_text, 'plain')
+        msg.attach(body)
+
+        # Decide on attachment type (20% ZIP, 80% single doc)
+        use_zip = random.random() < 0.2
+
+        if use_zip:
+            # Attach ZIP with multiple PHI NEGATIVE documents
+            zip_data = self._create_zip_with_phi_negative_docs(facility)
+            attachment = MIMEApplication(zip_data, _subtype='zip')
+            attachment.add_header('Content-Disposition', 'attachment',
+                                filename="PolicyDocuments.zip")
+            msg.attach(attachment)
+        else:
+            # Attach single PDF or DOCX (50/50 split)
+            if random.random() < 0.5:
+                # PDF policy
+                pdf_data = self._generate_phi_negative_pdf_in_memory(facility)
+                attachment = MIMEApplication(pdf_data, _subtype='pdf')
+                attachment.add_header('Content-Disposition', 'attachment',
+                                    filename="ClinicalDocumentationPolicy.pdf")
+            else:
+                # DOCX blank form
+                docx_data = self._generate_phi_negative_docx_in_memory(facility)
+                attachment = MIMEApplication(docx_data,
+                    _subtype='vnd.openxmlformats-officedocument.wordprocessingml.document')
+                attachment.add_header('Content-Disposition', 'attachment',
+                                    filename="PatientRegistrationForm.docx")
+            msg.attach(attachment)
+
+        # Save as EML
+        filepath = os.path.join(self.output_dir, filename)
+        with open(filepath, 'w') as f:
+            f.write(msg.as_string())
+
+        return filepath

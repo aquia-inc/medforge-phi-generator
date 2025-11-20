@@ -1,0 +1,108 @@
+Content-Type: multipart/alternative; boundary="===============1613911431517755431=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Wilson, Jonathan
+From: Kristi Shields <cherryalyssa@example.com>
+To: Jerry Roberts <walkerchristopher@example.org>
+Date: Thu, 20 Nov 2025 10:15:34 
+Message-ID: <939937@healthsystem.org>
+
+--===============1613911431517755431==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Roberts,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Jonathan Wilson
+Date of Birth: 03/25/1976
+MRN: MRN639159
+Phone: 001-840-279-8340x0771
+
+Current Diagnoses:
+- Hyperlipidemia (ICD-10: E78.5)
+- Osteoarthritis (ICD-10: M19.90)
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Coronary Artery Disease (ICD-10: I25.10)
+
+Current Medications:
+- Omeprazole 20mg daily
+- Amlodipine 5mg daily
+- Metformin 500mg twice daily
+
+Allergies: Peanuts, Ibuprofen, Sulfa drugs
+
+I would appreciate your input on management of this patient's Hyperlipidemia.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Kristi Shields, MD
+Family Medicine
+NPI: 9479129458
+Phone: 231-475-2861x22400
+Fax: 993-675-8183x50022
+
+--===============1613911431517755431==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Roberts,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Jonathan Wilson</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>03/25/1976</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN639159</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-840-279-8340x0771</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hyperlipidemia (ICD-10: E78.5)</li>
+<li>Osteoarthritis (ICD-10: M19.90)</li>
+<li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Coronary Artery Disease (ICD-10: I25.10)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Omeprazole 20mg daily</li>
+<li>Amlodipine 5mg daily</li>
+<li>Metformin 500mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Peanuts, Ibuprofen, Sulfa drugs</p>
+
+    <p>I would appreciate your input on management of this patient's Hyperlipidemia.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Kristi Shields, MD</strong><br/>
+        Family Medicine<br/>
+        NPI: 9479129458<br/>
+        Phone: 231-475-2861x22400<br/>
+        Fax: 993-675-8183x50022
+    </div>
+</body>
+</html>
+
+--===============1613911431517755431==--

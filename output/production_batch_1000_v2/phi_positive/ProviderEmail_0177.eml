@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============8870695411494484029=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Esparza, Amanda
+From: Jennifer Robinson <chuffman@example.org>
+To: Savannah Tran <lisarussell@example.net>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <811451@healthsystem.org>
+
+--===============8870695411494484029==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Tran,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Amanda Esparza
+Date of Birth: 04/10/1972
+MRN: MRN889327
+Phone: 001-291-885-4880x64420
+
+Current Diagnoses:
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+
+Current Medications:
+- Metoprolol 25mg twice daily
+- Lisinopril 10mg daily
+- Amlodipine 5mg daily
+- Omeprazole 20mg daily
+
+Allergies: Ibuprofen
+
+I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Jennifer Robinson, PA
+Pulmonology
+NPI: 7333314020
+Phone: +1-221-692-6221x32041
+Fax: (394)383-1478
+
+--===============8870695411494484029==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Tran,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Amanda Esparza</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>04/10/1972</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN889327</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-291-885-4880x64420</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metoprolol 25mg twice daily</li>
+<li>Lisinopril 10mg daily</li>
+<li>Amlodipine 5mg daily</li>
+<li>Omeprazole 20mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Ibuprofen</p>
+
+    <p>I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Jennifer Robinson, PA</strong><br/>
+        Pulmonology<br/>
+        NPI: 7333314020<br/>
+        Phone: +1-221-692-6221x32041<br/>
+        Fax: (394)383-1478
+    </div>
+</body>
+</html>
+
+--===============8870695411494484029==--

@@ -1,0 +1,100 @@
+Content-Type: multipart/alternative; boundary="===============6059690458642986109=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Watkins, Jessica
+From: Eric Schneider <christopherpeterson@example.org>
+To: Eric Hurley <donna43@example.org>
+Date: Thu, 20 Nov 2025 10:15:34 
+Message-ID: <758510@healthsystem.org>
+
+--===============6059690458642986109==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Hurley,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Jessica Watkins
+Date of Birth: 03/02/1940
+MRN: MRN913024
+Phone: 9274152273
+
+Current Diagnoses:
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+
+Current Medications:
+- Metoprolol 25mg twice daily
+- Lisinopril 10mg daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Eric Schneider, MD
+Gastroenterology
+NPI: 2355590047
+Phone: 903-857-8354x21135
+Fax: 944-640-0579
+
+--===============6059690458642986109==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Hurley,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Jessica Watkins</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>03/02/1940</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN913024</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>9274152273</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metoprolol 25mg twice daily</li>
+<li>Lisinopril 10mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Eric Schneider, MD</strong><br/>
+        Gastroenterology<br/>
+        NPI: 2355590047<br/>
+        Phone: 903-857-8354x21135<br/>
+        Fax: 944-640-0579
+    </div>
+</body>
+</html>
+
+--===============6059690458642986109==--

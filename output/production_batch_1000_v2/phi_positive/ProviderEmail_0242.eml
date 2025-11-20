@@ -1,0 +1,98 @@
+Content-Type: multipart/alternative; boundary="===============6084880201137255162=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Williams, Anita
+From: Erin Lewis <lmercado@example.net>
+To: Monica Johnson <johnroberts@example.com>
+Date: Thu, 20 Nov 2025 10:15:32 
+Message-ID: <728700@healthsystem.org>
+
+--===============6084880201137255162==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Johnson,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Anita Williams
+Date of Birth: 08/24/1961
+MRN: MRN961545
+Phone: 353.501.0127x89695
+
+Current Diagnoses:
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+
+Current Medications:
+- None
+
+Allergies: Sulfa drugs, Shellfish, Bee stings
+
+I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Erin Lewis, PA
+Family Medicine
+NPI: 9829550644
+Phone: +1-546-589-6331x812
+Fax: (776)917-0731x744
+
+--===============6084880201137255162==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Johnson,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Anita Williams</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>08/24/1961</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN961545</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>353.501.0127x89695</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>None</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Sulfa drugs, Shellfish, Bee stings</p>
+
+    <p>I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Erin Lewis, PA</strong><br/>
+        Family Medicine<br/>
+        NPI: 9829550644<br/>
+        Phone: +1-546-589-6331x812<br/>
+        Fax: (776)917-0731x744
+    </div>
+</body>
+</html>
+
+--===============6084880201137255162==--

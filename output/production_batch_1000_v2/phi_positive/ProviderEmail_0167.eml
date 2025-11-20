@@ -1,0 +1,102 @@
+Content-Type: multipart/alternative; boundary="===============8519045556944885245=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Donovan, Brooke
+From: Edward Miller <kimberly44@example.net>
+To: Brooke Mcdaniel <amanda33@example.com>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <299451@healthsystem.org>
+
+--===============8519045556944885245==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Mcdaniel,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Brooke Donovan
+Date of Birth: 09/03/1985
+MRN: MRN878656
+Phone: (369)819-8321x029
+
+Current Diagnoses:
+- Hypothyroidism (ICD-10: E03.9)
+- Essential Hypertension (ICD-10: I10)
+- Hyperlipidemia (ICD-10: E78.5)
+
+Current Medications:
+- Sertraline 50mg daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Hypothyroidism.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Edward Miller, DO
+Orthopedics
+NPI: 8979273911
+Phone: 716.870.8056
+Fax: (270)663-6219x8655
+
+--===============8519045556944885245==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Mcdaniel,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Brooke Donovan</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>09/03/1985</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN878656</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(369)819-8321x029</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hypothyroidism (ICD-10: E03.9)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+<li>Hyperlipidemia (ICD-10: E78.5)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Sertraline 50mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Hypothyroidism.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Edward Miller, DO</strong><br/>
+        Orthopedics<br/>
+        NPI: 8979273911<br/>
+        Phone: 716.870.8056<br/>
+        Fax: (270)663-6219x8655
+    </div>
+</body>
+</html>
+
+--===============8519045556944885245==--

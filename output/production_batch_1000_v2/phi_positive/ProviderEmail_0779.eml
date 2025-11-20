@@ -1,0 +1,102 @@
+Content-Type: multipart/alternative; boundary="===============5166708096125360370=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Jones, Roger
+From: Elizabeth Hines <maychristian@example.com>
+To: William Flores <acox@example.org>
+Date: Thu, 20 Nov 2025 10:15:35 
+Message-ID: <550885@healthsystem.org>
+
+--===============5166708096125360370==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Flores,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Roger Jones
+Date of Birth: 01/13/1964
+MRN: MRN271016
+Phone: 387-934-2225x38618
+
+Current Diagnoses:
+- Hypothyroidism (ICD-10: E03.9)
+
+Current Medications:
+- Losartan 50mg daily
+- Metoprolol 25mg twice daily
+- Lisinopril 10mg daily
+
+Allergies: Sulfa drugs
+
+I would appreciate your input on management of this patient's Hypothyroidism.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Elizabeth Hines, DO
+Internal Medicine
+NPI: 7508758550
+Phone: 688.572.4002
+Fax: (540)250-4911
+
+--===============5166708096125360370==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Flores,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Roger Jones</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>01/13/1964</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN271016</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>387-934-2225x38618</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hypothyroidism (ICD-10: E03.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Losartan 50mg daily</li>
+<li>Metoprolol 25mg twice daily</li>
+<li>Lisinopril 10mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Sulfa drugs</p>
+
+    <p>I would appreciate your input on management of this patient's Hypothyroidism.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Elizabeth Hines, DO</strong><br/>
+        Internal Medicine<br/>
+        NPI: 7508758550<br/>
+        Phone: 688.572.4002<br/>
+        Fax: (540)250-4911
+    </div>
+</body>
+</html>
+
+--===============5166708096125360370==--

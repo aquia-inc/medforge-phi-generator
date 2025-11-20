@@ -1,0 +1,106 @@
+Content-Type: multipart/alternative; boundary="===============8024676504800625175=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Keller, Ariana
+From: Joshua Fuller <sarah14@example.com>
+To: Aaron Johnson <collierjames@example.com>
+Date: Thu, 20 Nov 2025 10:15:30 
+Message-ID: <144412@healthsystem.org>
+
+--===============8024676504800625175==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Johnson,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Ariana Keller
+Date of Birth: 01/15/2001
+MRN: MRN150126
+Phone: (406)544-7421
+
+Current Diagnoses:
+- Hypothyroidism (ICD-10: E03.9)
+- Major Depressive Disorder (ICD-10: F33.1)
+- Coronary Artery Disease (ICD-10: I25.10)
+- Osteoarthritis (ICD-10: M19.90)
+
+Current Medications:
+- Atorvastatin 20mg daily
+- Losartan 50mg daily
+
+Allergies: Latex, Shellfish, Bee stings
+
+I would appreciate your input on management of this patient's Hypothyroidism.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Joshua Fuller, MD
+Family Medicine
+NPI: 6564731230
+Phone: 602.720.5020
+Fax: 401-962-2499
+
+--===============8024676504800625175==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Johnson,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Ariana Keller</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>01/15/2001</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN150126</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(406)544-7421</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hypothyroidism (ICD-10: E03.9)</li>
+<li>Major Depressive Disorder (ICD-10: F33.1)</li>
+<li>Coronary Artery Disease (ICD-10: I25.10)</li>
+<li>Osteoarthritis (ICD-10: M19.90)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Atorvastatin 20mg daily</li>
+<li>Losartan 50mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Latex, Shellfish, Bee stings</p>
+
+    <p>I would appreciate your input on management of this patient's Hypothyroidism.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Joshua Fuller, MD</strong><br/>
+        Family Medicine<br/>
+        NPI: 6564731230<br/>
+        Phone: 602.720.5020<br/>
+        Fax: 401-962-2499
+    </div>
+</body>
+</html>
+
+--===============8024676504800625175==--

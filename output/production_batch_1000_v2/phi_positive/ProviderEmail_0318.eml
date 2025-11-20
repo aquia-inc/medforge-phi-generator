@@ -1,0 +1,108 @@
+Content-Type: multipart/alternative; boundary="===============9134948537280725750=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Bailey, Tristan
+From: Mario Williams <rosariochristopher@example.com>
+To: Paul Jones <stephen89@example.com>
+Date: Thu, 20 Nov 2025 10:15:32 
+Message-ID: <694822@healthsystem.org>
+
+--===============9134948537280725750==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Jones,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Tristan Bailey
+Date of Birth: 06/29/1972
+MRN: MRN834497
+Phone: 485-509-5914x50497
+
+Current Diagnoses:
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+
+Current Medications:
+- Metformin 500mg twice daily
+- Atorvastatin 20mg daily
+- Gabapentin 300mg three times daily
+- Losartan 50mg daily
+- Levothyroxine 50mcg daily
+
+Allergies: Morphine
+
+I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Mario Williams, NP
+Neurology
+NPI: 3504648241
+Phone: 001-646-321-7643x493
+Fax: (967)640-7886x98585
+
+--===============9134948537280725750==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Jones,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Tristan Bailey</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>06/29/1972</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN834497</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>485-509-5914x50497</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metformin 500mg twice daily</li>
+<li>Atorvastatin 20mg daily</li>
+<li>Gabapentin 300mg three times daily</li>
+<li>Losartan 50mg daily</li>
+<li>Levothyroxine 50mcg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Morphine</p>
+
+    <p>I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Mario Williams, NP</strong><br/>
+        Neurology<br/>
+        NPI: 3504648241<br/>
+        Phone: 001-646-321-7643x493<br/>
+        Fax: (967)640-7886x98585
+    </div>
+</body>
+</html>
+
+--===============9134948537280725750==--

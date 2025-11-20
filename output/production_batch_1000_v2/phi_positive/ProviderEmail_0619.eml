@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============7822371009736798579=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Ramos, Robert
+From: Janet Blake <thomasmark@example.org>
+To: Ruben Bailey <xobrien@example.org>
+Date: Thu, 20 Nov 2025 10:15:34 
+Message-ID: <279015@healthsystem.org>
+
+--===============7822371009736798579==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Bailey,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Robert Ramos
+Date of Birth: 03/08/1942
+MRN: MRN387581
+Phone: 735-514-5462x605
+
+Current Diagnoses:
+- Hyperlipidemia (ICD-10: E78.5)
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+- Essential Hypertension (ICD-10: I10)
+- Major Depressive Disorder (ICD-10: F33.1)
+
+Current Medications:
+- None
+
+Allergies: Codeine
+
+I would appreciate your input on management of this patient's Hyperlipidemia.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Janet Blake, DO
+Cardiology
+NPI: 1776530267
+Phone: 411-330-8321
+Fax: 001-561-576-2519x73102
+
+--===============7822371009736798579==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Bailey,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Robert Ramos</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>03/08/1942</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN387581</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>735-514-5462x605</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hyperlipidemia (ICD-10: E78.5)</li>
+<li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+<li>Major Depressive Disorder (ICD-10: F33.1)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>None</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Codeine</p>
+
+    <p>I would appreciate your input on management of this patient's Hyperlipidemia.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Janet Blake, DO</strong><br/>
+        Cardiology<br/>
+        NPI: 1776530267<br/>
+        Phone: 411-330-8321<br/>
+        Fax: 001-561-576-2519x73102
+    </div>
+</body>
+</html>
+
+--===============7822371009736798579==--

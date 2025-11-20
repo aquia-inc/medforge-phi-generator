@@ -1,0 +1,100 @@
+Content-Type: multipart/alternative; boundary="===============1457713472975861858=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Calderon, Shannon
+From: Joshua Smith <kbird@example.com>
+To: Sarah Hernandez <stephanie90@example.org>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <663463@healthsystem.org>
+
+--===============1457713472975861858==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Hernandez,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Shannon Calderon
+Date of Birth: 03/29/1989
+MRN: MRN748985
+Phone: +1-809-415-3860x282
+
+Current Diagnoses:
+- Essential Hypertension (ICD-10: I10)
+- Hyperlipidemia (ICD-10: E78.5)
+
+Current Medications:
+- None
+
+Allergies: Codeine
+
+I would appreciate your input on management of this patient's Essential Hypertension.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Joshua Smith, DO
+Pulmonology
+NPI: 6374643838
+Phone: 001-379-241-9324x538
+Fax: +1-979-441-2248x709
+
+--===============1457713472975861858==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Hernandez,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Shannon Calderon</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>03/29/1989</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN748985</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>+1-809-415-3860x282</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Essential Hypertension (ICD-10: I10)</li>
+<li>Hyperlipidemia (ICD-10: E78.5)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>None</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Codeine</p>
+
+    <p>I would appreciate your input on management of this patient's Essential Hypertension.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Joshua Smith, DO</strong><br/>
+        Pulmonology<br/>
+        NPI: 6374643838<br/>
+        Phone: 001-379-241-9324x538<br/>
+        Fax: +1-979-441-2248x709
+    </div>
+</body>
+</html>
+
+--===============1457713472975861858==--

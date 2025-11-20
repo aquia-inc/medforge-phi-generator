@@ -1,0 +1,100 @@
+Content-Type: multipart/alternative; boundary="===============8056011278947610460=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Braun, John
+From: Carl Abbott <lawrencemeadows@example.com>
+To: Stephanie Mckay <jennifercordova@example.net>
+Date: Thu, 20 Nov 2025 10:15:32 
+Message-ID: <764563@healthsystem.org>
+
+--===============8056011278947610460==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Mckay,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: John Braun
+Date of Birth: 11/19/2003
+MRN: MRN453401
+Phone: 001-561-392-2188x2206
+
+Current Diagnoses:
+- Hypothyroidism (ICD-10: E03.9)
+
+Current Medications:
+- Omeprazole 20mg daily
+- Sertraline 50mg daily
+
+Allergies: Morphine, Ibuprofen
+
+I would appreciate your input on management of this patient's Hypothyroidism.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Carl Abbott, MD
+Psychiatry
+NPI: 4500620658
+Phone: (440)832-3919x32528
+Fax: 712.469.3794x999
+
+--===============8056011278947610460==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Mckay,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>John Braun</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>11/19/2003</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN453401</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-561-392-2188x2206</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hypothyroidism (ICD-10: E03.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Omeprazole 20mg daily</li>
+<li>Sertraline 50mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Morphine, Ibuprofen</p>
+
+    <p>I would appreciate your input on management of this patient's Hypothyroidism.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Carl Abbott, MD</strong><br/>
+        Psychiatry<br/>
+        NPI: 4500620658<br/>
+        Phone: (440)832-3919x32528<br/>
+        Fax: 712.469.3794x999
+    </div>
+</body>
+</html>
+
+--===============8056011278947610460==--

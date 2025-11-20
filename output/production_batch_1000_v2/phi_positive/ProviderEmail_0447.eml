@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============2219883677331459036=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Hensley, Jennifer
+From: Mary Rodgers <cruzshannon@example.net>
+To: Elizabeth Griffith <kevin57@example.com>
+Date: Thu, 20 Nov 2025 10:15:33 
+Message-ID: <397992@healthsystem.org>
+
+--===============2219883677331459036==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Griffith,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Jennifer Hensley
+Date of Birth: 04/09/1981
+MRN: MRN512175
+Phone: 281.264.9571x04259
+
+Current Diagnoses:
+- Osteoarthritis (ICD-10: M19.90)
+
+Current Medications:
+- Sertraline 50mg daily
+- Omeprazole 20mg daily
+- Levothyroxine 50mcg daily
+- Atorvastatin 20mg daily
+
+Allergies: Shellfish, Peanuts, Codeine
+
+I would appreciate your input on management of this patient's Osteoarthritis.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Mary Rodgers, DO
+Cardiology
+NPI: 5822890079
+Phone: 892.451.7333x5813
+Fax: 001-420-315-2979x68546
+
+--===============2219883677331459036==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Griffith,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Jennifer Hensley</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>04/09/1981</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN512175</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>281.264.9571x04259</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Osteoarthritis (ICD-10: M19.90)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Sertraline 50mg daily</li>
+<li>Omeprazole 20mg daily</li>
+<li>Levothyroxine 50mcg daily</li>
+<li>Atorvastatin 20mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Shellfish, Peanuts, Codeine</p>
+
+    <p>I would appreciate your input on management of this patient's Osteoarthritis.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Mary Rodgers, DO</strong><br/>
+        Cardiology<br/>
+        NPI: 5822890079<br/>
+        Phone: 892.451.7333x5813<br/>
+        Fax: 001-420-315-2979x68546
+    </div>
+</body>
+</html>
+
+--===============2219883677331459036==--

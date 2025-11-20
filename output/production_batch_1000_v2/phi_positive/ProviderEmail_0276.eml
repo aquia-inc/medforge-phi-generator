@@ -1,0 +1,100 @@
+Content-Type: multipart/alternative; boundary="===============3857617672285189504=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Butler, Rebecca
+From: Sandra Obrien <kristinnoble@example.net>
+To: Matthew Kelly <tinaflynn@example.com>
+Date: Thu, 20 Nov 2025 10:15:32 
+Message-ID: <811160@healthsystem.org>
+
+--===============3857617672285189504==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Kelly,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Rebecca Butler
+Date of Birth: 02/15/1992
+MRN: MRN717429
+Phone: (398)258-6635x654
+
+Current Diagnoses:
+- Hypothyroidism (ICD-10: E03.9)
+- Osteoarthritis (ICD-10: M19.90)
+
+Current Medications:
+- None
+
+Allergies: Bee stings, Sulfa drugs
+
+I would appreciate your input on management of this patient's Hypothyroidism.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Sandra Obrien, NP
+Internal Medicine
+NPI: 4063268031
+Phone: 001-342-588-2847x05203
+Fax: +1-829-688-7123x20366
+
+--===============3857617672285189504==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Kelly,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Rebecca Butler</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>02/15/1992</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN717429</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(398)258-6635x654</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hypothyroidism (ICD-10: E03.9)</li>
+<li>Osteoarthritis (ICD-10: M19.90)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>None</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Bee stings, Sulfa drugs</p>
+
+    <p>I would appreciate your input on management of this patient's Hypothyroidism.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Sandra Obrien, NP</strong><br/>
+        Internal Medicine<br/>
+        NPI: 4063268031<br/>
+        Phone: 001-342-588-2847x05203<br/>
+        Fax: +1-829-688-7123x20366
+    </div>
+</body>
+</html>
+
+--===============3857617672285189504==--

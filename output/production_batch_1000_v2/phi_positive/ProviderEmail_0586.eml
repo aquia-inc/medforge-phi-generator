@@ -1,0 +1,108 @@
+Content-Type: multipart/alternative; boundary="===============6170457887069838232=="
+MIME-Version: 1.0
+Subject: Patient Consultation: West, Adam
+From: Richard Lee <joshuahoffman@example.org>
+To: Kristin White <vthomas@example.com>
+Date: Thu, 20 Nov 2025 10:15:34 
+Message-ID: <106619@healthsystem.org>
+
+--===============6170457887069838232==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. White,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Adam West
+Date of Birth: 04/09/1952
+MRN: MRN633052
+Phone: 889-831-0587
+
+Current Diagnoses:
+- Osteoarthritis (ICD-10: M19.90)
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+
+Current Medications:
+- Sertraline 50mg daily
+- Atorvastatin 20mg daily
+- Gabapentin 300mg three times daily
+- Metformin 500mg twice daily
+
+Allergies: Aspirin, Morphine
+
+I would appreciate your input on management of this patient's Osteoarthritis.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Richard Lee, DO
+Family Medicine
+NPI: 5533002422
+Phone: (962)846-3025
+Fax: 335-378-6667x36032
+
+--===============6170457887069838232==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. White,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Adam West</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>04/09/1952</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN633052</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>889-831-0587</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Osteoarthritis (ICD-10: M19.90)</li>
+<li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Sertraline 50mg daily</li>
+<li>Atorvastatin 20mg daily</li>
+<li>Gabapentin 300mg three times daily</li>
+<li>Metformin 500mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Aspirin, Morphine</p>
+
+    <p>I would appreciate your input on management of this patient's Osteoarthritis.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Richard Lee, DO</strong><br/>
+        Family Medicine<br/>
+        NPI: 5533002422<br/>
+        Phone: (962)846-3025<br/>
+        Fax: 335-378-6667x36032
+    </div>
+</body>
+</html>
+
+--===============6170457887069838232==--

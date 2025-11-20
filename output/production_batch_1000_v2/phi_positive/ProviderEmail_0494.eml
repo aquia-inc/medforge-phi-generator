@@ -1,0 +1,102 @@
+Content-Type: multipart/alternative; boundary="===============0885308477693848928=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Rodriguez, Kristen
+From: Sonya Warner <laura71@example.com>
+To: Matthew Garcia <gregorywright@example.org>
+Date: Thu, 20 Nov 2025 10:15:34 
+Message-ID: <644566@healthsystem.org>
+
+--===============0885308477693848928==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Garcia,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Kristen Rodriguez
+Date of Birth: 01/28/1968
+MRN: MRN304163
+Phone: 001-349-512-8300x623
+
+Current Diagnoses:
+- Hypothyroidism (ICD-10: E03.9)
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+- Osteoarthritis (ICD-10: M19.90)
+
+Current Medications:
+- Losartan 50mg daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Hypothyroidism.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Sonya Warner, MD
+Gastroenterology
+NPI: 3707882231
+Phone: 001-713-835-3153
+Fax: (687)324-5040
+
+--===============0885308477693848928==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Garcia,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Kristen Rodriguez</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>01/28/1968</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN304163</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-349-512-8300x623</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hypothyroidism (ICD-10: E03.9)</li>
+<li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+<li>Osteoarthritis (ICD-10: M19.90)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Losartan 50mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Hypothyroidism.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Sonya Warner, MD</strong><br/>
+        Gastroenterology<br/>
+        NPI: 3707882231<br/>
+        Phone: 001-713-835-3153<br/>
+        Fax: (687)324-5040
+    </div>
+</body>
+</html>
+
+--===============0885308477693848928==--

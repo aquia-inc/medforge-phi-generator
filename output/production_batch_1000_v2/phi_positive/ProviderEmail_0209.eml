@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============6452834570213304942=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Francis, Jennifer
+From: Gloria Hanson <garciamarcus@example.com>
+To: Jordan Carrillo <brandondean@example.com>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <659383@healthsystem.org>
+
+--===============6452834570213304942==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Carrillo,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Jennifer Francis
+Date of Birth: 06/25/1956
+MRN: MRN412453
+Phone: 388.822.3788x70584
+
+Current Diagnoses:
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+
+Current Medications:
+- Gabapentin 300mg three times daily
+- Metformin 500mg twice daily
+- Amlodipine 5mg daily
+- Levothyroxine 50mcg daily
+
+Allergies: Aspirin, Ibuprofen, Sulfa drugs
+
+I would appreciate your input on management of this patient's Chronic Kidney Disease, Stage 3.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Gloria Hanson, DO
+Cardiology
+NPI: 1458762697
+Phone: 001-563-883-0972
+Fax: 808-409-2616
+
+--===============6452834570213304942==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Carrillo,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Jennifer Francis</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>06/25/1956</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN412453</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>388.822.3788x70584</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Gabapentin 300mg three times daily</li>
+<li>Metformin 500mg twice daily</li>
+<li>Amlodipine 5mg daily</li>
+<li>Levothyroxine 50mcg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Aspirin, Ibuprofen, Sulfa drugs</p>
+
+    <p>I would appreciate your input on management of this patient's Chronic Kidney Disease, Stage 3.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Gloria Hanson, DO</strong><br/>
+        Cardiology<br/>
+        NPI: 1458762697<br/>
+        Phone: 001-563-883-0972<br/>
+        Fax: 808-409-2616
+    </div>
+</body>
+</html>
+
+--===============6452834570213304942==--

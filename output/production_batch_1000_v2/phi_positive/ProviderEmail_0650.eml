@@ -1,0 +1,102 @@
+Content-Type: multipart/alternative; boundary="===============0742662237737603354=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Allen, Cheryl
+From: Jacob Houston <perezcourtney@example.org>
+To: Jessica Smith <mitchellkevin@example.net>
+Date: Thu, 20 Nov 2025 10:15:34 
+Message-ID: <589770@healthsystem.org>
+
+--===============0742662237737603354==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Smith,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Cheryl Allen
+Date of Birth: 07/03/1942
+MRN: MRN615028
+Phone: 789-842-8408
+
+Current Diagnoses:
+- Major Depressive Disorder (ICD-10: F33.1)
+
+Current Medications:
+- Atorvastatin 20mg daily
+- Omeprazole 20mg daily
+- Losartan 50mg daily
+
+Allergies: Sulfa drugs, Aspirin
+
+I would appreciate your input on management of this patient's Major Depressive Disorder.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Jacob Houston, MD
+Orthopedics
+NPI: 9071622490
+Phone: 687-403-9508
+Fax: 259.840.2169
+
+--===============0742662237737603354==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Smith,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Cheryl Allen</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>07/03/1942</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN615028</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>789-842-8408</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Major Depressive Disorder (ICD-10: F33.1)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Atorvastatin 20mg daily</li>
+<li>Omeprazole 20mg daily</li>
+<li>Losartan 50mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Sulfa drugs, Aspirin</p>
+
+    <p>I would appreciate your input on management of this patient's Major Depressive Disorder.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Jacob Houston, MD</strong><br/>
+        Orthopedics<br/>
+        NPI: 9071622490<br/>
+        Phone: 687-403-9508<br/>
+        Fax: 259.840.2169
+    </div>
+</body>
+</html>
+
+--===============0742662237737603354==--

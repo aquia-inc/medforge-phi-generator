@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============8644364666791376854=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Knapp, Wayne
+From: Brenda Perry <alicia98@example.net>
+To: Jeremy Price <andrewgoodwin@example.com>
+Date: Thu, 20 Nov 2025 10:15:32 
+Message-ID: <900059@healthsystem.org>
+
+--===============8644364666791376854==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Price,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Wayne Knapp
+Date of Birth: 06/29/1983
+MRN: MRN248857
+Phone: (868)881-5571x55661
+
+Current Diagnoses:
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Coronary Artery Disease (ICD-10: I25.10)
+- Major Depressive Disorder (ICD-10: F33.1)
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+
+Current Medications:
+- None
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Brenda Perry, PA
+Neurology
+NPI: 1190763336
+Phone: 822.845.1825
+Fax: 892-912-6974
+
+--===============8644364666791376854==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Price,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Wayne Knapp</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>06/29/1983</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN248857</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(868)881-5571x55661</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Coronary Artery Disease (ICD-10: I25.10)</li>
+<li>Major Depressive Disorder (ICD-10: F33.1)</li>
+<li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>None</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Brenda Perry, PA</strong><br/>
+        Neurology<br/>
+        NPI: 1190763336<br/>
+        Phone: 822.845.1825<br/>
+        Fax: 892-912-6974
+    </div>
+</body>
+</html>
+
+--===============8644364666791376854==--

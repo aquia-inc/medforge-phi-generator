@@ -1,0 +1,106 @@
+Content-Type: multipart/alternative; boundary="===============0558739637830034840=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Pitts, Charles
+From: Laura Avery <amber73@example.net>
+To: Randy Cohen <ccurry@example.org>
+Date: Thu, 20 Nov 2025 10:15:35 
+Message-ID: <770649@healthsystem.org>
+
+--===============0558739637830034840==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Cohen,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Charles Pitts
+Date of Birth: 02/17/1966
+MRN: MRN302717
+Phone: 532.307.6257
+
+Current Diagnoses:
+- Hyperlipidemia (ICD-10: E78.5)
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+
+Current Medications:
+- Losartan 50mg daily
+- Levothyroxine 50mcg daily
+- Amlodipine 5mg daily
+
+Allergies: Latex
+
+I would appreciate your input on management of this patient's Hyperlipidemia.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Laura Avery, NP
+Orthopedics
+NPI: 4638106414
+Phone: 9825733779
+Fax: 758-893-6574
+
+--===============0558739637830034840==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Cohen,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Charles Pitts</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>02/17/1966</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN302717</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>532.307.6257</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hyperlipidemia (ICD-10: E78.5)</li>
+<li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+<li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Losartan 50mg daily</li>
+<li>Levothyroxine 50mcg daily</li>
+<li>Amlodipine 5mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Latex</p>
+
+    <p>I would appreciate your input on management of this patient's Hyperlipidemia.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Laura Avery, NP</strong><br/>
+        Orthopedics<br/>
+        NPI: 4638106414<br/>
+        Phone: 9825733779<br/>
+        Fax: 758-893-6574
+    </div>
+</body>
+</html>
+
+--===============0558739637830034840==--
