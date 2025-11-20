@@ -1,0 +1,106 @@
+Content-Type: multipart/alternative; boundary="===============4628501272369421884=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Griffin, Jennifer
+From: Barbara Nguyen <thomasjames@example.com>
+To: Andre Cox <williamsanthony@example.net>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <189211@healthsystem.org>
+
+--===============4628501272369421884==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Cox,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Jennifer Griffin
+Date of Birth: 04/27/1939
+MRN: MRN414985
+Phone: 001-273-439-3049x36653
+
+Current Diagnoses:
+- Essential Hypertension (ICD-10: I10)
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Hypothyroidism (ICD-10: E03.9)
+
+Current Medications:
+- Metoprolol 25mg twice daily
+- Omeprazole 20mg daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Essential Hypertension.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Barbara Nguyen, NP
+Psychiatry
+NPI: 3996893560
+Phone: (729)746-2093
+Fax: 001-561-903-9952x9701
+
+--===============4628501272369421884==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Cox,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Jennifer Griffin</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>04/27/1939</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN414985</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-273-439-3049x36653</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Essential Hypertension (ICD-10: I10)</li>
+<li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+<li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Hypothyroidism (ICD-10: E03.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metoprolol 25mg twice daily</li>
+<li>Omeprazole 20mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Essential Hypertension.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Barbara Nguyen, NP</strong><br/>
+        Psychiatry<br/>
+        NPI: 3996893560<br/>
+        Phone: (729)746-2093<br/>
+        Fax: 001-561-903-9952x9701
+    </div>
+</body>
+</html>
+
+--===============4628501272369421884==--

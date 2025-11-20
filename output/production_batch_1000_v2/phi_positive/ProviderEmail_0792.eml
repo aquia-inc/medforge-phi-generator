@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============4331051348800660594=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Wood, James
+From: Bryan Tucker <ambercollins@example.com>
+To: Gary Bennett <phamjoseph@example.net>
+Date: Thu, 20 Nov 2025 10:15:35 
+Message-ID: <481136@healthsystem.org>
+
+--===============4331051348800660594==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Bennett,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: James Wood
+Date of Birth: 06/24/1945
+MRN: MRN124072
+Phone: (380)829-8251x628
+
+Current Diagnoses:
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+- Essential Hypertension (ICD-10: I10)
+- Hypothyroidism (ICD-10: E03.9)
+
+Current Medications:
+- Levothyroxine 50mcg daily
+
+Allergies: Aspirin
+
+I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Bryan Tucker, MD
+Cardiology
+NPI: 8784139619
+Phone: 210.783.7089
+Fax: 877.799.8519
+
+--===============4331051348800660594==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Bennett,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>James Wood</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>06/24/1945</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN124072</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(380)829-8251x628</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+<li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+<li>Hypothyroidism (ICD-10: E03.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Levothyroxine 50mcg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Aspirin</p>
+
+    <p>I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Bryan Tucker, MD</strong><br/>
+        Cardiology<br/>
+        NPI: 8784139619<br/>
+        Phone: 210.783.7089<br/>
+        Fax: 877.799.8519
+    </div>
+</body>
+</html>
+
+--===============4331051348800660594==--

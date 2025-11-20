@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============7397043893552668448=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Moore, Nicole
+From: Taylor Dougherty <yoderadam@example.com>
+To: Christopher Brown <wesley30@example.org>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <123107@healthsystem.org>
+
+--===============7397043893552668448==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Brown,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Nicole Moore
+Date of Birth: 12/25/1988
+MRN: MRN593002
+Phone: 001-584-919-4785x5011
+
+Current Diagnoses:
+- Coronary Artery Disease (ICD-10: I25.10)
+- Essential Hypertension (ICD-10: I10)
+
+Current Medications:
+- Metformin 500mg twice daily
+- Sertraline 50mg daily
+- Omeprazole 20mg daily
+
+Allergies: Sulfa drugs, Ibuprofen
+
+I would appreciate your input on management of this patient's Coronary Artery Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Taylor Dougherty, MD
+Nephrology
+NPI: 5001713266
+Phone: 460-588-1972
+Fax: +1-999-864-7718x37530
+
+--===============7397043893552668448==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Brown,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Nicole Moore</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>12/25/1988</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN593002</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-584-919-4785x5011</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Coronary Artery Disease (ICD-10: I25.10)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metformin 500mg twice daily</li>
+<li>Sertraline 50mg daily</li>
+<li>Omeprazole 20mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Sulfa drugs, Ibuprofen</p>
+
+    <p>I would appreciate your input on management of this patient's Coronary Artery Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Taylor Dougherty, MD</strong><br/>
+        Nephrology<br/>
+        NPI: 5001713266<br/>
+        Phone: 460-588-1972<br/>
+        Fax: +1-999-864-7718x37530
+    </div>
+</body>
+</html>
+
+--===============7397043893552668448==--

@@ -1,0 +1,108 @@
+Content-Type: multipart/alternative; boundary="===============5425148618382389987=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Price, Melanie
+From: Michael Rice <amy18@example.net>
+To: John Ryan <michael02@example.net>
+Date: Thu, 20 Nov 2025 10:15:32 
+Message-ID: <200198@healthsystem.org>
+
+--===============5425148618382389987==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Ryan,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Melanie Price
+Date of Birth: 08/04/1976
+MRN: MRN868956
+Phone: 9333146565
+
+Current Diagnoses:
+- Coronary Artery Disease (ICD-10: I25.10)
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+
+Current Medications:
+- Omeprazole 20mg daily
+- Losartan 50mg daily
+- Lisinopril 10mg daily
+- Metformin 500mg twice daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Coronary Artery Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Michael Rice, NP
+Family Medicine
+NPI: 1328681328
+Phone: (495)632-2307
+Fax: 001-987-664-1261x3955
+
+--===============5425148618382389987==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Ryan,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Melanie Price</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>08/04/1976</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN868956</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>9333146565</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Coronary Artery Disease (ICD-10: I25.10)</li>
+<li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Omeprazole 20mg daily</li>
+<li>Losartan 50mg daily</li>
+<li>Lisinopril 10mg daily</li>
+<li>Metformin 500mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Coronary Artery Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Michael Rice, NP</strong><br/>
+        Family Medicine<br/>
+        NPI: 1328681328<br/>
+        Phone: (495)632-2307<br/>
+        Fax: 001-987-664-1261x3955
+    </div>
+</body>
+</html>
+
+--===============5425148618382389987==--

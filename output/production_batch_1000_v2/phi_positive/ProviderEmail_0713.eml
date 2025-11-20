@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============6454916289886972957=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Torres, Marcia
+From: Kevin Byrd <kevin99@example.org>
+To: Kimberly Mcdowell <jenniferduran@example.org>
+Date: Thu, 20 Nov 2025 10:15:35 
+Message-ID: <861241@healthsystem.org>
+
+--===============6454916289886972957==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Mcdowell,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Marcia Torres
+Date of Birth: 01/20/1944
+MRN: MRN444201
+Phone: 2997521046
+
+Current Diagnoses:
+- Major Depressive Disorder (ICD-10: F33.1)
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+
+Current Medications:
+- Metoprolol 25mg twice daily
+- Omeprazole 20mg daily
+- Metformin 500mg twice daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Major Depressive Disorder.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Kevin Byrd, DO
+Cardiology
+NPI: 4346134380
+Phone: +1-757-754-5235x58972
+Fax: 9553241108
+
+--===============6454916289886972957==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Mcdowell,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Marcia Torres</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>01/20/1944</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN444201</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>2997521046</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Major Depressive Disorder (ICD-10: F33.1)</li>
+<li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metoprolol 25mg twice daily</li>
+<li>Omeprazole 20mg daily</li>
+<li>Metformin 500mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Major Depressive Disorder.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Kevin Byrd, DO</strong><br/>
+        Cardiology<br/>
+        NPI: 4346134380<br/>
+        Phone: +1-757-754-5235x58972<br/>
+        Fax: 9553241108
+    </div>
+</body>
+</html>
+
+--===============6454916289886972957==--

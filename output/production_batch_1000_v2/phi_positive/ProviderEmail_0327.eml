@@ -1,0 +1,100 @@
+Content-Type: multipart/alternative; boundary="===============6135949438083325895=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Webster, Nancy
+From: Robert Burns <jennifer01@example.com>
+To: Laurie Ball <rayrobin@example.org>
+Date: Thu, 20 Nov 2025 10:15:32 
+Message-ID: <342959@healthsystem.org>
+
+--===============6135949438083325895==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Ball,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Nancy Webster
+Date of Birth: 06/12/1969
+MRN: MRN637966
+Phone: 001-202-720-9941x75304
+
+Current Diagnoses:
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+
+Current Medications:
+- Amlodipine 5mg daily
+- Omeprazole 20mg daily
+
+Allergies: Shellfish, Aspirin
+
+I would appreciate your input on management of this patient's Gastroesophageal Reflux Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Robert Burns, DO
+Gastroenterology
+NPI: 7789160970
+Phone: 2372846797
+Fax: +1-530-776-4405
+
+--===============6135949438083325895==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Ball,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Nancy Webster</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>06/12/1969</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN637966</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-202-720-9941x75304</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Amlodipine 5mg daily</li>
+<li>Omeprazole 20mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Shellfish, Aspirin</p>
+
+    <p>I would appreciate your input on management of this patient's Gastroesophageal Reflux Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Robert Burns, DO</strong><br/>
+        Gastroenterology<br/>
+        NPI: 7789160970<br/>
+        Phone: 2372846797<br/>
+        Fax: +1-530-776-4405
+    </div>
+</body>
+</html>
+
+--===============6135949438083325895==--

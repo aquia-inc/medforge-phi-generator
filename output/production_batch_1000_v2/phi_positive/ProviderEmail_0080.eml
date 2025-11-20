@@ -1,0 +1,98 @@
+Content-Type: multipart/alternative; boundary="===============3215055104068017098=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Scott, Christopher
+From: Carrie Robinson <lesliefrench@example.com>
+To: Louis Walton <lauren84@example.com>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <571578@healthsystem.org>
+
+--===============3215055104068017098==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Walton,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Christopher Scott
+Date of Birth: 10/16/1980
+MRN: MRN980690
+Phone: 684-258-2603
+
+Current Diagnoses:
+- Coronary Artery Disease (ICD-10: I25.10)
+
+Current Medications:
+- Amlodipine 5mg daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Coronary Artery Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Carrie Robinson, MD
+Nephrology
+NPI: 8382963909
+Phone: (942)396-1844x626
+Fax: 462-883-1435x989
+
+--===============3215055104068017098==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Walton,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Christopher Scott</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>10/16/1980</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN980690</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>684-258-2603</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Coronary Artery Disease (ICD-10: I25.10)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Amlodipine 5mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Coronary Artery Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Carrie Robinson, MD</strong><br/>
+        Nephrology<br/>
+        NPI: 8382963909<br/>
+        Phone: (942)396-1844x626<br/>
+        Fax: 462-883-1435x989
+    </div>
+</body>
+</html>
+
+--===============3215055104068017098==--

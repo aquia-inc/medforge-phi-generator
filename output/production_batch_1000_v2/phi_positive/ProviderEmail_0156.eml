@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============3628472838591888682=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Johnson, Bryan
+From: Brendan Williams <smiles@example.net>
+To: Edward Archer <angela16@example.com>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <449773@healthsystem.org>
+
+--===============3628472838591888682==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Archer,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Bryan Johnson
+Date of Birth: 12/08/1971
+MRN: MRN830361
+Phone: 357.412.3691x4961
+
+Current Diagnoses:
+- Coronary Artery Disease (ICD-10: I25.10)
+- Hypothyroidism (ICD-10: E03.9)
+- Essential Hypertension (ICD-10: I10)
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+
+Current Medications:
+- None
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Coronary Artery Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Brendan Williams, PA
+Orthopedics
+NPI: 3283035614
+Phone: (531)441-9615x607
+Fax: 648.283.5651x7962
+
+--===============3628472838591888682==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Archer,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Bryan Johnson</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>12/08/1971</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN830361</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>357.412.3691x4961</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Coronary Artery Disease (ICD-10: I25.10)</li>
+<li>Hypothyroidism (ICD-10: E03.9)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+<li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>None</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Coronary Artery Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Brendan Williams, PA</strong><br/>
+        Orthopedics<br/>
+        NPI: 3283035614<br/>
+        Phone: (531)441-9615x607<br/>
+        Fax: 648.283.5651x7962
+    </div>
+</body>
+</html>
+
+--===============3628472838591888682==--

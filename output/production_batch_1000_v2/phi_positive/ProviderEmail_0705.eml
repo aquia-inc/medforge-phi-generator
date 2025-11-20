@@ -1,0 +1,108 @@
+Content-Type: multipart/alternative; boundary="===============0383046251287643969=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Mcintosh, Diane
+From: Angela Rodriguez <martinjessica@example.org>
+To: Angela Hall <lucasrichard@example.com>
+Date: Thu, 20 Nov 2025 10:15:35 
+Message-ID: <512479@healthsystem.org>
+
+--===============0383046251287643969==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Hall,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Diane Mcintosh
+Date of Birth: 04/14/1951
+MRN: MRN864616
+Phone: 506.422.1789x4260
+
+Current Diagnoses:
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Hypothyroidism (ICD-10: E03.9)
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+
+Current Medications:
+- Atorvastatin 20mg daily
+- Levothyroxine 50mcg daily
+- Metoprolol 25mg twice daily
+
+Allergies: Latex, Bee stings, Aspirin
+
+I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Angela Rodriguez, NP
+Neurology
+NPI: 9191430181
+Phone: 605-497-0124
+Fax: 001-336-902-5673x229
+
+--===============0383046251287643969==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Hall,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Diane Mcintosh</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>04/14/1951</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN864616</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>506.422.1789x4260</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Hypothyroidism (ICD-10: E03.9)</li>
+<li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+<li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Atorvastatin 20mg daily</li>
+<li>Levothyroxine 50mcg daily</li>
+<li>Metoprolol 25mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Latex, Bee stings, Aspirin</p>
+
+    <p>I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Angela Rodriguez, NP</strong><br/>
+        Neurology<br/>
+        NPI: 9191430181<br/>
+        Phone: 605-497-0124<br/>
+        Fax: 001-336-902-5673x229
+    </div>
+</body>
+</html>
+
+--===============0383046251287643969==--

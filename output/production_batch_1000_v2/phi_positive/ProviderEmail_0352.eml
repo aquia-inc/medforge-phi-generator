@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============6449494232632315596=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Castro, Danny
+From: Connor Scott <zachary72@example.com>
+To: Jamie Jones <christensengeorge@example.org>
+Date: Thu, 20 Nov 2025 10:15:32 
+Message-ID: <210146@healthsystem.org>
+
+--===============6449494232632315596==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Jones,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Danny Castro
+Date of Birth: 09/23/2005
+MRN: MRN187697
+Phone: 950.819.4737
+
+Current Diagnoses:
+- Major Depressive Disorder (ICD-10: F33.1)
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Osteoarthritis (ICD-10: M19.90)
+
+Current Medications:
+- Omeprazole 20mg daily
+
+Allergies: Bee stings, Ibuprofen, Sulfa drugs
+
+I would appreciate your input on management of this patient's Major Depressive Disorder.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Connor Scott, PA
+Internal Medicine
+NPI: 7441658392
+Phone: 366.690.6251x57595
+Fax: 001-209-667-1080
+
+--===============6449494232632315596==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Jones,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Danny Castro</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>09/23/2005</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN187697</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>950.819.4737</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Major Depressive Disorder (ICD-10: F33.1)</li>
+<li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+<li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Osteoarthritis (ICD-10: M19.90)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Omeprazole 20mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Bee stings, Ibuprofen, Sulfa drugs</p>
+
+    <p>I would appreciate your input on management of this patient's Major Depressive Disorder.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Connor Scott, PA</strong><br/>
+        Internal Medicine<br/>
+        NPI: 7441658392<br/>
+        Phone: 366.690.6251x57595<br/>
+        Fax: 001-209-667-1080
+    </div>
+</body>
+</html>
+
+--===============6449494232632315596==--

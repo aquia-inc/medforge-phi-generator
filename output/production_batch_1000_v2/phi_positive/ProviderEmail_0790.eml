@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============8937808847223230647=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Salas, Joshua
+From: Justin Gallegos <kingbradley@example.org>
+To: Justin Le <qjohnson@example.org>
+Date: Thu, 20 Nov 2025 10:15:35 
+Message-ID: <158806@healthsystem.org>
+
+--===============8937808847223230647==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Le,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Joshua Salas
+Date of Birth: 12/27/1962
+MRN: MRN732565
+Phone: 001-513-763-1776x2601
+
+Current Diagnoses:
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Essential Hypertension (ICD-10: I10)
+- Coronary Artery Disease (ICD-10: I25.10)
+
+Current Medications:
+- Gabapentin 300mg three times daily
+- Lisinopril 10mg daily
+
+Allergies: Peanuts
+
+I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Justin Gallegos, MD
+Cardiology
+NPI: 6997843248
+Phone: 975-255-2666x64155
+Fax: 001-599-319-0798x45174
+
+--===============8937808847223230647==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Le,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Joshua Salas</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>12/27/1962</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN732565</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-513-763-1776x2601</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+<li>Coronary Artery Disease (ICD-10: I25.10)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Gabapentin 300mg three times daily</li>
+<li>Lisinopril 10mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Peanuts</p>
+
+    <p>I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Justin Gallegos, MD</strong><br/>
+        Cardiology<br/>
+        NPI: 6997843248<br/>
+        Phone: 975-255-2666x64155<br/>
+        Fax: 001-599-319-0798x45174
+    </div>
+</body>
+</html>
+
+--===============8937808847223230647==--

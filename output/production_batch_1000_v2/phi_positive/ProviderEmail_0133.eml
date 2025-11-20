@@ -1,0 +1,108 @@
+Content-Type: multipart/alternative; boundary="===============3672098832387885938=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Wilkinson, Virginia
+From: Brian Marshall <zpowell@example.net>
+To: Vickie Martin <lisahamilton@example.com>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <911801@healthsystem.org>
+
+--===============3672098832387885938==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Martin,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Virginia Wilkinson
+Date of Birth: 08/12/1935
+MRN: MRN706063
+Phone: (464)650-5730x3627
+
+Current Diagnoses:
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+- Coronary Artery Disease (ICD-10: I25.10)
+- Major Depressive Disorder (ICD-10: F33.1)
+- Osteoarthritis (ICD-10: M19.90)
+
+Current Medications:
+- Metoprolol 25mg twice daily
+- Metformin 500mg twice daily
+- Atorvastatin 20mg daily
+
+Allergies: Morphine
+
+I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Brian Marshall, PA
+Psychiatry
+NPI: 3072183247
+Phone: (761)594-5887x0715
+Fax: 782-201-2840x0838
+
+--===============3672098832387885938==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Martin,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Virginia Wilkinson</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>08/12/1935</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN706063</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(464)650-5730x3627</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+<li>Coronary Artery Disease (ICD-10: I25.10)</li>
+<li>Major Depressive Disorder (ICD-10: F33.1)</li>
+<li>Osteoarthritis (ICD-10: M19.90)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metoprolol 25mg twice daily</li>
+<li>Metformin 500mg twice daily</li>
+<li>Atorvastatin 20mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Morphine</p>
+
+    <p>I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Brian Marshall, PA</strong><br/>
+        Psychiatry<br/>
+        NPI: 3072183247<br/>
+        Phone: (761)594-5887x0715<br/>
+        Fax: 782-201-2840x0838
+    </div>
+</body>
+</html>
+
+--===============3672098832387885938==--

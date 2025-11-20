@@ -1,0 +1,102 @@
+Content-Type: multipart/alternative; boundary="===============3900977803532824739=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Reynolds, Robert
+From: James Jones <marksashley@example.net>
+To: Heidi Hall <leroy22@example.com>
+Date: Thu, 20 Nov 2025 10:15:32 
+Message-ID: <297995@healthsystem.org>
+
+--===============3900977803532824739==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Hall,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Robert Reynolds
+Date of Birth: 02/27/1956
+MRN: MRN303663
+Phone: (939)227-8844
+
+Current Diagnoses:
+- Hypothyroidism (ICD-10: E03.9)
+
+Current Medications:
+- Levothyroxine 50mcg daily
+- Sertraline 50mg daily
+- Losartan 50mg daily
+
+Allergies: Penicillin, Latex
+
+I would appreciate your input on management of this patient's Hypothyroidism.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+James Jones, DO
+Nephrology
+NPI: 1693325479
+Phone: 437.814.5031x180
+Fax: +1-669-914-1939x60610
+
+--===============3900977803532824739==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Hall,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Robert Reynolds</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>02/27/1956</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN303663</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(939)227-8844</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hypothyroidism (ICD-10: E03.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Levothyroxine 50mcg daily</li>
+<li>Sertraline 50mg daily</li>
+<li>Losartan 50mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Penicillin, Latex</p>
+
+    <p>I would appreciate your input on management of this patient's Hypothyroidism.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>James Jones, DO</strong><br/>
+        Nephrology<br/>
+        NPI: 1693325479<br/>
+        Phone: 437.814.5031x180<br/>
+        Fax: +1-669-914-1939x60610
+    </div>
+</body>
+</html>
+
+--===============3900977803532824739==--

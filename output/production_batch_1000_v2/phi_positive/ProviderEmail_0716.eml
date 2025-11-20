@@ -1,0 +1,106 @@
+Content-Type: multipart/alternative; boundary="===============5402348753620118958=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Petty, Susan
+From: Cody Allen <wilsonjames@example.org>
+To: Todd Thomas <edavidson@example.net>
+Date: Thu, 20 Nov 2025 10:15:35 
+Message-ID: <853507@healthsystem.org>
+
+--===============5402348753620118958==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Thomas,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Susan Petty
+Date of Birth: 09/17/1940
+MRN: MRN319011
+Phone: +1-496-397-6869x90078
+
+Current Diagnoses:
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Hypothyroidism (ICD-10: E03.9)
+- Major Depressive Disorder (ICD-10: F33.1)
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+
+Current Medications:
+- Sertraline 50mg daily
+- Gabapentin 300mg three times daily
+
+Allergies: Bee stings, Sulfa drugs
+
+I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Cody Allen, DO
+Cardiology
+NPI: 4201045829
+Phone: 515-257-7018
+Fax: +1-578-449-0824x56094
+
+--===============5402348753620118958==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Thomas,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Susan Petty</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>09/17/1940</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN319011</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>+1-496-397-6869x90078</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Hypothyroidism (ICD-10: E03.9)</li>
+<li>Major Depressive Disorder (ICD-10: F33.1)</li>
+<li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Sertraline 50mg daily</li>
+<li>Gabapentin 300mg three times daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Bee stings, Sulfa drugs</p>
+
+    <p>I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Cody Allen, DO</strong><br/>
+        Cardiology<br/>
+        NPI: 4201045829<br/>
+        Phone: 515-257-7018<br/>
+        Fax: +1-578-449-0824x56094
+    </div>
+</body>
+</html>
+
+--===============5402348753620118958==--

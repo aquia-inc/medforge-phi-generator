@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============4743172322653792004=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Howell, Kari
+From: Chad Fowler <peter07@example.org>
+To: Jennifer Robertson <cjohnson@example.net>
+Date: Thu, 20 Nov 2025 10:15:34 
+Message-ID: <346425@healthsystem.org>
+
+--===============4743172322653792004==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Robertson,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Kari Howell
+Date of Birth: 01/03/1944
+MRN: MRN483894
+Phone: 001-690-273-7229x176
+
+Current Diagnoses:
+- Hypothyroidism (ICD-10: E03.9)
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Major Depressive Disorder (ICD-10: F33.1)
+- Coronary Artery Disease (ICD-10: I25.10)
+
+Current Medications:
+- Omeprazole 20mg daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Hypothyroidism.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Chad Fowler, PA
+Pulmonology
+NPI: 9848243913
+Phone: 001-422-583-5602
+Fax: (211)774-8636x938
+
+--===============4743172322653792004==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Robertson,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Kari Howell</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>01/03/1944</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN483894</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-690-273-7229x176</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hypothyroidism (ICD-10: E03.9)</li>
+<li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Major Depressive Disorder (ICD-10: F33.1)</li>
+<li>Coronary Artery Disease (ICD-10: I25.10)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Omeprazole 20mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Hypothyroidism.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Chad Fowler, PA</strong><br/>
+        Pulmonology<br/>
+        NPI: 9848243913<br/>
+        Phone: 001-422-583-5602<br/>
+        Fax: (211)774-8636x938
+    </div>
+</body>
+</html>
+
+--===============4743172322653792004==--

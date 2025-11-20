@@ -1,0 +1,108 @@
+Content-Type: multipart/alternative; boundary="===============1188070574726881368=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Hanna, Donna
+From: David Barajas <matthewmason@example.net>
+To: Elizabeth Gonzalez <john81@example.net>
+Date: Thu, 20 Nov 2025 10:15:35 
+Message-ID: <691056@healthsystem.org>
+
+--===============1188070574726881368==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Gonzalez,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Donna Hanna
+Date of Birth: 09/02/1980
+MRN: MRN389873
+Phone: (560)776-4420x70771
+
+Current Diagnoses:
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+- Major Depressive Disorder (ICD-10: F33.1)
+- Osteoarthritis (ICD-10: M19.90)
+- Hyperlipidemia (ICD-10: E78.5)
+
+Current Medications:
+- Lisinopril 10mg daily
+- Omeprazole 20mg daily
+- Gabapentin 300mg three times daily
+
+Allergies: Ibuprofen
+
+I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+David Barajas, DO
+Internal Medicine
+NPI: 9380837805
+Phone: 626-825-7489
+Fax: (574)665-5057x5194
+
+--===============1188070574726881368==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Gonzalez,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Donna Hanna</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>09/02/1980</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN389873</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(560)776-4420x70771</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+<li>Major Depressive Disorder (ICD-10: F33.1)</li>
+<li>Osteoarthritis (ICD-10: M19.90)</li>
+<li>Hyperlipidemia (ICD-10: E78.5)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Lisinopril 10mg daily</li>
+<li>Omeprazole 20mg daily</li>
+<li>Gabapentin 300mg three times daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Ibuprofen</p>
+
+    <p>I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>David Barajas, DO</strong><br/>
+        Internal Medicine<br/>
+        NPI: 9380837805<br/>
+        Phone: 626-825-7489<br/>
+        Fax: (574)665-5057x5194
+    </div>
+</body>
+</html>
+
+--===============1188070574726881368==--

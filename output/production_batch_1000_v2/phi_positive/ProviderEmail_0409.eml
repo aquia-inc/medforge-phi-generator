@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============2928914623360157212=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Lopez, Michelle
+From: Kenneth Green <jamesobrien@example.net>
+To: April Campbell <sandovalanthony@example.net>
+Date: Thu, 20 Nov 2025 10:15:33 
+Message-ID: <275496@healthsystem.org>
+
+--===============2928914623360157212==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Campbell,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Michelle Lopez
+Date of Birth: 04/20/1947
+MRN: MRN543380
+Phone: +1-987-866-3404x19744
+
+Current Diagnoses:
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+- Coronary Artery Disease (ICD-10: I25.10)
+
+Current Medications:
+- Omeprazole 20mg daily
+- Sertraline 50mg daily
+- Amlodipine 5mg daily
+
+Allergies: Latex, Penicillin
+
+I would appreciate your input on management of this patient's Gastroesophageal Reflux Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Kenneth Green, DO
+Family Medicine
+NPI: 3738458510
+Phone: 805.800.5745x807
+Fax: 287-984-1383x1276
+
+--===============2928914623360157212==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Campbell,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Michelle Lopez</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>04/20/1947</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN543380</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>+1-987-866-3404x19744</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+<li>Coronary Artery Disease (ICD-10: I25.10)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Omeprazole 20mg daily</li>
+<li>Sertraline 50mg daily</li>
+<li>Amlodipine 5mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Latex, Penicillin</p>
+
+    <p>I would appreciate your input on management of this patient's Gastroesophageal Reflux Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Kenneth Green, DO</strong><br/>
+        Family Medicine<br/>
+        NPI: 3738458510<br/>
+        Phone: 805.800.5745x807<br/>
+        Fax: 287-984-1383x1276
+    </div>
+</body>
+</html>
+
+--===============2928914623360157212==--

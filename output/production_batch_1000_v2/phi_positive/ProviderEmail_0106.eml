@@ -1,0 +1,106 @@
+Content-Type: multipart/alternative; boundary="===============9174983757223166411=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Jensen, Scott
+From: Tara Parker <ruizgloria@example.net>
+To: Kevin Davis <qvaldez@example.com>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <711344@healthsystem.org>
+
+--===============9174983757223166411==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Davis,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Scott Jensen
+Date of Birth: 07/18/1988
+MRN: MRN516444
+Phone: 001-367-834-5957x6403
+
+Current Diagnoses:
+- Coronary Artery Disease (ICD-10: I25.10)
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+- Major Depressive Disorder (ICD-10: F33.1)
+
+Current Medications:
+- Metformin 500mg twice daily
+- Metoprolol 25mg twice daily
+- Amlodipine 5mg daily
+
+Allergies: Codeine, Sulfa drugs
+
+I would appreciate your input on management of this patient's Coronary Artery Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Tara Parker, DO
+Internal Medicine
+NPI: 8109891300
+Phone: 001-425-576-2702x32441
+Fax: 461.732.8507
+
+--===============9174983757223166411==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Davis,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Scott Jensen</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>07/18/1988</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN516444</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-367-834-5957x6403</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Coronary Artery Disease (ICD-10: I25.10)</li>
+<li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+<li>Major Depressive Disorder (ICD-10: F33.1)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metformin 500mg twice daily</li>
+<li>Metoprolol 25mg twice daily</li>
+<li>Amlodipine 5mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Codeine, Sulfa drugs</p>
+
+    <p>I would appreciate your input on management of this patient's Coronary Artery Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Tara Parker, DO</strong><br/>
+        Internal Medicine<br/>
+        NPI: 8109891300<br/>
+        Phone: 001-425-576-2702x32441<br/>
+        Fax: 461.732.8507
+    </div>
+</body>
+</html>
+
+--===============9174983757223166411==--

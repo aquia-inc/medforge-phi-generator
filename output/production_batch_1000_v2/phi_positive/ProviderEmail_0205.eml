@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============4332216918987134374=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Yoder, Rebecca
+From: Diana Johnson <robert76@example.com>
+To: Jessica Eaton <eric37@example.com>
+Date: Thu, 20 Nov 2025 10:15:31 
+Message-ID: <121393@healthsystem.org>
+
+--===============4332216918987134374==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Eaton,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Rebecca Yoder
+Date of Birth: 07/01/1931
+MRN: MRN995852
+Phone: 308.698.7092x0199
+
+Current Diagnoses:
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+
+Current Medications:
+- Metoprolol 25mg twice daily
+- Amlodipine 5mg daily
+- Sertraline 50mg daily
+- Lisinopril 10mg daily
+
+Allergies: Shellfish, Latex
+
+I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Diana Johnson, MD
+Pulmonology
+NPI: 6829842920
+Phone: 722.605.3970x774
+Fax: 770-582-3171x4619
+
+--===============4332216918987134374==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Eaton,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Rebecca Yoder</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>07/01/1931</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN995852</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>308.698.7092x0199</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metoprolol 25mg twice daily</li>
+<li>Amlodipine 5mg daily</li>
+<li>Sertraline 50mg daily</li>
+<li>Lisinopril 10mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Shellfish, Latex</p>
+
+    <p>I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Diana Johnson, MD</strong><br/>
+        Pulmonology<br/>
+        NPI: 6829842920<br/>
+        Phone: 722.605.3970x774<br/>
+        Fax: 770-582-3171x4619
+    </div>
+</body>
+</html>
+
+--===============4332216918987134374==--

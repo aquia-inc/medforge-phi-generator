@@ -1,0 +1,108 @@
+Content-Type: multipart/alternative; boundary="===============1468521056287893899=="
+MIME-Version: 1.0
+Subject: Patient Consultation: White, Mark
+From: Patricia Dunn <ericabauer@example.net>
+To: Donna Lee <jose06@example.net>
+Date: Thu, 20 Nov 2025 10:15:33 
+Message-ID: <479021@healthsystem.org>
+
+--===============1468521056287893899==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Lee,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Mark White
+Date of Birth: 11/04/1950
+MRN: MRN360781
+Phone: +1-802-317-8295x9881
+
+Current Diagnoses:
+- Hyperlipidemia (ICD-10: E78.5)
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+- Essential Hypertension (ICD-10: I10)
+
+Current Medications:
+- Gabapentin 300mg three times daily
+- Metoprolol 25mg twice daily
+- Omeprazole 20mg daily
+- Losartan 50mg daily
+
+Allergies: Codeine, Aspirin, Ibuprofen
+
+I would appreciate your input on management of this patient's Hyperlipidemia.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Patricia Dunn, MD
+Pulmonology
+NPI: 2643668468
+Phone: 3869551086
+Fax: 6782393132
+
+--===============1468521056287893899==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Lee,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Mark White</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>11/04/1950</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN360781</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>+1-802-317-8295x9881</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hyperlipidemia (ICD-10: E78.5)</li>
+<li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Gabapentin 300mg three times daily</li>
+<li>Metoprolol 25mg twice daily</li>
+<li>Omeprazole 20mg daily</li>
+<li>Losartan 50mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Codeine, Aspirin, Ibuprofen</p>
+
+    <p>I would appreciate your input on management of this patient's Hyperlipidemia.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Patricia Dunn, MD</strong><br/>
+        Pulmonology<br/>
+        NPI: 2643668468<br/>
+        Phone: 3869551086<br/>
+        Fax: 6782393132
+    </div>
+</body>
+</html>
+
+--===============1468521056287893899==--
