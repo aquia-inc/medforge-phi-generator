@@ -135,20 +135,26 @@ class MedForgeGenerator:
             facility = self.facility_gen.generate_facility()
 
             # Choose document type based on available formats
-            doc_types = []
-            if "docx" in self.formats:
-                doc_types.extend(["progress_note", "lab_result_docx"])
-            if "pdf" in self.formats:
-                doc_types.append("lab_result_pdf")
-            if "eml" in self.formats:
-                doc_types.append("email")
-            if "pptx" in self.formats:
-                doc_types.append("case_study")
+            # Add weighted probability for nested emails (~7% of total)
+            nested_email_chance = random.random() < 0.07
 
-            if not doc_types:
-                raise ValueError("No valid document types for selected formats")
+            if nested_email_chance and "eml" in self.formats:
+                doc_type = "nested_email"
+            else:
+                doc_types = []
+                if "docx" in self.formats:
+                    doc_types.extend(["progress_note", "lab_result_docx"])
+                if "pdf" in self.formats:
+                    doc_types.append("lab_result_pdf")
+                if "eml" in self.formats:
+                    doc_types.append("email")
+                if "pptx" in self.formats:
+                    doc_types.append("case_study")
 
-            doc_type = random.choice(doc_types)
+                if not doc_types:
+                    raise ValueError("No valid document types for selected formats")
+
+                doc_type = random.choice(doc_types)
 
             # Generate without PHI_POS prefix and save to phi_positive directory
             if doc_type == "progress_note":
@@ -208,16 +214,44 @@ class MedForgeGenerator:
                 self.stats["by_category"]["case_studies"] += 1
                 self.stats["template_based"] += 1
 
+            elif doc_type == "nested_email":
+                # PHI POSITIVE email with embedded attachment (PDF, DOCX, or ZIP)
+                try:
+                    lab_data = self.patient_gen.generate_lab_results()
+                    filename = f"EmailWithAttachment_{index:04d}.eml"
+                    self.formatters["nested_eml"].output_dir = str(self.phi_positive_dir)
+                    filepath = self.formatters["nested_eml"].create_phi_positive_email_with_attachment(
+                        patient, provider, facility, lab_data, filename
+                    )
+                    self.stats["by_format"]["eml"] += 1
+                    self.stats["by_category"]["nested_emails"] += 1
+                    self.stats["template_based"] += 1
+                except Exception as e:
+                    # If nested email fails, generate regular email instead
+                    filename = f"ProviderEmail_{index:04d}.eml"
+                    self.formatters["eml"].output_dir = str(self.phi_positive_dir)
+                    filepath = self.formatters["eml"].create_provider_to_provider_email(
+                        patient, provider, self.provider_gen.generate_provider(), filename
+                    )
+                    self.stats["by_format"]["eml"] += 1
+                    self.stats["by_category"]["correspondence"] += 1
+                    self.stats["template_based"] += 1
+                    self.stats["errors"].append(f"Nested email failed for doc {index}, used regular email: {str(e)}")
+
             self.stats["total_generated"] += 1
             self.stats["phi_positive"] += 1
 
-            # Add to manifest
-            self.manifest.append({
+            # Add to manifest with attachment info for nested emails
+            manifest_entry = {
                 "file_path": str(Path(filepath).relative_to(self.output_dir)),
                 "phi_status": "positive",
                 "document_type": doc_type,
                 "index": index,
-            })
+            }
+            if doc_type == "nested_email":
+                manifest_entry["has_attachments"] = True
+                manifest_entry["attachment_type"] = "embedded"
+            self.manifest.append(manifest_entry)
 
             return filepath
 
@@ -232,20 +266,26 @@ class MedForgeGenerator:
             facility = self.facility_gen.generate_facility()
 
             # Choose document type based on available formats
-            doc_types = []
-            if "pdf" in self.formats:
-                doc_types.append("policy_pdf")
-            if "docx" in self.formats:
-                doc_types.extend(["policy_docx", "blank_form"])
-            if "eml" in self.formats:
-                doc_types.append("announcement")
-            if "pptx" in self.formats:
-                doc_types.append("education")
+            # Add weighted probability for nested emails (~7% of total)
+            nested_email_chance = random.random() < 0.07
 
-            if not doc_types:
-                raise ValueError("No valid document types for selected formats")
+            if nested_email_chance and "eml" in self.formats:
+                doc_type = "nested_email"
+            else:
+                doc_types = []
+                if "pdf" in self.formats:
+                    doc_types.append("policy_pdf")
+                if "docx" in self.formats:
+                    doc_types.extend(["policy_docx", "blank_form"])
+                if "eml" in self.formats:
+                    doc_types.append("announcement")
+                if "pptx" in self.formats:
+                    doc_types.append("education")
 
-            doc_type = random.choice(doc_types)
+                if not doc_types:
+                    raise ValueError("No valid document types for selected formats")
+
+                doc_type = random.choice(doc_types)
 
             # Generate without PHI_NEG prefix and save to phi_negative directory
             if doc_type == "policy_pdf":
@@ -290,17 +330,41 @@ class MedForgeGenerator:
                 self.stats["by_category"]["blank_forms"] += 1
                 return None  # Skip for now
 
+            elif doc_type == "nested_email":
+                # PHI NEGATIVE email with embedded attachment (PDF, DOCX, or ZIP)
+                # NO patient data in email or attachments
+                try:
+                    filename = f"PolicyEmailWithAttachment_{index:04d}.eml"
+                    self.formatters["nested_eml"].output_dir = str(self.phi_negative_dir)
+                    filepath = self.formatters["nested_eml"].create_phi_negative_email_with_attachment(
+                        facility, filename
+                    )
+                    self.stats["by_format"]["eml"] += 1
+                    self.stats["by_category"]["nested_emails"] += 1
+                except Exception as e:
+                    # If nested email fails, generate regular announcement instead
+                    filename = f"Announcement_{index:04d}.eml"
+                    self.formatters["eml"].output_dir = str(self.phi_negative_dir)
+                    filepath = self.formatters["eml"].create_office_announcement(facility, filename)
+                    self.stats["by_format"]["eml"] += 1
+                    self.stats["by_category"]["announcements"] += 1
+                    self.stats["errors"].append(f"Nested email failed for doc {index}, used regular announcement: {str(e)}")
+
             self.stats["total_generated"] += 1
             self.stats["phi_negative"] += 1
             self.stats["template_based"] += 1
 
-            # Add to manifest
-            self.manifest.append({
+            # Add to manifest with attachment info for nested emails
+            manifest_entry = {
                 "file_path": str(Path(filepath).relative_to(self.output_dir)),
                 "phi_status": "negative",
                 "document_type": doc_type,
                 "index": index,
-            })
+            }
+            if doc_type == "nested_email":
+                manifest_entry["has_attachments"] = True
+                manifest_entry["attachment_type"] = "embedded"
+            self.manifest.append(manifest_entry)
 
             return filepath
 
