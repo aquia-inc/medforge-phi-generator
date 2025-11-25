@@ -230,7 +230,7 @@ If you received this in error, please delete it immediately and notify the sende
         # Email headers
         msg['Subject'] = "Office Closure Notice - Holiday Schedule"
         msg['From'] = f"Office Administrator <admin@{facility['name'].lower().replace(' ', '')}.org>"
-        msg['To'] = "All Staff <staff@{facility['name'].lower().replace(' ', '')}.org>"
+        msg['To'] = f"All Staff <staff@{facility['name'].lower().replace(' ', '')}.org>"
         msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
@@ -315,7 +315,7 @@ Phone: {facility['phone']}
         # Email headers
         msg['Subject'] = "Updated Clinical Documentation Policy"
         msg['From'] = f"Compliance Department <compliance@{facility['name'].lower().replace(' ', '')}.org>"
-        msg['To'] = "Clinical Staff <clinical@{facility['name'].lower().replace(' ', '')}.org>"
+        msg['To'] = f"Clinical Staff <clinical@{facility['name'].lower().replace(' ', '')}.org>"
         msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
