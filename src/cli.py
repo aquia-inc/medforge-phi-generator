@@ -40,6 +40,7 @@ from formatters.xlsx_formatter import XLSXFormatter
 from formatters.pptx_formatter import PPTXFormatter
 from formatters.email_formatter import EmailFormatter
 from formatters.nested_formatter import NestedEmailFormatter
+from formatters.html_lab_formatter import HTMLLabFormatter
 from generators.llm_generator import is_llm_available
 
 # Initialize CLI app and console
@@ -126,6 +127,7 @@ class MedForgeGenerator:
         if "eml" in self.formats:
             self.formatters["eml"] = EmailFormatter(output_dir=str(self.output_dir))
             self.formatters["nested_eml"] = NestedEmailFormatter(output_dir=str(self.output_dir))
+            self.formatters["html_lab"] = HTMLLabFormatter(output_dir=str(self.output_dir))
 
     def generate_single_phi_positive(self, index: int) -> Optional[str]:
         """Generate a single PHI positive document"""
@@ -147,7 +149,7 @@ class MedForgeGenerator:
                 if "pdf" in self.formats:
                     doc_types.append("lab_result_pdf")
                 if "eml" in self.formats:
-                    doc_types.append("email")
+                    doc_types.extend(["email", "html_lab_email", "immunization_email"])
                 if "pptx" in self.formats:
                     doc_types.append("case_study")
 
@@ -214,6 +216,30 @@ class MedForgeGenerator:
                 self.stats["by_category"]["case_studies"] += 1
                 self.stats["template_based"] += 1
 
+            elif doc_type == "html_lab_email":
+                # Professional HTML lab result email (Quest/LabCorp style)
+                lab_data = self.patient_gen.generate_lab_results()
+                filename = f"LabResults_{index:04d}.eml"
+                self.formatters["html_lab"].output_dir = str(self.phi_positive_dir)
+                filepath = self.formatters["html_lab"].create_lab_result_email_phi_positive(
+                    patient, provider, facility, lab_data, filename
+                )
+                self.stats["by_format"]["eml"] += 1
+                self.stats["by_category"]["lab_results"] += 1
+                self.stats["template_based"] += 1
+
+            elif doc_type == "immunization_email":
+                # Immunization record email
+                imm_data = self.patient_gen.generate_immunization_record()
+                filename = f"ImmunizationRecord_{index:04d}.eml"
+                self.formatters["html_lab"].output_dir = str(self.phi_positive_dir)
+                filepath = self.formatters["html_lab"].create_immunization_record_email(
+                    patient, provider, facility, imm_data, filename
+                )
+                self.stats["by_format"]["eml"] += 1
+                self.stats["by_category"]["immunizations"] += 1
+                self.stats["template_based"] += 1
+
             elif doc_type == "nested_email":
                 # PHI POSITIVE email with embedded attachment (PDF, DOCX, or ZIP)
                 try:
@@ -278,7 +304,7 @@ class MedForgeGenerator:
                 if "docx" in self.formats:
                     doc_types.extend(["policy_docx", "blank_form"])
                 if "eml" in self.formats:
-                    doc_types.append("announcement")
+                    doc_types.extend(["announcement", "lab_notification"])
                 if "pptx" in self.formats:
                     doc_types.append("education")
 
@@ -312,6 +338,14 @@ class MedForgeGenerator:
                 filepath = self.formatters["eml"].create_office_announcement(facility, filename)
                 self.stats["by_format"]["eml"] += 1
                 self.stats["by_category"]["announcements"] += 1
+
+            elif doc_type == "lab_notification":
+                # PHI-negative lab notification - just a portal link, no patient data
+                filename = f"LabNotification_{index:04d}.eml"
+                self.formatters["html_lab"].output_dir = str(self.phi_negative_dir)
+                filepath = self.formatters["html_lab"].create_lab_notification_phi_negative(facility, filename)
+                self.stats["by_format"]["eml"] += 1
+                self.stats["by_category"]["lab_notifications"] += 1
 
             elif doc_type == "education":
                 filename = f"Educational_{index:04d}.pptx"
