@@ -1,0 +1,108 @@
+Content-Type: multipart/alternative; boundary="===============5461972691097225894=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Gonzalez, Lisa
+From: Stephanie Bryant <nbrown@example.net>
+To: Mary Robertson <steven08@example.org>
+Date: Tue, 25 Nov 2025 11:44:25 
+Message-ID: <686308@healthsystem.org>
+
+--===============5461972691097225894==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Robertson,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Lisa Gonzalez
+Date of Birth: 10/17/1955
+MRN: MRN902731
+Phone: +1-490-836-9553x457
+
+Current Diagnoses:
+- Hypothyroidism (ICD-10: E03.9)
+- Essential Hypertension (ICD-10: I10)
+- Osteoarthritis (ICD-10: M19.90)
+
+Current Medications:
+- Sertraline 50mg daily
+- Levothyroxine 50mcg daily
+- Metformin 500mg twice daily
+- Omeprazole 20mg daily
+
+Allergies: Morphine
+
+I would appreciate your input on management of this patient's Hypothyroidism.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Stephanie Bryant, NP
+Neurology
+NPI: 8722768241
+Phone: +1-473-408-7594
+Fax: 649-366-4479
+
+--===============5461972691097225894==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Robertson,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Lisa Gonzalez</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>10/17/1955</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN902731</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>+1-490-836-9553x457</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hypothyroidism (ICD-10: E03.9)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+<li>Osteoarthritis (ICD-10: M19.90)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Sertraline 50mg daily</li>
+<li>Levothyroxine 50mcg daily</li>
+<li>Metformin 500mg twice daily</li>
+<li>Omeprazole 20mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Morphine</p>
+
+    <p>I would appreciate your input on management of this patient's Hypothyroidism.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Stephanie Bryant, NP</strong><br/>
+        Neurology<br/>
+        NPI: 8722768241<br/>
+        Phone: +1-473-408-7594<br/>
+        Fax: 649-366-4479
+    </div>
+</body>
+</html>
+
+--===============5461972691097225894==--

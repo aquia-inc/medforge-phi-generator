@@ -403,11 +403,14 @@ Phone: {facility['phone']}
         story.append(patient_table)
         story.append(Spacer(1, 0.3*inch))
 
-        # Lab results
+        # Lab results - handle both dict format (with 'results' key) and list format
+        lab_results = lab_data.get('results', lab_data) if isinstance(lab_data, dict) else lab_data
         lab_table_data = [['Test', 'Result', 'Reference Range', 'Flag']]
-        for test in lab_data:
+        for test in lab_results:
+            # Handle both 'name' and 'test' keys for test name
+            test_name = test.get('name') or test.get('test', 'Unknown')
             lab_table_data.append([
-                test['name'],
+                test_name,
                 f"{test['value']} {test['unit']}",
                 test['reference_range'],
                 test.get('flag', '')

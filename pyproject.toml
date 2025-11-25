@@ -5,9 +5,11 @@ description = "Add your description here"
 requires-python = ">=3.13"
 dependencies = [
     "anthropic>=0.74.0",
+    "compoundfiles>=0.3",
     "extract-msg>=0.55.0",
     "faker-healthcare-system>=0.1.24",
     "faker>=38.0.0",
+    "independentsoft-msg>=1.6",
     "openpyxl>=3.1.5",
     "pdfplumber>=0.11.0",
     "pypdf2>=3.0.0",
