@@ -1,0 +1,75 @@
+Content-Type: multipart/alternative; boundary="===============8470209506491960040=="
+MIME-Version: 1.0
+Subject: Office Closure Notice - Holiday Schedule
+From: Office Administrator <admin@westkevinshirecommunityhospital.org>
+To: All Staff <staff@westkevinshirecommunityhospital.org>
+Date: Tue, 25 Nov 2025 13:51:47 
+Message-ID: <899345@healthsystem.org>
+
+--===============8470209506491960040==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dear Staff,
+
+This is to inform you of our upcoming holiday schedule for West Kevinshire Community Hospital.
+
+OFFICE CLOSURES:
+- December 24-25, 2024: Christmas Holiday
+- January 1, 2025: New Year's Day
+- January 15, 2025: Martin Luther King Jr. Day
+
+During these closures, emergency services will be available through our on-call system.
+Please refer patients to the emergency contact number: 224.744.8110
+
+REGULAR HOURS RESUME:
+Normal business hours will resume on the next business day following each holiday.
+
+Thank you for your attention to this matter.
+
+West Kevinshire Community Hospital
+30415 Elizabeth View
+West Kevinshire, TX 01166
+Phone: 224.744.8110
+
+--===============8470209506491960040==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<body style="font-family: Arial, sans-serif;">
+    <h2 style="color: #2c3e50;">Holiday Office Hours</h2>
+
+    <p>Dear Staff,</p>
+
+    <p>This is to inform you of our upcoming holiday schedule for <strong>West Kevinshire Community Hospital</strong>.</p>
+
+    <h3>OFFICE CLOSURES:</h3>
+    <ul>
+        <li>December 24-25, 2024: Christmas Holiday</li>
+        <li>January 1, 2025: New Year's Day</li>
+        <li>January 15, 2025: Martin Luther King Jr. Day</li>
+    </ul>
+
+    <p>During these closures, emergency services will be available through our on-call system.
+    Please refer patients to the emergency contact number: <strong>224.744.8110</strong></p>
+
+    <h3>REGULAR HOURS RESUME:</h3>
+    <p>Normal business hours will resume on the next business day following each holiday.</p>
+
+    <p>Thank you for your attention to this matter.</p>
+
+    <div style="border-top: 2px solid #3498db; margin-top: 20px; padding-top: 10px;">
+        <strong>West Kevinshire Community Hospital</strong><br/>
+        30415 Elizabeth View<br/>
+        West Kevinshire, TX 01166<br/>
+        Phone: 224.744.8110
+    </div>
+</body>
+</html>
+
+--===============8470209506491960040==--

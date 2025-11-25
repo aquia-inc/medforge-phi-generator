@@ -1,0 +1,75 @@
+Content-Type: multipart/alternative; boundary="===============0731629813922019998=="
+MIME-Version: 1.0
+Subject: Office Closure Notice - Holiday Schedule
+From: Office Administrator <admin@michaelburghcommunityhospital.org>
+To: All Staff <staff@michaelburghcommunityhospital.org>
+Date: Tue, 25 Nov 2025 13:51:47 
+Message-ID: <194600@healthsystem.org>
+
+--===============0731629813922019998==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dear Staff,
+
+This is to inform you of our upcoming holiday schedule for Michaelburgh Community Hospital.
+
+OFFICE CLOSURES:
+- December 24-25, 2024: Christmas Holiday
+- January 1, 2025: New Year's Day
+- January 15, 2025: Martin Luther King Jr. Day
+
+During these closures, emergency services will be available through our on-call system.
+Please refer patients to the emergency contact number: (905)357-5039
+
+REGULAR HOURS RESUME:
+Normal business hours will resume on the next business day following each holiday.
+
+Thank you for your attention to this matter.
+
+Michaelburgh Community Hospital
+685 Rebecca Crossing
+Michaelburgh, AZ 69567
+Phone: (905)357-5039
+
+--===============0731629813922019998==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<body style="font-family: Arial, sans-serif;">
+    <h2 style="color: #2c3e50;">Holiday Office Hours</h2>
+
+    <p>Dear Staff,</p>
+
+    <p>This is to inform you of our upcoming holiday schedule for <strong>Michaelburgh Community Hospital</strong>.</p>
+
+    <h3>OFFICE CLOSURES:</h3>
+    <ul>
+        <li>December 24-25, 2024: Christmas Holiday</li>
+        <li>January 1, 2025: New Year's Day</li>
+        <li>January 15, 2025: Martin Luther King Jr. Day</li>
+    </ul>
+
+    <p>During these closures, emergency services will be available through our on-call system.
+    Please refer patients to the emergency contact number: <strong>(905)357-5039</strong></p>
+
+    <h3>REGULAR HOURS RESUME:</h3>
+    <p>Normal business hours will resume on the next business day following each holiday.</p>
+
+    <p>Thank you for your attention to this matter.</p>
+
+    <div style="border-top: 2px solid #3498db; margin-top: 20px; padding-top: 10px;">
+        <strong>Michaelburgh Community Hospital</strong><br/>
+        685 Rebecca Crossing<br/>
+        Michaelburgh, AZ 69567<br/>
+        Phone: (905)357-5039
+    </div>
+</body>
+</html>
+
+--===============0731629813922019998==--
