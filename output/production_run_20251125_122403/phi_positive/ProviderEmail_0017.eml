@@ -1,0 +1,108 @@
+Content-Type: multipart/alternative; boundary="===============3761073742116122688=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Johnson, Samantha
+From: William Martinez <karenholland@example.net>
+To: Joel Henry <davidmartin@example.net>
+Date: Tue, 25 Nov 2025 12:24:04 
+Message-ID: <696929@healthsystem.org>
+
+--===============3761073742116122688==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Henry,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Samantha Johnson
+Date of Birth: 12/05/1990
+MRN: MRN224983
+Phone: 001-208-660-4062x23560
+
+Current Diagnoses:
+- Major Depressive Disorder (ICD-10: F33.1)
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+- Essential Hypertension (ICD-10: I10)
+
+Current Medications:
+- Amlodipine 5mg daily
+- Gabapentin 300mg three times daily
+- Atorvastatin 20mg daily
+
+Allergies: Bee stings, Sulfa drugs
+
+I would appreciate your input on management of this patient's Major Depressive Disorder.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+William Martinez, MD
+Endocrinology
+NPI: 6978418173
+Phone: +1-687-285-5734x0845
+Fax: 899.928.1285x4124
+
+--===============3761073742116122688==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Henry,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Samantha Johnson</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>12/05/1990</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN224983</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-208-660-4062x23560</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Major Depressive Disorder (ICD-10: F33.1)</li>
+<li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+<li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Amlodipine 5mg daily</li>
+<li>Gabapentin 300mg three times daily</li>
+<li>Atorvastatin 20mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Bee stings, Sulfa drugs</p>
+
+    <p>I would appreciate your input on management of this patient's Major Depressive Disorder.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>William Martinez, MD</strong><br/>
+        Endocrinology<br/>
+        NPI: 6978418173<br/>
+        Phone: +1-687-285-5734x0845<br/>
+        Fax: 899.928.1285x4124
+    </div>
+</body>
+</html>
+
+--===============3761073742116122688==--

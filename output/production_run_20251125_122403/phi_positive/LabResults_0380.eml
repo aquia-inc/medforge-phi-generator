@@ -1,0 +1,219 @@
+Content-Type: multipart/alternative; boundary="===============8598601343742825846=="
+MIME-Version: 1.0
+Subject: Your Complete Blood Count (CBC) Results Are Ready - Quest Diagnostics
+From: Quest Diagnostics <noreply@questdiagnostics.com>
+To: Daniel Holt <devonmartinez@example.com>
+Date: Tue, 25 Nov 2025 12:26:04 +0000
+Message-ID: <439811130@questdiagnostics.com>
+
+--===============8598601343742825846==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Quest Diagnostics - Laboratory Results
+
+Patient: Daniel Holt
+DOB: 03/28/1949
+MRN: MRN110838
+Collection Date: 11/13/2025
+
+Complete Blood Count (CBC):
+  WBC: 5.6 K/uL [Ref: 4.5-11.0]
+  RBC: 4.85 M/uL [Ref: 4.5-5.5]
+  Hemoglobin: 15.8 g/dL [Ref: 12.0-16.0]
+  Hematocrit: 39.4 % [Ref: 37-47]
+  Platelets: 366 K/uL [Ref: 150-400]
+  MCV: 89.2 fL [Ref: 80-100]
+  MCH: 29.9 pg [Ref: 27-33]
+  MCHC: 33.4 g/dL [Ref: 32-36]
+  RDW: 12.9 % [Ref: 11.5-14.5]
+
+Ordering Provider: John Weaver, MD
+NPI: 7372055915
+
+View full results at: https://myquest.questdiagnostics.com
+
+---
+CONFIDENTIALITY NOTICE: This email contains Protected Health Information (PHI).
+
+--===============8598601343742825846==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; background-color: #f4f4f4;">
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f4f4f4;">
+        <tr>
+            <td align="center" style="padding: 40px 0;">
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <!-- Header -->
+                    <tr>
+                        <td style="background-color: #00529B; padding: 30px; border-radius: 8px 8px 0 0;">
+                            <h1 style="color: #ffffff; margin: 0; font-size: 24px;">Quest Diagnostics</h1>
+                            <p style="color: #ffffff; margin: 10px 0 0 0; opacity: 0.9;">Laboratory Results Notification</p>
+                        </td>
+                    </tr>
+
+                    <!-- Patient Info Banner -->
+                    <tr>
+                        <td style="background-color: #e8f4f8; padding: 20px 30px; border-bottom: 1px solid #d0e8ef;">
+                            <table width="100%" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td>
+                                        <p style="margin: 0; color: #333; font-size: 14px;"><strong>Patient:</strong> Daniel Holt</p>
+                                        <p style="margin: 5px 0 0 0; color: #666; font-size: 13px;">DOB: 03/28/1949 | MRN: MRN110838</p>
+                                    </td>
+                                    <td align="right">
+                                        <p style="margin: 0; color: #333; font-size: 14px;"><strong>Collection Date:</strong></p>
+                                        <p style="margin: 5px 0 0 0; color: #666; font-size: 13px;">11/13/2025</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Main Content -->
+                    <tr>
+                        <td style="padding: 30px;">
+                            <p style="color: #333; font-size: 15px; line-height: 1.6; margin: 0 0 20px 0;">
+                                Dear Daniel,
+                            </p>
+                            <p style="color: #333; font-size: 15px; line-height: 1.6; margin: 0 0 20px 0;">
+                                Your <strong>Complete Blood Count (CBC)</strong> results from your recent visit are now available. Please review the results below.
+                            </p>
+
+                            <!-- Results Section -->
+                            <div style="background-color: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 20px; margin: 20px 0;">
+                                <h2 style="color: #00529B; font-size: 18px; margin: 0 0 15px 0; border-bottom: 2px solid #00529B; padding-bottom: 10px;">
+                                    Complete Blood Count (CBC)
+                                </h2>
+                                
+        <table width="100%" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr style="border-bottom: 2px solid #00529B;">
+                    <th style="text-align: left; padding: 10px 0; font-size: 13px; color: #666;">Test</th>
+                    <th style="text-align: left; padding: 10px 0; font-size: 13px; color: #666;">Result</th>
+                    <th style="text-align: left; padding: 10px 0; font-size: 13px; color: #666;">Reference Range</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">WBC</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; font-weight: 500;">5.6 K/uL</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #666;">4.5-11.0</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">RBC</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; font-weight: 500;">4.85 M/uL</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #666;">4.5-5.5</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">Hemoglobin</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; font-weight: 500;">15.8 g/dL</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #666;">12.0-16.0</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">Hematocrit</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; font-weight: 500;">39.4 %</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #666;">37-47</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">Platelets</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; font-weight: 500;">366 K/uL</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #666;">150-400</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">MCV</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; font-weight: 500;">89.2 fL</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #666;">80-100</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">MCH</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; font-weight: 500;">29.9 pg</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #666;">27-33</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">MCHC</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; font-weight: 500;">33.4 g/dL</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #666;">32-36</td>
+            </tr>
+            
+            <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px;">RDW</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 14px; font-weight: 500;">12.9 %</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #666;">11.5-14.5</td>
+            </tr>
+            
+            </tbody>
+        </table>
+        
+                            </div>
+
+                            <!-- Ordering Provider -->
+                            <div style="background-color: #f5f5f5; border-left: 4px solid #00529B; padding: 15px; margin: 20px 0;">
+                                <p style="margin: 0; color: #333; font-size: 14px;"><strong>Ordering Provider:</strong></p>
+                                <p style="margin: 5px 0 0 0; color: #666; font-size: 13px;">
+                                    John Weaver, MD<br>
+                                    Family Medicine<br>
+                                    NPI: 7372055915<br>
+                                    Phone: 264.478.1940
+                                </p>
+                            </div>
+
+                            <p style="color: #666; font-size: 14px; line-height: 1.6; margin: 20px 0;">
+                                <strong>Important:</strong> These results should be reviewed with your healthcare provider.
+                                If you have questions about your results, please contact your provider's office.
+                            </p>
+
+                            <!-- CTA Button -->
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin: 30px 0;">
+                                <tr>
+                                    <td align="center">
+                                        <a href="https://myquest.questdiagnostics.com/results" style="background-color: #00529B; color: #ffffff; padding: 14px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">
+                                            View Full Results in MyQuest
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #f8f8f8; padding: 25px 30px; border-top: 1px solid #e0e0e0; border-radius: 0 0 8px 8px;">
+                            <p style="color: #666; font-size: 12px; margin: 0; line-height: 1.5;">
+                                <strong>Quest Diagnostics</strong><br>
+                                Customer Service: 1-866-697-8378<br>
+                                https://myquest.questdiagnostics.com
+                            </p>
+                            <p style="color: #999; font-size: 11px; margin: 15px 0 0 0; line-height: 1.5;">
+                                This message contains Protected Health Information (PHI) and is intended only for the individual named above.
+                                If you received this in error, please delete it immediately and notify the sender.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+--===============8598601343742825846==--

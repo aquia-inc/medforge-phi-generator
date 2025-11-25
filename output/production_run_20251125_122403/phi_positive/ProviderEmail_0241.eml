@@ -1,0 +1,110 @@
+Content-Type: multipart/alternative; boundary="===============8901482627384416967=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Hernandez, Craig
+From: Teresa Wells <claytonsean@example.net>
+To: Jon Cochran <alexandra13@example.net>
+Date: Tue, 25 Nov 2025 12:25:23 
+Message-ID: <603407@healthsystem.org>
+
+--===============8901482627384416967==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Cochran,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Craig Hernandez
+Date of Birth: 06/30/1959
+MRN: MRN255044
+Phone: 2304077203
+
+Current Diagnoses:
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+- Coronary Artery Disease (ICD-10: I25.10)
+- Essential Hypertension (ICD-10: I10)
+
+Current Medications:
+- Omeprazole 20mg daily
+- Losartan 50mg daily
+- Metoprolol 25mg twice daily
+- Levothyroxine 50mcg daily
+- Metformin 500mg twice daily
+
+Allergies: Sulfa drugs, Peanuts, Shellfish
+
+I would appreciate your input on management of this patient's Gastroesophageal Reflux Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Teresa Wells, MD
+Nephrology
+NPI: 8741750832
+Phone: 7793485214
+Fax: 608-569-8998x721
+
+--===============8901482627384416967==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Cochran,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Craig Hernandez</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>06/30/1959</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN255044</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>2304077203</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+<li>Coronary Artery Disease (ICD-10: I25.10)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Omeprazole 20mg daily</li>
+<li>Losartan 50mg daily</li>
+<li>Metoprolol 25mg twice daily</li>
+<li>Levothyroxine 50mcg daily</li>
+<li>Metformin 500mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Sulfa drugs, Peanuts, Shellfish</p>
+
+    <p>I would appreciate your input on management of this patient's Gastroesophageal Reflux Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Teresa Wells, MD</strong><br/>
+        Nephrology<br/>
+        NPI: 8741750832<br/>
+        Phone: 7793485214<br/>
+        Fax: 608-569-8998x721
+    </div>
+</body>
+</html>
+
+--===============8901482627384416967==--

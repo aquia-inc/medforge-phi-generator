@@ -1,0 +1,163 @@
+Content-Type: multipart/alternative; boundary="===============0179835431155880435=="
+MIME-Version: 1.0
+Subject: Your Immunization Record - Howardmouth Regional Hospital
+From: Howardmouth Regional Hospital <records@howardmouthregionalhospital.org>
+To: Christian Walker <gavinbowman@example.net>
+Date: Tue, 25 Nov 2025 12:26:04 +0000
+Message-ID: <719941535@healthsystem.org>
+
+--===============0179835431155880435==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Howardmouth Regional Hospital - Official Immunization Record
+
+Patient: Christian Walker
+DOB: 12/14/1983
+MRN: MRN239517
+
+Vaccination History:
+- Influenza (Flu) (Annual) - 11/24/2025 - Lot: FL88746
+- COVID-19 (Moderna) (Booster) - 06/12/2025 - Lot: FF2215
+- Pneumococcal (PPSV23) (Single) - 09/07/2024 - Lot: PN98526
+- COVID-19 (Moderna) (Dose 2) - 06/28/2024 - Lot: FF8746
+- COVID-19 (Moderna) (Dose 1) - 10/16/2023 - Lot: EL9359
+- Hepatitis B (Series Complete) - 04/30/2016 - Lot: HB39423
+
+Primary Care Provider: Eric Bates, MD
+Howardmouth Regional Hospital | 958.584.5955x679
+
+---
+This document contains Protected Health Information (PHI).
+
+--===============0179835431155880435==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+    <table width="100%" cellspacing="0" cellpadding="0" style="max-width: 800px; margin: 0 auto; background-color: #ffffff; border: 1px solid #ddd;">
+        <!-- Header -->
+        <tr>
+            <td style="background-color: #2E7D32; padding: 20px; text-align: center;">
+                <h1 style="color: #ffffff; margin: 0; font-size: 22px;">Howardmouth Regional Hospital</h1>
+                <p style="color: #ffffff; margin: 5px 0 0 0; font-size: 14px;">Official Immunization Record</p>
+            </td>
+        </tr>
+
+        <!-- Patient Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f0f7f0; border-bottom: 2px solid #2E7D32;">
+                <table width="100%" cellspacing="0">
+                    <tr>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>Patient Name:</strong> Christian Walker</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Date of Birth:</strong> 12/14/1983</p>
+                        </td>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>MRN:</strong> MRN239517</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Record Date:</strong> 11/25/2025</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Vaccine Table -->
+        <tr>
+            <td style="padding: 20px;">
+                <h2 style="color: #2E7D32; font-size: 18px; margin: 0 0 15px 0;">Vaccination History</h2>
+                <table width="100%" cellspacing="0" cellpadding="0" style="border: 1px solid #ddd; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #2E7D32; color: #ffffff;">
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Vaccine</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Dose</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Date</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Lot #</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Site</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Influenza (Flu)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Annual</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">11/24/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FL88746</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Moderna)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Booster</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">06/12/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FF2215</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Pneumococcal (PPSV23)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Single</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">09/07/2024</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">PN98526</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Moderna)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 2</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">06/28/2024</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FF8746</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Moderna)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 1</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">10/16/2023</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EL9359</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Hepatitis B</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Series Complete</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">04/30/2016</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">HB39423</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Provider Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f8f8f8;">
+                <p style="margin: 0; font-size: 13px; color: #666;">
+                    <strong>Primary Care Provider:</strong> Eric Bates, MD<br>
+                    Howardmouth Regional Hospital | 958.584.5955x679
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 15px; background-color: #333; color: #ffffff; font-size: 11px; text-align: center;">
+                This document contains Protected Health Information (PHI). Howardmouth Regional Hospital | Howardmouth, PA
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+--===============0179835431155880435==--

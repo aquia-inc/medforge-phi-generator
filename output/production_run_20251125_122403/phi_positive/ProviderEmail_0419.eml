@@ -1,0 +1,98 @@
+Content-Type: multipart/alternative; boundary="===============2919442637371433101=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Weber, Jennifer
+From: Megan Ruiz <wcooper@example.org>
+To: Deanna Martinez <wellstravis@example.com>
+Date: Tue, 25 Nov 2025 12:26:14 
+Message-ID: <171721@healthsystem.org>
+
+--===============2919442637371433101==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Martinez,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Jennifer Weber
+Date of Birth: 05/03/1957
+MRN: MRN457838
+Phone: 543.443.9386x29336
+
+Current Diagnoses:
+- Major Depressive Disorder (ICD-10: F33.1)
+
+Current Medications:
+- Gabapentin 300mg three times daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Major Depressive Disorder.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Megan Ruiz, NP
+Pulmonology
+NPI: 2398667334
+Phone: (527)275-8173x1499
+Fax: 781-546-2789
+
+--===============2919442637371433101==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Martinez,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Jennifer Weber</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>05/03/1957</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN457838</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>543.443.9386x29336</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Major Depressive Disorder (ICD-10: F33.1)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Gabapentin 300mg three times daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Major Depressive Disorder.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Megan Ruiz, NP</strong><br/>
+        Pulmonology<br/>
+        NPI: 2398667334<br/>
+        Phone: (527)275-8173x1499<br/>
+        Fax: 781-546-2789
+    </div>
+</body>
+</html>
+
+--===============2919442637371433101==--

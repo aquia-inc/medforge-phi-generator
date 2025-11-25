@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============1884248492581339369=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Velez, Barbara
+From: Nicholas Brooks <melissaadkins@example.org>
+To: Monique Roberts <james31@example.com>
+Date: Tue, 25 Nov 2025 12:25:44 
+Message-ID: <374189@healthsystem.org>
+
+--===============1884248492581339369==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Roberts,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Barbara Velez
+Date of Birth: 03/20/1972
+MRN: MRN869318
+Phone: 001-408-410-7329x09502
+
+Current Diagnoses:
+- Type 2 Diabetes Mellitus (ICD-10: E11.9)
+- Hyperlipidemia (ICD-10: E78.5)
+- Major Depressive Disorder (ICD-10: F33.1)
+- Essential Hypertension (ICD-10: I10)
+
+Current Medications:
+- Lisinopril 10mg daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Nicholas Brooks, NP
+Gastroenterology
+NPI: 2811670971
+Phone: 001-976-364-8559
+Fax: (275)903-3446x00893
+
+--===============1884248492581339369==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Roberts,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Barbara Velez</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>03/20/1972</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN869318</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-408-410-7329x09502</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Type 2 Diabetes Mellitus (ICD-10: E11.9)</li>
+<li>Hyperlipidemia (ICD-10: E78.5)</li>
+<li>Major Depressive Disorder (ICD-10: F33.1)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Lisinopril 10mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Type 2 Diabetes Mellitus.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Nicholas Brooks, NP</strong><br/>
+        Gastroenterology<br/>
+        NPI: 2811670971<br/>
+        Phone: 001-976-364-8559<br/>
+        Fax: (275)903-3446x00893
+    </div>
+</body>
+</html>
+
+--===============1884248492581339369==--

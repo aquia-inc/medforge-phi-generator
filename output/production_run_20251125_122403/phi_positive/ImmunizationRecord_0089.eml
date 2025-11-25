@@ -1,0 +1,154 @@
+Content-Type: multipart/alternative; boundary="===============8850908728826987163=="
+MIME-Version: 1.0
+Subject: Your Immunization Record - South Robert Hospital
+From: South Robert Hospital <records@southroberthospital.org>
+To: Cindy Andrews <sliu@example.org>
+Date: Tue, 25 Nov 2025 12:24:13 +0000
+Message-ID: <242315557@healthsystem.org>
+
+--===============8850908728826987163==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+South Robert Hospital - Official Immunization Record
+
+Patient: Cindy Andrews
+DOB: 03/10/1941
+MRN: MRN318985
+
+Vaccination History:
+- Influenza (Flu) (Annual) - 11/24/2025 - Lot: FL99661
+- COVID-19 (Pfizer-BioNTech) (Booster) - 02/07/2025 - Lot: EN8079
+- Tdap (Tetanus, Diphtheria, Pertussis) (Booster) - 10/26/2024 - Lot: TD59487
+- COVID-19 (Pfizer-BioNTech) (Dose 2) - 04/10/2024 - Lot: FF5095
+- COVID-19 (Pfizer-BioNTech) (Dose 1) - 04/12/2023 - Lot: FF9425
+
+Primary Care Provider: Edward Murphy, NP
+South Robert Hospital | 917.244.3384
+
+---
+This document contains Protected Health Information (PHI).
+
+--===============8850908728826987163==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+    <table width="100%" cellspacing="0" cellpadding="0" style="max-width: 800px; margin: 0 auto; background-color: #ffffff; border: 1px solid #ddd;">
+        <!-- Header -->
+        <tr>
+            <td style="background-color: #2E7D32; padding: 20px; text-align: center;">
+                <h1 style="color: #ffffff; margin: 0; font-size: 22px;">South Robert Hospital</h1>
+                <p style="color: #ffffff; margin: 5px 0 0 0; font-size: 14px;">Official Immunization Record</p>
+            </td>
+        </tr>
+
+        <!-- Patient Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f0f7f0; border-bottom: 2px solid #2E7D32;">
+                <table width="100%" cellspacing="0">
+                    <tr>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>Patient Name:</strong> Cindy Andrews</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Date of Birth:</strong> 03/10/1941</p>
+                        </td>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>MRN:</strong> MRN318985</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Record Date:</strong> 11/25/2025</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Vaccine Table -->
+        <tr>
+            <td style="padding: 20px;">
+                <h2 style="color: #2E7D32; font-size: 18px; margin: 0 0 15px 0;">Vaccination History</h2>
+                <table width="100%" cellspacing="0" cellpadding="0" style="border: 1px solid #ddd; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #2E7D32; color: #ffffff;">
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Vaccine</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Dose</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Date</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Lot #</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Site</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Influenza (Flu)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Annual</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">11/24/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FL99661</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Pfizer-BioNTech)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Booster</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">02/07/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EN8079</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Tdap (Tetanus, Diphtheria, Pertussis)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Booster</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">10/26/2024</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">TD59487</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Pfizer-BioNTech)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 2</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">04/10/2024</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FF5095</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Pfizer-BioNTech)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 1</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">04/12/2023</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FF9425</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Provider Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f8f8f8;">
+                <p style="margin: 0; font-size: 13px; color: #666;">
+                    <strong>Primary Care Provider:</strong> Edward Murphy, NP<br>
+                    South Robert Hospital | 917.244.3384
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 15px; background-color: #333; color: #ffffff; font-size: 11px; text-align: center;">
+                This document contains Protected Health Information (PHI). South Robert Hospital | South Robert, VA
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+--===============8850908728826987163==--

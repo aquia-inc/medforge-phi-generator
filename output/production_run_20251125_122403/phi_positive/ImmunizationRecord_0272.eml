@@ -1,0 +1,145 @@
+Content-Type: multipart/alternative; boundary="===============2812102068308311501=="
+MIME-Version: 1.0
+Subject: Your Immunization Record - Heatherberg Community Hospital
+From: Heatherberg Community Hospital <records@heatherbergcommunityhospital.org>
+To: Daniel Fischer <emilypeterson@example.org>
+Date: Tue, 25 Nov 2025 12:25:44 +0000
+Message-ID: <182665529@healthsystem.org>
+
+--===============2812102068308311501==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Heatherberg Community Hospital - Official Immunization Record
+
+Patient: Daniel Fischer
+DOB: 12/23/1945
+MRN: MRN798278
+
+Vaccination History:
+- Influenza (Flu) (Annual) - 11/24/2025 - Lot: FL30375
+- COVID-19 (Johnson & Johnson) (Booster) - 02/28/2025 - Lot: EP6517
+- COVID-19 (Johnson & Johnson) (Dose 2) - 10/03/2024 - Lot: EN2063
+- COVID-19 (Johnson & Johnson) (Dose 1) - 12/20/2022 - Lot: EP7999
+
+Primary Care Provider: Justin Goodwin, NP
+Heatherberg Community Hospital | (939)206-3884
+
+---
+This document contains Protected Health Information (PHI).
+
+--===============2812102068308311501==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+    <table width="100%" cellspacing="0" cellpadding="0" style="max-width: 800px; margin: 0 auto; background-color: #ffffff; border: 1px solid #ddd;">
+        <!-- Header -->
+        <tr>
+            <td style="background-color: #2E7D32; padding: 20px; text-align: center;">
+                <h1 style="color: #ffffff; margin: 0; font-size: 22px;">Heatherberg Community Hospital</h1>
+                <p style="color: #ffffff; margin: 5px 0 0 0; font-size: 14px;">Official Immunization Record</p>
+            </td>
+        </tr>
+
+        <!-- Patient Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f0f7f0; border-bottom: 2px solid #2E7D32;">
+                <table width="100%" cellspacing="0">
+                    <tr>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>Patient Name:</strong> Daniel Fischer</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Date of Birth:</strong> 12/23/1945</p>
+                        </td>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>MRN:</strong> MRN798278</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Record Date:</strong> 11/25/2025</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Vaccine Table -->
+        <tr>
+            <td style="padding: 20px;">
+                <h2 style="color: #2E7D32; font-size: 18px; margin: 0 0 15px 0;">Vaccination History</h2>
+                <table width="100%" cellspacing="0" cellpadding="0" style="border: 1px solid #ddd; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #2E7D32; color: #ffffff;">
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Vaccine</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Dose</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Date</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Lot #</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Site</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Influenza (Flu)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Annual</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">11/24/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FL30375</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Johnson & Johnson)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Booster</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">02/28/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EP6517</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Johnson & Johnson)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 2</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">10/03/2024</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EN2063</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Johnson & Johnson)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 1</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">12/20/2022</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EP7999</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Provider Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f8f8f8;">
+                <p style="margin: 0; font-size: 13px; color: #666;">
+                    <strong>Primary Care Provider:</strong> Justin Goodwin, NP<br>
+                    Heatherberg Community Hospital | (939)206-3884
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 15px; background-color: #333; color: #ffffff; font-size: 11px; text-align: center;">
+                This document contains Protected Health Information (PHI). Heatherberg Community Hospital | Heatherberg, MD
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+--===============2812102068308311501==--

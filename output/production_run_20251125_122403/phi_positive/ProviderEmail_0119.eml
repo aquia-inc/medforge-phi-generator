@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============3353003395172269332=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Neal, Gerald
+From: Elizabeth Gonzalez <kwhite@example.org>
+To: Jodi Reyes <efletcher@example.org>
+Date: Tue, 25 Nov 2025 12:24:13 
+Message-ID: <896176@healthsystem.org>
+
+--===============3353003395172269332==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Reyes,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Gerald Neal
+Date of Birth: 07/21/1971
+MRN: MRN244412
+Phone: 8118716813
+
+Current Diagnoses:
+- Osteoarthritis (ICD-10: M19.90)
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+
+Current Medications:
+- Lisinopril 10mg daily
+- Atorvastatin 20mg daily
+- Levothyroxine 50mcg daily
+
+Allergies: Aspirin, Ibuprofen
+
+I would appreciate your input on management of this patient's Osteoarthritis.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Elizabeth Gonzalez, MD
+Family Medicine
+NPI: 2567930194
+Phone: 001-570-529-3652x3275
+Fax: +1-210-624-8398x80322
+
+--===============3353003395172269332==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Reyes,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Gerald Neal</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>07/21/1971</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN244412</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>8118716813</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Osteoarthritis (ICD-10: M19.90)</li>
+<li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Lisinopril 10mg daily</li>
+<li>Atorvastatin 20mg daily</li>
+<li>Levothyroxine 50mcg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Aspirin, Ibuprofen</p>
+
+    <p>I would appreciate your input on management of this patient's Osteoarthritis.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Elizabeth Gonzalez, MD</strong><br/>
+        Family Medicine<br/>
+        NPI: 2567930194<br/>
+        Phone: 001-570-529-3652x3275<br/>
+        Fax: +1-210-624-8398x80322
+    </div>
+</body>
+</html>
+
+--===============3353003395172269332==--

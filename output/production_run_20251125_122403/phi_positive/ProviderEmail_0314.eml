@@ -1,0 +1,106 @@
+Content-Type: multipart/alternative; boundary="===============7772864192111130674=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Garrison, Angel
+From: Isaac Adams <karencox@example.net>
+To: Brianna Stanton <tracy57@example.net>
+Date: Tue, 25 Nov 2025 12:25:45 
+Message-ID: <689730@healthsystem.org>
+
+--===============7772864192111130674==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Stanton,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Angel Garrison
+Date of Birth: 12/08/1960
+MRN: MRN319689
+Phone: +1-534-319-2568x349
+
+Current Diagnoses:
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+
+Current Medications:
+- Gabapentin 300mg three times daily
+- Metoprolol 25mg twice daily
+- Omeprazole 20mg daily
+- Sertraline 50mg daily
+- Losartan 50mg daily
+
+Allergies: Latex, Bee stings
+
+I would appreciate your input on management of this patient's Gastroesophageal Reflux Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Isaac Adams, MD
+Psychiatry
+NPI: 3022901318
+Phone: 001-693-945-7963
+Fax: 8663812480
+
+--===============7772864192111130674==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Stanton,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Angel Garrison</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>12/08/1960</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN319689</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>+1-534-319-2568x349</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Gabapentin 300mg three times daily</li>
+<li>Metoprolol 25mg twice daily</li>
+<li>Omeprazole 20mg daily</li>
+<li>Sertraline 50mg daily</li>
+<li>Losartan 50mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Latex, Bee stings</p>
+
+    <p>I would appreciate your input on management of this patient's Gastroesophageal Reflux Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Isaac Adams, MD</strong><br/>
+        Psychiatry<br/>
+        NPI: 3022901318<br/>
+        Phone: 001-693-945-7963<br/>
+        Fax: 8663812480
+    </div>
+</body>
+</html>
+
+--===============7772864192111130674==--

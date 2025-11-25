@@ -1,0 +1,106 @@
+Content-Type: multipart/alternative; boundary="===============6245068973196789166=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Bryant, Tom
+From: Stephen Lopez <lhamilton@example.com>
+To: Jamie Davis <agomez@example.com>
+Date: Tue, 25 Nov 2025 12:24:43 
+Message-ID: <202713@healthsystem.org>
+
+--===============6245068973196789166==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Davis,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Tom Bryant
+Date of Birth: 09/07/2004
+MRN: MRN236657
+Phone: 001-623-220-7558x067
+
+Current Diagnoses:
+- Hyperlipidemia (ICD-10: E78.5)
+- Hypothyroidism (ICD-10: E03.9)
+
+Current Medications:
+- Gabapentin 300mg three times daily
+- Sertraline 50mg daily
+- Losartan 50mg daily
+- Metformin 500mg twice daily
+
+Allergies: Penicillin, Aspirin
+
+I would appreciate your input on management of this patient's Hyperlipidemia.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Stephen Lopez, NP
+Endocrinology
+NPI: 5475654323
+Phone: 001-758-380-4367x7143
+Fax: 267.300.6151x215
+
+--===============6245068973196789166==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Davis,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Tom Bryant</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>09/07/2004</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN236657</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-623-220-7558x067</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hyperlipidemia (ICD-10: E78.5)</li>
+<li>Hypothyroidism (ICD-10: E03.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Gabapentin 300mg three times daily</li>
+<li>Sertraline 50mg daily</li>
+<li>Losartan 50mg daily</li>
+<li>Metformin 500mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Penicillin, Aspirin</p>
+
+    <p>I would appreciate your input on management of this patient's Hyperlipidemia.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Stephen Lopez, NP</strong><br/>
+        Endocrinology<br/>
+        NPI: 5475654323<br/>
+        Phone: 001-758-380-4367x7143<br/>
+        Fax: 267.300.6151x215
+    </div>
+</body>
+</html>
+
+--===============6245068973196789166==--

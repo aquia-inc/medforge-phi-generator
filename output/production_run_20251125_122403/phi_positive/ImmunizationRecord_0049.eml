@@ -1,0 +1,136 @@
+Content-Type: multipart/alternative; boundary="===============7153686983213783939=="
+MIME-Version: 1.0
+Subject: Your Immunization Record - Rollinsstad Clinic
+From: Rollinsstad Clinic <records@rollinsstadclinic.org>
+To: Jonathan Payne <theresa13@example.com>
+Date: Tue, 25 Nov 2025 12:24:05 +0000
+Message-ID: <984399886@healthsystem.org>
+
+--===============7153686983213783939==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Rollinsstad Clinic - Official Immunization Record
+
+Patient: Jonathan Payne
+DOB: 10/14/1979
+MRN: MRN428545
+
+Vaccination History:
+- COVID-19 (Pfizer-BioNTech) (Dose 2) - 09/01/2024 - Lot: FF5918
+- Tdap (Tetanus, Diphtheria, Pertussis) (Booster) - 09/10/2023 - Lot: TD42025
+- COVID-19 (Pfizer-BioNTech) (Dose 1) - 03/20/2023 - Lot: EL5571
+
+Primary Care Provider: Joshua Vance, PA
+Rollinsstad Clinic | 836-834-6385x83425
+
+---
+This document contains Protected Health Information (PHI).
+
+--===============7153686983213783939==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+    <table width="100%" cellspacing="0" cellpadding="0" style="max-width: 800px; margin: 0 auto; background-color: #ffffff; border: 1px solid #ddd;">
+        <!-- Header -->
+        <tr>
+            <td style="background-color: #2E7D32; padding: 20px; text-align: center;">
+                <h1 style="color: #ffffff; margin: 0; font-size: 22px;">Rollinsstad Clinic</h1>
+                <p style="color: #ffffff; margin: 5px 0 0 0; font-size: 14px;">Official Immunization Record</p>
+            </td>
+        </tr>
+
+        <!-- Patient Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f0f7f0; border-bottom: 2px solid #2E7D32;">
+                <table width="100%" cellspacing="0">
+                    <tr>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>Patient Name:</strong> Jonathan Payne</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Date of Birth:</strong> 10/14/1979</p>
+                        </td>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>MRN:</strong> MRN428545</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Record Date:</strong> 11/25/2025</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Vaccine Table -->
+        <tr>
+            <td style="padding: 20px;">
+                <h2 style="color: #2E7D32; font-size: 18px; margin: 0 0 15px 0;">Vaccination History</h2>
+                <table width="100%" cellspacing="0" cellpadding="0" style="border: 1px solid #ddd; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #2E7D32; color: #ffffff;">
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Vaccine</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Dose</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Date</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Lot #</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Site</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Pfizer-BioNTech)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 2</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">09/01/2024</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FF5918</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Tdap (Tetanus, Diphtheria, Pertussis)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Booster</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">09/10/2023</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">TD42025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Pfizer-BioNTech)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 1</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">03/20/2023</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EL5571</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Provider Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f8f8f8;">
+                <p style="margin: 0; font-size: 13px; color: #666;">
+                    <strong>Primary Care Provider:</strong> Joshua Vance, PA<br>
+                    Rollinsstad Clinic | 836-834-6385x83425
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 15px; background-color: #333; color: #ffffff; font-size: 11px; text-align: center;">
+                This document contains Protected Health Information (PHI). Rollinsstad Clinic | Rollinsstad, FL
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+--===============7153686983213783939==--

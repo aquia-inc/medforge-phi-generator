@@ -1,0 +1,110 @@
+Content-Type: multipart/alternative; boundary="===============6956199792608968664=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Moore, Sharon
+From: Alexis Haynes <shepardlaura@example.net>
+To: Summer Brown <adamdiaz@example.com>
+Date: Tue, 25 Nov 2025 12:24:13 
+Message-ID: <251371@healthsystem.org>
+
+--===============6956199792608968664==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Brown,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Sharon Moore
+Date of Birth: 01/05/1998
+MRN: MRN759831
+Phone: +1-438-941-3898x019
+
+Current Diagnoses:
+- Coronary Artery Disease (ICD-10: I25.10)
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+
+Current Medications:
+- Gabapentin 300mg three times daily
+- Losartan 50mg daily
+- Lisinopril 10mg daily
+- Amlodipine 5mg daily
+- Omeprazole 20mg daily
+
+Allergies: Bee stings, Latex, Codeine
+
+I would appreciate your input on management of this patient's Coronary Artery Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Alexis Haynes, DO
+Cardiology
+NPI: 9129976275
+Phone: 284-218-4796
+Fax: 211-647-6003x384
+
+--===============6956199792608968664==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Brown,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Sharon Moore</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>01/05/1998</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN759831</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>+1-438-941-3898x019</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Coronary Artery Disease (ICD-10: I25.10)</li>
+<li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+<li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Gabapentin 300mg three times daily</li>
+<li>Losartan 50mg daily</li>
+<li>Lisinopril 10mg daily</li>
+<li>Amlodipine 5mg daily</li>
+<li>Omeprazole 20mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Bee stings, Latex, Codeine</p>
+
+    <p>I would appreciate your input on management of this patient's Coronary Artery Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Alexis Haynes, DO</strong><br/>
+        Cardiology<br/>
+        NPI: 9129976275<br/>
+        Phone: 284-218-4796<br/>
+        Fax: 211-647-6003x384
+    </div>
+</body>
+</html>
+
+--===============6956199792608968664==--

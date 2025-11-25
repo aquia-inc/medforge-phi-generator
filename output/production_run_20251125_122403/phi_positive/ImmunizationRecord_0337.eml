@@ -1,0 +1,172 @@
+Content-Type: multipart/alternative; boundary="===============5690366265905919462=="
+MIME-Version: 1.0
+Subject: Your Immunization Record - Alanmouth Clinic
+From: Alanmouth Clinic <records@alanmouthclinic.org>
+To: Lauren Ellis <bkaiser@example.net>
+Date: Tue, 25 Nov 2025 12:26:04 +0000
+Message-ID: <966720453@healthsystem.org>
+
+--===============5690366265905919462==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Alanmouth Clinic - Official Immunization Record
+
+Patient: Lauren Ellis
+DOB: 07/24/1992
+MRN: MRN744465
+
+Vaccination History:
+- Influenza (Flu) (Annual) - 11/24/2025 - Lot: FL71121
+- Shingrix (Herpes Zoster) (Dose 2) - 10/13/2025 - Lot: SH89588
+- Shingrix (Herpes Zoster) (Dose 1) - 08/07/2024 - Lot: SH66516
+- COVID-19 (Johnson & Johnson) (Dose 2) - 07/24/2024 - Lot: EN6815
+- Pneumococcal (PPSV23) (Single) - 07/17/2024 - Lot: PN15908
+- COVID-19 (Johnson & Johnson) (Dose 1) - 05/03/2023 - Lot: FF1387
+- Hepatitis B (Series Complete) - 12/04/2015 - Lot: HB37697
+
+Primary Care Provider: Marc Shaw, MD
+Alanmouth Clinic | 001-525-834-6021
+
+---
+This document contains Protected Health Information (PHI).
+
+--===============5690366265905919462==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+    <table width="100%" cellspacing="0" cellpadding="0" style="max-width: 800px; margin: 0 auto; background-color: #ffffff; border: 1px solid #ddd;">
+        <!-- Header -->
+        <tr>
+            <td style="background-color: #2E7D32; padding: 20px; text-align: center;">
+                <h1 style="color: #ffffff; margin: 0; font-size: 22px;">Alanmouth Clinic</h1>
+                <p style="color: #ffffff; margin: 5px 0 0 0; font-size: 14px;">Official Immunization Record</p>
+            </td>
+        </tr>
+
+        <!-- Patient Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f0f7f0; border-bottom: 2px solid #2E7D32;">
+                <table width="100%" cellspacing="0">
+                    <tr>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>Patient Name:</strong> Lauren Ellis</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Date of Birth:</strong> 07/24/1992</p>
+                        </td>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>MRN:</strong> MRN744465</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Record Date:</strong> 11/25/2025</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Vaccine Table -->
+        <tr>
+            <td style="padding: 20px;">
+                <h2 style="color: #2E7D32; font-size: 18px; margin: 0 0 15px 0;">Vaccination History</h2>
+                <table width="100%" cellspacing="0" cellpadding="0" style="border: 1px solid #ddd; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #2E7D32; color: #ffffff;">
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Vaccine</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Dose</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Date</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Lot #</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Site</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Influenza (Flu)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Annual</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">11/24/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FL71121</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Shingrix (Herpes Zoster)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 2</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">10/13/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">SH89588</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Shingrix (Herpes Zoster)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 1</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">08/07/2024</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">SH66516</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Johnson & Johnson)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 2</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">07/24/2024</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EN6815</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Pneumococcal (PPSV23)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Single</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">07/17/2024</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">PN15908</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Johnson & Johnson)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 1</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">05/03/2023</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FF1387</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Hepatitis B</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Series Complete</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">12/04/2015</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">HB37697</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Provider Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f8f8f8;">
+                <p style="margin: 0; font-size: 13px; color: #666;">
+                    <strong>Primary Care Provider:</strong> Marc Shaw, MD<br>
+                    Alanmouth Clinic | 001-525-834-6021
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 15px; background-color: #333; color: #ffffff; font-size: 11px; text-align: center;">
+                This document contains Protected Health Information (PHI). Alanmouth Clinic | Alanmouth, MT
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+--===============5690366265905919462==--

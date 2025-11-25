@@ -1,0 +1,172 @@
+Content-Type: multipart/alternative; boundary="===============4346857986599247621=="
+MIME-Version: 1.0
+Subject: Your Immunization Record - Hoodview Medical Center
+From: Hoodview Medical Center <records@hoodviewmedicalcenter.org>
+To: Christina Swanson <adavis@example.com>
+Date: Tue, 25 Nov 2025 12:24:04 +0000
+Message-ID: <455574973@healthsystem.org>
+
+--===============4346857986599247621==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Hoodview Medical Center - Official Immunization Record
+
+Patient: Christina Swanson
+DOB: 07/24/1959
+MRN: MRN344815
+
+Vaccination History:
+- Influenza (Flu) (Annual) - 11/24/2025 - Lot: FL63003
+- COVID-19 (Moderna) (Booster) - 01/22/2025 - Lot: EN2143
+- Shingrix (Herpes Zoster) (Dose 2) - 05/21/2024 - Lot: SH34153
+- COVID-19 (Moderna) (Dose 2) - 12/17/2023 - Lot: EL1336
+- COVID-19 (Moderna) (Dose 1) - 05/22/2023 - Lot: EL2130
+- Shingrix (Herpes Zoster) (Dose 1) - 03/20/2023 - Lot: SH32167
+- Hepatitis B (Series Complete) - 04/11/2017 - Lot: HB30189
+
+Primary Care Provider: Cheyenne Gardner, PA
+Hoodview Medical Center | 558.537.4677x3333
+
+---
+This document contains Protected Health Information (PHI).
+
+--===============4346857986599247621==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+    <table width="100%" cellspacing="0" cellpadding="0" style="max-width: 800px; margin: 0 auto; background-color: #ffffff; border: 1px solid #ddd;">
+        <!-- Header -->
+        <tr>
+            <td style="background-color: #2E7D32; padding: 20px; text-align: center;">
+                <h1 style="color: #ffffff; margin: 0; font-size: 22px;">Hoodview Medical Center</h1>
+                <p style="color: #ffffff; margin: 5px 0 0 0; font-size: 14px;">Official Immunization Record</p>
+            </td>
+        </tr>
+
+        <!-- Patient Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f0f7f0; border-bottom: 2px solid #2E7D32;">
+                <table width="100%" cellspacing="0">
+                    <tr>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>Patient Name:</strong> Christina Swanson</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Date of Birth:</strong> 07/24/1959</p>
+                        </td>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>MRN:</strong> MRN344815</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Record Date:</strong> 11/25/2025</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Vaccine Table -->
+        <tr>
+            <td style="padding: 20px;">
+                <h2 style="color: #2E7D32; font-size: 18px; margin: 0 0 15px 0;">Vaccination History</h2>
+                <table width="100%" cellspacing="0" cellpadding="0" style="border: 1px solid #ddd; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #2E7D32; color: #ffffff;">
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Vaccine</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Dose</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Date</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Lot #</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Site</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Influenza (Flu)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Annual</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">11/24/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FL63003</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Moderna)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Booster</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">01/22/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EN2143</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Shingrix (Herpes Zoster)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 2</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">05/21/2024</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">SH34153</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Moderna)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 2</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">12/17/2023</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EL1336</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Moderna)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 1</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">05/22/2023</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EL2130</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Shingrix (Herpes Zoster)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 1</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">03/20/2023</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">SH32167</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Hepatitis B</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Series Complete</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">04/11/2017</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">HB30189</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Provider Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f8f8f8;">
+                <p style="margin: 0; font-size: 13px; color: #666;">
+                    <strong>Primary Care Provider:</strong> Cheyenne Gardner, PA<br>
+                    Hoodview Medical Center | 558.537.4677x3333
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 15px; background-color: #333; color: #ffffff; font-size: 11px; text-align: center;">
+                This document contains Protected Health Information (PHI). Hoodview Medical Center | Hoodview, AL
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+--===============4346857986599247621==--

@@ -1,0 +1,100 @@
+Content-Type: multipart/alternative; boundary="===============6090623945880521260=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Freeman, Kyle
+From: Joan Hoffman <ihendricks@example.com>
+To: Lynn Williams <kelli33@example.net>
+Date: Tue, 25 Nov 2025 12:24:05 
+Message-ID: <392036@healthsystem.org>
+
+--===============6090623945880521260==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Williams,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Kyle Freeman
+Date of Birth: 10/26/1969
+MRN: MRN257966
+Phone: (338)361-9668x8079
+
+Current Diagnoses:
+- Major Depressive Disorder (ICD-10: F33.1)
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+
+Current Medications:
+- Gabapentin 300mg three times daily
+
+Allergies: Penicillin, Morphine, Aspirin
+
+I would appreciate your input on management of this patient's Major Depressive Disorder.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Joan Hoffman, DO
+Endocrinology
+NPI: 8672987988
+Phone: (707)365-5664x582
+Fax: 375.762.7715x922
+
+--===============6090623945880521260==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Williams,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Kyle Freeman</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>10/26/1969</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN257966</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(338)361-9668x8079</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Major Depressive Disorder (ICD-10: F33.1)</li>
+<li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Gabapentin 300mg three times daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Penicillin, Morphine, Aspirin</p>
+
+    <p>I would appreciate your input on management of this patient's Major Depressive Disorder.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Joan Hoffman, DO</strong><br/>
+        Endocrinology<br/>
+        NPI: 8672987988<br/>
+        Phone: (707)365-5664x582<br/>
+        Fax: 375.762.7715x922
+    </div>
+</body>
+</html>
+
+--===============6090623945880521260==--

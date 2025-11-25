@@ -1,0 +1,104 @@
+Content-Type: multipart/alternative; boundary="===============3344563235693089371=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Mitchell, Tara
+From: Jason Burns <gmullins@example.com>
+To: Joshua Cummings <mahoneycynthia@example.com>
+Date: Tue, 25 Nov 2025 12:24:13 
+Message-ID: <659509@healthsystem.org>
+
+--===============3344563235693089371==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Cummings,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Tara Mitchell
+Date of Birth: 06/27/2003
+MRN: MRN145669
+Phone: (220)303-6560x580
+
+Current Diagnoses:
+- Essential Hypertension (ICD-10: I10)
+- Gastroesophageal Reflux Disease (ICD-10: K21.9)
+- Osteoarthritis (ICD-10: M19.90)
+
+Current Medications:
+- Metformin 500mg twice daily
+- Metoprolol 25mg twice daily
+
+Allergies: None known
+
+I would appreciate your input on management of this patient's Essential Hypertension.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Jason Burns, NP
+Cardiology
+NPI: 1572784090
+Phone: 001-404-733-0367x9889
+Fax: (263)649-6261
+
+--===============3344563235693089371==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Cummings,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Tara Mitchell</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>06/27/2003</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN145669</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>(220)303-6560x580</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Essential Hypertension (ICD-10: I10)</li>
+<li>Gastroesophageal Reflux Disease (ICD-10: K21.9)</li>
+<li>Osteoarthritis (ICD-10: M19.90)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Metformin 500mg twice daily</li>
+<li>Metoprolol 25mg twice daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> None known</p>
+
+    <p>I would appreciate your input on management of this patient's Essential Hypertension.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Jason Burns, NP</strong><br/>
+        Cardiology<br/>
+        NPI: 1572784090<br/>
+        Phone: 001-404-733-0367x9889<br/>
+        Fax: (263)649-6261
+    </div>
+</body>
+</html>
+
+--===============3344563235693089371==--

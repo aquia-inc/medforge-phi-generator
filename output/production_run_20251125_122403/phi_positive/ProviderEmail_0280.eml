@@ -1,0 +1,100 @@
+Content-Type: multipart/alternative; boundary="===============7096595112966185742=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Little, Joe
+From: Michelle Allen <garciaamy@example.net>
+To: Jerry Delacruz <andrefigueroa@example.net>
+Date: Tue, 25 Nov 2025 12:25:45 
+Message-ID: <597176@healthsystem.org>
+
+--===============7096595112966185742==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Delacruz,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Joe Little
+Date of Birth: 08/15/1930
+MRN: MRN247767
+Phone: +1-716-379-4941x225
+
+Current Diagnoses:
+- Essential Hypertension (ICD-10: I10)
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+
+Current Medications:
+- None
+
+Allergies: Sulfa drugs, Aspirin, Shellfish
+
+I would appreciate your input on management of this patient's Essential Hypertension.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Michelle Allen, MD
+Internal Medicine
+NPI: 2063959951
+Phone: 001-859-291-2284
+Fax: 959-809-3467x72710
+
+--===============7096595112966185742==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Delacruz,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Joe Little</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>08/15/1930</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN247767</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>+1-716-379-4941x225</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Essential Hypertension (ICD-10: I10)</li>
+<li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>None</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Sulfa drugs, Aspirin, Shellfish</p>
+
+    <p>I would appreciate your input on management of this patient's Essential Hypertension.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Michelle Allen, MD</strong><br/>
+        Internal Medicine<br/>
+        NPI: 2063959951<br/>
+        Phone: 001-859-291-2284<br/>
+        Fax: 959-809-3467x72710
+    </div>
+</body>
+</html>
+
+--===============7096595112966185742==--

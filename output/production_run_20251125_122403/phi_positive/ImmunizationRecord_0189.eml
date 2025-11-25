@@ -1,0 +1,172 @@
+Content-Type: multipart/alternative; boundary="===============8212864657775647302=="
+MIME-Version: 1.0
+Subject: Your Immunization Record - South Kathleen Hospital
+From: South Kathleen Hospital <records@southkathleenhospital.org>
+To: James Griffin <odavis@example.org>
+Date: Tue, 25 Nov 2025 12:24:43 +0000
+Message-ID: <970886719@healthsystem.org>
+
+--===============8212864657775647302==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+South Kathleen Hospital - Official Immunization Record
+
+Patient: James Griffin
+DOB: 04/18/1940
+MRN: MRN836586
+
+Vaccination History:
+- Influenza (Flu) (Annual) - 11/24/2025 - Lot: FL90754
+- COVID-19 (Johnson & Johnson) (Booster) - 09/06/2025 - Lot: EP3911
+- Pneumococcal (PPSV23) (Single) - 07/27/2024 - Lot: PN79736
+- COVID-19 (Johnson & Johnson) (Dose 2) - 05/02/2024 - Lot: EL6997
+- COVID-19 (Johnson & Johnson) (Dose 1) - 11/26/2022 - Lot: FF8846
+- Hepatitis B (Series Complete) - 03/25/2020 - Lot: HB74494
+- Tdap (Tetanus, Diphtheria, Pertussis) (Booster) - 03/30/2018 - Lot: TD21135
+
+Primary Care Provider: Fernando Webster, DO
+South Kathleen Hospital | +1-551-442-4407x2739
+
+---
+This document contains Protected Health Information (PHI).
+
+--===============8212864657775647302==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+    <table width="100%" cellspacing="0" cellpadding="0" style="max-width: 800px; margin: 0 auto; background-color: #ffffff; border: 1px solid #ddd;">
+        <!-- Header -->
+        <tr>
+            <td style="background-color: #2E7D32; padding: 20px; text-align: center;">
+                <h1 style="color: #ffffff; margin: 0; font-size: 22px;">South Kathleen Hospital</h1>
+                <p style="color: #ffffff; margin: 5px 0 0 0; font-size: 14px;">Official Immunization Record</p>
+            </td>
+        </tr>
+
+        <!-- Patient Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f0f7f0; border-bottom: 2px solid #2E7D32;">
+                <table width="100%" cellspacing="0">
+                    <tr>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>Patient Name:</strong> James Griffin</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Date of Birth:</strong> 04/18/1940</p>
+                        </td>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>MRN:</strong> MRN836586</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Record Date:</strong> 11/25/2025</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Vaccine Table -->
+        <tr>
+            <td style="padding: 20px;">
+                <h2 style="color: #2E7D32; font-size: 18px; margin: 0 0 15px 0;">Vaccination History</h2>
+                <table width="100%" cellspacing="0" cellpadding="0" style="border: 1px solid #ddd; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #2E7D32; color: #ffffff;">
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Vaccine</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Dose</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Date</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Lot #</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Site</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Influenza (Flu)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Annual</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">11/24/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FL90754</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Johnson & Johnson)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Booster</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">09/06/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EP3911</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Pneumococcal (PPSV23)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Single</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">07/27/2024</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">PN79736</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Johnson & Johnson)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 2</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">05/02/2024</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EL6997</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Johnson & Johnson)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 1</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">11/26/2022</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FF8846</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Hepatitis B</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Series Complete</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">03/25/2020</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">HB74494</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Tdap (Tetanus, Diphtheria, Pertussis)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Booster</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">03/30/2018</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">TD21135</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Provider Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f8f8f8;">
+                <p style="margin: 0; font-size: 13px; color: #666;">
+                    <strong>Primary Care Provider:</strong> Fernando Webster, DO<br>
+                    South Kathleen Hospital | +1-551-442-4407x2739
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 15px; background-color: #333; color: #ffffff; font-size: 11px; text-align: center;">
+                This document contains Protected Health Information (PHI). South Kathleen Hospital | South Kathleen, TX
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+--===============8212864657775647302==--

@@ -1,0 +1,181 @@
+Content-Type: multipart/alternative; boundary="===============7169451275868766707=="
+MIME-Version: 1.0
+Subject: Your Immunization Record - Jermaineton Community Hospital
+From: Jermaineton Community Hospital <records@jermainetoncommunityhospital.org>
+To: Rickey Gordon <william28@example.net>
+Date: Tue, 25 Nov 2025 12:24:13 +0000
+Message-ID: <365102180@healthsystem.org>
+
+--===============7169451275868766707==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Jermaineton Community Hospital - Official Immunization Record
+
+Patient: Rickey Gordon
+DOB: 08/28/1953
+MRN: MRN293230
+
+Vaccination History:
+- Influenza (Flu) (Annual) - 11/24/2025 - Lot: FL20533
+- Shingrix (Herpes Zoster) (Dose 2) - 10/05/2025 - Lot: SH75919
+- Shingrix (Herpes Zoster) (Dose 1) - 10/02/2025 - Lot: SH40646
+- COVID-19 (Moderna) (Booster) - 03/03/2025 - Lot: EN4458
+- COVID-19 (Moderna) (Dose 2) - 12/18/2023 - Lot: EN4696
+- COVID-19 (Moderna) (Dose 1) - 04/18/2023 - Lot: EN6147
+- Pneumococcal (PPSV23) (Single) - 02/17/2022 - Lot: PN53806
+- Tdap (Tetanus, Diphtheria, Pertussis) (Booster) - 12/08/2020 - Lot: TD89128
+
+Primary Care Provider: Jason Watson, MD
+Jermaineton Community Hospital | +1-720-684-5518x84165
+
+---
+This document contains Protected Health Information (PHI).
+
+--===============7169451275868766707==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+    <table width="100%" cellspacing="0" cellpadding="0" style="max-width: 800px; margin: 0 auto; background-color: #ffffff; border: 1px solid #ddd;">
+        <!-- Header -->
+        <tr>
+            <td style="background-color: #2E7D32; padding: 20px; text-align: center;">
+                <h1 style="color: #ffffff; margin: 0; font-size: 22px;">Jermaineton Community Hospital</h1>
+                <p style="color: #ffffff; margin: 5px 0 0 0; font-size: 14px;">Official Immunization Record</p>
+            </td>
+        </tr>
+
+        <!-- Patient Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f0f7f0; border-bottom: 2px solid #2E7D32;">
+                <table width="100%" cellspacing="0">
+                    <tr>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>Patient Name:</strong> Rickey Gordon</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Date of Birth:</strong> 08/28/1953</p>
+                        </td>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>MRN:</strong> MRN293230</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Record Date:</strong> 11/25/2025</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Vaccine Table -->
+        <tr>
+            <td style="padding: 20px;">
+                <h2 style="color: #2E7D32; font-size: 18px; margin: 0 0 15px 0;">Vaccination History</h2>
+                <table width="100%" cellspacing="0" cellpadding="0" style="border: 1px solid #ddd; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #2E7D32; color: #ffffff;">
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Vaccine</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Dose</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Date</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Lot #</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Site</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Influenza (Flu)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Annual</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">11/24/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FL20533</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Shingrix (Herpes Zoster)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 2</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">10/05/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">SH75919</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Shingrix (Herpes Zoster)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 1</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">10/02/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">SH40646</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Moderna)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Booster</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">03/03/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EN4458</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Moderna)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 2</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">12/18/2023</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EN4696</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Moderna)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 1</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">04/18/2023</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EN6147</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Pneumococcal (PPSV23)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Single</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">02/17/2022</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">PN53806</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Tdap (Tetanus, Diphtheria, Pertussis)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Booster</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">12/08/2020</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">TD89128</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Provider Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f8f8f8;">
+                <p style="margin: 0; font-size: 13px; color: #666;">
+                    <strong>Primary Care Provider:</strong> Jason Watson, MD<br>
+                    Jermaineton Community Hospital | +1-720-684-5518x84165
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 15px; background-color: #333; color: #ffffff; font-size: 11px; text-align: center;">
+                This document contains Protected Health Information (PHI). Jermaineton Community Hospital | Jermaineton, PR
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+--===============7169451275868766707==--

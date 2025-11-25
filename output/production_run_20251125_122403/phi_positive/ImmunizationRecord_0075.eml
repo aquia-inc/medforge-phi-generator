@@ -1,0 +1,154 @@
+Content-Type: multipart/alternative; boundary="===============3313473028451513734=="
+MIME-Version: 1.0
+Subject: Your Immunization Record - Macdonaldmouth Medical Center
+From: Macdonaldmouth Medical Center <records@macdonaldmouthmedicalcenter.org>
+To: Lisa Nichols <shelley95@example.com>
+Date: Tue, 25 Nov 2025 12:24:13 +0000
+Message-ID: <726208831@healthsystem.org>
+
+--===============3313473028451513734==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Macdonaldmouth Medical Center - Official Immunization Record
+
+Patient: Lisa Nichols
+DOB: 01/21/1996
+MRN: MRN259551
+
+Vaccination History:
+- Influenza (Flu) (Annual) - 11/24/2025 - Lot: FL57405
+- COVID-19 (Pfizer-BioNTech) (Booster) - 06/17/2025 - Lot: EP9706
+- COVID-19 (Pfizer-BioNTech) (Dose 2) - 03/20/2024 - Lot: EL8514
+- COVID-19 (Pfizer-BioNTech) (Dose 1) - 11/15/2023 - Lot: EL5269
+- Hepatitis B (Series Complete) - 04/19/2017 - Lot: HB98878
+
+Primary Care Provider: Laura Glover, DO
+Macdonaldmouth Medical Center | 897-866-4501x556
+
+---
+This document contains Protected Health Information (PHI).
+
+--===============3313473028451513734==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+    <table width="100%" cellspacing="0" cellpadding="0" style="max-width: 800px; margin: 0 auto; background-color: #ffffff; border: 1px solid #ddd;">
+        <!-- Header -->
+        <tr>
+            <td style="background-color: #2E7D32; padding: 20px; text-align: center;">
+                <h1 style="color: #ffffff; margin: 0; font-size: 22px;">Macdonaldmouth Medical Center</h1>
+                <p style="color: #ffffff; margin: 5px 0 0 0; font-size: 14px;">Official Immunization Record</p>
+            </td>
+        </tr>
+
+        <!-- Patient Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f0f7f0; border-bottom: 2px solid #2E7D32;">
+                <table width="100%" cellspacing="0">
+                    <tr>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>Patient Name:</strong> Lisa Nichols</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Date of Birth:</strong> 01/21/1996</p>
+                        </td>
+                        <td width="50%">
+                            <p style="margin: 0; font-size: 14px;"><strong>MRN:</strong> MRN259551</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px;"><strong>Record Date:</strong> 11/25/2025</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Vaccine Table -->
+        <tr>
+            <td style="padding: 20px;">
+                <h2 style="color: #2E7D32; font-size: 18px; margin: 0 0 15px 0;">Vaccination History</h2>
+                <table width="100%" cellspacing="0" cellpadding="0" style="border: 1px solid #ddd; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #2E7D32; color: #ffffff;">
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Vaccine</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Dose</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Date</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Lot #</th>
+                            <th style="padding: 12px; text-align: left; font-size: 13px;">Site</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Influenza (Flu)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Annual</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">11/24/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">FL57405</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Pfizer-BioNTech)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Booster</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">06/17/2025</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EP9706</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Pfizer-BioNTech)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 2</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">03/20/2024</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EL8514</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">COVID-19 (Pfizer-BioNTech)</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Dose 1</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">11/15/2023</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">EL5269</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Left Deltoid</td>
+                </tr>
+            
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Hepatitis B</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Series Complete</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">04/19/2017</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">HB98878</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e0e0e0;">Right Deltoid</td>
+                </tr>
+            
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <!-- Provider Info -->
+        <tr>
+            <td style="padding: 20px; background-color: #f8f8f8;">
+                <p style="margin: 0; font-size: 13px; color: #666;">
+                    <strong>Primary Care Provider:</strong> Laura Glover, DO<br>
+                    Macdonaldmouth Medical Center | 897-866-4501x556
+                </p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 15px; background-color: #333; color: #ffffff; font-size: 11px; text-align: center;">
+                This document contains Protected Health Information (PHI). Macdonaldmouth Medical Center | Macdonaldmouth, UT
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+--===============3313473028451513734==--

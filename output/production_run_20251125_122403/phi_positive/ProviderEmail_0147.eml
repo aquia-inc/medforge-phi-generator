@@ -1,0 +1,98 @@
+Content-Type: multipart/alternative; boundary="===============7630484377486993065=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Williams, Nathan
+From: Joshua Oneal <franklin29@example.org>
+To: Stephanie Hamilton <hoffmankenneth@example.org>
+Date: Tue, 25 Nov 2025 12:24:32 
+Message-ID: <271610@healthsystem.org>
+
+--===============7630484377486993065==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Hamilton,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Nathan Williams
+Date of Birth: 09/19/1992
+MRN: MRN287611
+Phone: 001-902-597-8356
+
+Current Diagnoses:
+- Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)
+
+Current Medications:
+- Sertraline 50mg daily
+
+Allergies: Bee stings, Penicillin, Latex
+
+I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Joshua Oneal, MD
+Psychiatry
+NPI: 5675780824
+Phone: 499.663.0152x6074
+Fax: 289.758.6040x27307
+
+--===============7630484377486993065==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Hamilton,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Nathan Williams</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>09/19/1992</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN287611</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>001-902-597-8356</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Chronic Obstructive Pulmonary Disease (ICD-10: J44.9)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Sertraline 50mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Bee stings, Penicillin, Latex</p>
+
+    <p>I would appreciate your input on management of this patient's Chronic Obstructive Pulmonary Disease.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Joshua Oneal, MD</strong><br/>
+        Psychiatry<br/>
+        NPI: 5675780824<br/>
+        Phone: 499.663.0152x6074<br/>
+        Fax: 289.758.6040x27307
+    </div>
+</body>
+</html>
+
+--===============7630484377486993065==--

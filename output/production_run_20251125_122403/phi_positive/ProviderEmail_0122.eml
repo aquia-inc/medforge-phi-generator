@@ -1,0 +1,106 @@
+Content-Type: multipart/alternative; boundary="===============6392179405853766922=="
+MIME-Version: 1.0
+Subject: Patient Consultation: Murray, Brooke
+From: Valerie Copeland <ian32@example.org>
+To: Justin Lee <tiffany94@example.com>
+Date: Tue, 25 Nov 2025 12:24:13 
+Message-ID: <300031@healthsystem.org>
+
+--===============6392179405853766922==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Dr. Lee,
+
+I am writing to consult with you regarding one of our mutual patients:
+
+Patient Name: Brooke Murray
+Date of Birth: 09/14/1953
+MRN: MRN739717
+Phone: 8218676340
+
+Current Diagnoses:
+- Hyperlipidemia (ICD-10: E78.5)
+- Essential Hypertension (ICD-10: I10)
+- Coronary Artery Disease (ICD-10: I25.10)
+- Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)
+
+Current Medications:
+- Amlodipine 5mg daily
+- Lisinopril 10mg daily
+
+Allergies: Morphine
+
+I would appreciate your input on management of this patient's Hyperlipidemia.
+Recent lab work shows some concerning trends that I believe warrant specialist evaluation.
+
+Would you be able to see this patient within the next 2-3 weeks?
+
+Please let me know your availability.
+
+Best regards,
+
+Valerie Copeland, PA
+Pulmonology
+NPI: 7958194633
+Phone: 638.388.0750
+Fax: 6089770175
+
+--===============6392179405853766922==
+Content-Type: text/html; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+<html>
+<head></head>
+<body style="font-family: Arial, sans-serif;">
+    <p>Dr. Lee,</p>
+
+    <p>I am writing to consult with you regarding one of our mutual patients:</p>
+
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+        <tr><td><strong>Patient Name:</strong></td><td>Brooke Murray</td></tr>
+        <tr><td><strong>Date of Birth:</strong></td><td>09/14/1953</td></tr>
+        <tr><td><strong>MRN:</strong></td><td>MRN739717</td></tr>
+        <tr><td><strong>Phone:</strong></td><td>8218676340</td></tr>
+    </table>
+
+    <h3>Current Diagnoses:</h3>
+    <ul>
+        <li>Hyperlipidemia (ICD-10: E78.5)</li>
+<li>Essential Hypertension (ICD-10: I10)</li>
+<li>Coronary Artery Disease (ICD-10: I25.10)</li>
+<li>Chronic Kidney Disease, Stage 3 (ICD-10: N18.3)</li>
+    </ul>
+
+    <h3>Current Medications:</h3>
+    <ul>
+        <li>Amlodipine 5mg daily</li>
+<li>Lisinopril 10mg daily</li>
+    </ul>
+
+    <p><strong>Allergies:</strong> Morphine</p>
+
+    <p>I would appreciate your input on management of this patient's Hyperlipidemia.
+    Recent lab work shows some concerning trends that I believe warrant specialist evaluation.</p>
+
+    <p>Would you be able to see this patient within the next 2-3 weeks?</p>
+
+    <p>Please let me know your availability.</p>
+
+    <p>Best regards,</p>
+
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+        <strong>Valerie Copeland, PA</strong><br/>
+        Pulmonology<br/>
+        NPI: 7958194633<br/>
+        Phone: 638.388.0750<br/>
+        Fax: 6089770175
+    </div>
+</body>
+</html>
+
+--===============6392179405853766922==--
