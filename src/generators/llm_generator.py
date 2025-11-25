@@ -1,7 +1,8 @@
 """
-LLM Generator using Claude 4.5 Sonnet with Structured Outputs
+LLM Generator using Claude 4.5 Sonnet
 Generates clinical narratives and template variations
 """
+import json
 import os
 from typing import List, Optional
 from pydantic import BaseModel, Field
@@ -52,7 +53,6 @@ class ClaudeGenerator:
 
         self.client = Anthropic(api_key=self.api_key)
         self.model = "claude-sonnet-4-5-20250929"
-        self.beta_header = "structured-outputs-2025-11-13"
 
     def generate_clinical_narrative(self, patient: dict, diagnoses: List[dict],
                                     medications: List[str], vitals: dict) -> ClinicalNarrative:
@@ -87,18 +87,29 @@ Requirements:
 """
 
         try:
-            response = self.client.beta.messages.parse(
+            json_prompt = prompt + """
+
+Return your response as valid JSON with these exact keys:
+{"subjective": "...", "objective": "...", "assessment": "...", "plan": "..."}"""
+
+            response = self.client.messages.create(
                 model=self.model,
                 max_tokens=1024,
-                betas=[self.beta_header],
                 messages=[{
                     "role": "user",
-                    "content": prompt
-                }],
-                output_format=ClinicalNarrative,
+                    "content": json_prompt
+                }]
             )
 
-            return response.parsed_output
+            # Parse JSON from response
+            text = response.content[0].text
+            # Extract JSON from response (handle markdown code blocks)
+            if "```json" in text:
+                text = text.split("```json")[1].split("```")[0]
+            elif "```" in text:
+                text = text.split("```")[1].split("```")[0]
+            data = json.loads(text.strip())
+            return ClinicalNarrative(**data)
 
         except Exception as e:
             print(f"Warning: Claude API error: {e}")
@@ -135,18 +146,28 @@ Requirements:
 """
 
         try:
-            response = self.client.beta.messages.parse(
+            json_prompt = prompt + """
+
+Return your response as valid JSON with these exact keys:
+{"subject": "...", "introduction": "...", "clinical_summary": "...", "consultation_request": "...", "closing_remarks": "..."}"""
+
+            response = self.client.messages.create(
                 model=self.model,
                 max_tokens=1024,
-                betas=[self.beta_header],
                 messages=[{
                     "role": "user",
-                    "content": prompt
-                }],
-                output_format=ProviderCorrespondence,
+                    "content": json_prompt
+                }]
             )
 
-            return response.parsed_output
+            # Parse JSON from response
+            text = response.content[0].text
+            if "```json" in text:
+                text = text.split("```json")[1].split("```")[0]
+            elif "```" in text:
+                text = text.split("```")[1].split("```")[0]
+            data = json.loads(text.strip())
+            return ProviderCorrespondence(**data)
 
         except Exception as e:
             print(f"Warning: Claude API error: {e}")
@@ -179,18 +200,28 @@ Requirements:
 """
 
         try:
-            response = self.client.beta.messages.parse(
+            json_prompt = prompt + """
+
+Return your response as valid JSON with these exact keys:
+{"greeting": "...", "body": "...", "closing": "..."}"""
+
+            response = self.client.messages.create(
                 model=self.model,
                 max_tokens=512,
-                betas=[self.beta_header],
                 messages=[{
                     "role": "user",
-                    "content": prompt
-                }],
-                output_format=EmailBody,
+                    "content": json_prompt
+                }]
             )
 
-            return response.parsed_output
+            # Parse JSON from response
+            text = response.content[0].text
+            if "```json" in text:
+                text = text.split("```json")[1].split("```")[0]
+            elif "```" in text:
+                text = text.split("```")[1].split("```")[0]
+            data = json.loads(text.strip())
+            return EmailBody(**data)
 
         except Exception as e:
             print(f"Warning: Claude API error: {e}")
