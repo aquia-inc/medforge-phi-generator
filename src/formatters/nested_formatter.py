@@ -222,7 +222,7 @@ Fax: {referring_provider['fax']}
         # Email headers
         msg['Subject'] = "Updated Patient Registration Forms"
         msg['From'] = f"Office Manager <manager@{facility['name'].lower().replace(' ', '')}.org>"
-        msg['To'] = "Front Desk Staff <frontdesk@{facility['name'].lower().replace(' ', '')}.org>"
+        msg['To'] = f"Front Desk Staff <frontdesk@{facility['name'].lower().replace(' ', '')}.org>"
         msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
@@ -277,7 +277,7 @@ Phone: {facility['phone']}
         # Email headers
         msg['Subject'] = "New Clinical Documentation Policy - Action Required"
         msg['From'] = f"Compliance Department <compliance@{facility['name'].lower().replace(' ', '')}.org>"
-        msg['To'] = "All Clinical Staff <clinical@{facility['name'].lower().replace(' ', '')}.org>"
+        msg['To'] = f"All Clinical Staff <clinical@{facility['name'].lower().replace(' ', '')}.org>"
         msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
@@ -698,7 +698,7 @@ CONFIDENTIAL: This email contains protected health information (PHI).
         # Email headers with NO patient data
         msg['Subject'] = "Updated Clinical Documentation Policy"
         msg['From'] = f"Compliance <compliance@{facility['name'].lower().replace(' ', '')}.org>"
-        msg['To'] = "All Staff <staff@{facility['name'].lower().replace(' ', '')}.org>"
+        msg['To'] = f"All Staff <staff@{facility['name'].lower().replace(' ', '')}.org>"
         msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
