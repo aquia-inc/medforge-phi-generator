@@ -43,6 +43,10 @@ from formatters.nested_formatter import NestedEmailFormatter
 from formatters.html_lab_formatter import HTMLLabFormatter
 from generators.llm_generator import is_llm_available
 
+# CUI imports
+from generators.cui import CUIGeneratorFactory
+from formatters.cui_formatter import CUIDocxFormatter, CUIEmailFormatter, CUIPdfFormatter, CUIXlsxFormatter
+
 # Initialize CLI app and console
 app = typer.Typer(
     name="medforge",
@@ -509,6 +513,295 @@ class MedForgeGenerator:
         return self.stats
 
 
+# Available CUI categories
+CUI_CATEGORIES = [
+    "critical_infrastructure",
+    "financial",
+    "law_enforcement",
+    "legal",
+    "procurement",
+    "proprietary",
+    "tax",
+]
+
+
+class MedForgeCUIGenerator:
+    """CUI document generator with support for all 7 categories"""
+
+    def __init__(
+        self,
+        output_dir: str = "output",
+        seed: Optional[int] = None,
+        categories: Optional[List[str]] = None,
+        formats: Optional[List[str]] = None,
+    ):
+        """
+        Initialize CUI generator
+
+        Args:
+            output_dir: Output directory path
+            seed: Random seed for reproducibility
+            categories: List of CUI categories to generate (defaults to all)
+            formats: List of formats to generate (defaults to all)
+        """
+        self.output_dir = Path(output_dir)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+        # Create CUI folder structure
+        self.cui_positive_dir = self.output_dir / "cui_positive"
+        self.cui_negative_dir = self.output_dir / "cui_negative"
+        self.metadata_dir = self.output_dir / "metadata"
+
+        self.cui_positive_dir.mkdir(parents=True, exist_ok=True)
+        self.cui_negative_dir.mkdir(parents=True, exist_ok=True)
+        self.metadata_dir.mkdir(parents=True, exist_ok=True)
+
+        # Create category subdirectories
+        self.categories = categories or CUI_CATEGORIES
+        for category in self.categories:
+            (self.cui_positive_dir / category).mkdir(parents=True, exist_ok=True)
+            (self.cui_negative_dir / category).mkdir(parents=True, exist_ok=True)
+
+        self.seed = seed
+        self.formats = formats or ["pdf", "docx", "xlsx", "eml"]
+
+        if seed is not None:
+            random.seed(seed)
+
+        # Statistics tracking
+        self.stats = {
+            "total_generated": 0,
+            "by_format": defaultdict(int),
+            "by_category": defaultdict(int),
+            "cui_positive": 0,
+            "cui_negative": 0,
+            "errors": [],
+        }
+
+        self.manifest = []
+
+        # Initialize CUI generator factory
+        self.cui_generator = CUIGeneratorFactory.create_composite_generator(
+            categories=self.categories,
+            seed=seed,
+        )
+
+        # Initialize formatters
+        self.formatters = {
+            "docx": CUIDocxFormatter(output_dir=str(self.output_dir)),
+            "pdf": CUIPdfFormatter(output_dir=str(self.output_dir)),
+            "xlsx": CUIXlsxFormatter(output_dir=str(self.output_dir)),
+            "eml": CUIEmailFormatter(output_dir=str(self.output_dir)),
+        }
+
+    def generate_single_cui_positive(self, index: int) -> Optional[str]:
+        """Generate a single CUI positive document"""
+        try:
+            # Generate document data
+            doc_data = self.cui_generator.generate_positive()
+            category = doc_data.get("category", "general")
+            doc_type = doc_data.get("document_type", "document")
+
+            # Choose format
+            available_formats = [f for f in self.formats if f in self.formatters]
+            if not available_formats:
+                return None
+
+            # Prefer certain formats for certain document types
+            if doc_type in ["vulnerability_alert", "servicenow_ticket"]:
+                fmt = "eml" if "eml" in available_formats else random.choice(available_formats)
+            elif doc_type in ["taxpayer_record", "eft_authorization", "sam_registration"]:
+                fmt = "xlsx" if "xlsx" in available_formats else random.choice(available_formats)
+            else:
+                fmt = random.choice(available_formats)
+
+            # Generate filename
+            type_prefix = doc_type.replace("_", "").title()[:15]
+            filename = f"{type_prefix}_{index:04d}.{fmt}"
+
+            # Set output directory for formatter
+            category_dir = self.cui_positive_dir / category
+            self.formatters[fmt].output_dir = str(category_dir)
+
+            # Create document
+            if fmt == "docx":
+                filepath = self.formatters[fmt].create_cui_document(doc_data, filename)
+            elif fmt == "pdf":
+                filepath = self.formatters[fmt].create_cui_pdf(doc_data, filename)
+            elif fmt == "xlsx":
+                filepath = self.formatters[fmt].create_cui_xlsx(doc_data, filename)
+            elif fmt == "eml":
+                filepath = self.formatters[fmt].create_cui_email(doc_data, filename)
+            else:
+                return None
+
+            # Update statistics
+            self.stats["total_generated"] += 1
+            self.stats["cui_positive"] += 1
+            self.stats["by_format"][fmt] += 1
+            self.stats["by_category"][category] += 1
+
+            # Add to manifest
+            self.manifest.append({
+                "file_path": str(Path(filepath).relative_to(self.output_dir)),
+                "cui_status": "positive",
+                "category": category,
+                "subcategory": doc_data.get("subcategory", ""),
+                "document_type": doc_type,
+                "classification": doc_data.get("classification", ""),
+                "authority": doc_data.get("authority", ""),
+                "format": fmt,
+                "index": index,
+            })
+
+            return filepath
+
+        except Exception as e:
+            error_msg = f"Error generating CUI positive doc {index}: {str(e)}"
+            self.stats["errors"].append(error_msg)
+            return None
+
+    def generate_single_cui_negative(self, index: int) -> Optional[str]:
+        """Generate a single CUI negative document"""
+        try:
+            # Generate document data
+            doc_data = self.cui_generator.generate_negative()
+            category = doc_data.get("category", "general")
+            doc_type = doc_data.get("document_type", "document")
+
+            # Choose format
+            available_formats = [f for f in self.formats if f in self.formatters]
+            if not available_formats:
+                return None
+
+            fmt = random.choice(available_formats)
+
+            # Generate filename
+            type_prefix = doc_type.replace("_", "").title()[:15]
+            filename = f"{type_prefix}_{index:04d}.{fmt}"
+
+            # Set output directory for formatter
+            category_dir = self.cui_negative_dir / category
+            self.formatters[fmt].output_dir = str(category_dir)
+
+            # Create document
+            if fmt == "docx":
+                filepath = self.formatters[fmt].create_cui_document(doc_data, filename)
+            elif fmt == "pdf":
+                filepath = self.formatters[fmt].create_cui_pdf(doc_data, filename)
+            elif fmt == "xlsx":
+                filepath = self.formatters[fmt].create_cui_xlsx(doc_data, filename)
+            elif fmt == "eml":
+                filepath = self.formatters[fmt].create_cui_email(doc_data, filename)
+            else:
+                return None
+
+            # Update statistics
+            self.stats["total_generated"] += 1
+            self.stats["cui_negative"] += 1
+            self.stats["by_format"][fmt] += 1
+            self.stats["by_category"][category] += 1
+
+            # Add to manifest
+            self.manifest.append({
+                "file_path": str(Path(filepath).relative_to(self.output_dir)),
+                "cui_status": "negative",
+                "category": category,
+                "document_type": doc_type,
+                "format": fmt,
+                "index": index,
+            })
+
+            return filepath
+
+        except Exception as e:
+            error_msg = f"Error generating CUI negative doc {index}: {str(e)}"
+            self.stats["errors"].append(error_msg)
+            return None
+
+    def save_manifest(self):
+        """Save CUI manifest.json"""
+        manifest_path = self.metadata_dir / "cui_manifest.json"
+
+        manifest_data = {
+            "generated_at": datetime.now().isoformat(),
+            "total_documents": self.stats["total_generated"],
+            "cui_positive": self.stats["cui_positive"],
+            "cui_negative": self.stats["cui_negative"],
+            "seed": self.seed,
+            "categories": self.categories,
+            "formats": self.formats,
+            "statistics": dict(self.stats),
+            "files": self.manifest,
+        }
+
+        with open(manifest_path, "w") as f:
+            json.dump(manifest_data, f, indent=2, default=str)
+
+        return manifest_path
+
+    def generate_batch(
+        self,
+        cui_positive_count: int,
+        cui_negative_count: int,
+        parallel_workers: int = 1,
+    ) -> dict:
+        """Generate a batch of CUI documents"""
+        total_count = cui_positive_count + cui_negative_count
+
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            BarColumn(),
+            TaskProgressColumn(),
+            TimeElapsedColumn(),
+            TimeRemainingColumn(),
+            console=console,
+        ) as progress:
+
+            if parallel_workers > 1:
+                task = progress.add_task(
+                    f"[cyan]Generating CUI documents (parallel, {parallel_workers} workers)...",
+                    total=total_count,
+                )
+
+                with concurrent.futures.ThreadPoolExecutor(max_workers=parallel_workers) as executor:
+                    pos_futures = [
+                        executor.submit(self.generate_single_cui_positive, i)
+                        for i in range(1, cui_positive_count + 1)
+                    ]
+                    neg_futures = [
+                        executor.submit(self.generate_single_cui_negative, i)
+                        for i in range(1, cui_negative_count + 1)
+                    ]
+
+                    for future in concurrent.futures.as_completed(pos_futures + neg_futures):
+                        future.result()
+                        progress.advance(task)
+            else:
+                # Sequential generation
+                pos_task = progress.add_task(
+                    "[green]Generating CUI positive documents...",
+                    total=cui_positive_count,
+                )
+                for i in range(1, cui_positive_count + 1):
+                    self.generate_single_cui_positive(i)
+                    progress.advance(pos_task)
+
+                neg_task = progress.add_task(
+                    "[blue]Generating CUI negative documents...",
+                    total=cui_negative_count,
+                )
+                for i in range(1, cui_negative_count + 1):
+                    self.generate_single_cui_negative(i)
+                    progress.advance(neg_task)
+
+        manifest_path = self.save_manifest()
+        self.stats["manifest_path"] = str(manifest_path)
+
+        return self.stats
+
+
 def load_config(config_path: str) -> dict:
     """Load configuration from YAML file"""
     try:
@@ -584,11 +877,61 @@ def display_stats(stats: dict, output_dir: str, duration: float):
     console.print(f"\n[bold green]Output Directory:[/bold green] {os.path.abspath(output_dir)}")
 
 
+def display_cui_stats(stats: dict, output_dir: str, duration: float):
+    """Display CUI generation statistics in a formatted table"""
+
+    # Summary panel
+    summary = f"""[bold]Total CUI Documents:[/bold] {stats['total_generated']}
+[green]CUI Positive:[/green] {stats['cui_positive']}
+[blue]CUI Negative:[/blue] {stats['cui_negative']}
+[yellow]Duration:[/yellow] {duration:.2f}s
+[yellow]Avg Time:[/yellow] {duration / max(stats['total_generated'], 1):.2f}s per document"""
+
+    console.print(Panel(summary, title="[bold]CUI Generation Summary[/bold]", border_style="cyan"))
+
+    # Category distribution table
+    if stats.get("by_category"):
+        category_table = Table(title="CUI Category Distribution", box=box.ROUNDED)
+        category_table.add_column("Category", style="cyan")
+        category_table.add_column("Count", justify="right", style="magenta")
+        category_table.add_column("Percentage", justify="right", style="yellow")
+
+        for category, count in sorted(stats["by_category"].items()):
+            pct = (count / stats["total_generated"]) * 100 if stats["total_generated"] > 0 else 0
+            category_table.add_row(category.replace("_", " ").title(), str(count), f"{pct:.1f}%")
+
+        console.print(category_table)
+
+    # Format distribution table
+    if stats.get("by_format"):
+        format_table = Table(title="Format Distribution", box=box.ROUNDED)
+        format_table.add_column("Format", style="cyan")
+        format_table.add_column("Count", justify="right", style="magenta")
+        format_table.add_column("Percentage", justify="right", style="yellow")
+
+        for fmt, count in sorted(stats["by_format"].items()):
+            pct = (count / stats["total_generated"]) * 100 if stats["total_generated"] > 0 else 0
+            format_table.add_row(fmt.upper(), str(count), f"{pct:.1f}%")
+
+        console.print(format_table)
+
+    # Errors if any
+    if stats.get("errors"):
+        error_panel = "\n".join(stats["errors"][:10])  # Show first 10 errors
+        console.print(Panel(error_panel, title="[bold red]Errors[/bold red]", border_style="red"))
+
+
 @app.command()
 def generate(
-    count: int = typer.Option(200, "--count", "-c", help="Total number of documents to generate"),
+    count: int = typer.Option(200, "--count", "-c", help="Total number of PHI documents to generate"),
     phi_positive: Optional[int] = typer.Option(None, "--phi-positive", help="Number of PHI positive documents"),
     phi_negative: Optional[int] = typer.Option(None, "--phi-negative", help="Number of PHI negative documents"),
+    # CUI options
+    cui_positive: Optional[int] = typer.Option(None, "--cui-positive", help="Number of CUI positive documents"),
+    cui_negative: Optional[int] = typer.Option(None, "--cui-negative", help="Number of CUI negative documents"),
+    cui_categories: Optional[str] = typer.Option(None, "--cui-categories", help="Comma-separated CUI categories: financial,legal,tax,procurement,proprietary,law_enforcement,critical_infrastructure"),
+    cui_all: bool = typer.Option(False, "--cui-all", help="Generate all CUI categories"),
+    # General options
     formats: str = typer.Option("pdf,docx,xlsx,eml,pptx", "--formats", "-f", help="Comma-separated list of formats"),
     output: str = typer.Option("output/medforge", "--output", "-o", help="Output directory"),
     llm_percentage: float = typer.Option(0.2, "--llm-percentage", help="Percentage of LLM-enhanced docs (0.0-1.0)"),
@@ -597,13 +940,26 @@ def generate(
     config: Optional[str] = typer.Option(None, "--config", help="Path to YAML config file"),
 ):
     """
-    Generate synthetic PHI documents in multiple formats
+    Generate synthetic PHI and/or CUI documents in multiple formats
 
     Examples:
 
+        # PHI only (default)
         medforge generate --count 100
 
         medforge generate --phi-positive 80 --phi-negative 20
+
+        # CUI only
+        medforge generate --cui-positive 100 --cui-negative 50
+
+        # Specific CUI categories
+        medforge generate --cui-positive 100 --cui-categories financial,tax,legal
+
+        # All CUI categories
+        medforge generate --cui-positive 200 --cui-all
+
+        # Mixed PHI + CUI
+        medforge generate --phi-positive 100 --cui-positive 100 --cui-all
 
         medforge generate --formats pdf,docx --output my_data
 
@@ -617,6 +973,10 @@ def generate(
         count = cfg.get("count", count)
         phi_positive = cfg.get("phi_positive", phi_positive)
         phi_negative = cfg.get("phi_negative", phi_negative)
+        cui_positive = cfg.get("cui_positive", cui_positive)
+        cui_negative = cfg.get("cui_negative", cui_negative)
+        cui_categories = cfg.get("cui_categories", cui_categories)
+        cui_all = cfg.get("cui_all", cui_all)
         formats = cfg.get("formats", formats)
         output = cfg.get("output", output)
         llm_percentage = cfg.get("llm_percentage", llm_percentage)
@@ -633,18 +993,54 @@ def generate(
         console.print(f"[yellow]Valid formats: {', '.join(valid_formats)}[/yellow]")
         raise typer.Exit(1)
 
-    # Calculate PHI positive/negative split
-    if phi_positive is None and phi_negative is None:
-        # Default 80/20 split
-        phi_positive = int(count * 0.8)
-        phi_negative = count - phi_positive
-    elif phi_positive is None:
-        phi_positive = count - phi_negative
-    elif phi_negative is None:
-        phi_negative = count - phi_positive
+    # Determine what to generate
+    generate_phi = phi_positive is not None or phi_negative is not None or (cui_positive is None and cui_negative is None)
+    generate_cui = cui_positive is not None or cui_negative is not None or cui_all
+
+    # Calculate PHI positive/negative split (if generating PHI)
+    if generate_phi:
+        if phi_positive is None and phi_negative is None:
+            # Default 80/20 split
+            phi_positive = int(count * 0.8)
+            phi_negative = count - phi_positive
+        elif phi_positive is None:
+            phi_positive = max(0, count - (phi_negative or 0))
+        elif phi_negative is None:
+            phi_negative = max(0, count - (phi_positive or 0))
     else:
-        # Both specified - use their sum as total count
-        count = phi_positive + phi_negative
+        phi_positive = 0
+        phi_negative = 0
+
+    # Calculate CUI positive/negative split (if generating CUI)
+    if generate_cui:
+        if cui_positive is None and cui_negative is None:
+            # Default 80/20 split for CUI if --cui-all specified
+            cui_count = 100 if cui_all else 0
+            cui_positive = int(cui_count * 0.8)
+            cui_negative = cui_count - cui_positive
+        elif cui_positive is None:
+            cui_positive = 0
+        elif cui_negative is None:
+            # Default to 20% negative
+            cui_negative = max(0, int(cui_positive * 0.25))
+    else:
+        cui_positive = 0
+        cui_negative = 0
+
+    # Parse CUI categories
+    selected_categories = None
+    if generate_cui:
+        if cui_all:
+            selected_categories = CUI_CATEGORIES
+        elif cui_categories:
+            selected_categories = [c.strip().lower() for c in cui_categories.split(",")]
+            invalid_categories = set(selected_categories) - set(CUI_CATEGORIES)
+            if invalid_categories:
+                console.print(f"[red]Invalid CUI categories: {', '.join(invalid_categories)}[/red]")
+                console.print(f"[yellow]Valid categories: {', '.join(CUI_CATEGORIES)}[/yellow]")
+                raise typer.Exit(1)
+        else:
+            selected_categories = CUI_CATEGORIES  # Default to all
 
     # Validate parameters
     if llm_percentage < 0 or llm_percentage > 1:
@@ -660,48 +1056,86 @@ def generate(
     config_table.add_column("Setting", style="cyan")
     config_table.add_column("Value", style="yellow")
 
-    config_table.add_row("Total Documents", str(count))
-    config_table.add_row("PHI Positive", str(phi_positive))
-    config_table.add_row("PHI Negative", str(phi_negative))
+    total_docs = phi_positive + phi_negative + cui_positive + cui_negative
+    config_table.add_row("Total Documents", str(total_docs))
+
+    if generate_phi:
+        config_table.add_row("PHI Positive", str(phi_positive))
+        config_table.add_row("PHI Negative", str(phi_negative))
+
+    if generate_cui:
+        config_table.add_row("CUI Positive", str(cui_positive))
+        config_table.add_row("CUI Negative", str(cui_negative))
+        config_table.add_row("CUI Categories", ", ".join(selected_categories) if selected_categories else "All")
+
     config_table.add_row("Formats", ", ".join(format_list))
-    config_table.add_row("LLM Enhancement", f"{int(llm_percentage * 100)}%")
+    if generate_phi:
+        config_table.add_row("LLM Enhancement", f"{int(llm_percentage * 100)}%")
+        config_table.add_row("LLM Available", "Yes" if is_llm_available() else "No (using templates)")
     config_table.add_row("Random Seed", str(seed) if seed else "Random")
     config_table.add_row("Parallel Workers", str(parallel_workers))
-    config_table.add_row("LLM Available", "Yes" if is_llm_available() else "No (using templates)")
     config_table.add_row("Output Directory", output)
 
     console.print(config_table)
     console.print()
 
-    # Initialize generator
+    # Initialize generators and generate documents
     start_time = datetime.now()
 
     try:
-        generator = MedForgeGenerator(
-            output_dir=output,
-            seed=seed,
-            llm_percentage=llm_percentage,
-            formats=format_list,
-        )
+        all_stats = {"phi": None, "cui": None}
 
-        # Generate documents
-        stats = generator.generate_batch(
-            phi_positive_count=phi_positive,
-            phi_negative_count=phi_negative,
-            parallel_workers=parallel_workers,
-        )
+        # Generate PHI documents
+        if generate_phi and (phi_positive > 0 or phi_negative > 0):
+            console.print("[bold cyan]Generating PHI documents...[/bold cyan]\n")
+            phi_generator = MedForgeGenerator(
+                output_dir=output,
+                seed=seed,
+                llm_percentage=llm_percentage,
+                formats=format_list,
+            )
+            all_stats["phi"] = phi_generator.generate_batch(
+                phi_positive_count=phi_positive,
+                phi_negative_count=phi_negative,
+                parallel_workers=parallel_workers,
+            )
+
+        # Generate CUI documents
+        if generate_cui and (cui_positive > 0 or cui_negative > 0):
+            console.print("\n[bold cyan]Generating CUI documents...[/bold cyan]\n")
+            cui_format_list = [f for f in format_list if f != "pptx"]  # CUI doesn't support pptx
+            cui_generator = MedForgeCUIGenerator(
+                output_dir=output,
+                seed=seed,
+                categories=selected_categories,
+                formats=cui_format_list,
+            )
+            all_stats["cui"] = cui_generator.generate_batch(
+                cui_positive_count=cui_positive,
+                cui_negative_count=cui_negative,
+                parallel_workers=parallel_workers,
+            )
 
         end_time = datetime.now()
         duration = (end_time - start_time).total_seconds()
 
         # Display statistics
         console.print()
-        display_stats(stats, output, duration)
+
+        if all_stats["phi"]:
+            console.print("[bold green]PHI Generation Results:[/bold green]")
+            display_stats(all_stats["phi"], output, duration if not all_stats["cui"] else duration / 2)
+
+        if all_stats["cui"]:
+            console.print("\n[bold green]CUI Generation Results:[/bold green]")
+            display_cui_stats(all_stats["cui"], output, duration if not all_stats["phi"] else duration / 2)
 
         console.print("\n[bold green]Generation complete![/bold green]")
 
     except Exception as e:
         console.print(f"\n[bold red]Error during generation:[/bold red] {str(e)}")
+        import traceback
+        traceback.print_exc()
         raise typer.Exit(1)
 
 
