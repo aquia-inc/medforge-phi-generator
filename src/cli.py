@@ -524,6 +524,33 @@ CUI_CATEGORIES = [
     "tax",
 ]
 
+# Display names for CUI categories (used in folder naming)
+CUI_CATEGORY_DISPLAY_NAMES = {
+    "critical_infrastructure": "Critical Infrastructure",
+    "financial": "Financial",
+    "law_enforcement": "Law Enforcement",
+    "legal": "Legal",
+    "procurement": "Procurement",
+    "proprietary": "Proprietary Business",
+    "tax": "Tax",
+}
+
+
+def create_production_run_folder(base_output_dir: str) -> Path:
+    """
+    Create a timestamped production run folder.
+
+    Args:
+        base_output_dir: Base output directory path
+
+    Returns:
+        Path to the created production_run_* folder
+    """
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    run_dir = Path(base_output_dir) / f"production_run_{timestamp}"
+    run_dir.mkdir(parents=True, exist_ok=True)
+    return run_dir
+
 
 class MedForgeCUIGenerator:
     """CUI document generator with support for all 7 categories"""
@@ -549,20 +576,31 @@ class MedForgeCUIGenerator:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-        # Create CUI folder structure
-        self.cui_positive_dir = self.output_dir / "cui_positive"
-        self.cui_negative_dir = self.output_dir / "cui_negative"
+        # Create metadata directory
         self.metadata_dir = self.output_dir / "metadata"
-
-        self.cui_positive_dir.mkdir(parents=True, exist_ok=True)
-        self.cui_negative_dir.mkdir(parents=True, exist_ok=True)
         self.metadata_dir.mkdir(parents=True, exist_ok=True)
 
-        # Create category subdirectories
+        # Create CUI folder structure with display names
+        # Folders: CUI-{DisplayName}-Positive/, CUI-{DisplayName}-Negative/
         self.categories = categories or CUI_CATEGORIES
+
+        # Map category to folder paths
+        self.category_positive_dirs = {}
+        self.category_negative_dirs = {}
+
         for category in self.categories:
-            (self.cui_positive_dir / category).mkdir(parents=True, exist_ok=True)
-            (self.cui_negative_dir / category).mkdir(parents=True, exist_ok=True)
+            display_name = CUI_CATEGORY_DISPLAY_NAMES.get(category, category.replace("_", " ").title())
+            positive_folder = f"CUI-{display_name}-Positive"
+            negative_folder = f"CUI-{display_name}-Negative"
+
+            positive_dir = self.output_dir / positive_folder
+            negative_dir = self.output_dir / negative_folder
+
+            positive_dir.mkdir(parents=True, exist_ok=True)
+            negative_dir.mkdir(parents=True, exist_ok=True)
+
+            self.category_positive_dirs[category] = positive_dir
+            self.category_negative_dirs[category] = negative_dir
 
         self.seed = seed
         self.formats = formats or ["pdf", "docx", "xlsx", "eml"]
@@ -734,8 +772,8 @@ class MedForgeCUIGenerator:
             type_prefix = doc_type.replace("_", "").title()[:15]
             filename = f"{type_prefix}_{index:04d}.{fmt}"
 
-            # Set output directory for formatter
-            category_dir = self.cui_positive_dir / category
+            # Set output directory for formatter (use display name folder)
+            category_dir = self.category_positive_dirs.get(category, self.output_dir)
             self.formatters[fmt].output_dir = str(category_dir)
 
             # Create document
@@ -800,8 +838,8 @@ class MedForgeCUIGenerator:
             type_prefix = doc_type.replace("_", "").title()[:15]
             filename = f"{type_prefix}_{index:04d}.{fmt}"
 
-            # Set output directory for formatter
-            category_dir = self.cui_negative_dir / category
+            # Set output directory for formatter (use display name folder)
+            category_dir = self.category_negative_dirs.get(category, self.output_dir)
             self.formatters[fmt].output_dir = str(category_dir)
 
             # Create document
@@ -822,12 +860,15 @@ class MedForgeCUIGenerator:
             self.stats["by_format"][fmt] += 1
             self.stats["by_category"][category] += 1
 
-            # Add to manifest
+            # Add to manifest (standardized schema matching positive docs)
             self.manifest.append({
                 "file_path": str(Path(filepath).relative_to(self.output_dir)),
                 "cui_status": "negative",
                 "category": category,
+                "subcategory": "",
                 "document_type": doc_type,
+                "classification": "",
+                "authority": "",
                 "format": fmt,
                 "index": index,
                 "llm_enhanced": False,
@@ -1040,7 +1081,8 @@ def display_cui_stats(stats: dict, output_dir: str, duration: float):
 
         for category, count in sorted(stats["by_category"].items()):
             pct = (count / stats["total_generated"]) * 100 if stats["total_generated"] > 0 else 0
-            category_table.add_row(category.replace("_", " ").title(), str(count), f"{pct:.1f}%")
+            display_name = CUI_CATEGORY_DISPLAY_NAMES.get(category, category.replace("_", " ").title())
+            category_table.add_row(display_name, str(count), f"{pct:.1f}%")
 
         console.print(category_table)
 
@@ -1224,6 +1266,10 @@ def generate(
     # Initialize generators and generate documents
     start_time = datetime.now()
 
+    # Create timestamped production run folder
+    run_dir = create_production_run_folder(output)
+    console.print(f"[bold green]Output folder:[/bold green] {run_dir}\n")
+
     try:
         all_stats = {"phi": None, "cui": None}
 
@@ -1231,7 +1277,7 @@ def generate(
         if generate_phi and (phi_positive > 0 or phi_negative > 0):
             console.print("[bold cyan]Generating PHI documents...[/bold cyan]\n")
             phi_generator = MedForgeGenerator(
-                output_dir=output,
+                output_dir=str(run_dir),
                 seed=seed,
                 llm_percentage=llm_percentage,
                 formats=format_list,
@@ -1247,7 +1293,7 @@ def generate(
             console.print("\n[bold cyan]Generating CUI documents...[/bold cyan]\n")
             cui_format_list = [f for f in format_list if f != "pptx"]  # CUI doesn't support pptx
             cui_generator = MedForgeCUIGenerator(
-                output_dir=output,
+                output_dir=str(run_dir),
                 seed=seed,
                 categories=selected_categories,
                 formats=cui_format_list,

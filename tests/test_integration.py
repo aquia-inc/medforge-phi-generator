@@ -31,6 +31,7 @@ class TestCUIGeneration:
             output_dir=temp_output_dir,
             seed=42,
             formats=['docx', 'pdf'],
+            categories=['financial', 'legal'],  # Limit categories for test
         )
 
         generator.generate_batch(
@@ -38,20 +39,22 @@ class TestCUIGeneration:
             cui_negative_count=3,
         )
 
-        # Check directory structure
-        assert Path(temp_output_dir, 'cui_positive').exists()
-        assert Path(temp_output_dir, 'cui_negative').exists()
+        # Check directory structure - now uses CUI-{DisplayName}-Positive/Negative format
         assert Path(temp_output_dir, 'metadata').exists()
 
-        # Check category subdirectories exist
-        cui_positive_dir = Path(temp_output_dir, 'cui_positive')
-        # At least one category directory should have files
-        has_files = False
-        for subdir in cui_positive_dir.iterdir():
-            if subdir.is_dir() and list(subdir.glob('*')):
-                has_files = True
-                break
-        assert has_files, "No files generated in cui_positive subdirectories"
+        # Check CUI display name folders exist
+        cui_folders = [d for d in Path(temp_output_dir).iterdir() if d.is_dir() and d.name.startswith('CUI-')]
+        assert len(cui_folders) > 0, "No CUI folders created"
+
+        # Verify folder naming pattern
+        for folder in cui_folders:
+            assert folder.name.startswith('CUI-'), f"Folder {folder.name} doesn't follow CUI- pattern"
+            assert folder.name.endswith('-Positive') or folder.name.endswith('-Negative'), \
+                f"Folder {folder.name} doesn't end with -Positive or -Negative"
+
+        # At least one folder should have files
+        has_files = any(list(folder.glob('*')) for folder in cui_folders)
+        assert has_files, "No files generated in CUI folders"
 
     def test_cui_manifest_generated(self, temp_output_dir):
         """Test that CUI manifest is correctly generated"""
@@ -79,12 +82,17 @@ class TestCUIGeneration:
         assert manifest['cui_negative'] == 2
         assert len(manifest['files']) == 5
 
-        # Check file entries have required fields
+        # Check file entries have required fields (standardized schema)
         for file_entry in manifest['files']:
             assert 'file_path' in file_entry
             assert 'cui_status' in file_entry
             assert 'category' in file_entry
+            assert 'subcategory' in file_entry  # Now required for all
+            assert 'classification' in file_entry  # Now required for all
+            assert 'authority' in file_entry  # Now required for all
             assert 'format' in file_entry
+            # Verify file paths use CUI- prefix
+            assert 'CUI-' in file_entry['file_path'], f"File path {file_entry['file_path']} doesn't contain CUI-"
 
     def test_cui_positive_documents_have_classification(self, temp_output_dir):
         """Test that CUI positive documents have classification markings"""
@@ -204,11 +212,13 @@ class TestMixedPHICUIGeneration:
             cui_negative_count=2,
         )
 
-        # Check both structures exist
+        # Check PHI structures exist
         assert Path(temp_output_dir, 'phi_positive').exists()
         assert Path(temp_output_dir, 'phi_negative').exists()
-        assert Path(temp_output_dir, 'cui_positive').exists()
-        assert Path(temp_output_dir, 'cui_negative').exists()
+
+        # Check CUI structures exist (now uses CUI-{DisplayName}-Positive/Negative format)
+        cui_folders = [d for d in Path(temp_output_dir).iterdir() if d.is_dir() and d.name.startswith('CUI-')]
+        assert len(cui_folders) > 0, "No CUI folders created"
 
         # Check both manifests exist
         assert Path(temp_output_dir, 'metadata', 'manifest.json').exists()
