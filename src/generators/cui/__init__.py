@@ -33,17 +33,23 @@ from .base import BaseCUIGenerator
 from .factory import CUIGeneratorFactory, CompositeCUIGenerator
 
 # Import all generators to trigger registration
-# These imports will be added as generators are implemented
-# from .critical_infrastructure_generator import CriticalInfrastructureCUIGenerator
-# from .financial_generator import FinancialCUIGenerator
-# from .law_enforcement_generator import LawEnforcementCUIGenerator
-# from .legal_generator import LegalCUIGenerator
-# from .procurement_generator import ProcurementCUIGenerator
-# from .proprietary_generator import ProprietaryCUIGenerator
-# from .tax_generator import TaxCUIGenerator
+from .critical_infrastructure_generator import CriticalInfrastructureCUIGenerator
+from .financial_generator import FinancialCUIGenerator
+from .law_enforcement_generator import LawEnforcementCUIGenerator
+from .legal_generator import LegalCUIGenerator
+from .procurement_generator import ProcurementCUIGenerator
+from .proprietary_generator import ProprietaryCUIGenerator
+from .tax_generator import TaxCUIGenerator
 
 __all__ = [
     'BaseCUIGenerator',
     'CUIGeneratorFactory',
     'CompositeCUIGenerator',
+    'CriticalInfrastructureCUIGenerator',
+    'FinancialCUIGenerator',
+    'LawEnforcementCUIGenerator',
+    'LegalCUIGenerator',
+    'ProcurementCUIGenerator',
+    'ProprietaryCUIGenerator',
+    'TaxCUIGenerator',
 ]
