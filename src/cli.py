@@ -534,6 +534,7 @@ class MedForgeCUIGenerator:
         seed: Optional[int] = None,
         categories: Optional[List[str]] = None,
         formats: Optional[List[str]] = None,
+        llm_percentage: float = 0.2,
     ):
         """
         Initialize CUI generator
@@ -543,6 +544,7 @@ class MedForgeCUIGenerator:
             seed: Random seed for reproducibility
             categories: List of CUI categories to generate (defaults to all)
             formats: List of formats to generate (defaults to all)
+            llm_percentage: Percentage of LLM-enhanced documents (0.0-1.0)
         """
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -564,6 +566,7 @@ class MedForgeCUIGenerator:
 
         self.seed = seed
         self.formats = formats or ["pdf", "docx", "xlsx", "eml"]
+        self.llm_percentage = llm_percentage
 
         if seed is not None:
             random.seed(seed)
@@ -571,6 +574,8 @@ class MedForgeCUIGenerator:
         # Statistics tracking
         self.stats = {
             "total_generated": 0,
+            "llm_enhanced": 0,
+            "template_based": 0,
             "by_format": defaultdict(int),
             "by_category": defaultdict(int),
             "cui_positive": 0,
@@ -586,6 +591,15 @@ class MedForgeCUIGenerator:
             seed=seed,
         )
 
+        # Initialize LLM generator if available
+        self.llm_generator = None
+        if is_llm_available() and llm_percentage > 0:
+            try:
+                from generators.llm_generator import ClaudeGenerator
+                self.llm_generator = ClaudeGenerator()
+            except Exception as e:
+                console.print(f"[yellow]Warning: Could not initialize LLM generator: {e}[/yellow]")
+
         # Initialize formatters
         self.formatters = {
             "docx": CUIDocxFormatter(output_dir=str(self.output_dir)),
@@ -594,6 +608,100 @@ class MedForgeCUIGenerator:
             "eml": CUIEmailFormatter(output_dir=str(self.output_dir)),
         }
 
+    def _enhance_with_llm(self, doc_data: dict) -> tuple[dict, bool]:
+        """
+        Enhance document content using LLM if available and selected
+
+        Returns:
+            Tuple of (enhanced_doc_data, was_enhanced)
+        """
+        # Check if we should use LLM for this document
+        use_llm = (
+            self.llm_generator is not None
+            and random.random() < self.llm_percentage
+        )
+
+        if not use_llm:
+            return doc_data, False
+
+        try:
+            category = doc_data.get("category", "")
+            subcategory = doc_data.get("subcategory", "")
+            doc_type = doc_data.get("document_type", "")
+
+            # Generate enhanced content based on category
+            if category == "financial" and "budget" in subcategory:
+                enhanced = self.llm_generator.generate_cui_budget_memo(
+                    agency=doc_data.get("organization", "Government Agency"),
+                    program=doc_data.get("program", "Federal Program"),
+                    fiscal_year=str(doc_data.get("fiscal_year", "2025")),
+                    amount=doc_data.get("amount", "$1,000,000")
+                )
+                doc_data["executive_summary"] = enhanced.purpose
+                doc_data["body"] = enhanced.budget_justification
+                doc_data["fiscal_impact"] = enhanced.fiscal_impact
+                doc_data["recommendation"] = enhanced.recommendation
+
+            elif category == "critical_infrastructure" or "vulnerability" in doc_type:
+                enhanced = self.llm_generator.generate_cui_security_report(
+                    system_name=doc_data.get("system_name", "Enterprise System"),
+                    vulnerability_type=doc_data.get("vulnerability_type", "Security Vulnerability"),
+                    severity=doc_data.get("severity", "High"),
+                    agency=doc_data.get("organization", "Government Agency")
+                )
+                doc_data["executive_summary"] = enhanced.incident_summary
+                doc_data["body"] = enhanced.technical_details
+                doc_data["risk_assessment"] = enhanced.risk_assessment
+                doc_data["mitigation"] = enhanced.mitigation_steps
+                doc_data["timeline"] = enhanced.timeline
+
+            elif category == "legal":
+                enhanced = self.llm_generator.generate_cui_legal_memo(
+                    subject=doc_data.get("subject", "Legal Matter"),
+                    agency=doc_data.get("organization", "Government Agency"),
+                    legal_issue=doc_data.get("legal_issue", "regulatory compliance")
+                )
+                doc_data["subject"] = enhanced.subject
+                doc_data["question_presented"] = enhanced.question_presented
+                doc_data["body"] = enhanced.analysis
+                doc_data["conclusion"] = enhanced.conclusion
+
+            elif category == "procurement":
+                vendors = doc_data.get("vendors", ["Vendor A", "Vendor B", "Vendor C"])
+                enhanced = self.llm_generator.generate_cui_procurement_doc(
+                    acquisition_name=doc_data.get("acquisition_name", "IT Services"),
+                    agency=doc_data.get("organization", "Government Agency"),
+                    estimated_value=doc_data.get("estimated_value", "$500,000"),
+                    vendors=vendors if isinstance(vendors, list) else [vendors]
+                )
+                doc_data["executive_summary"] = enhanced.acquisition_summary
+                doc_data["evaluation_criteria"] = enhanced.evaluation_criteria
+                doc_data["body"] = enhanced.vendor_analysis
+                doc_data["recommendation"] = enhanced.recommendation
+                doc_data["justification"] = enhanced.justification
+
+            else:
+                # Generic CUI narrative enhancement
+                enhanced = self.llm_generator.generate_cui_narrative(
+                    category=category,
+                    subcategory=subcategory,
+                    document_type=doc_type,
+                    context={
+                        "organization": doc_data.get("organization", ""),
+                        "subject": doc_data.get("subject", ""),
+                    }
+                )
+                doc_data["executive_summary"] = enhanced.executive_summary
+                doc_data["body"] = enhanced.body_content
+                doc_data["recommendations"] = enhanced.recommendations
+
+            return doc_data, True
+
+        except Exception as e:
+            # If LLM enhancement fails, return original data
+            self.stats["errors"].append(f"LLM enhancement failed: {str(e)}")
+            return doc_data, False
+
     def generate_single_cui_positive(self, index: int) -> Optional[str]:
         """Generate a single CUI positive document"""
         try:
@@ -601,6 +709,13 @@ class MedForgeCUIGenerator:
             doc_data = self.cui_generator.generate_positive()
             category = doc_data.get("category", "general")
             doc_type = doc_data.get("document_type", "document")
+
+            # Try LLM enhancement
+            doc_data, was_enhanced = self._enhance_with_llm(doc_data)
+            if was_enhanced:
+                self.stats["llm_enhanced"] += 1
+            else:
+                self.stats["template_based"] += 1
 
             # Choose format
             available_formats = [f for f in self.formats if f in self.formatters]
@@ -642,7 +757,7 @@ class MedForgeCUIGenerator:
             self.stats["by_category"][category] += 1
 
             # Add to manifest
-            self.manifest.append({
+            manifest_entry = {
                 "file_path": str(Path(filepath).relative_to(self.output_dir)),
                 "cui_status": "positive",
                 "category": category,
@@ -652,7 +767,9 @@ class MedForgeCUIGenerator:
                 "authority": doc_data.get("authority", ""),
                 "format": fmt,
                 "index": index,
-            })
+                "llm_enhanced": was_enhanced,
+            }
+            self.manifest.append(manifest_entry)
 
             return filepath
 
@@ -668,6 +785,9 @@ class MedForgeCUIGenerator:
             doc_data = self.cui_generator.generate_negative()
             category = doc_data.get("category", "general")
             doc_type = doc_data.get("document_type", "document")
+
+            # CUI negative documents are always template-based (no LLM enhancement)
+            self.stats["template_based"] += 1
 
             # Choose format
             available_formats = [f for f in self.formats if f in self.formatters]
@@ -710,6 +830,7 @@ class MedForgeCUIGenerator:
                 "document_type": doc_type,
                 "format": fmt,
                 "index": index,
+                "llm_enhanced": False,
             })
 
             return filepath
@@ -888,6 +1009,27 @@ def display_cui_stats(stats: dict, output_dir: str, duration: float):
 [yellow]Avg Time:[/yellow] {duration / max(stats['total_generated'], 1):.2f}s per document"""
 
     console.print(Panel(summary, title="[bold]CUI Generation Summary[/bold]", border_style="cyan"))
+
+    # Generation method table (if LLM was used)
+    llm_enhanced = stats.get("llm_enhanced", 0)
+    template_based = stats.get("template_based", 0)
+
+    if llm_enhanced > 0 or template_based > 0:
+        method_table = Table(title="Generation Method", box=box.ROUNDED)
+        method_table.add_column("Method", style="cyan")
+        method_table.add_column("Count", justify="right", style="magenta")
+        method_table.add_column("Percentage", justify="right", style="yellow")
+
+        total = llm_enhanced + template_based
+        if llm_enhanced > 0:
+            llm_pct = (llm_enhanced / total) * 100
+            method_table.add_row("LLM Enhanced", str(llm_enhanced), f"{llm_pct:.1f}%")
+
+        if template_based > 0:
+            template_pct = (template_based / total) * 100
+            method_table.add_row("Template Based", str(template_based), f"{template_pct:.1f}%")
+
+        console.print(method_table)
 
     # Category distribution table
     if stats.get("by_category"):
@@ -1069,7 +1211,7 @@ def generate(
         config_table.add_row("CUI Categories", ", ".join(selected_categories) if selected_categories else "All")
 
     config_table.add_row("Formats", ", ".join(format_list))
-    if generate_phi:
+    if generate_phi or generate_cui:
         config_table.add_row("LLM Enhancement", f"{int(llm_percentage * 100)}%")
         config_table.add_row("LLM Available", "Yes" if is_llm_available() else "No (using templates)")
     config_table.add_row("Random Seed", str(seed) if seed else "Random")
@@ -1109,6 +1251,7 @@ def generate(
                 seed=seed,
                 categories=selected_categories,
                 formats=cui_format_list,
+                llm_percentage=llm_percentage,
             )
             all_stats["cui"] = cui_generator.generate_batch(
                 cui_positive_count=cui_positive,
