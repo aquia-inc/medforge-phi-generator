@@ -4,13 +4,12 @@ PDF Form Field Populator
 Populates fillable PDF forms with synthetic data using Faker.
 Works with customer-provided CMS template forms.
 """
-from PyPDF2 import PdfReader
-from fillpdf import fillpdfs
+import pikepdf
 from faker import Faker
 import random
-from datetime import datetime, timedelta
-from typing import Dict, Any, Optional
 import os
+from datetime import datetime
+from typing import Dict, Any, Optional
 
 
 class PDFFormPopulator:
@@ -38,17 +37,40 @@ class PDFFormPopulator:
         # Create output directory
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-        # Use fillpdf to populate the form
+        # Use pikepdf to properly fill PDF forms
         try:
-            fillpdfs.write_fillable_pdf(
-                template_path,
-                output_path,
-                field_data,
-                flatten=False  # Keep as fillable form
-            )
+            pdf = pikepdf.open(template_path)
+
+            # Fill form fields
+            if '/AcroForm' in pdf.Root and '/Fields' in pdf.Root.AcroForm:
+                for field in pdf.Root.AcroForm.Fields:
+                    field_name = str(field.T) if '/T' in field else None
+
+                    if field_name and field_name in field_data:
+                        value = field_data[field_name]
+
+                        # Set field value
+                        if value is True:
+                            field['/V'] = pikepdf.Name('/On')
+                        elif value is False:
+                            field['/V'] = pikepdf.Name('/Off')
+                        else:
+                            field['/V'] = str(value) if value else ''
+
+                        # Remove appearance stream to force regeneration
+                        if '/AP' in field:
+                            del field['/AP']
+
+                # Tell PDF viewers to regenerate field appearances
+                pdf.Root.AcroForm['/NeedAppearances'] = True
+
+            # Save
+            pdf.save(output_path)
+            pdf.close()
+
         except Exception as e:
-            print(f"Warning: fillpdf error: {e}")
-            # Fallback: just copy the template
+            print(f"Warning: pikepdf error: {e}")
+            # Fallback: copy template
             import shutil
             shutil.copy(template_path, output_path)
 
@@ -187,16 +209,13 @@ class PDFFormPopulator:
             'txtDepositNum': account_number,
             'txtTypeofAccount': random.choice(['Checking Account', 'Savings Account']),
 
-            # Part 3: CMS Administrative Fields (some populated)
-            'Vendor Type': random.choice(['Individual', 'Business', 'Government', 'Non-Profit']),
+            # Part 3: CMS Administrative Fields (use exact dropdown values from PDF)
+            'Vendor Type': random.choice(['Customer', 'Supplier', 'Both - Cus. & Sup.']),
             'CMS Employee': random.choice(['Yes', 'No']),
             'SES Employee': random.choice(['Yes', 'No']),
             'Federal Vendor': random.choice(['Yes', 'No']),
-            '1099': random.choice(['Yes', 'No']),  # 1099 reporting
+            '1099': random.choice(['Yes', 'No']),
             'Trading Partner': random.choice(['Yes', 'No']),
-
-            # Payment Terms
-            'Supplier Payment Terms': random.choice(['Net 30', 'Net 60', 'Immediate']),
 
             # Signature
             'txtSignature': contact_name,
@@ -220,13 +239,14 @@ class PDFFormPopulator:
         ]
 
         form_data = {
-            'Employee Name': employee_name,
-            'Position': random.choice(['Program Analyst', 'IT Specialist', 'Budget Analyst', 'Administrative Officer']),
-            'Office': random.choice(['Office of the Director', 'IT Department', 'Finance Division', 'HR Department']),
-            'Supervisor': self.fake.name(),
-            'Accommodation Requested': random.choice(accommodations),
-            'Medical Documentation Attached': '/Yes',
-            'Request Date': datetime.now().strftime('%m/%d/%Y'),
+            'Name': employee_name,  # Actual field name in PDF
+            'Date of Birth': self.fake.date_of_birth(minimum_age=25, maximum_age=65).strftime('%m/%d/%Y'),
+            'Grade': random.choice(['GS-9', 'GS-11', 'GS-12', 'GS-13', 'GS-14', 'GS-15']),
+            'Component': random.choice(['CMS', 'OIG', 'ACF', 'ASPE', 'OCR']),
+            'Location': self.fake.city() + ', ' + self.fake.state_abbr(),
+            'Telephone number': self.fake.phone_number(),
+            'Manager': self.fake.name(),
+            'Discription': random.choice(accommodations),  # Note: typo in actual PDF field name
         }
 
         return form_data
@@ -256,7 +276,7 @@ class CustomerTemplateManager:
                 'clean_name': 'MedicalInquiryForm'
             },
             'EFT Authorization Form': {
-                'template': 'EFT Authorization Form-blank-CUI-Finance-negative.pdf',
+                'template': 'EFT Authorization Form-blank-CUI-Finance-negative.pdf',  # Use blank, will populate
                 'generator': self.populator.generate_eft_authorization_data,
                 'category': 'CUI-Finance',
                 'clean_name': 'EFTAuthorizationForm'
@@ -284,16 +304,16 @@ class CustomerTemplateManager:
             Path to generated file
         """
         template_info = self.template_mappings[template_key]
+
         template_path = os.path.join(self.template_dir, template_info['template'])
 
         # Create clean filename
         clean_name = template_info['clean_name']
         filename = f"{clean_name}_{index:04d}.pdf"
-        # output_subdir is now the full path, not relative
         output_path = os.path.join(output_subdir, filename)
 
         if populate:
-            # Generate synthetic data
+            # Generate synthetic data and fill form
             field_data = template_info['generator']()
             return self.populator.populate_form(template_path, output_path, field_data)
         else:

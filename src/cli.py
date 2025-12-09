@@ -667,9 +667,10 @@ class MedForgeCUIGenerator:
         """
         try:
             # Map customer templates to CUI categories
+            # NOTE: EFT disabled - form fill not working reliably
             template_category_map = {
-                'EFT Authorization Form': 'financial',
-                'ReasonableAccommodationRequest': 'legal',  # Could also be proprietary
+                # 'EFT Authorization Form': 'financial',  # DISABLED
+                'ReasonableAccommodationRequest': 'legal',
             }
 
             # Select a random template
@@ -824,7 +825,7 @@ class MedForgeCUIGenerator:
     def generate_single_cui_positive(self, index: int) -> Optional[str]:
         """Generate a single CUI positive document"""
         try:
-            # 20% chance to use customer CMS template if available
+            # 20% chance to use customer CMS template (fixed with PyMuPDF)
             use_customer_template = random.random() < 0.2
 
             if use_customer_template and 'pdf' in self.formats:
@@ -910,7 +911,7 @@ class MedForgeCUIGenerator:
     def generate_single_cui_negative(self, index: int) -> Optional[str]:
         """Generate a single CUI negative document"""
         try:
-            # 20% chance to use blank customer CMS template
+            # 20% chance to use customer CMS template (fixed with PyMuPDF)
             use_customer_template = random.random() < 0.2
 
             if use_customer_template and 'pdf' in self.formats:
