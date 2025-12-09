@@ -1117,7 +1117,7 @@ def generate(
     cui_all: bool = typer.Option(False, "--cui-all", help="Generate all CUI categories"),
     # General options
     formats: str = typer.Option("pdf,docx,xlsx,eml,pptx", "--formats", "-f", help="Comma-separated list of formats"),
-    output: str = typer.Option("output/medforge", "--output", "-o", help="Output directory"),
+    output: str = typer.Option("output", "--output", "-o", help="Output directory"),
     llm_percentage: float = typer.Option(0.2, "--llm-percentage", help="Percentage of LLM-enhanced docs (0.0-1.0)"),
     seed: Optional[int] = typer.Option(None, "--seed", "-s", help="Random seed for reproducibility"),
     parallel_workers: int = typer.Option(1, "--parallel-workers", "-p", help="Number of parallel workers"),
@@ -1229,6 +1229,15 @@ def generate(
     # Validate parameters
     if llm_percentage < 0 or llm_percentage > 1:
         console.print("[red]Error: --llm-percentage must be between 0.0 and 1.0[/red]")
+        raise typer.Exit(1)
+
+    # Check LLM configuration when llm_percentage > 0
+    if llm_percentage > 0 and not is_llm_available():
+        console.print("[red]Error: --llm-percentage is set but ANTHROPIC_API_KEY is not configured.[/red]")
+        console.print("[yellow]To fix this, either:[/yellow]")
+        console.print("  1. Set ANTHROPIC_API_KEY in your .env file")
+        console.print("  2. Export ANTHROPIC_API_KEY in your shell")
+        console.print("  3. Use --llm-percentage 0 to disable LLM enhancement")
         raise typer.Exit(1)
 
     if parallel_workers < 1:
@@ -1618,6 +1627,207 @@ def stats(
                     branch.add(f"[green]{filename}[/green]")
 
         console.print(Panel(dir_tree, title="Directory Structure", border_style="cyan"))
+
+
+@app.command()
+def setup(
+    check: bool = typer.Option(False, "--check", "-c", help="Check current environment and configuration status"),
+    prompt: bool = typer.Option(False, "--prompt", "-p", help="Interactively configure missing settings"),
+    show_example: bool = typer.Option(False, "--example", "-e", help="Show example YAML config file for --config flag"),
+):
+    """
+    Set up and verify MedForge environment (API keys, .env file)
+
+    Examples:
+
+        medforge setup --check
+
+        medforge setup --prompt
+
+        medforge setup --example
+    """
+    from pathlib import Path
+    import os
+
+    display_banner()
+
+    if not check and not prompt and not show_example:
+        # Default to --check if no option specified
+        check = True
+
+    if show_example:
+        example_yaml = """# MedForge Configuration File
+# Save as medforge_config.yaml and use with: medforge generate --config medforge_config.yaml
+
+# Document counts (use either 'count' for total, or specific positive/negative counts)
+# count: 100  # Total documents (80% positive, 20% negative split)
+phi_positive: 80          # Number of PHI positive documents
+phi_negative: 20          # Number of PHI negative documents
+cui_positive: 0           # Number of CUI positive documents
+cui_negative: 0           # Number of CUI negative documents
+
+# CUI options
+cui_all: false            # Generate all CUI categories
+cui_categories: null      # Or specify: "financial,legal,tax,procurement"
+
+# Output settings
+output: "output"          # Base output directory (creates production_run_TIMESTAMP inside)
+formats: "pdf,docx,xlsx,eml,pptx"  # Comma-separated formats
+
+# LLM settings (requires ANTHROPIC_API_KEY in .env or environment)
+llm_percentage: 0.2       # Percentage of docs to enhance with LLM (0.0-1.0)
+
+# Other settings
+seed: null                # Random seed for reproducibility (null = random)
+parallel_workers: 1       # Number of parallel workers
+"""
+        console.print(Panel(example_yaml, title="Example YAML Config", border_style="cyan"))
+        return
+
+    if check:
+        console.print("\n[bold cyan]Configuration Check[/bold cyan]\n")
+
+        # Check .env file
+        env_file = Path(".env")
+        env_exists = env_file.exists()
+
+        config_table = Table(box=box.ROUNDED, show_header=True)
+        config_table.add_column("Setting", style="cyan")
+        config_table.add_column("Status", style="bold")
+        config_table.add_column("Details")
+
+        # .env file check
+        if env_exists:
+            config_table.add_row(
+                ".env file",
+                "[green]✓ Found[/green]",
+                str(env_file.absolute())
+            )
+        else:
+            config_table.add_row(
+                ".env file",
+                "[yellow]⚠ Not found[/yellow]",
+                "Create .env in project root"
+            )
+
+        # ANTHROPIC_API_KEY check
+        api_key = os.getenv('ANTHROPIC_API_KEY')
+        if api_key:
+            # Mask the key for display
+            masked = api_key[:8] + "..." + api_key[-4:] if len(api_key) > 12 else "***"
+            config_table.add_row(
+                "ANTHROPIC_API_KEY",
+                "[green]✓ Set[/green]",
+                f"Value: {masked}"
+            )
+        else:
+            config_table.add_row(
+                "ANTHROPIC_API_KEY",
+                "[red]✗ Not set[/red]",
+                "Required for LLM enhancement"
+            )
+
+        # LLM availability check
+        if is_llm_available():
+            try:
+                from generators.llm_generator import ClaudeGenerator
+                gen = ClaudeGenerator()
+                config_table.add_row(
+                    "LLM Generator",
+                    "[green]✓ Ready[/green]",
+                    f"Model: {gen.model}"
+                )
+            except Exception as e:
+                config_table.add_row(
+                    "LLM Generator",
+                    "[red]✗ Error[/red]",
+                    str(e)[:50]
+                )
+        else:
+            config_table.add_row(
+                "LLM Generator",
+                "[yellow]⚠ Disabled[/yellow]",
+                "Set ANTHROPIC_API_KEY to enable"
+            )
+
+        # Check for config file in current directory
+        yaml_configs = list(Path(".").glob("*.yaml")) + list(Path(".").glob("*.yml"))
+        medforge_configs = [f for f in yaml_configs if "medforge" in f.name.lower() or "config" in f.name.lower()]
+        if medforge_configs:
+            config_table.add_row(
+                "YAML Config",
+                "[green]✓ Found[/green]",
+                ", ".join(str(f) for f in medforge_configs[:3])
+            )
+        else:
+            config_table.add_row(
+                "YAML Config",
+                "[dim]○ Optional[/dim]",
+                "Use --config flag or medforge setup --example"
+            )
+
+        console.print(config_table)
+
+        # Summary
+        console.print()
+        if api_key and is_llm_available():
+            console.print("[green]✓ Configuration is complete. LLM enhancement is available.[/green]")
+        elif not api_key:
+            console.print("[yellow]⚠ LLM enhancement disabled. Run 'medforge setup --prompt' to configure.[/yellow]")
+
+    if prompt:
+        console.print("\n[bold cyan]Interactive Configuration[/bold cyan]\n")
+
+        env_file = Path(".env")
+        env_content = {}
+
+        # Read existing .env if it exists
+        if env_file.exists():
+            with open(env_file, "r") as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith("#") and "=" in line:
+                        key, value = line.split("=", 1)
+                        env_content[key.strip()] = value.strip()
+
+        # Check ANTHROPIC_API_KEY
+        current_key = os.getenv('ANTHROPIC_API_KEY') or env_content.get('ANTHROPIC_API_KEY', '')
+
+        if current_key:
+            masked = current_key[:8] + "..." + current_key[-4:] if len(current_key) > 12 else "***"
+            console.print(f"[green]ANTHROPIC_API_KEY is already set:[/green] {masked}")
+            update = typer.confirm("Do you want to update it?", default=False)
+            if not update:
+                console.print("[dim]Keeping existing API key.[/dim]")
+                return
+        else:
+            console.print("[yellow]ANTHROPIC_API_KEY is not set.[/yellow]")
+
+        # Prompt for API key
+        console.print("\nGet your API key from: [link=https://console.anthropic.com/]https://console.anthropic.com/[/link]")
+        new_key = typer.prompt("Enter your Anthropic API key", hide_input=True)
+
+        if new_key:
+            env_content['ANTHROPIC_API_KEY'] = new_key
+
+            # Write to .env
+            with open(env_file, "w") as f:
+                for key, value in env_content.items():
+                    f.write(f"{key}={value}\n")
+
+            console.print(f"\n[green]✓ Saved ANTHROPIC_API_KEY to {env_file.absolute()}[/green]")
+            console.print("[yellow]Note: Restart your terminal or run 'source .env' to apply changes.[/yellow]")
+
+            # Test the connection
+            console.print("\n[dim]Testing API connection...[/dim]")
+            os.environ['ANTHROPIC_API_KEY'] = new_key
+            try:
+                from generators.llm_generator import ClaudeGenerator
+                gen = ClaudeGenerator()
+                console.print(f"[green]✓ Successfully connected! Using model: {gen.model}[/green]")
+            except Exception as e:
+                console.print(f"[red]✗ Connection failed: {e}[/red]")
+                console.print("[yellow]Please verify your API key is correct.[/yellow]")
 
 
 @app.command()

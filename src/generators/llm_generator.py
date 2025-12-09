@@ -13,6 +13,56 @@ from dotenv import load_dotenv
 load_dotenv(override=True)
 
 
+def repair_json_string(text: str) -> str:
+    """
+    Repair common JSON issues from LLM responses, particularly
+    unescaped newlines inside string values.
+
+    Args:
+        text: Raw JSON text that may have issues
+
+    Returns:
+        Repaired JSON string
+    """
+    text = text.strip()
+
+    # Track whether we're inside a string
+    result = []
+    in_string = False
+    escape_next = False
+
+    for char in text:
+        if escape_next:
+            result.append(char)
+            escape_next = False
+            continue
+
+        if char == '\\':
+            result.append(char)
+            escape_next = True
+            continue
+
+        if char == '"' and not escape_next:
+            in_string = not in_string
+            result.append(char)
+            continue
+
+        if in_string:
+            # Replace literal newlines/tabs with escaped versions
+            if char == '\n':
+                result.append('\\n')
+            elif char == '\r':
+                result.append('\\r')
+            elif char == '\t':
+                result.append('\\t')
+            else:
+                result.append(char)
+        else:
+            result.append(char)
+
+    return ''.join(result)
+
+
 class ClinicalNarrative(BaseModel):
     """Structured output for clinical assessment narratives"""
     subjective: str = Field(description="Patient's reported symptoms and concerns")
@@ -154,7 +204,9 @@ Return your response as valid JSON with these exact keys:
                 text = text.split("```json")[1].split("```")[0]
             elif "```" in text:
                 text = text.split("```")[1].split("```")[0]
-            data = json.loads(text.strip())
+            # Repair common JSON issues (unescaped newlines, etc.)
+            text = repair_json_string(text)
+            data = json.loads(text)
             return ClinicalNarrative(**data)
 
         except Exception as e:
@@ -212,7 +264,9 @@ Return your response as valid JSON with these exact keys:
                 text = text.split("```json")[1].split("```")[0]
             elif "```" in text:
                 text = text.split("```")[1].split("```")[0]
-            data = json.loads(text.strip())
+            # Repair common JSON issues (unescaped newlines, etc.)
+            text = repair_json_string(text)
+            data = json.loads(text)
             return ProviderCorrespondence(**data)
 
         except Exception as e:
@@ -266,7 +320,9 @@ Return your response as valid JSON with these exact keys:
                 text = text.split("```json")[1].split("```")[0]
             elif "```" in text:
                 text = text.split("```")[1].split("```")[0]
-            data = json.loads(text.strip())
+            # Repair common JSON issues (unescaped newlines, etc.)
+            text = repair_json_string(text)
+            data = json.loads(text)
             return EmailBody(**data)
 
         except Exception as e:
@@ -360,7 +416,9 @@ Return your response as valid JSON with these exact keys:
                 text = text.split("```json")[1].split("```")[0]
             elif "```" in text:
                 text = text.split("```")[1].split("```")[0]
-            data = json.loads(text.strip())
+            # Repair common JSON issues (unescaped newlines, etc.)
+            text = repair_json_string(text)
+            data = json.loads(text)
             return CUIBudgetMemo(**data)
 
         except Exception as e:
@@ -415,7 +473,9 @@ Return your response as valid JSON with these exact keys:
                 text = text.split("```json")[1].split("```")[0]
             elif "```" in text:
                 text = text.split("```")[1].split("```")[0]
-            data = json.loads(text.strip())
+            # Repair common JSON issues (unescaped newlines, etc.)
+            text = repair_json_string(text)
+            data = json.loads(text)
             return CUISecurityReport(**data)
 
         except Exception as e:
@@ -467,7 +527,9 @@ Return your response as valid JSON with these exact keys:
                 text = text.split("```json")[1].split("```")[0]
             elif "```" in text:
                 text = text.split("```")[1].split("```")[0]
-            data = json.loads(text.strip())
+            # Repair common JSON issues (unescaped newlines, etc.)
+            text = repair_json_string(text)
+            data = json.loads(text)
             return CUILegalMemo(**data)
 
         except Exception as e:
@@ -522,7 +584,9 @@ Return your response as valid JSON with these exact keys:
                 text = text.split("```json")[1].split("```")[0]
             elif "```" in text:
                 text = text.split("```")[1].split("```")[0]
-            data = json.loads(text.strip())
+            # Repair common JSON issues (unescaped newlines, etc.)
+            text = repair_json_string(text)
+            data = json.loads(text)
             return CUIProcurementDoc(**data)
 
         except Exception as e:
@@ -576,7 +640,9 @@ Return your response as valid JSON with these exact keys:
                 text = text.split("```json")[1].split("```")[0]
             elif "```" in text:
                 text = text.split("```")[1].split("```")[0]
-            data = json.loads(text.strip())
+            # Repair common JSON issues (unescaped newlines, etc.)
+            text = repair_json_string(text)
+            data = json.loads(text)
             return CUIDocumentNarrative(**data)
 
         except Exception as e:
