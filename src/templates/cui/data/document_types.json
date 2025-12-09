@@ -1,0 +1,538 @@
+{
+  "critical_infrastructure": {
+    "emergency_management": {
+      "positive": [
+        {
+          "type": "coop_plan",
+          "name": "Continuity of Operations Plan (COOP)",
+          "file_prefix": "COOPPlan",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "erg_assignment",
+          "name": "Emergency Relocation Group Assignment",
+          "file_prefix": "ERGAssignment",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "essential_functions",
+          "name": "Essential Functions Assessment",
+          "file_prefix": "EssentialFunctions",
+          "formats": ["docx", "xlsx"]
+        },
+        {
+          "type": "devolution_plan",
+          "name": "Devolution Planning Document",
+          "file_prefix": "DevolutionPlan",
+          "formats": ["docx", "pdf"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "blank_coop_template",
+          "name": "COOP Template (Blank)",
+          "file_prefix": "COOPTemplate",
+          "formats": ["docx"]
+        },
+        {
+          "type": "public_guidance",
+          "name": "Public Emergency Preparedness Guide",
+          "file_prefix": "PublicEmergencyGuide",
+          "formats": ["pdf"]
+        }
+      ]
+    },
+    "systems_vulnerability": {
+      "positive": [
+        {
+          "type": "fisma_report",
+          "name": "FISMA Compliance Report",
+          "file_prefix": "FISMAReport",
+          "formats": ["docx", "pdf", "xlsx"]
+        },
+        {
+          "type": "vulnerability_alert",
+          "name": "Security Vulnerability Alert",
+          "file_prefix": "VulnerabilityAlert",
+          "formats": ["eml", "docx"]
+        },
+        {
+          "type": "incident_report",
+          "name": "Security Incident Report",
+          "file_prefix": "IncidentReport",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "system_assessment",
+          "name": "System Security Assessment",
+          "file_prefix": "SystemAssessment",
+          "formats": ["docx", "xlsx"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "servicenow_ticket",
+          "name": "ServiceNow IT Ticket",
+          "file_prefix": "ServiceNowTicket",
+          "formats": ["eml"]
+        },
+        {
+          "type": "blank_fisma_template",
+          "name": "FISMA Template (Blank)",
+          "file_prefix": "FISMATemplate",
+          "formats": ["xlsx"]
+        }
+      ]
+    },
+    "physical_security": {
+      "positive": [
+        {
+          "type": "facility_assessment",
+          "name": "Facility Security Assessment",
+          "file_prefix": "FacilityAssessment",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "access_control",
+          "name": "Access Control Policy",
+          "file_prefix": "AccessControlPolicy",
+          "formats": ["docx", "pdf"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "visitor_policy",
+          "name": "General Visitor Policy",
+          "file_prefix": "VisitorPolicy",
+          "formats": ["pdf"]
+        }
+      ]
+    }
+  },
+  "financial": {
+    "budget": {
+      "positive": [
+        {
+          "type": "budget_memo",
+          "name": "Presidential Budget Decision Memorandum",
+          "file_prefix": "BudgetMemo",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "budget_justification",
+          "name": "Agency Budget Justification",
+          "file_prefix": "BudgetJustification",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "passback",
+          "name": "OMB Passback Document",
+          "file_prefix": "OMBPassback",
+          "formats": ["docx", "pdf"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "public_budget_summary",
+          "name": "Public Budget Summary",
+          "file_prefix": "PublicBudgetSummary",
+          "formats": ["pdf"]
+        }
+      ]
+    },
+    "bank_secrecy": {
+      "positive": [
+        {
+          "type": "sar",
+          "name": "Suspicious Activity Report",
+          "file_prefix": "SAR",
+          "formats": ["pdf", "xlsx"]
+        },
+        {
+          "type": "ctr",
+          "name": "Currency Transaction Report",
+          "file_prefix": "CTR",
+          "formats": ["pdf"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "aml_training",
+          "name": "AML Training Materials",
+          "file_prefix": "AMLTraining",
+          "formats": ["pptx", "pdf"]
+        }
+      ]
+    },
+    "eft": {
+      "positive": [
+        {
+          "type": "eft_authorization",
+          "name": "EFT Authorization Form",
+          "file_prefix": "EFTAuth",
+          "formats": ["pdf", "docx"]
+        },
+        {
+          "type": "payment_record",
+          "name": "Electronic Payment Record",
+          "file_prefix": "PaymentRecord",
+          "formats": ["xlsx", "pdf"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "blank_eft_form",
+          "name": "EFT Form (Blank)",
+          "file_prefix": "EFTFormBlank",
+          "formats": ["pdf"]
+        }
+      ]
+    },
+    "retirement": {
+      "positive": [
+        {
+          "type": "retirement_estimate",
+          "name": "FERS Retirement Estimate",
+          "file_prefix": "RetirementEstimate",
+          "formats": ["pdf", "xlsx"]
+        },
+        {
+          "type": "annuity_calculation",
+          "name": "Annuity Calculation Worksheet",
+          "file_prefix": "AnnuityCalc",
+          "formats": ["xlsx"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "retirement_guide",
+          "name": "General Retirement Planning Guide",
+          "file_prefix": "RetirementGuide",
+          "formats": ["pdf"]
+        }
+      ]
+    }
+  },
+  "law_enforcement": {
+    "criminal_history": {
+      "positive": [
+        {
+          "type": "rap_sheet",
+          "name": "Criminal History Record",
+          "file_prefix": "CriminalHistory",
+          "formats": ["pdf"]
+        },
+        {
+          "type": "background_check",
+          "name": "Background Investigation Report",
+          "file_prefix": "BackgroundCheck",
+          "formats": ["pdf", "docx"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "crime_prevention",
+          "name": "Crime Prevention Resources",
+          "file_prefix": "CrimePrevention",
+          "formats": ["pdf"]
+        }
+      ]
+    },
+    "investigation": {
+      "positive": [
+        {
+          "type": "investigation_report",
+          "name": "Investigation Report",
+          "file_prefix": "InvestigationReport",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "interview_summary",
+          "name": "Investigative Interview Summary",
+          "file_prefix": "InterviewSummary",
+          "formats": ["docx"]
+        },
+        {
+          "type": "evidence_log",
+          "name": "Evidence Collection Log",
+          "file_prefix": "EvidenceLog",
+          "formats": ["xlsx", "pdf"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "fraud_awareness",
+          "name": "Fraud Awareness Bulletin",
+          "file_prefix": "FraudAwareness",
+          "formats": ["pdf"]
+        }
+      ]
+    }
+  },
+  "legal": {
+    "privilege": {
+      "positive": [
+        {
+          "type": "attorney_memo",
+          "name": "Attorney-Client Privileged Memorandum",
+          "file_prefix": "AttorneyMemo",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "legal_opinion",
+          "name": "Legal Opinion",
+          "file_prefix": "LegalOpinion",
+          "formats": ["docx", "pdf"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "legal_faq",
+          "name": "Legal FAQ (Public)",
+          "file_prefix": "LegalFAQ",
+          "formats": ["pdf"]
+        }
+      ]
+    },
+    "collective_bargaining": {
+      "positive": [
+        {
+          "type": "bargaining_proposal",
+          "name": "Collective Bargaining Proposal",
+          "file_prefix": "BargainingProposal",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "negotiation_notes",
+          "name": "Negotiation Session Notes",
+          "file_prefix": "NegotiationNotes",
+          "formats": ["docx"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "union_rights",
+          "name": "Employee Union Rights Information",
+          "file_prefix": "UnionRights",
+          "formats": ["pdf"]
+        }
+      ]
+    },
+    "legislative": {
+      "positive": [
+        {
+          "type": "congressional_testimony",
+          "name": "Draft Congressional Testimony",
+          "file_prefix": "CongressionalTestimony",
+          "formats": ["docx"]
+        },
+        {
+          "type": "legislative_analysis",
+          "name": "Legislative Impact Analysis",
+          "file_prefix": "LegislativeAnalysis",
+          "formats": ["docx", "pdf"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "public_testimony",
+          "name": "Published Congressional Testimony",
+          "file_prefix": "PublicTestimony",
+          "formats": ["pdf"]
+        }
+      ]
+    },
+    "administrative": {
+      "positive": [
+        {
+          "type": "hearing_record",
+          "name": "Administrative Hearing Record",
+          "file_prefix": "HearingRecord",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "appeal_decision",
+          "name": "Appeal Decision (Draft)",
+          "file_prefix": "AppealDecision",
+          "formats": ["docx"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "appeal_process",
+          "name": "Appeal Process Guide",
+          "file_prefix": "AppealProcessGuide",
+          "formats": ["pdf"]
+        }
+      ]
+    }
+  },
+  "procurement": {
+    "source_selection": {
+      "positive": [
+        {
+          "type": "source_selection_plan",
+          "name": "Source Selection Plan",
+          "file_prefix": "SourceSelectionPlan",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "evaluation_report",
+          "name": "Technical Evaluation Report",
+          "file_prefix": "TechEvaluation",
+          "formats": ["docx", "xlsx"]
+        },
+        {
+          "type": "igce",
+          "name": "Independent Government Cost Estimate",
+          "file_prefix": "IGCE",
+          "formats": ["xlsx", "pdf"]
+        },
+        {
+          "type": "award_recommendation",
+          "name": "Award Recommendation Memorandum",
+          "file_prefix": "AwardRecommendation",
+          "formats": ["docx"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "procurement_guide",
+          "name": "Public Procurement Guidelines",
+          "file_prefix": "ProcurementGuide",
+          "formats": ["pdf"]
+        }
+      ]
+    },
+    "small_business": {
+      "positive": [
+        {
+          "type": "sbir_proposal",
+          "name": "SBIR Proposal Evaluation",
+          "file_prefix": "SBIRProposal",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "sttr_award",
+          "name": "STTR Award Recommendation",
+          "file_prefix": "STTRAward",
+          "formats": ["docx"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "sbir_overview",
+          "name": "SBIR Program Overview",
+          "file_prefix": "SBIROverview",
+          "formats": ["pdf"]
+        }
+      ]
+    }
+  },
+  "proprietary": {
+    "entity_registration": {
+      "positive": [
+        {
+          "type": "sam_registration",
+          "name": "SAM Entity Registration Data",
+          "file_prefix": "SAMRegistration",
+          "formats": ["xlsx", "pdf"]
+        },
+        {
+          "type": "contractor_info",
+          "name": "Contractor Proprietary Information",
+          "file_prefix": "ContractorInfo",
+          "formats": ["docx", "pdf"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "sam_guide",
+          "name": "SAM Registration Guide",
+          "file_prefix": "SAMGuide",
+          "formats": ["pdf"]
+        }
+      ]
+    },
+    "general": {
+      "positive": [
+        {
+          "type": "trade_secret",
+          "name": "Trade Secret Disclosure",
+          "file_prefix": "TradeSecret",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "proprietary_data",
+          "name": "Proprietary Business Data",
+          "file_prefix": "ProprietaryData",
+          "formats": ["xlsx", "docx"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "public_business_info",
+          "name": "Public Business Information",
+          "file_prefix": "PublicBusinessInfo",
+          "formats": ["pdf"]
+        }
+      ]
+    }
+  },
+  "tax": {
+    "federal_taxpayer": {
+      "positive": [
+        {
+          "type": "taxpayer_record",
+          "name": "Taxpayer Account Record",
+          "file_prefix": "TaxpayerRecord",
+          "formats": ["pdf", "xlsx"]
+        },
+        {
+          "type": "audit_workpapers",
+          "name": "Tax Audit Workpapers",
+          "file_prefix": "AuditWorkpapers",
+          "formats": ["xlsx", "pdf"]
+        },
+        {
+          "type": "collection_case",
+          "name": "Collection Case File",
+          "file_prefix": "CollectionCase",
+          "formats": ["docx", "pdf"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "tax_forms_blank",
+          "name": "Blank Tax Forms",
+          "file_prefix": "BlankTaxForms",
+          "formats": ["pdf"]
+        }
+      ]
+    },
+    "written_determinations": {
+      "positive": [
+        {
+          "type": "plr",
+          "name": "Private Letter Ruling",
+          "file_prefix": "PrivateLetterRuling",
+          "formats": ["docx", "pdf"]
+        },
+        {
+          "type": "chief_counsel_advice",
+          "name": "Chief Counsel Advice",
+          "file_prefix": "ChiefCounselAdvice",
+          "formats": ["docx", "pdf"]
+        }
+      ],
+      "negative": [
+        {
+          "type": "published_ruling",
+          "name": "Published Revenue Ruling",
+          "file_prefix": "RevenueRuling",
+          "formats": ["pdf"]
+        }
+      ]
+    }
+  }
+}

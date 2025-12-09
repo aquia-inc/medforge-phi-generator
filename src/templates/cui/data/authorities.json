@@ -1,0 +1,154 @@
+{
+  "critical_infrastructure": {
+    "emergency_management": [
+      "Presidential Policy Directive 40 (PPD-40)",
+      "Federal Continuity Directive 1 (FCD-1)",
+      "Federal Continuity Directive 2 (FCD-2)",
+      "National Security Presidential Directive 51 (NSPD-51)",
+      "Homeland Security Presidential Directive 20 (HSPD-20)"
+    ],
+    "systems_vulnerability": [
+      "NIST SP 800-53",
+      "NIST SP 800-171",
+      "Federal Information Security Modernization Act (FISMA)",
+      "44 USC 3552",
+      "6 USC 148"
+    ],
+    "physical_security": [
+      "41 CFR 102-81",
+      "Interagency Security Committee (ISC) Standards",
+      "HSPD-12",
+      "Federal Protective Service Guidelines"
+    ],
+    "general": [
+      "6 USC 131",
+      "Critical Infrastructure Information Act of 2002",
+      "PCII Program Requirements"
+    ]
+  },
+  "financial": {
+    "budget": [
+      "31 USC 1105",
+      "OMB Circular A-11",
+      "22.1 Confidentiality of budget deliberations",
+      "Budget and Accounting Act of 1921"
+    ],
+    "bank_secrecy": [
+      "31 USC 5311-5330",
+      "31 CFR Chapter X",
+      "Bank Secrecy Act (BSA)",
+      "Anti-Money Laundering Act"
+    ],
+    "eft": [
+      "31 CFR 210",
+      "31 CFR 208",
+      "Electronic Fund Transfer Act",
+      "Treasury Financial Manual"
+    ],
+    "retirement": [
+      "5 USC Chapter 84",
+      "5 CFR 831",
+      "Federal Employees Retirement System Act",
+      "CSRS and FERS Handbook"
+    ],
+    "comptroller_general": [
+      "31 USC 712",
+      "31 USC 716",
+      "Government Accountability Office Act",
+      "GAO Policy and Procedures Manual"
+    ]
+  },
+  "law_enforcement": {
+    "criminal_history": [
+      "28 USC 534",
+      "5 USC 9101",
+      "Privacy Act of 1974",
+      "National Crime Prevention and Privacy Compact"
+    ],
+    "investigation": [
+      "5 USC 552(b)(7)",
+      "Inspector General Act of 1978",
+      "18 USC 1905",
+      "DOJ Criminal Investigation Policy"
+    ],
+    "general": [
+      "28 CFR Part 16",
+      "Law Enforcement Sensitive (LES) Policy",
+      "5 USC 552a"
+    ]
+  },
+  "legal": {
+    "privilege": [
+      "Federal Rules of Evidence 501",
+      "Federal Rules of Civil Procedure 26(b)(3)",
+      "Attorney-Client Privilege",
+      "Work Product Doctrine"
+    ],
+    "collective_bargaining": [
+      "5 USC Chapter 71",
+      "29 USC 158",
+      "Federal Labor Relations Authority Regulations",
+      "Executive Order 13836"
+    ],
+    "legislative": [
+      "5 USC 552(b)(5)",
+      "Congressional Budget and Impoundment Control Act",
+      "Legislative Reorganization Act"
+    ],
+    "administrative": [
+      "5 USC 554",
+      "Administrative Procedure Act",
+      "5 CFR Part 1201"
+    ]
+  },
+  "procurement": {
+    "source_selection": [
+      "48 CFR 2.101",
+      "48 CFR 3.104",
+      "48 CFR 15.207(b)",
+      "48 CFR 15.505(f)",
+      "41 USC 2102(a)",
+      "FAR Part 15"
+    ],
+    "small_business": [
+      "15 USC 638",
+      "SBIR/STTR Policy Directive",
+      "Small Business Act",
+      "13 CFR Part 121"
+    ],
+    "general": [
+      "48 CFR 42.1503(b)",
+      "48 CFR 5.401(a)",
+      "41 USC 2105",
+      "Competition in Contracting Act"
+    ]
+  },
+  "proprietary": {
+    "entity_registration": [
+      "System for Award Management (SAM) Policy",
+      "48 CFR 4.1102",
+      "Federal Acquisition Streamlining Act",
+      "31 USC 7701"
+    ],
+    "general": [
+      "18 USC 1905",
+      "Trade Secrets Act",
+      "5 USC 552(b)(4)",
+      "Defend Trade Secrets Act of 2016"
+    ]
+  },
+  "tax": {
+    "federal_taxpayer": [
+      "26 USC 6103",
+      "26 CFR 301.6103",
+      "Internal Revenue Code Section 6103",
+      "Tax Information Security Guidelines"
+    ],
+    "written_determinations": [
+      "26 USC 6110",
+      "26 CFR 301.6110",
+      "IRS Private Letter Ruling Procedures",
+      "Chief Counsel Advice Policy"
+    ]
+  }
+}

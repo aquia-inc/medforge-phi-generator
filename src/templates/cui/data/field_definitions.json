@@ -1,0 +1,292 @@
+{
+  "_description": "Field definitions for synthetic data generation using Faker. All actual data must be generated at runtime, never stored.",
+  "common_fields": {
+    "document_id": {
+      "pattern": "{category_prefix}_{uuid_short}",
+      "faker_method": "uuid4",
+      "description": "Unique document identifier"
+    },
+    "classification_date": {
+      "faker_method": "date_between",
+      "params": {"start_date": "-2y", "end_date": "today"},
+      "description": "Date document was classified"
+    },
+    "review_date": {
+      "faker_method": "date_between",
+      "params": {"start_date": "today", "end_date": "+5y"},
+      "description": "Date for classification review"
+    },
+    "originator": {
+      "faker_method": "name",
+      "description": "Person who created the document"
+    },
+    "originator_title": {
+      "source": "agencies.titles",
+      "description": "Title of originator"
+    },
+    "agency": {
+      "source": "agencies.cabinet_departments",
+      "description": "Originating agency"
+    },
+    "office": {
+      "faker_method": "company_suffix",
+      "prefix": "Office of",
+      "description": "Specific office within agency"
+    }
+  },
+  "critical_infrastructure": {
+    "plan_version": {
+      "pattern": "{major}.{minor}",
+      "range_major": [1, 5],
+      "range_minor": [0, 9]
+    },
+    "priority_level": {
+      "options": [1, 2, 3, 4, 5]
+    },
+    "essential_function_types": [
+      "National Essential Functions (NEFs)",
+      "Mission Essential Functions (MEFs)",
+      "Primary Mission Essential Functions (PMEFs)",
+      "Administrative Support Functions",
+      "Emergency Response Coordination",
+      "Public Safety Operations"
+    ],
+    "location_types": [
+      "Primary Operating Facility",
+      "Alternate Operating Facility",
+      "Devolution Site",
+      "Emergency Relocation Site",
+      "Mobile Command Center",
+      "Telework Location"
+    ],
+    "emergency_scenarios": [
+      "Pandemic outbreak",
+      "Natural disaster",
+      "Cyber attack",
+      "Terrorist incident",
+      "Infrastructure failure",
+      "Chemical/biological threat"
+    ],
+    "vulnerability_severity": ["Critical", "High", "Medium", "Low"],
+    "cvss_score": {
+      "type": "float",
+      "range": [0.0, 10.0],
+      "precision": 1
+    },
+    "deployment_hours": {
+      "type": "int",
+      "range": [2, 72]
+    },
+    "erg_size": {
+      "type": "int",
+      "range": [10, 75]
+    }
+  },
+  "financial": {
+    "fiscal_year": {
+      "type": "int",
+      "range": [2024, 2030]
+    },
+    "budget_amount": {
+      "type": "currency",
+      "range": [100000, 5000000000],
+      "format": "${:,.0f}"
+    },
+    "account_number": {
+      "faker_method": "numerify",
+      "pattern": "####-####-####"
+    },
+    "routing_number": {
+      "faker_method": "numerify",
+      "pattern": "#########"
+    },
+    "transaction_id": {
+      "faker_method": "uuid4",
+      "prefix": "TXN-"
+    },
+    "funding_levels": [
+      "Full Year Continuing Resolution",
+      "Enacted Appropriation",
+      "President's Budget Request",
+      "Congressional Budget Estimate"
+    ],
+    "budget_categories": [
+      "Personnel Compensation",
+      "Personnel Benefits",
+      "Travel",
+      "Transportation",
+      "Rent and Communications",
+      "Printing and Reproduction",
+      "Contractual Services",
+      "Supplies and Materials",
+      "Equipment"
+    ],
+    "retirement_systems": ["FERS", "CSRS", "FERS-FRAE", "FERS-RAE"]
+  },
+  "law_enforcement": {
+    "case_number": {
+      "faker_method": "numerify",
+      "pattern": "####-INV-######"
+    },
+    "offense_codes": {
+      "faker_method": "numerify",
+      "pattern": "## USC ####"
+    },
+    "investigation_status": [
+      "Open",
+      "Active",
+      "Pending Review",
+      "Closed",
+      "Referred for Prosecution",
+      "Administratively Closed"
+    ],
+    "classification_levels": [
+      "Law Enforcement Sensitive",
+      "For Official Use Only",
+      "Limited Distribution"
+    ],
+    "evidence_types": [
+      "Documentary",
+      "Testimonial",
+      "Physical",
+      "Digital",
+      "Financial Records"
+    ]
+  },
+  "legal": {
+    "docket_number": {
+      "faker_method": "numerify",
+      "pattern": "####-CV-#####"
+    },
+    "case_types": [
+      "Administrative Appeal",
+      "Civil Enforcement",
+      "Regulatory Action",
+      "Contract Dispute",
+      "Employment Matter",
+      "FOIA Litigation"
+    ],
+    "privilege_types": [
+      "Attorney-Client Privilege",
+      "Attorney Work Product",
+      "Deliberative Process",
+      "Executive Privilege"
+    ],
+    "bargaining_units": [
+      "AFGE Local",
+      "NTEU Chapter",
+      "NFFE Local",
+      "SEIU Local"
+    ]
+  },
+  "procurement": {
+    "solicitation_number": {
+      "faker_method": "numerify",
+      "pattern": "###S####D####"
+    },
+    "contract_number": {
+      "faker_method": "numerify",
+      "pattern": "GS-##F-####W"
+    },
+    "igce_amount": {
+      "type": "currency",
+      "range": [50000, 100000000]
+    },
+    "evaluation_factors": [
+      "Technical Approach",
+      "Management Approach",
+      "Past Performance",
+      "Price/Cost",
+      "Small Business Participation"
+    ],
+    "contract_types": [
+      "Firm Fixed Price",
+      "Cost Plus Fixed Fee",
+      "Time and Materials",
+      "Labor Hour",
+      "Indefinite Delivery/Indefinite Quantity"
+    ],
+    "rating_scores": {
+      "adjectival": ["Outstanding", "Good", "Acceptable", "Marginal", "Unacceptable"],
+      "numerical": {
+        "type": "int",
+        "range": [0, 100]
+      }
+    }
+  },
+  "proprietary": {
+    "duns_number": {
+      "faker_method": "numerify",
+      "pattern": "#########"
+    },
+    "cage_code": {
+      "faker_method": "lexify",
+      "pattern": "?????",
+      "uppercase": true
+    },
+    "uei_number": {
+      "faker_method": "lexify",
+      "pattern": "????????????",
+      "uppercase": true
+    },
+    "naics_codes": [
+      "541511",
+      "541512",
+      "541513",
+      "541519",
+      "541611",
+      "541612",
+      "541990",
+      "561110"
+    ],
+    "business_types": [
+      "Small Business",
+      "Woman-Owned Small Business",
+      "Service-Disabled Veteran-Owned",
+      "8(a) Small Business",
+      "HUBZone Small Business",
+      "Large Business"
+    ]
+  },
+  "tax": {
+    "tin_ssn": {
+      "faker_method": "ssn",
+      "format": "###-##-####"
+    },
+    "ein": {
+      "faker_method": "numerify",
+      "pattern": "##-#######"
+    },
+    "tax_period": {
+      "pattern": "{year}{quarter}",
+      "year_range": [2020, 2025],
+      "quarter_options": ["Q1", "Q2", "Q3", "Q4"]
+    },
+    "assessment_amount": {
+      "type": "currency",
+      "range": [100, 1000000]
+    },
+    "penalty_codes": [
+      "FTP",
+      "FTF",
+      "ACC",
+      "EFP",
+      "RTN"
+    ],
+    "filing_status": [
+      "Single",
+      "Married Filing Jointly",
+      "Married Filing Separately",
+      "Head of Household",
+      "Qualifying Widow(er)"
+    ],
+    "form_types": [
+      "1040",
+      "1120",
+      "941",
+      "1099",
+      "W-2",
+      "Schedule C"
+    ]
+  }
+}

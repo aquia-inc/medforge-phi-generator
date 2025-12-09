@@ -1,0 +1,120 @@
+{
+  "banner_markings": {
+    "critical_infrastructure": {
+      "standard": "CONTROLLED UNCLASSIFIED INFORMATION",
+      "category_specific": [
+        "CONTROLLED UNCLASSIFIED INFORMATION - EMERGENCY MANAGEMENT",
+        "CONTROLLED UNCLASSIFIED INFORMATION - CRITICAL INFRASTRUCTURE",
+        "CONTROLLED UNCLASSIFIED INFORMATION - PHYSICAL SECURITY",
+        "CONTROLLED UNCLASSIFIED INFORMATION - SYSTEMS VULNERABILITY"
+      ],
+      "abbreviated": [
+        "CUI//SP-CRITINFRA",
+        "CUI//SP-EMGT",
+        "CUI//SP-PHYSEC",
+        "CUI - EMERGENCY MANAGEMENT"
+      ]
+    },
+    "financial": {
+      "standard": "CONTROLLED UNCLASSIFIED INFORMATION",
+      "category_specific": [
+        "CONTROLLED UNCLASSIFIED INFORMATION - BUDGET",
+        "CONTROLLED UNCLASSIFIED INFORMATION - BANK SECRECY",
+        "CONTROLLED UNCLASSIFIED INFORMATION - FINANCIAL",
+        "CONTROLLED UNCLASSIFIED INFORMATION - EFT"
+      ],
+      "abbreviated": [
+        "CUI//SP-BUDG",
+        "CUI//SP-BNKSCR",
+        "CUI//SP-FINC",
+        "CUI - BUDGET"
+      ]
+    },
+    "law_enforcement": {
+      "standard": "CONTROLLED UNCLASSIFIED INFORMATION",
+      "category_specific": [
+        "CONTROLLED UNCLASSIFIED INFORMATION - LAW ENFORCEMENT",
+        "CONTROLLED UNCLASSIFIED INFORMATION - CRIMINAL HISTORY",
+        "CONTROLLED UNCLASSIFIED INFORMATION - INVESTIGATION"
+      ],
+      "abbreviated": [
+        "CUI//LES",
+        "CUI//SP-CRIM",
+        "CUI//SP-INVST",
+        "LAW ENFORCEMENT SENSITIVE"
+      ]
+    },
+    "legal": {
+      "standard": "CONTROLLED UNCLASSIFIED INFORMATION",
+      "category_specific": [
+        "CONTROLLED UNCLASSIFIED INFORMATION - LEGAL PRIVILEGE",
+        "CONTROLLED UNCLASSIFIED INFORMATION - COLLECTIVE BARGAINING",
+        "CONTROLLED UNCLASSIFIED INFORMATION - LEGISLATIVE",
+        "CONTROLLED UNCLASSIFIED INFORMATION - ADMINISTRATIVE PROCEEDINGS"
+      ],
+      "abbreviated": [
+        "CUI//SP-PRVLG",
+        "CUI//SP-CLBRG",
+        "CUI - LEGAL"
+      ]
+    },
+    "procurement": {
+      "standard": "CONTROLLED UNCLASSIFIED INFORMATION",
+      "category_specific": [
+        "SOURCE SELECTION INFORMATION - PROTECTED UNDER FAR 2.101",
+        "CONTROLLED UNCLASSIFIED INFORMATION - SOURCE SELECTION",
+        "CONTROLLED UNCLASSIFIED INFORMATION - PROCUREMENT"
+      ],
+      "abbreviated": [
+        "CUI//SP-SRSEL",
+        "CUI//SP-PROCMNT",
+        "SOURCE SELECTION SENSITIVE"
+      ]
+    },
+    "proprietary": {
+      "standard": "CONTROLLED UNCLASSIFIED INFORMATION",
+      "category_specific": [
+        "CONTROLLED UNCLASSIFIED INFORMATION - PROPRIETARY",
+        "CONTROLLED UNCLASSIFIED INFORMATION - BUSINESS CONFIDENTIAL",
+        "CONTROLLED UNCLASSIFIED INFORMATION - ENTITY REGISTRATION"
+      ],
+      "abbreviated": [
+        "CUI//SP-PROPIN",
+        "CUI//SP-BSNCONF",
+        "PROPRIETARY INFORMATION"
+      ]
+    },
+    "tax": {
+      "standard": "CONTROLLED UNCLASSIFIED INFORMATION",
+      "category_specific": [
+        "CONTROLLED UNCLASSIFIED INFORMATION - TAX",
+        "CONTROLLED UNCLASSIFIED INFORMATION - FEDERAL TAXPAYER INFORMATION",
+        "CONTROLLED UNCLASSIFIED INFORMATION - TAX RETURN INFORMATION"
+      ],
+      "abbreviated": [
+        "CUI//SP-TAX",
+        "CUI//SP-FTI",
+        "FEDERAL TAX INFORMATION"
+      ]
+    }
+  },
+  "distribution_statements": {
+    "executive_only": "Distribution limited to Executive Branch personnel only",
+    "authorized_only": "Distribution limited to authorized personnel only",
+    "need_to_know": "Distribution on a need-to-know basis",
+    "agency_only": "For internal agency use only - Do not disseminate outside agency",
+    "contractor_restricted": "Distribution limited to government personnel and authorized contractors"
+  },
+  "confidentiality_notices": {
+    "standard": "This document contains Controlled Unclassified Information (CUI) that requires safeguarding or dissemination controls pursuant to applicable laws, regulations, and Government-wide policies.",
+    "budget": "The nature and amounts of the President's decisions and underlying materials are confidential. Do not release outside of your agency until Budget is transmitted to Congress.",
+    "law_enforcement": "This document contains Law Enforcement Sensitive information. Unauthorized disclosure may compromise ongoing investigations or endanger law enforcement personnel.",
+    "source_selection": "This document contains Source Selection Information protected under FAR 2.101 and 41 USC 2102. Unauthorized disclosure is prohibited.",
+    "tax": "This document contains Federal Tax Information protected under 26 USC 6103. Unauthorized disclosure is a federal crime."
+  },
+  "footer_markings": [
+    "CUI",
+    "CONTROLLED",
+    "UNCONTROLLED IF PRINTED"
+  ]
+}

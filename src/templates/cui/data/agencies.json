@@ -1,0 +1,129 @@
+{
+  "cabinet_departments": [
+    "Department of Agriculture",
+    "Department of Commerce",
+    "Department of Defense",
+    "Department of Education",
+    "Department of Energy",
+    "Department of Health and Human Services",
+    "Department of Homeland Security",
+    "Department of Housing and Urban Development",
+    "Department of the Interior",
+    "Department of Justice",
+    "Department of Labor",
+    "Department of State",
+    "Department of Transportation",
+    "Department of the Treasury",
+    "Department of Veterans Affairs"
+  ],
+  "independent_agencies": [
+    "Environmental Protection Agency",
+    "Federal Emergency Management Agency",
+    "General Services Administration",
+    "National Aeronautics and Space Administration",
+    "Office of Personnel Management",
+    "Small Business Administration",
+    "Social Security Administration"
+  ],
+  "regulatory_agencies": [
+    "Federal Bureau of Investigation",
+    "Securities and Exchange Commission",
+    "Federal Trade Commission",
+    "Federal Communications Commission",
+    "Federal Energy Regulatory Commission",
+    "Food and Drug Administration",
+    "Commodity Futures Trading Commission",
+    "Nuclear Regulatory Commission",
+    "Consumer Financial Protection Bureau"
+  ],
+  "healthcare_agencies": [
+    "Centers for Medicare and Medicaid Services",
+    "Centers for Disease Control and Prevention",
+    "National Institutes of Health",
+    "Health Resources and Services Administration",
+    "Substance Abuse and Mental Health Services Administration",
+    "Agency for Healthcare Research and Quality",
+    "Indian Health Service"
+  ],
+  "oversight_offices": [
+    "Office of Management and Budget",
+    "Government Accountability Office",
+    "Office of Inspector General",
+    "Office of Government Ethics",
+    "Office of Special Counsel",
+    "Merit Systems Protection Board"
+  ],
+  "law_enforcement": [
+    "Federal Bureau of Investigation",
+    "Drug Enforcement Administration",
+    "Bureau of Alcohol, Tobacco, Firearms and Explosives",
+    "U.S. Marshals Service",
+    "Secret Service",
+    "Immigration and Customs Enforcement",
+    "Customs and Border Protection"
+  ],
+  "financial_agencies": [
+    "Internal Revenue Service",
+    "Financial Crimes Enforcement Network",
+    "Office of the Comptroller of the Currency",
+    "Federal Reserve System",
+    "Federal Deposit Insurance Corporation",
+    "Office of Thrift Supervision"
+  ],
+  "sub_components": {
+    "hhs": [
+      "Office of the Secretary",
+      "Office of Inspector General",
+      "Office of the General Counsel",
+      "Office of Civil Rights",
+      "Office of the National Coordinator for Health IT"
+    ],
+    "dhs": [
+      "Cybersecurity and Infrastructure Security Agency",
+      "Federal Protective Service",
+      "Office of Intelligence and Analysis",
+      "Transportation Security Administration"
+    ],
+    "doj": [
+      "Criminal Division",
+      "Civil Division",
+      "Civil Rights Division",
+      "Antitrust Division",
+      "Office of Legal Counsel"
+    ]
+  },
+  "titles": {
+    "executive": [
+      "Secretary",
+      "Deputy Secretary",
+      "Under Secretary",
+      "Assistant Secretary",
+      "Administrator",
+      "Deputy Administrator",
+      "Director",
+      "Deputy Director"
+    ],
+    "management": [
+      "Division Chief",
+      "Branch Chief",
+      "Program Manager",
+      "Regional Director",
+      "Associate Director",
+      "Senior Advisor"
+    ],
+    "legal": [
+      "General Counsel",
+      "Deputy General Counsel",
+      "Associate General Counsel",
+      "Attorney Advisor",
+      "Trial Attorney"
+    ],
+    "investigative": [
+      "Special Agent in Charge",
+      "Supervisory Special Agent",
+      "Special Agent",
+      "Criminal Investigator",
+      "Intelligence Analyst"
+    ]
+  }
+}
