@@ -46,6 +46,7 @@ from generators.llm_generator import is_llm_available
 # CUI imports
 from generators.cui import CUIGeneratorFactory
 from formatters.cui_formatter import CUIDocxFormatter, CUIEmailFormatter, CUIPdfFormatter, CUIXlsxFormatter
+from formatters.pdf_form_populator import CustomerTemplateManager
 
 # Initialize CLI app and console
 app = typer.Typer(
@@ -646,6 +647,86 @@ class MedForgeCUIGenerator:
             "eml": CUIEmailFormatter(output_dir=str(self.output_dir)),
         }
 
+        # Initialize customer template manager for real CMS forms
+        self.customer_templates = CustomerTemplateManager(
+            template_dir='temp',
+            output_dir=str(self.output_dir)
+        )
+
+    def _generate_from_customer_template(self, index: int, populate: bool, is_positive: bool) -> Optional[str]:
+        """
+        Generate a document from customer CMS template.
+
+        Args:
+            index: Document index
+            populate: Whether to populate fields or use blank
+            is_positive: True for positive (CUI-containing), False for negative
+
+        Returns:
+            Path to created file or None if no templates available
+        """
+        try:
+            # Map customer templates to CUI categories
+            template_category_map = {
+                'EFT Authorization Form': 'financial',
+                'ReasonableAccommodationRequest': 'legal',  # Could also be proprietary
+            }
+
+            # Select a random template
+            available_templates = list(template_category_map.keys())
+            if not available_templates:
+                return None
+
+            template_key = random.choice(available_templates)
+            category = template_category_map[template_key]
+
+            # Get correct output directory
+            if is_positive:
+                output_subdir = str(self.category_positive_dirs.get(category, self.output_dir))
+            else:
+                output_subdir = str(self.category_negative_dirs.get(category, self.output_dir))
+
+            # Generate from template
+            filepath = self.customer_templates.generate_from_template(
+                template_key,
+                output_subdir,
+                index,
+                populate=populate
+            )
+
+            # Update statistics
+            self.stats["total_generated"] += 1
+            self.stats["template_based"] += 1
+            self.stats["by_format"]["pdf"] += 1
+            self.stats["by_category"][category] += 1
+
+            if is_positive:
+                self.stats["cui_positive"] += 1
+            else:
+                self.stats["cui_negative"] += 1
+
+            # Add to manifest
+            template_info = self.customer_templates.template_mappings[template_key]
+            self.manifest.append({
+                "file_path": str(Path(filepath).relative_to(self.output_dir)),
+                "cui_status": "positive" if is_positive else "negative",
+                "category": category,
+                "subcategory": "",
+                "document_type": template_info['clean_name'],
+                "classification": "CUI" if is_positive else "",
+                "authority": "",
+                "format": "pdf",
+                "index": index,
+                "llm_enhanced": False,
+                "source": "customer_template",
+            })
+
+            return filepath
+
+        except Exception as e:
+            # Fail silently and let regular generation take over
+            return None
+
     def _enhance_with_llm(self, doc_data: dict) -> tuple[dict, bool]:
         """
         Enhance document content using LLM if available and selected
@@ -743,6 +824,16 @@ class MedForgeCUIGenerator:
     def generate_single_cui_positive(self, index: int) -> Optional[str]:
         """Generate a single CUI positive document"""
         try:
+            # 20% chance to use customer CMS template if available
+            use_customer_template = random.random() < 0.2
+
+            if use_customer_template and 'pdf' in self.formats:
+                # Try to use a customer template
+                template_result = self._generate_from_customer_template(index, populate=True, is_positive=True)
+                if template_result:
+                    return template_result
+                # Fall through to regular generation if template fails
+
             # Generate document data
             doc_data = self.cui_generator.generate_positive()
             category = doc_data.get("category", "general")
@@ -819,6 +910,16 @@ class MedForgeCUIGenerator:
     def generate_single_cui_negative(self, index: int) -> Optional[str]:
         """Generate a single CUI negative document"""
         try:
+            # 20% chance to use blank customer CMS template
+            use_customer_template = random.random() < 0.2
+
+            if use_customer_template and 'pdf' in self.formats:
+                # Try to use a customer template (blank/unpopulated)
+                template_result = self._generate_from_customer_template(index, populate=False, is_positive=False)
+                if template_result:
+                    return template_result
+                # Fall through to regular generation if template fails
+
             # Generate document data
             doc_data = self.cui_generator.generate_negative()
             category = doc_data.get("category", "general")

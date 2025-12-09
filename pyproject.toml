@@ -9,6 +9,7 @@ dependencies = [
     "extract-msg>=0.55.0",
     "faker-healthcare-system>=0.1.24",
     "faker>=38.0.0",
+    "fillpdf>=0.7.3",
     "independentsoft-msg>=1.6",
     "openpyxl>=3.1.5",
     "pdfplumber>=0.11.0",
