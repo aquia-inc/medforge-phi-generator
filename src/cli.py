@@ -43,6 +43,10 @@ from formatters.nested_formatter import NestedEmailFormatter
 from formatters.html_lab_formatter import HTMLLabFormatter
 from generators.llm_generator import is_llm_available
 
+# CUI imports
+from generators.cui import CUIGeneratorFactory
+from formatters.cui_formatter import CUIDocxFormatter, CUIEmailFormatter, CUIPdfFormatter, CUIXlsxFormatter
+
 # Initialize CLI app and console
 app = typer.Typer(
     name="medforge",
@@ -509,6 +513,457 @@ class MedForgeGenerator:
         return self.stats
 
 
+# Available CUI categories
+CUI_CATEGORIES = [
+    "critical_infrastructure",
+    "financial",
+    "law_enforcement",
+    "legal",
+    "procurement",
+    "proprietary",
+    "tax",
+]
+
+# Display names for CUI categories (used in folder naming)
+CUI_CATEGORY_DISPLAY_NAMES = {
+    "critical_infrastructure": "Critical Infrastructure",
+    "financial": "Financial",
+    "law_enforcement": "Law Enforcement",
+    "legal": "Legal",
+    "procurement": "Procurement",
+    "proprietary": "Proprietary Business",
+    "tax": "Tax",
+}
+
+
+def create_production_run_folder(base_output_dir: str) -> Path:
+    """
+    Create a timestamped production run folder.
+
+    Args:
+        base_output_dir: Base output directory path
+
+    Returns:
+        Path to the created production_run_* folder
+    """
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    run_dir = Path(base_output_dir) / f"production_run_{timestamp}"
+    run_dir.mkdir(parents=True, exist_ok=True)
+    return run_dir
+
+
+class MedForgeCUIGenerator:
+    """CUI document generator with support for all 7 categories"""
+
+    def __init__(
+        self,
+        output_dir: str = "output",
+        seed: Optional[int] = None,
+        categories: Optional[List[str]] = None,
+        formats: Optional[List[str]] = None,
+        llm_percentage: float = 0.2,
+    ):
+        """
+        Initialize CUI generator
+
+        Args:
+            output_dir: Output directory path
+            seed: Random seed for reproducibility
+            categories: List of CUI categories to generate (defaults to all)
+            formats: List of formats to generate (defaults to all)
+            llm_percentage: Percentage of LLM-enhanced documents (0.0-1.0)
+        """
+        self.output_dir = Path(output_dir)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+        # Create metadata directory
+        self.metadata_dir = self.output_dir / "metadata"
+        self.metadata_dir.mkdir(parents=True, exist_ok=True)
+
+        # Create CUI folder structure with display names
+        # Folders: CUI-{DisplayName}-Positive/, CUI-{DisplayName}-Negative/
+        self.categories = categories or CUI_CATEGORIES
+
+        # Map category to folder paths
+        self.category_positive_dirs = {}
+        self.category_negative_dirs = {}
+
+        for category in self.categories:
+            display_name = CUI_CATEGORY_DISPLAY_NAMES.get(category, category.replace("_", " ").title())
+            positive_folder = f"CUI-{display_name}-Positive"
+            negative_folder = f"CUI-{display_name}-Negative"
+
+            positive_dir = self.output_dir / positive_folder
+            negative_dir = self.output_dir / negative_folder
+
+            positive_dir.mkdir(parents=True, exist_ok=True)
+            negative_dir.mkdir(parents=True, exist_ok=True)
+
+            self.category_positive_dirs[category] = positive_dir
+            self.category_negative_dirs[category] = negative_dir
+
+        self.seed = seed
+        self.formats = formats or ["pdf", "docx", "xlsx", "eml"]
+        self.llm_percentage = llm_percentage
+
+        if seed is not None:
+            random.seed(seed)
+
+        # Statistics tracking
+        self.stats = {
+            "total_generated": 0,
+            "llm_enhanced": 0,
+            "template_based": 0,
+            "by_format": defaultdict(int),
+            "by_category": defaultdict(int),
+            "cui_positive": 0,
+            "cui_negative": 0,
+            "errors": [],
+        }
+
+        self.manifest = []
+
+        # Initialize CUI generator factory
+        self.cui_generator = CUIGeneratorFactory.create_composite_generator(
+            categories=self.categories,
+            seed=seed,
+        )
+
+        # Initialize LLM generator if available
+        self.llm_generator = None
+        if is_llm_available() and llm_percentage > 0:
+            try:
+                from generators.llm_generator import ClaudeGenerator
+                self.llm_generator = ClaudeGenerator()
+            except Exception as e:
+                console.print(f"[yellow]Warning: Could not initialize LLM generator: {e}[/yellow]")
+
+        # Initialize formatters
+        self.formatters = {
+            "docx": CUIDocxFormatter(output_dir=str(self.output_dir)),
+            "pdf": CUIPdfFormatter(output_dir=str(self.output_dir)),
+            "xlsx": CUIXlsxFormatter(output_dir=str(self.output_dir)),
+            "eml": CUIEmailFormatter(output_dir=str(self.output_dir)),
+        }
+
+    def _enhance_with_llm(self, doc_data: dict) -> tuple[dict, bool]:
+        """
+        Enhance document content using LLM if available and selected
+
+        Returns:
+            Tuple of (enhanced_doc_data, was_enhanced)
+        """
+        # Check if we should use LLM for this document
+        use_llm = (
+            self.llm_generator is not None
+            and random.random() < self.llm_percentage
+        )
+
+        if not use_llm:
+            return doc_data, False
+
+        try:
+            category = doc_data.get("category", "")
+            subcategory = doc_data.get("subcategory", "")
+            doc_type = doc_data.get("document_type", "")
+
+            # Generate enhanced content based on category
+            if category == "financial" and "budget" in subcategory:
+                enhanced = self.llm_generator.generate_cui_budget_memo(
+                    agency=doc_data.get("organization", "Government Agency"),
+                    program=doc_data.get("program", "Federal Program"),
+                    fiscal_year=str(doc_data.get("fiscal_year", "2025")),
+                    amount=doc_data.get("amount", "$1,000,000")
+                )
+                doc_data["executive_summary"] = enhanced.purpose
+                doc_data["body"] = enhanced.budget_justification
+                doc_data["fiscal_impact"] = enhanced.fiscal_impact
+                doc_data["recommendation"] = enhanced.recommendation
+
+            elif category == "critical_infrastructure" or "vulnerability" in doc_type:
+                enhanced = self.llm_generator.generate_cui_security_report(
+                    system_name=doc_data.get("system_name", "Enterprise System"),
+                    vulnerability_type=doc_data.get("vulnerability_type", "Security Vulnerability"),
+                    severity=doc_data.get("severity", "High"),
+                    agency=doc_data.get("organization", "Government Agency")
+                )
+                doc_data["executive_summary"] = enhanced.incident_summary
+                doc_data["body"] = enhanced.technical_details
+                doc_data["risk_assessment"] = enhanced.risk_assessment
+                doc_data["mitigation"] = enhanced.mitigation_steps
+                doc_data["timeline"] = enhanced.timeline
+
+            elif category == "legal":
+                enhanced = self.llm_generator.generate_cui_legal_memo(
+                    subject=doc_data.get("subject", "Legal Matter"),
+                    agency=doc_data.get("organization", "Government Agency"),
+                    legal_issue=doc_data.get("legal_issue", "regulatory compliance")
+                )
+                doc_data["subject"] = enhanced.subject
+                doc_data["question_presented"] = enhanced.question_presented
+                doc_data["body"] = enhanced.analysis
+                doc_data["conclusion"] = enhanced.conclusion
+
+            elif category == "procurement":
+                vendors = doc_data.get("vendors", ["Vendor A", "Vendor B", "Vendor C"])
+                enhanced = self.llm_generator.generate_cui_procurement_doc(
+                    acquisition_name=doc_data.get("acquisition_name", "IT Services"),
+                    agency=doc_data.get("organization", "Government Agency"),
+                    estimated_value=doc_data.get("estimated_value", "$500,000"),
+                    vendors=vendors if isinstance(vendors, list) else [vendors]
+                )
+                doc_data["executive_summary"] = enhanced.acquisition_summary
+                doc_data["evaluation_criteria"] = enhanced.evaluation_criteria
+                doc_data["body"] = enhanced.vendor_analysis
+                doc_data["recommendation"] = enhanced.recommendation
+                doc_data["justification"] = enhanced.justification
+
+            else:
+                # Generic CUI narrative enhancement
+                enhanced = self.llm_generator.generate_cui_narrative(
+                    category=category,
+                    subcategory=subcategory,
+                    document_type=doc_type,
+                    context={
+                        "organization": doc_data.get("organization", ""),
+                        "subject": doc_data.get("subject", ""),
+                    }
+                )
+                doc_data["executive_summary"] = enhanced.executive_summary
+                doc_data["body"] = enhanced.body_content
+                doc_data["recommendations"] = enhanced.recommendations
+
+            return doc_data, True
+
+        except Exception as e:
+            # If LLM enhancement fails, return original data
+            self.stats["errors"].append(f"LLM enhancement failed: {str(e)}")
+            return doc_data, False
+
+    def generate_single_cui_positive(self, index: int) -> Optional[str]:
+        """Generate a single CUI positive document"""
+        try:
+            # Generate document data
+            doc_data = self.cui_generator.generate_positive()
+            category = doc_data.get("category", "general")
+            doc_type = doc_data.get("document_type", "document")
+
+            # Try LLM enhancement
+            doc_data, was_enhanced = self._enhance_with_llm(doc_data)
+            if was_enhanced:
+                self.stats["llm_enhanced"] += 1
+            else:
+                self.stats["template_based"] += 1
+
+            # Choose format
+            available_formats = [f for f in self.formats if f in self.formatters]
+            if not available_formats:
+                return None
+
+            # Prefer certain formats for certain document types
+            if doc_type in ["vulnerability_alert", "servicenow_ticket"]:
+                fmt = "eml" if "eml" in available_formats else random.choice(available_formats)
+            elif doc_type in ["taxpayer_record", "eft_authorization", "sam_registration"]:
+                fmt = "xlsx" if "xlsx" in available_formats else random.choice(available_formats)
+            else:
+                fmt = random.choice(available_formats)
+
+            # Generate filename
+            type_prefix = doc_type.replace("_", "").title()[:15]
+            filename = f"{type_prefix}_{index:04d}.{fmt}"
+
+            # Set output directory for formatter (use display name folder)
+            category_dir = self.category_positive_dirs.get(category, self.output_dir)
+            self.formatters[fmt].output_dir = str(category_dir)
+
+            # Create document
+            if fmt == "docx":
+                filepath = self.formatters[fmt].create_cui_document(doc_data, filename)
+            elif fmt == "pdf":
+                filepath = self.formatters[fmt].create_cui_pdf(doc_data, filename)
+            elif fmt == "xlsx":
+                filepath = self.formatters[fmt].create_cui_xlsx(doc_data, filename)
+            elif fmt == "eml":
+                filepath = self.formatters[fmt].create_cui_email(doc_data, filename)
+            else:
+                return None
+
+            # Update statistics
+            self.stats["total_generated"] += 1
+            self.stats["cui_positive"] += 1
+            self.stats["by_format"][fmt] += 1
+            self.stats["by_category"][category] += 1
+
+            # Add to manifest
+            manifest_entry = {
+                "file_path": str(Path(filepath).relative_to(self.output_dir)),
+                "cui_status": "positive",
+                "category": category,
+                "subcategory": doc_data.get("subcategory", ""),
+                "document_type": doc_type,
+                "classification": doc_data.get("classification", ""),
+                "authority": doc_data.get("authority", ""),
+                "format": fmt,
+                "index": index,
+                "llm_enhanced": was_enhanced,
+            }
+            self.manifest.append(manifest_entry)
+
+            return filepath
+
+        except Exception as e:
+            error_msg = f"Error generating CUI positive doc {index}: {str(e)}"
+            self.stats["errors"].append(error_msg)
+            return None
+
+    def generate_single_cui_negative(self, index: int) -> Optional[str]:
+        """Generate a single CUI negative document"""
+        try:
+            # Generate document data
+            doc_data = self.cui_generator.generate_negative()
+            category = doc_data.get("category", "general")
+            doc_type = doc_data.get("document_type", "document")
+
+            # CUI negative documents are always template-based (no LLM enhancement)
+            self.stats["template_based"] += 1
+
+            # Choose format
+            available_formats = [f for f in self.formats if f in self.formatters]
+            if not available_formats:
+                return None
+
+            fmt = random.choice(available_formats)
+
+            # Generate filename
+            type_prefix = doc_type.replace("_", "").title()[:15]
+            filename = f"{type_prefix}_{index:04d}.{fmt}"
+
+            # Set output directory for formatter (use display name folder)
+            category_dir = self.category_negative_dirs.get(category, self.output_dir)
+            self.formatters[fmt].output_dir = str(category_dir)
+
+            # Create document
+            if fmt == "docx":
+                filepath = self.formatters[fmt].create_cui_document(doc_data, filename)
+            elif fmt == "pdf":
+                filepath = self.formatters[fmt].create_cui_pdf(doc_data, filename)
+            elif fmt == "xlsx":
+                filepath = self.formatters[fmt].create_cui_xlsx(doc_data, filename)
+            elif fmt == "eml":
+                filepath = self.formatters[fmt].create_cui_email(doc_data, filename)
+            else:
+                return None
+
+            # Update statistics
+            self.stats["total_generated"] += 1
+            self.stats["cui_negative"] += 1
+            self.stats["by_format"][fmt] += 1
+            self.stats["by_category"][category] += 1
+
+            # Add to manifest (standardized schema matching positive docs)
+            self.manifest.append({
+                "file_path": str(Path(filepath).relative_to(self.output_dir)),
+                "cui_status": "negative",
+                "category": category,
+                "subcategory": "",
+                "document_type": doc_type,
+                "classification": "",
+                "authority": "",
+                "format": fmt,
+                "index": index,
+                "llm_enhanced": False,
+            })
+
+            return filepath
+
+        except Exception as e:
+            error_msg = f"Error generating CUI negative doc {index}: {str(e)}"
+            self.stats["errors"].append(error_msg)
+            return None
+
+    def save_manifest(self):
+        """Save CUI manifest.json"""
+        manifest_path = self.metadata_dir / "cui_manifest.json"
+
+        manifest_data = {
+            "generated_at": datetime.now().isoformat(),
+            "total_documents": self.stats["total_generated"],
+            "cui_positive": self.stats["cui_positive"],
+            "cui_negative": self.stats["cui_negative"],
+            "seed": self.seed,
+            "categories": self.categories,
+            "formats": self.formats,
+            "statistics": dict(self.stats),
+            "files": self.manifest,
+        }
+
+        with open(manifest_path, "w") as f:
+            json.dump(manifest_data, f, indent=2, default=str)
+
+        return manifest_path
+
+    def generate_batch(
+        self,
+        cui_positive_count: int,
+        cui_negative_count: int,
+        parallel_workers: int = 1,
+    ) -> dict:
+        """Generate a batch of CUI documents"""
+        total_count = cui_positive_count + cui_negative_count
+
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            BarColumn(),
+            TaskProgressColumn(),
+            TimeElapsedColumn(),
+            TimeRemainingColumn(),
+            console=console,
+        ) as progress:
+
+            if parallel_workers > 1:
+                task = progress.add_task(
+                    f"[cyan]Generating CUI documents (parallel, {parallel_workers} workers)...",
+                    total=total_count,
+                )
+
+                with concurrent.futures.ThreadPoolExecutor(max_workers=parallel_workers) as executor:
+                    pos_futures = [
+                        executor.submit(self.generate_single_cui_positive, i)
+                        for i in range(1, cui_positive_count + 1)
+                    ]
+                    neg_futures = [
+                        executor.submit(self.generate_single_cui_negative, i)
+                        for i in range(1, cui_negative_count + 1)
+                    ]
+
+                    for future in concurrent.futures.as_completed(pos_futures + neg_futures):
+                        future.result()
+                        progress.advance(task)
+            else:
+                # Sequential generation
+                pos_task = progress.add_task(
+                    "[green]Generating CUI positive documents...",
+                    total=cui_positive_count,
+                )
+                for i in range(1, cui_positive_count + 1):
+                    self.generate_single_cui_positive(i)
+                    progress.advance(pos_task)
+
+                neg_task = progress.add_task(
+                    "[blue]Generating CUI negative documents...",
+                    total=cui_negative_count,
+                )
+                for i in range(1, cui_negative_count + 1):
+                    self.generate_single_cui_negative(i)
+                    progress.advance(neg_task)
+
+        manifest_path = self.save_manifest()
+        self.stats["manifest_path"] = str(manifest_path)
+
+        return self.stats
+
+
 def load_config(config_path: str) -> dict:
     """Load configuration from YAML file"""
     try:
@@ -584,26 +1039,111 @@ def display_stats(stats: dict, output_dir: str, duration: float):
     console.print(f"\n[bold green]Output Directory:[/bold green] {os.path.abspath(output_dir)}")
 
 
+def display_cui_stats(stats: dict, output_dir: str, duration: float):
+    """Display CUI generation statistics in a formatted table"""
+
+    # Summary panel
+    summary = f"""[bold]Total CUI Documents:[/bold] {stats['total_generated']}
+[green]CUI Positive:[/green] {stats['cui_positive']}
+[blue]CUI Negative:[/blue] {stats['cui_negative']}
+[yellow]Duration:[/yellow] {duration:.2f}s
+[yellow]Avg Time:[/yellow] {duration / max(stats['total_generated'], 1):.2f}s per document"""
+
+    console.print(Panel(summary, title="[bold]CUI Generation Summary[/bold]", border_style="cyan"))
+
+    # Generation method table (if LLM was used)
+    llm_enhanced = stats.get("llm_enhanced", 0)
+    template_based = stats.get("template_based", 0)
+
+    if llm_enhanced > 0 or template_based > 0:
+        method_table = Table(title="Generation Method", box=box.ROUNDED)
+        method_table.add_column("Method", style="cyan")
+        method_table.add_column("Count", justify="right", style="magenta")
+        method_table.add_column("Percentage", justify="right", style="yellow")
+
+        total = llm_enhanced + template_based
+        if llm_enhanced > 0:
+            llm_pct = (llm_enhanced / total) * 100
+            method_table.add_row("LLM Enhanced", str(llm_enhanced), f"{llm_pct:.1f}%")
+
+        if template_based > 0:
+            template_pct = (template_based / total) * 100
+            method_table.add_row("Template Based", str(template_based), f"{template_pct:.1f}%")
+
+        console.print(method_table)
+
+    # Category distribution table
+    if stats.get("by_category"):
+        category_table = Table(title="CUI Category Distribution", box=box.ROUNDED)
+        category_table.add_column("Category", style="cyan")
+        category_table.add_column("Count", justify="right", style="magenta")
+        category_table.add_column("Percentage", justify="right", style="yellow")
+
+        for category, count in sorted(stats["by_category"].items()):
+            pct = (count / stats["total_generated"]) * 100 if stats["total_generated"] > 0 else 0
+            display_name = CUI_CATEGORY_DISPLAY_NAMES.get(category, category.replace("_", " ").title())
+            category_table.add_row(display_name, str(count), f"{pct:.1f}%")
+
+        console.print(category_table)
+
+    # Format distribution table
+    if stats.get("by_format"):
+        format_table = Table(title="Format Distribution", box=box.ROUNDED)
+        format_table.add_column("Format", style="cyan")
+        format_table.add_column("Count", justify="right", style="magenta")
+        format_table.add_column("Percentage", justify="right", style="yellow")
+
+        for fmt, count in sorted(stats["by_format"].items()):
+            pct = (count / stats["total_generated"]) * 100 if stats["total_generated"] > 0 else 0
+            format_table.add_row(fmt.upper(), str(count), f"{pct:.1f}%")
+
+        console.print(format_table)
+
+    # Errors if any
+    if stats.get("errors"):
+        error_panel = "\n".join(stats["errors"][:10])  # Show first 10 errors
+        console.print(Panel(error_panel, title="[bold red]Errors[/bold red]", border_style="red"))
+
+
 @app.command()
 def generate(
-    count: int = typer.Option(200, "--count", "-c", help="Total number of documents to generate"),
+    count: int = typer.Option(200, "--count", "-c", help="Total number of PHI documents to generate"),
     phi_positive: Optional[int] = typer.Option(None, "--phi-positive", help="Number of PHI positive documents"),
     phi_negative: Optional[int] = typer.Option(None, "--phi-negative", help="Number of PHI negative documents"),
+    # CUI options
+    cui_positive: Optional[int] = typer.Option(None, "--cui-positive", help="Number of CUI positive documents"),
+    cui_negative: Optional[int] = typer.Option(None, "--cui-negative", help="Number of CUI negative documents"),
+    cui_categories: Optional[str] = typer.Option(None, "--cui-categories", help="Comma-separated CUI categories: financial,legal,tax,procurement,proprietary,law_enforcement,critical_infrastructure"),
+    cui_all: bool = typer.Option(False, "--cui-all", help="Generate all CUI categories"),
+    # General options
     formats: str = typer.Option("pdf,docx,xlsx,eml,pptx", "--formats", "-f", help="Comma-separated list of formats"),
-    output: str = typer.Option("output/medforge", "--output", "-o", help="Output directory"),
+    output: str = typer.Option("output", "--output", "-o", help="Output directory"),
     llm_percentage: float = typer.Option(0.2, "--llm-percentage", help="Percentage of LLM-enhanced docs (0.0-1.0)"),
     seed: Optional[int] = typer.Option(None, "--seed", "-s", help="Random seed for reproducibility"),
     parallel_workers: int = typer.Option(1, "--parallel-workers", "-p", help="Number of parallel workers"),
     config: Optional[str] = typer.Option(None, "--config", help="Path to YAML config file"),
 ):
     """
-    Generate synthetic PHI documents in multiple formats
+    Generate synthetic PHI and/or CUI documents in multiple formats
 
     Examples:
 
+        # PHI only (default)
         medforge generate --count 100
 
         medforge generate --phi-positive 80 --phi-negative 20
+
+        # CUI only
+        medforge generate --cui-positive 100 --cui-negative 50
+
+        # Specific CUI categories
+        medforge generate --cui-positive 100 --cui-categories financial,tax,legal
+
+        # All CUI categories
+        medforge generate --cui-positive 200 --cui-all
+
+        # Mixed PHI + CUI
+        medforge generate --phi-positive 100 --cui-positive 100 --cui-all
 
         medforge generate --formats pdf,docx --output my_data
 
@@ -617,6 +1157,10 @@ def generate(
         count = cfg.get("count", count)
         phi_positive = cfg.get("phi_positive", phi_positive)
         phi_negative = cfg.get("phi_negative", phi_negative)
+        cui_positive = cfg.get("cui_positive", cui_positive)
+        cui_negative = cfg.get("cui_negative", cui_negative)
+        cui_categories = cfg.get("cui_categories", cui_categories)
+        cui_all = cfg.get("cui_all", cui_all)
         formats = cfg.get("formats", formats)
         output = cfg.get("output", output)
         llm_percentage = cfg.get("llm_percentage", llm_percentage)
@@ -633,22 +1177,67 @@ def generate(
         console.print(f"[yellow]Valid formats: {', '.join(valid_formats)}[/yellow]")
         raise typer.Exit(1)
 
-    # Calculate PHI positive/negative split
-    if phi_positive is None and phi_negative is None:
-        # Default 80/20 split
-        phi_positive = int(count * 0.8)
-        phi_negative = count - phi_positive
-    elif phi_positive is None:
-        phi_positive = count - phi_negative
-    elif phi_negative is None:
-        phi_negative = count - phi_positive
+    # Determine what to generate
+    generate_phi = phi_positive is not None or phi_negative is not None or (cui_positive is None and cui_negative is None)
+    generate_cui = cui_positive is not None or cui_negative is not None or cui_all
+
+    # Calculate PHI positive/negative split (if generating PHI)
+    if generate_phi:
+        if phi_positive is None and phi_negative is None:
+            # Default 80/20 split
+            phi_positive = int(count * 0.8)
+            phi_negative = count - phi_positive
+        elif phi_positive is None:
+            phi_positive = max(0, count - (phi_negative or 0))
+        elif phi_negative is None:
+            phi_negative = max(0, count - (phi_positive or 0))
     else:
-        # Both specified - use their sum as total count
-        count = phi_positive + phi_negative
+        phi_positive = 0
+        phi_negative = 0
+
+    # Calculate CUI positive/negative split (if generating CUI)
+    if generate_cui:
+        if cui_positive is None and cui_negative is None:
+            # Default 80/20 split for CUI if --cui-all specified
+            cui_count = 100 if cui_all else 0
+            cui_positive = int(cui_count * 0.8)
+            cui_negative = cui_count - cui_positive
+        elif cui_positive is None:
+            cui_positive = 0
+        elif cui_negative is None:
+            # Default to 20% negative
+            cui_negative = max(0, int(cui_positive * 0.25))
+    else:
+        cui_positive = 0
+        cui_negative = 0
+
+    # Parse CUI categories
+    selected_categories = None
+    if generate_cui:
+        if cui_all:
+            selected_categories = CUI_CATEGORIES
+        elif cui_categories:
+            selected_categories = [c.strip().lower() for c in cui_categories.split(",")]
+            invalid_categories = set(selected_categories) - set(CUI_CATEGORIES)
+            if invalid_categories:
+                console.print(f"[red]Invalid CUI categories: {', '.join(invalid_categories)}[/red]")
+                console.print(f"[yellow]Valid categories: {', '.join(CUI_CATEGORIES)}[/yellow]")
+                raise typer.Exit(1)
+        else:
+            selected_categories = CUI_CATEGORIES  # Default to all
 
     # Validate parameters
     if llm_percentage < 0 or llm_percentage > 1:
         console.print("[red]Error: --llm-percentage must be between 0.0 and 1.0[/red]")
+        raise typer.Exit(1)
+
+    # Check LLM configuration when llm_percentage > 0
+    if llm_percentage > 0 and not is_llm_available():
+        console.print("[red]Error: --llm-percentage is set but ANTHROPIC_API_KEY is not configured.[/red]")
+        console.print("[yellow]To fix this, either:[/yellow]")
+        console.print("  1. Set ANTHROPIC_API_KEY in your .env file")
+        console.print("  2. Export ANTHROPIC_API_KEY in your shell")
+        console.print("  3. Use --llm-percentage 0 to disable LLM enhancement")
         raise typer.Exit(1)
 
     if parallel_workers < 1:
@@ -660,48 +1249,91 @@ def generate(
     config_table.add_column("Setting", style="cyan")
     config_table.add_column("Value", style="yellow")
 
-    config_table.add_row("Total Documents", str(count))
-    config_table.add_row("PHI Positive", str(phi_positive))
-    config_table.add_row("PHI Negative", str(phi_negative))
+    total_docs = phi_positive + phi_negative + cui_positive + cui_negative
+    config_table.add_row("Total Documents", str(total_docs))
+
+    if generate_phi:
+        config_table.add_row("PHI Positive", str(phi_positive))
+        config_table.add_row("PHI Negative", str(phi_negative))
+
+    if generate_cui:
+        config_table.add_row("CUI Positive", str(cui_positive))
+        config_table.add_row("CUI Negative", str(cui_negative))
+        config_table.add_row("CUI Categories", ", ".join(selected_categories) if selected_categories else "All")
+
     config_table.add_row("Formats", ", ".join(format_list))
-    config_table.add_row("LLM Enhancement", f"{int(llm_percentage * 100)}%")
+    if generate_phi or generate_cui:
+        config_table.add_row("LLM Enhancement", f"{int(llm_percentage * 100)}%")
+        config_table.add_row("LLM Available", "Yes" if is_llm_available() else "No (using templates)")
     config_table.add_row("Random Seed", str(seed) if seed else "Random")
     config_table.add_row("Parallel Workers", str(parallel_workers))
-    config_table.add_row("LLM Available", "Yes" if is_llm_available() else "No (using templates)")
     config_table.add_row("Output Directory", output)
 
     console.print(config_table)
     console.print()
 
-    # Initialize generator
+    # Initialize generators and generate documents
     start_time = datetime.now()
 
-    try:
-        generator = MedForgeGenerator(
-            output_dir=output,
-            seed=seed,
-            llm_percentage=llm_percentage,
-            formats=format_list,
-        )
+    # Create timestamped production run folder
+    run_dir = create_production_run_folder(output)
+    console.print(f"[bold green]Output folder:[/bold green] {run_dir}\n")
 
-        # Generate documents
-        stats = generator.generate_batch(
-            phi_positive_count=phi_positive,
-            phi_negative_count=phi_negative,
-            parallel_workers=parallel_workers,
-        )
+    try:
+        all_stats = {"phi": None, "cui": None}
+
+        # Generate PHI documents
+        if generate_phi and (phi_positive > 0 or phi_negative > 0):
+            console.print("[bold cyan]Generating PHI documents...[/bold cyan]\n")
+            phi_generator = MedForgeGenerator(
+                output_dir=str(run_dir),
+                seed=seed,
+                llm_percentage=llm_percentage,
+                formats=format_list,
+            )
+            all_stats["phi"] = phi_generator.generate_batch(
+                phi_positive_count=phi_positive,
+                phi_negative_count=phi_negative,
+                parallel_workers=parallel_workers,
+            )
+
+        # Generate CUI documents
+        if generate_cui and (cui_positive > 0 or cui_negative > 0):
+            console.print("\n[bold cyan]Generating CUI documents...[/bold cyan]\n")
+            cui_format_list = [f for f in format_list if f != "pptx"]  # CUI doesn't support pptx
+            cui_generator = MedForgeCUIGenerator(
+                output_dir=str(run_dir),
+                seed=seed,
+                categories=selected_categories,
+                formats=cui_format_list,
+                llm_percentage=llm_percentage,
+            )
+            all_stats["cui"] = cui_generator.generate_batch(
+                cui_positive_count=cui_positive,
+                cui_negative_count=cui_negative,
+                parallel_workers=parallel_workers,
+            )
 
         end_time = datetime.now()
         duration = (end_time - start_time).total_seconds()
 
         # Display statistics
         console.print()
-        display_stats(stats, output, duration)
+
+        if all_stats["phi"]:
+            console.print("[bold green]PHI Generation Results:[/bold green]")
+            display_stats(all_stats["phi"], output, duration if not all_stats["cui"] else duration / 2)
+
+        if all_stats["cui"]:
+            console.print("\n[bold green]CUI Generation Results:[/bold green]")
+            display_cui_stats(all_stats["cui"], output, duration if not all_stats["phi"] else duration / 2)
 
         console.print("\n[bold green]Generation complete![/bold green]")
 
     except Exception as e:
         console.print(f"\n[bold red]Error during generation:[/bold red] {str(e)}")
+        import traceback
+        traceback.print_exc()
         raise typer.Exit(1)
 
 
@@ -995,6 +1627,207 @@ def stats(
                     branch.add(f"[green]{filename}[/green]")
 
         console.print(Panel(dir_tree, title="Directory Structure", border_style="cyan"))
+
+
+@app.command()
+def setup(
+    check: bool = typer.Option(False, "--check", "-c", help="Check current environment and configuration status"),
+    prompt: bool = typer.Option(False, "--prompt", "-p", help="Interactively configure missing settings"),
+    show_example: bool = typer.Option(False, "--example", "-e", help="Show example YAML config file for --config flag"),
+):
+    """
+    Set up and verify MedForge environment (API keys, .env file)
+
+    Examples:
+
+        medforge setup --check
+
+        medforge setup --prompt
+
+        medforge setup --example
+    """
+    from pathlib import Path
+    import os
+
+    display_banner()
+
+    if not check and not prompt and not show_example:
+        # Default to --check if no option specified
+        check = True
+
+    if show_example:
+        example_yaml = """# MedForge Configuration File
+# Save as medforge_config.yaml and use with: medforge generate --config medforge_config.yaml
+
+# Document counts (use either 'count' for total, or specific positive/negative counts)
+# count: 100  # Total documents (80% positive, 20% negative split)
+phi_positive: 80          # Number of PHI positive documents
+phi_negative: 20          # Number of PHI negative documents
+cui_positive: 0           # Number of CUI positive documents
+cui_negative: 0           # Number of CUI negative documents
+
+# CUI options
+cui_all: false            # Generate all CUI categories
+cui_categories: null      # Or specify: "financial,legal,tax,procurement"
+
+# Output settings
+output: "output"          # Base output directory (creates production_run_TIMESTAMP inside)
+formats: "pdf,docx,xlsx,eml,pptx"  # Comma-separated formats
+
+# LLM settings (requires ANTHROPIC_API_KEY in .env or environment)
+llm_percentage: 0.2       # Percentage of docs to enhance with LLM (0.0-1.0)
+
+# Other settings
+seed: null                # Random seed for reproducibility (null = random)
+parallel_workers: 1       # Number of parallel workers
+"""
+        console.print(Panel(example_yaml, title="Example YAML Config", border_style="cyan"))
+        return
+
+    if check:
+        console.print("\n[bold cyan]Configuration Check[/bold cyan]\n")
+
+        # Check .env file
+        env_file = Path(".env")
+        env_exists = env_file.exists()
+
+        config_table = Table(box=box.ROUNDED, show_header=True)
+        config_table.add_column("Setting", style="cyan")
+        config_table.add_column("Status", style="bold")
+        config_table.add_column("Details")
+
+        # .env file check
+        if env_exists:
+            config_table.add_row(
+                ".env file",
+                "[green]✓ Found[/green]",
+                str(env_file.absolute())
+            )
+        else:
+            config_table.add_row(
+                ".env file",
+                "[yellow]⚠ Not found[/yellow]",
+                "Create .env in project root"
+            )
+
+        # ANTHROPIC_API_KEY check
+        api_key = os.getenv('ANTHROPIC_API_KEY')
+        if api_key:
+            # Mask the key for display
+            masked = api_key[:8] + "..." + api_key[-4:] if len(api_key) > 12 else "***"
+            config_table.add_row(
+                "ANTHROPIC_API_KEY",
+                "[green]✓ Set[/green]",
+                f"Value: {masked}"
+            )
+        else:
+            config_table.add_row(
+                "ANTHROPIC_API_KEY",
+                "[red]✗ Not set[/red]",
+                "Required for LLM enhancement"
+            )
+
+        # LLM availability check
+        if is_llm_available():
+            try:
+                from generators.llm_generator import ClaudeGenerator
+                gen = ClaudeGenerator()
+                config_table.add_row(
+                    "LLM Generator",
+                    "[green]✓ Ready[/green]",
+                    f"Model: {gen.model}"
+                )
+            except Exception as e:
+                config_table.add_row(
+                    "LLM Generator",
+                    "[red]✗ Error[/red]",
+                    str(e)[:50]
+                )
+        else:
+            config_table.add_row(
+                "LLM Generator",
+                "[yellow]⚠ Disabled[/yellow]",
+                "Set ANTHROPIC_API_KEY to enable"
+            )
+
+        # Check for config file in current directory
+        yaml_configs = list(Path(".").glob("*.yaml")) + list(Path(".").glob("*.yml"))
+        medforge_configs = [f for f in yaml_configs if "medforge" in f.name.lower() or "config" in f.name.lower()]
+        if medforge_configs:
+            config_table.add_row(
+                "YAML Config",
+                "[green]✓ Found[/green]",
+                ", ".join(str(f) for f in medforge_configs[:3])
+            )
+        else:
+            config_table.add_row(
+                "YAML Config",
+                "[dim]○ Optional[/dim]",
+                "Use --config flag or medforge setup --example"
+            )
+
+        console.print(config_table)
+
+        # Summary
+        console.print()
+        if api_key and is_llm_available():
+            console.print("[green]✓ Configuration is complete. LLM enhancement is available.[/green]")
+        elif not api_key:
+            console.print("[yellow]⚠ LLM enhancement disabled. Run 'medforge setup --prompt' to configure.[/yellow]")
+
+    if prompt:
+        console.print("\n[bold cyan]Interactive Configuration[/bold cyan]\n")
+
+        env_file = Path(".env")
+        env_content = {}
+
+        # Read existing .env if it exists
+        if env_file.exists():
+            with open(env_file, "r") as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith("#") and "=" in line:
+                        key, value = line.split("=", 1)
+                        env_content[key.strip()] = value.strip()
+
+        # Check ANTHROPIC_API_KEY
+        current_key = os.getenv('ANTHROPIC_API_KEY') or env_content.get('ANTHROPIC_API_KEY', '')
+
+        if current_key:
+            masked = current_key[:8] + "..." + current_key[-4:] if len(current_key) > 12 else "***"
+            console.print(f"[green]ANTHROPIC_API_KEY is already set:[/green] {masked}")
+            update = typer.confirm("Do you want to update it?", default=False)
+            if not update:
+                console.print("[dim]Keeping existing API key.[/dim]")
+                return
+        else:
+            console.print("[yellow]ANTHROPIC_API_KEY is not set.[/yellow]")
+
+        # Prompt for API key
+        console.print("\nGet your API key from: [link=https://console.anthropic.com/]https://console.anthropic.com/[/link]")
+        new_key = typer.prompt("Enter your Anthropic API key", hide_input=True)
+
+        if new_key:
+            env_content['ANTHROPIC_API_KEY'] = new_key
+
+            # Write to .env
+            with open(env_file, "w") as f:
+                for key, value in env_content.items():
+                    f.write(f"{key}={value}\n")
+
+            console.print(f"\n[green]✓ Saved ANTHROPIC_API_KEY to {env_file.absolute()}[/green]")
+            console.print("[yellow]Note: Restart your terminal or run 'source .env' to apply changes.[/yellow]")
+
+            # Test the connection
+            console.print("\n[dim]Testing API connection...[/dim]")
+            os.environ['ANTHROPIC_API_KEY'] = new_key
+            try:
+                from generators.llm_generator import ClaudeGenerator
+                gen = ClaudeGenerator()
+                console.print(f"[green]✓ Successfully connected! Using model: {gen.model}[/green]")
+            except Exception as e:
+                console.print(f"[red]✗ Connection failed: {e}[/red]")
+                console.print("[yellow]Please verify your API key is correct.[/yellow]")
 
 
 @app.command()
