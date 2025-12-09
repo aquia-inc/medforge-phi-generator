@@ -294,9 +294,7 @@ class LawEnforcementCUIGenerator(BaseCUIGenerator):
                 'FBI Tips Portal',
                 'Local Field Office Contact Information',
             ],
-            'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC INFORMATION - Not CUI',
-        })
+            'distribution': 'Unlimited Public Distribution',        })
         return doc
 
     def _generate_fraud_awareness(self) -> Dict[str, Any]:
@@ -324,9 +322,7 @@ class LawEnforcementCUIGenerator(BaseCUIGenerator):
                 'Offers that seem too good to be true',
             ],
             'reporting_instructions': 'Report suspected fraud to local authorities',
-            'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC INFORMATION - Not CUI',
-        })
+            'distribution': 'Unlimited Public Distribution',        })
         return doc
 
     def _generate_public_safety_bulletin(self) -> Dict[str, Any]:
@@ -352,7 +348,5 @@ class LawEnforcementCUIGenerator(BaseCUIGenerator):
                 'Stay informed through official channels',
                 'Know your evacuation routes',
             ],
-            'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC INFORMATION - Not CUI',
-        })
+            'distribution': 'Unlimited Public Distribution',        })
         return doc

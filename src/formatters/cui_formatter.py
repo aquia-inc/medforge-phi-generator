@@ -357,14 +357,8 @@ class CUIEmailFormatter:
         """
         msg = MIMEMultipart('alternative')
 
-        # Build subject with classification if CUI
+        # Build subject without classification marking (for realistic training data)
         subject = doc_data.get('title', 'Document')
-        if doc_data.get('has_cui', False):
-            marking = doc_data.get('classification', 'CUI')
-            # Use abbreviated marking for subject
-            if len(marking) > 20:
-                marking = 'CUI'
-            subject = f"[{marking}] {subject}"
 
         # Generate sender/recipient
         agency = doc_data.get('agency', 'Department of Health and Human Services')

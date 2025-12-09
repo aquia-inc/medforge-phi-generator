@@ -180,6 +180,8 @@ Requirements:
 - Keep each section 2-3 sentences
 - Make the narrative clinically realistic but varied
 - Focus on the primary diagnosis: {diagnoses[0]['name']}
+- DO NOT include any classification markings, headers, or labels like "PHI", "CUI", "Positive", "Negative", etc.
+- Write natural clinical content without any metadata labels
 """
 
         try:
@@ -241,6 +243,8 @@ Requirements:
 - Specify what input is being requested
 - 3-4 paragraphs total
 - Vary the phrasing to sound natural
+- DO NOT include any classification markings or labels like "PHI", "CUI", "Positive", "Negative"
+- Write natural professional email content without metadata
 """
 
         try:
@@ -297,6 +301,8 @@ Requirements:
 - Clear and reassuring language
 - 2-3 paragraph body
 - Appropriate medical explanation without jargon
+- DO NOT include any classification markings or labels like "PHI", "Positive", "Negative"
+- Write natural patient communication without any metadata labels
 """
 
         try:
@@ -396,7 +402,9 @@ Requirements:
 - Reference relevant appropriations or authorizations
 - Use realistic government terminology
 - Keep each section 2-3 sentences
-- This is pre-decisional budget information (CUI)
+- This is pre-decisional budget information - write natural government content
+- DO NOT include classification markings, headers, or labels like "CUI", "Positive", "Negative" in the generated text
+- Write as if this is an authentic internal government document
 """
 
         try:
@@ -453,7 +461,9 @@ Requirements:
 - Include risk assessment using NIST framework
 - Provide actionable remediation steps
 - Keep each section 2-4 sentences
-- This is systems vulnerability information (CUI)
+- This is systems vulnerability information - write natural security content
+- DO NOT include classification markings or labels like "CUI", "Positive", "Negative" in the generated text
+- Write as if this is an authentic internal security report
 """
 
         try:
@@ -507,7 +517,9 @@ Requirements:
 - Include analysis of legal authorities
 - Use appropriate legal terminology
 - Keep each section 2-4 sentences
-- This is legally privileged information (CUI)
+- This is legally privileged information - write natural legal content
+- DO NOT include classification markings or labels like "CUI", "Positive", "Negative" in the generated text
+- Write as if this is an authentic attorney work product
 """
 
         try:
@@ -564,7 +576,9 @@ Requirements:
 - Provide competitive range analysis
 - Include source selection recommendation
 - Keep each section 2-4 sentences
-- This is source selection information (CUI)
+- This is source selection information - write natural procurement content
+- DO NOT include classification markings or labels like "CUI", "Positive", "Negative" in the generated text
+- Write as if this is an authentic contracting officer document
 """
 
         try:
@@ -620,7 +634,9 @@ Requirements:
 - Include appropriate technical or administrative detail
 - Reference relevant authorities or regulations
 - Keep each section 2-4 sentences
-- This is Controlled Unclassified Information (CUI)
+- This is sensitive government information - write natural content
+- DO NOT include classification markings or labels like "CUI", "Positive", "Negative" in the generated text
+- Write as if this is an authentic internal government document
 """
 
         try:
