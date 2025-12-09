@@ -353,7 +353,6 @@ class TaxCUIGenerator(BaseCUIGenerator):
             ],
             'available_at': 'IRS.gov',
             'distribution': 'Unlimited Public Distribution',
-            'note': 'BLANK FORM - Not CUI',
         })
         return doc
 
@@ -382,7 +381,6 @@ class TaxCUIGenerator(BaseCUIGenerator):
             'status': 'Published and in effect',
             'supersedes': random.choice([None, f"Rev. Rul. {random.randint(2000, 2019)}-{random.randint(1, 50)}"]),
             'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLISHED RULING - Not CUI (all taxpayer-specific information redacted)',
         })
         return doc
 
@@ -411,6 +409,5 @@ class TaxCUIGenerator(BaseCUIGenerator):
             ],
             'available_at': 'IRS.gov',
             'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC INFORMATION - Not CUI',
         })
         return doc

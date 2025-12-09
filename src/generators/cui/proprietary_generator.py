@@ -330,9 +330,7 @@ class ProprietaryCUIGenerator(BaseCUIGenerator):
                 'Federal Service Desk',
                 'Online Tutorials',
             ],
-            'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC INFORMATION - Not CUI',
-        })
+            'distribution': 'Unlimited Public Distribution',        })
         return doc
 
     def _generate_public_business_info(self) -> Dict[str, Any]:
@@ -385,7 +383,5 @@ class ProprietaryCUIGenerator(BaseCUIGenerator):
                 'email': f"info@{company.lower().replace(' ', '')}.com",
                 'website': f"www.{company.lower().replace(' ', '')}.com",
             },
-            'distribution': 'Marketing material - Unlimited distribution',
-            'note': 'PUBLIC MARKETING MATERIAL - Not CUI',
-        })
+            'distribution': 'Marketing material - Unlimited distribution',        })
         return doc

@@ -329,9 +329,7 @@ class FinancialCUIGenerator(BaseCUIGenerator):
                 'Revenue estimates',
                 'Deficit/surplus projections',
             ],
-            'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC DOCUMENT - Not CUI',
-        })
+            'distribution': 'Unlimited Public Distribution',        })
         return doc
 
     def _generate_aml_training(self) -> Dict[str, Any]:
@@ -351,9 +349,7 @@ class FinancialCUIGenerator(BaseCUIGenerator):
             ],
             'duration': f"{random.randint(2, 8)} hours",
             'certification': 'Certificate of Completion provided',
-            'distribution': 'Unlimited distribution for training purposes',
-            'note': 'PUBLIC TRAINING MATERIALS - Not CUI',
-        })
+            'distribution': 'Unlimited distribution for training purposes',        })
         return doc
 
     def _generate_blank_eft_form(self) -> Dict[str, Any]:
@@ -375,9 +371,7 @@ class FinancialCUIGenerator(BaseCUIGenerator):
                 {'name': 'Routing Number', 'value': '[ENTER 9-DIGIT ROUTING NUMBER]'},
                 {'name': 'Account Number', 'value': '[ENTER ACCOUNT NUMBER]'},
             ],
-            'paperwork_reduction_notice': 'OMB No. 1510-0007',
-            'note': 'BLANK FORM - Contains no CUI',
-        })
+            'paperwork_reduction_notice': 'OMB No. 1510-0007',        })
         return doc
 
     def _generate_retirement_guide(self) -> Dict[str, Any]:
@@ -401,7 +395,5 @@ class FinancialCUIGenerator(BaseCUIGenerator):
                 'Benefits Officer Contact Information',
                 'TSP.gov',
             ],
-            'distribution': 'Available to all federal employees',
-            'note': 'PUBLIC INFORMATION - Not CUI',
-        })
+            'distribution': 'Available to all federal employees',        })
         return doc

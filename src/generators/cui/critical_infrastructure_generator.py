@@ -318,9 +318,7 @@ class CriticalInfrastructureCUIGenerator(BaseCUIGenerator):
                 "This public guide provides general information about emergency preparedness "
                 "for households and communities. No sensitive operational information is included."
             ),
-            'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC INFORMATION - Not CUI',
-        })
+            'distribution': 'Unlimited Public Distribution',        })
         return doc
 
     def _generate_blank_template(self) -> Dict[str, Any]:
@@ -341,9 +339,7 @@ class CriticalInfrastructureCUIGenerator(BaseCUIGenerator):
                 {'name': 'Organization Name', 'value': '[ENTER ORGANIZATION]'},
                 {'name': 'Point of Contact', 'value': '[ENTER POC NAME]'},
                 {'name': 'Date', 'value': '[ENTER DATE]'},
-            ],
-            'note': 'BLANK TEMPLATE - Contains no CUI',
-        })
+            ],        })
         return doc
 
     def _get_vulnerability_impact(self, vuln_type: str) -> str:

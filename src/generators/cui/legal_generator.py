@@ -307,9 +307,7 @@ class LegalCUIGenerator(BaseCUIGenerator):
                 "This FAQ provides general information only and does not constitute legal advice. "
                 "Consult with your agency's Office of General Counsel for specific legal questions."
             ),
-            'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC INFORMATION - Not CUI',
-        })
+            'distribution': 'Unlimited Public Distribution',        })
         return doc
 
     def _generate_union_rights(self) -> Dict[str, Any]:
@@ -334,9 +332,7 @@ class LegalCUIGenerator(BaseCUIGenerator):
                 'Your Union Representative',
                 'Agency Labor Relations Office',
             ],
-            'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC INFORMATION - Not CUI',
-        })
+            'distribution': 'Unlimited Public Distribution',        })
         return doc
 
     def _generate_public_testimony(self) -> Dict[str, Any]:
@@ -356,9 +352,7 @@ class LegalCUIGenerator(BaseCUIGenerator):
             'topic': 'Agency Oversight Hearing',
             'status': 'Published in Congressional Record',
             'transcript_available': True,
-            'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC RECORD - Not CUI (testimony has been delivered)',
-        })
+            'distribution': 'Unlimited Public Distribution',        })
         return doc
 
     def _generate_appeal_guide(self) -> Dict[str, Any]:
@@ -381,7 +375,5 @@ class LegalCUIGenerator(BaseCUIGenerator):
                 'Standard Form 50',
             ],
             'contact': 'MSPB Regional Offices',
-            'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC INFORMATION - Not CUI',
-        })
+            'distribution': 'Unlimited Public Distribution',        })
         return doc
