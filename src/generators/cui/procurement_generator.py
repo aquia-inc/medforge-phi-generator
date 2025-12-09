@@ -373,9 +373,7 @@ class ProcurementCUIGenerator(BaseCUIGenerator):
                 'FPDS.gov',
                 'USASpending.gov',
             ],
-            'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC INFORMATION - Not CUI',
-        })
+            'distribution': 'Unlimited Public Distribution',        })
         return doc
 
     def _generate_sbir_overview(self) -> Dict[str, Any]:
@@ -402,9 +400,7 @@ class ProcurementCUIGenerator(BaseCUIGenerator):
                 {'phase': 'Phase III', 'description': 'Commercialization', 'typical_award': 'Non-SBIR funding'},
             ],
             'eligibility': 'US-based small businesses with fewer than 500 employees',
-            'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC INFORMATION - Not CUI',
-        })
+            'distribution': 'Unlimited Public Distribution',        })
         return doc
 
     def _generate_vendor_outreach(self) -> Dict[str, Any]:
@@ -428,7 +424,5 @@ class ProcurementCUIGenerator(BaseCUIGenerator):
                 'name': self.fake.name(),
                 'email': f"industry.day@{agency.lower().replace(' ', '')}.gov",
             },
-            'distribution': 'Unlimited Public Distribution',
-            'note': 'PUBLIC ANNOUNCEMENT - Not CUI',
-        })
+            'distribution': 'Unlimited Public Distribution',        })
         return doc
