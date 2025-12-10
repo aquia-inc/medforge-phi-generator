@@ -64,8 +64,8 @@ class PDFFormPopulator:
                 # Tell PDF viewers to regenerate field appearances
                 pdf.Root.AcroForm['/NeedAppearances'] = True
 
-            # Save
-            pdf.save(output_path)
+            # Save with normalize_content to help viewer rendering
+            pdf.save(output_path, normalize_content=True)
             pdf.close()
 
         except Exception as e:
