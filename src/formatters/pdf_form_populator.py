@@ -37,36 +37,103 @@ class PDFFormPopulator:
         # Create output directory
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-        # Use pikepdf to properly fill PDF forms
+        # Use reportlab to overlay text on template PDF (only way that renders everywhere)
         try:
-            pdf = pikepdf.open(template_path)
+            from reportlab.pdfgen import canvas
+            from reportlab.lib.pagesizes import letter
+            from io import BytesIO
+            from PyPDF2 import PdfReader, PdfWriter
 
-            # Fill form fields
-            if '/AcroForm' in pdf.Root and '/Fields' in pdf.Root.AcroForm:
-                for field in pdf.Root.AcroForm.Fields:
-                    field_name = str(field.T) if '/T' in field else None
+            # Create overlay with text
+            packet = BytesIO()
+            can = canvas.Canvas(packet, pagesize=letter)
 
-                    if field_name and field_name in field_data:
-                        value = field_data[field_name]
+            # Map field names to actual positions from PDF (extracted via pikepdf)
+            # Coordinates are (x, y) for bottom-left corner of text
+            field_positions = {
+                'Name': (145, 620),
+                'Component': (145, 596),
+                'Telephone number': (180, 574),
+                'Location': (200, 548),
+                'Grade': (150, 525),
+                'Date of Birth': (147, 501),
+                'Manager': (130, 476),
+                'Discription': (88, 380),  # Large text area
+            }
 
-                        # Set field value
-                        if value is True:
-                            field['/V'] = pikepdf.Name('/On')
-                        elif value is False:
-                            field['/V'] = pikepdf.Name('/Off')
-                        else:
-                            field['/V'] = str(value) if value else ''
+            # Draw text on PDF
+            can.setFont("Helvetica", 10)
+            for field_name, value in field_data.items():
+                if field_name in field_positions and value and value not in [True, False]:
+                    x, y = field_positions[field_name]
+                    can.drawString(x, y, str(value)[:80])
 
-                        # Remove appearance stream to force regeneration
-                        if '/AP' in field:
-                            del field['/AP']
+            can.save()
+            packet.seek(0)
 
-                # Tell PDF viewers to regenerate field appearances
-                pdf.Root.AcroForm['/NeedAppearances'] = True
+            # Overlay on template
+            overlay = PdfReader(packet)
+            template = PdfReader(template_path)
+            output = PdfWriter()
 
-            # Save with normalize_content to help viewer rendering
-            pdf.save(output_path, normalize_content=True)
-            pdf.close()
+            # Merge overlay with template
+            page = template.pages[0]
+            page.merge_page(overlay.pages[0])
+            output.add_page(page)
+
+            # Add remaining pages if any
+            for i in range(1, len(template.pages)):
+                output.add_page(template.pages[i])
+
+            # Write
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+            with open(output_path, 'wb') as f:
+                output.write(f)
+
+        except Exception as e:
+            print(f"Warning: reportlab overlay error: {e}")
+            # Fallback: use pikepdf method
+            try:
+                pdf = pikepdf.open(template_path)
+
+                if '/AcroForm' in pdf.Root and '/Fields' in pdf.Root.AcroForm:
+                    for field in pdf.Root.AcroForm.Fields:
+                        field_name = str(field.T) if '/T' in field else None
+
+                        if field_name and field_name in field_data:
+                            value = field_data[field_name]
+
+                            if value is True:
+                                field['/V'] = pikepdf.Name('/On')
+                            elif value is False:
+                                field['/V'] = pikepdf.Name('/Off')
+                            else:
+                                field['/V'] = str(value) if value else ''
+
+                            if '/AP' in field:
+                                del field['/AP']
+
+                    pdf.Root.AcroForm['/NeedAppearances'] = True
+
+                # Save to temp file first
+                temp_path = output_path + ".tmp.pdf"
+                pdf.save(temp_path, normalize_content=True)
+                pdf.close()
+
+                # Flatten by removing AcroForm (keeps field text as static content)
+                pdf2 = pikepdf.open(temp_path)
+                if '/AcroForm' in pdf2.Root:
+                    del pdf2.Root['/AcroForm']
+                pdf2.save(output_path)
+                pdf2.close()
+
+                # Clean up temp
+                if os.path.exists(temp_path):
+                    os.remove(temp_path)
+            except:
+                # Final fallback
+                import shutil
+                shutil.copy(template_path, output_path)
 
         except Exception as e:
             print(f"Warning: pikepdf error: {e}")
@@ -276,7 +343,8 @@ class CustomerTemplateManager:
                 'clean_name': 'MedicalInquiryForm'
             },
             'EFT Authorization Form': {
-                'template': 'EFT Authorization Form-blank-CUI-Finance-negative.pdf',  # Use blank, will populate
+                'template_positive': 'EFT Authorization Form-blank-CUI-Finance-positive.pdf',  # Elizabeth's perfect filled example
+                'template_negative': 'EFT Authorization Form-blank-CUI-Finance-negative.pdf',  # Blank for negatives
                 'generator': self.populator.generate_eft_authorization_data,
                 'category': 'CUI-Finance',
                 'clean_name': 'EFTAuthorizationForm'
@@ -305,23 +373,40 @@ class CustomerTemplateManager:
         """
         template_info = self.template_mappings[template_key]
 
-        template_path = os.path.join(self.template_dir, template_info['template'])
+        # Choose template based on positive/negative and whether we have separate templates
+        if 'template_positive' in template_info:
+            # Has separate positive/negative templates (e.g., EFT)
+            if populate:
+                template_file = template_info['template_positive']
+            else:
+                template_file = template_info['template_negative']
+            # Just copy the appropriate template (positive already has data)
+            template_path = os.path.join(self.template_dir, template_file)
+            clean_name = template_info['clean_name']
+            filename = f"{clean_name}_{index:04d}.pdf"
+            output_path = os.path.join(output_subdir, filename)
 
-        # Create clean filename
-        clean_name = template_info['clean_name']
-        filename = f"{clean_name}_{index:04d}.pdf"
-        output_path = os.path.join(output_subdir, filename)
-
-        if populate:
-            # Generate synthetic data and fill form
-            field_data = template_info['generator']()
-            return self.populator.populate_form(template_path, output_path, field_data)
-        else:
-            # Copy blank template
             import shutil
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
             shutil.copy(template_path, output_path)
             return output_path
+        else:
+            # Single template - need to populate
+            template_path = os.path.join(self.template_dir, template_info['template'])
+            clean_name = template_info['clean_name']
+            filename = f"{clean_name}_{index:04d}.pdf"
+            output_path = os.path.join(output_subdir, filename)
+
+            if populate:
+                # Generate synthetic data and fill form
+                field_data = template_info['generator']()
+                return self.populator.populate_form(template_path, output_path, field_data)
+            else:
+                # Copy blank template
+                import shutil
+                os.makedirs(os.path.dirname(output_path), exist_ok=True)
+                shutil.copy(template_path, output_path)
+                return output_path
 
     def list_available_templates(self):
         """List all available customer templates."""
@@ -344,7 +429,7 @@ if __name__ == "__main__":
     print("\nTesting Medical Inquiry Form population...")
     output_file = manager.generate_from_template(
         'Medical Inquiry  Form',
-        'test_output',
+        'temp',
         1,
         populate=True
     )
@@ -354,7 +439,7 @@ if __name__ == "__main__":
     print("\nTesting blank form...")
     blank_file = manager.generate_from_template(
         'Medical Inquiry  Form',
-        'test_output',
+        'temp',
         2,
         populate=False
     )
