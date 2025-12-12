@@ -1,0 +1,1096 @@
+Received: from PH8PR09MB8957.namprd09.prod.outlook.com (2603:10b6:510:17c::15)
+ by DS0PR09MB10580.namprd09.prod.outlook.com with HTTPS; Wed, 12 Nov 2025
+ 22:05:08 +0000
+Received: from DM6PR09CA0024.namprd09.prod.outlook.com (2603:10b6:5:160::37)
+ by PH8PR09MB8957.namprd09.prod.outlook.com (2603:10b6:510:17c::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9320.17; Wed, 12 Nov
+ 2025 22:05:06 +0000
+Received: from SA2PEPF00002251.namprd09.prod.outlook.com
+ (2603:10b6:5:160:cafe::99) by DM6PR09CA0024.outlook.office365.com
+ (2603:10b6:5:160::37) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9320.16 via Frontend Transport; Wed,
+ 12 Nov 2025 22:05:06 +0000
+Authentication-Results: spf=pass (sender IP is 159.135.227.46)
+ smtp.mailfrom=snyk.io; dkim=pass (signature was verified)
+ header.d=snyk.io;dmarc=pass action=none header.from=snyk.io;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of snyk.io designates
+ 159.135.227.46 as permitted sender) receiver=protection.outlook.com;
+ client-ip=159.135.227.46; helo=m227-46.mailgun.net; pr=C
+Received: from mta-k0ifm6n.email.us.etp.fireeyegov.com (15.200.32.127) by
+ SA2PEPF00002251.mail.protection.outlook.com (10.167.242.133) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9320.13
+ via Frontend Transport; Wed, 12 Nov 2025 22:05:05 +0000
+Return-Path: bounce+1eb6ae.4c52d-first.last=cms.hhs.gov@snyk.io
+Received: from [127.0.0.1] ([127.0.0.1:46234] helo=smtp-injection-worker)
+	by etp-prd10-05 (envelope-from <bounce+1eb6ae.4c52d-first.last=cms.hhs.gov@snyk.io>)
+	(ecelerity 4.7.0.20111 r(msys-ecelerity:tags/4.7.0-ga^0)) with ESMTPS (cipher=TLS_AES_128_GCM_SHA256) 
+	id 2C/05-09450-19405196; Wed, 12 Nov 2025 22:05:05 +0000
+X-FE-ETP-SENDER-IP: 159.135.227.46
+X-FE-ETP-CONNECTING-IP: 159.135.227.46
+Authentication-Results-Original: mta-jays8ip.email.us.etp.fireeyegov.com;
+	dmarc=pass (p=quarantine; dis=none) header.from=snyk.io
+Received: from m227-46.mailgun.net (m227-46.mailgun.net [159.135.227.46])
+	by etp-prd10-03 (envelope-from <bounce+1eb6ae.4c52d-first.last=cms.hhs.gov@snyk.io>)
+	FireEye ETP with ESMTPS (cipher=ECDHE-RSA-AES128-GCM-SHA256)
+	id 3z361UF-21472-10g698F10572D840519655a7403; batch_id 69/8F-10572-D8405196; Wed, 12 Nov 2025 22:05:02 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=snyk.io; q=dns/txt; s=k1; t=1762985101; x=1762992301;
+ h=Message-Id: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: Date: Sender: Sender;
+ bh=JvaYv58lqDtoZHXwzi9eD5lxmQvQC9ubwbqu5l/mvB4=;
+ b=s6alDLknemQ/7H+1k3q196oBlCcbniQlI/4w5g5K1Uh7hJNJ/btuSxQWB1UnAFRzMsy9QaADpo9f4Dw4Ufbm3uP1t9cChmyA0ndu8jmGe9p7V8FE100vss/3bEuChlx+vgnKN/TmmRur1JV5FEVumnkbvra2TQtppP1M1BVrv7g=
+X-Mailgun-Sid: WyJkMmQyNSIsImVsaXphYmV0aC5zY2h3ZWluc2JlcmdAY21zLmhocy5nb3YiLCI0YzUyZCJd
+Received: by 9fca3945d653b04e0e59996ae735fde6ca5a515f6c1ffa6bd72a618b064b0271 with HTTP
+ id 6915048b74d1706f93847a2d; Wed, 12 Nov 2025 22:04:59 GMT
+X-Mailgun-Sending-Ip: 159.135.227.46
+Sender: support-noreply@snyk.io
+Date: Wed, 12 Nov 2025 22:04:59 +0000
+Content-Type: multipart/alternative;
+ boundary="f40a9725e5a58defc6411fb052f30e0bea7ada69f0d685feccc0bf379f27"
+Subject: Example Projects's weekly report
+From: Snyk <support-noreply@snyk.io>
+To: Model Employee <first.last@cms.hhs.gov>
+X-Mailgun-Tag: weekly-report
+X-Mailgun-Variables: {"campaign": "{\"name\":\"Weekly report\"}", "user":
+ "{\"publicId\":\"58d1ace1-54e1-418e-a973-b026ad5440f7\",\"name\":\"First
+ Last\",\"username\":\"E123\",\"email\":\"first.last@cms.hhs.gov\"}"}
+Message-Id: <20251112220459.d50d541c098b583c@snyk.io>
+X-FE-ETP-METADATA: eyAidGlkIjogIjN6MzYxVUYtMjE0NzItMTBnNjk4RjEwNTcyRDg0MDUxOTY1NWE3NDAzIiwgImFj
+ Y2VwdGVkX3RpbWVzdGFtcCI6ICIyMDI1MTExMjIyMDUwMSIsICJhY2NlcHRlZF90aW1lc3RhbXBf
+ ZXBvY2giOiAiMTc2Mjk4NTEwMSIsICJkb21haW5fbmFtZSI6ICJjbXMuaGhzLmdvdiIsICJjb3Vu
+ dHJ5IjogIiIsICJjbGllbnRfaWQiOiAiIiwgInRlbmFudF9pZCI6ICIiLCAiYXR0X2NvdW50Ijog
+ LTIsICJzcmNfaXAiOiAiMTU5LjEzNS4yMjcuNDYiIH0=
+X-MS-Exchange-Organization-ExpirationStartTime: 12 Nov 2025 22:05:06.1000
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 36b9df97-d4e6-4a44-996f-08de223789a4
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: fbdcedc1-70a9-414b-bfa5-c3063fc3395e:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-Exchange-SkipListedInternetSender: ip=[159.135.227.46];domain=m227-46.mailgun.net
+X-MS-Exchange-ExternalOriginalInternetSender: ip=[159.135.227.46];domain=m227-46.mailgun.net
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SA2PEPF00002251:EE_|PH8PR09MB8957:EE_|DS0PR09MB10580:EE_
+X-MS-Exchange-Organization-AuthSource: SA2PEPF00002251.namprd09.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: 36b9df97-d4e6-4a44-996f-08de223789a4
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:2;ARA:13230040|12012899012|4022899009|34020700016|13102899012|69100299015|13012899012|2092899012|3092899012|3072899012|82310400026|5062899012|29132699027|4092899012|13003099007|8096899003;
+X-Forefront-Antispam-Report: CIP:15.200.32.127;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:m227-46.mailgun.net;PTR:m227-46.mailgun.net;CAT:NONE;SFS:(13230040)(12012899012)(4022899009)(34020700016)(13102899012)(69100299015)(13012899012)(2092899012)(3092899012)(3072899012)(82310400026)(5062899012)(29132699027)(4092899012)(13003099007)(8096899003);DIR:INB;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Nov 2025 22:05:05.8942
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 36b9df97-d4e6-4a44-996f-08de223789a4
+X-MS-Exchange-CrossTenant-Id: fbdcedc1-70a9-414b-bfa5-c3063fc3395e
+X-MS-Exchange-CrossTenant-AuthSource: SA2PEPF00002251.namprd09.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR09MB8957
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.3703169
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.9320.008
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910005)(944506478)(944626604)(920097)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?KzVMaDU0ZlUyN3U3ZGNRbjZWb1BUTXU2Z0FuN21mNDZQV01HUzdvenR0a2xu?=
+ =?utf-8?B?dkFEQ2w5N2hnZk1pK3dHNldBMEhtWlp0dkRJUWtrZnhYZml2QUppYjV4M1FK?=
+ =?utf-8?B?UDBLQWFNNVQzSVF6S3VKbGRKLys1eWZjd2VyUG0yNy9jV1ZvVVN5Vis5ZnNB?=
+ =?utf-8?B?K3VicThzQk5tT2JWRWw5bmJIdTdyUkExN0NFN2xTWTI5TCtYcDMva0s1Ym5a?=
+ =?utf-8?B?bjRMRi9IWXE0NHhLK3NPKzg4a1lmVXYwMXpWcS8wYkxXanBCeHlIZWtxbFNI?=
+ =?utf-8?B?a1ZQTjFYMzBoVmoxM1FXTGdZZHN3NlZKcnFYRU0wRndTTEwwOWJaVlFNakU5?=
+ =?utf-8?B?M3BIb0Vra0hweHkyb0ZYMGlsZU1NZjVkNjd0ZEl5NE40cklweGRZRHo4VDhv?=
+ =?utf-8?B?dytDUHRmZHFPaDVSNzgyTXJHR3lka09KdTNxdWhWcTY5Y2pEaVhRbGVaUUQx?=
+ =?utf-8?B?UTBIZ05HMitpT0x4bklvVUVLZTVlcEZmL1RRMmlCWUhTYjVDZTJmYlY4L2lB?=
+ =?utf-8?B?TE9DbUZsaVhGUHB1aVVNLytYakI2OGRqdWtDS1RqVDI3dkZ5M0ltVnFhZUR0?=
+ =?utf-8?B?NFV5dDd1cDRNZmFNZEY2U3k0eUVSWGZKV0dWY1lJeHBLT2poVCt6VVRZejM2?=
+ =?utf-8?B?clNzVkZkYXFTdjJNVmg2UUxsOVVDNUdTS1YvUm5xRHRyKzRYajNrbm5Udnkz?=
+ =?utf-8?B?dHpxVG9SQlY1TXh6M00ydnYyY0JaS1VDWHFSbWhnYjhlbHo2Y01CKzB1WWwr?=
+ =?utf-8?B?SEFhSTVxdzNqK2xMYTcyYTlPdWlUV2o5c3lsZG1BZkN6bUMwQk1oQVVHUW5J?=
+ =?utf-8?B?NmhaYzRpTi96WGhQalV3eG8wZTY5RzlvT2V4bGNJOHIwSDVpRUZwRU1XVzN0?=
+ =?utf-8?B?dmRweVhPVXN2NjlLcmJpQU1PMVFzZTBOemtBWitJM08xbHhyaklWbTcvTTE3?=
+ =?utf-8?B?eCtaa2tpSmlTdlNaRDQ4aW5majBsVTROU3R6QnpsOEFFcmVUSTdFbzg1MlNj?=
+ =?utf-8?B?RFlrNDhXVFhJR0JiMHpPVHUvZGpQSzRtNVl3eGVQQ2J3OHVIT0V5WmUvWkZy?=
+ =?utf-8?B?L0JZWjg0L0p6MlFtaHZ5QXl3Z29lZUZXMWlhY25CeUN3NkExSXBmOFBjcVF2?=
+ =?utf-8?B?QWxIdmNlMlNFK0Fhdlg3ZFJMM2djODA3S1hHWEFSdHpaalJsY24wdk9nUTFP?=
+ =?utf-8?B?bmlTWUVwUE1hNmdOKytZaE9LTldQNEIzVnFVU1o1T01oVjd4WFhUYTNqeEdq?=
+ =?utf-8?B?NXdPd3ZLUzY3RG4zZjVKeW82YTJNb1pZajVkWGJJSDRYMEFLVW40c0JQaW9S?=
+ =?utf-8?B?QkdIOUIxbk5ldVI2NHBxRGRLU3VoWnl0QU5zUlRDakdxR1M1M1NMZWRyNElP?=
+ =?utf-8?B?SERsNEQ4aWxscTdUVm4vMnh3ZlRvUkpOQlpHcHh0YlZUWWZNc1JJN0VoTExN?=
+ =?utf-8?B?eWFXSFJzZVZ6UlY3eGs4ZUluMHdwd1drcTljb2RaNS94WmwwQXd3NWgyWUF5?=
+ =?utf-8?B?cXZTL2pHMmsreWorL3gyNWlnMTAwRjFoMENRK1RCUmZmdXhacUVDNTdEWlB4?=
+ =?utf-8?B?aUJsb3ZYbDd6NisrbU9RSkhNWTNsMEdQdjRVVklLNUFsRXhCN3FXMWVDdy9r?=
+ =?utf-8?B?NkZ3N0Ixc241QUV5d1VlSXN3L3pReHQ4Rlk5TWl0Ui9GOXQ0Ylh5dkNVY0Rs?=
+ =?utf-8?B?ZXpwR25qUnExcSs0dnNrMHlLYnVIWkF1ZTJPZVl3eUNUdWE5MmJpSGdhR2hQ?=
+ =?utf-8?B?MTZsQ1ZnVHpyUkN6QWUwUFBKMHNrRllFUCtLTTRORjNmRVY2NmJ1MXpTck50?=
+ =?utf-8?B?aDNqS1V3eTJWVEZ3RTJvbThuOVptdktmb2pmWlZxaUhzM3NjTlVZaEkxQnVz?=
+ =?utf-8?B?SS9zK0h2R2JUdzF0SDlvZXVrVTZFWHFPQlRWV2pYODA3bk9LRG56WkN2VkEr?=
+ =?utf-8?B?aXdCcXRxZjEwbThhNDVHUkxmZE9CM0VaRWx5dDBSblc1dDQveHgxR1NIL2x0?=
+ =?utf-8?B?bkZJNEpnbE9TZ1ZENmo5dm96d05BZHJOSFRQMWZKalNFN3VSSTI1ay9Dc3pR?=
+ =?utf-8?B?cVd0UGNkcTVQVWVMZG91Vzg4ZDJ1aVhva004aUtTYXRDcEEzQXlSYmNOaG1y?=
+ =?utf-8?B?b052QmdIZ3FUUVFObnltd1V1V3FmemF4aGtSNFQwSDhKZkxlWWowT2hiK2ZX?=
+ =?utf-8?B?QnhyNWhhQkR6RkpHbHhJUTNsTFVUNDJrV1creEkzcnZvUWdJUzVjRDkwRnhT?=
+ =?utf-8?B?SGlpdkkvN2pZWjlweWNNWUxRZ2JuTG5uaDViU1J6MW8raDlncXkxUGJIb1du?=
+ =?utf-8?B?MkZxQzRYdHNSV3hjc2s4b3ZVb0FFQjYwc0R3K0g5ejkrdFhlUVl6Mnl1TFVP?=
+ =?utf-8?B?aUxjUmdLYmExQ0hJcVE4c0RZaFNNZEhtK0V3aCswUGphaW9taE42UVYwbC9N?=
+ =?utf-8?B?OUZXRXg2UENnUWNOTmw2Qi9aYlVucTFqT2JmblVIYU5Balo4Zmpud1NwKzFn?=
+ =?utf-8?B?dnFVazlWeDdPRTVwSUNaK2NYVmI1SXRhcjEwLzNPbndESEpMNVFrWXpJeEI2?=
+ =?utf-8?B?MnQ4UWkyd050T0Ztc3JJVXFPNFhZUEQ2SG9lTjRJSXhJNENSNmNhcXZ3a2FO?=
+ =?utf-8?B?aUVTUHU2SU1LaFVIRE53dHRmWkFva0R2NlNka0FCeHBaV1FVQWhIUjloNUMx?=
+ =?utf-8?B?MSswdyswYUw5QXVPQ1pZSTBoZnh3dHFsblhKNS8yVmEzSFBqbkk0OElBNktJ?=
+ =?utf-8?B?V0IxbWJaeWxES3NQM1FlcGU3NFJENWFxVU5haE53RjNDU3dLd3VzT3UwN1ZJ?=
+ =?utf-8?B?bWpCRkJjcHYzbEJ1Z09Qa1JYNmZHd0xiSFdUdTlpUjJwNnlRRStFdXdxUlJB?=
+ =?utf-8?B?QTJKYktQWlNnUWd1NFowSlJ2UVBMOTlUMDllSk9xc2t6OWozcldCckZVZGJ0?=
+ =?utf-8?B?eENpekgyRmZCVStqSFU3c2tPZkxvTGt6aFZuQlJHMDN5bFJyVENDYkVHZnIv?=
+ =?utf-8?B?RGpzaVRZU0VVM2toQlFqK3g4V1lqMW9kYWRvUUlkQ1V3WGpuQVdqdks2b05n?=
+ =?utf-8?B?OUFiRGpoc1BPYXR4b1JlbkZWQk9BTExPelRBTTVmRGFETVhuVytnSUN1T0pu?=
+ =?utf-8?B?ZjJtbzh2d0h5UnE0TE03dDhQaXVOUmwvcHJZaks1UlhaVzUwdnlVbE5IZTZ3?=
+ =?utf-8?B?YnZiM0EzRkRIMWljdDltMmxXUU05eXpuRGp2VVRKeHl4dFcyZ3djNVV2czI3?=
+ =?utf-8?B?dW4weG8yL2hqRncxVlhiQ1dmRXRSNDVubEwvSkFud3luS0FzUzBWWVpxMXhs?=
+ =?utf-8?B?RDNtVE9ZM205bFoxemdqa21uSkdVLzJXejhibGNVYnBHMW1mSTI0VHlRZXNB?=
+ =?utf-8?B?N1VUYnUyOU1hRUpBQkZmcWgwTk52NDVDYXNLYWYvclhPYTM4bEMyZWwzaVZR?=
+ =?utf-8?B?ZUNybEVPc0ZqMVFKZS9Qb2JKWDR6U2hhWVpsanpUMWpWU2JFRlBwd1JGMDQ1?=
+ =?utf-8?B?cnZOK0E3SDNGeGRpV3gzR3JhQU1JTG9iTklDWUpvT1FOTHhhMTIrbUN1amVo?=
+ =?utf-8?B?QzRJblhCWVRmdVJRMUJYRHhOOFVERmJoYVh1Vmg0TzE3SjFTelhCLzJqd2xH?=
+ =?utf-8?B?MisyNndsdlkwbUF2Z2pwaU5sWHVjaHlqeXZBbFVKUkhQNDEyOHdCUWhGUUt1?=
+ =?utf-8?B?cXlFZitxL2EvVUJqMEZoSEdKTmc2Y2w2c2Z2cTBuNnpVMTRaK1RvMzRBWUJK?=
+ =?utf-8?B?Si9IUXRIS3MvMGRSbVEzTEx0dUFqLzAxWndGV1FxZXhYRWJ1Z0VObjBTKzE4?=
+ =?utf-8?B?VGw2bmV1UndxMTYvWHhwNVY0ZUI0TUxoREJYTXpRODBtRVVXOFpPMGxBcXg3?=
+ =?utf-8?B?NVUvcElRS25EWGpneC90Q05Ralo0R1laUDZyd1RWN043blM3UE8wZWNFN016?=
+ =?utf-8?B?Sjh4WGVMVGFvU1NzQldvUlRaMEdJeEVWNlE5MERHVnB4Wmd5QTRKRHFpdG81?=
+ =?utf-8?B?d0ExWVk5VC9UK3U4Z0wvdEozQm00SXlBYXVJWWwwQ29JMHh0YUxNMDZUbVQv?=
+ =?utf-8?Q?vjM+65ynrnbyjWMZ8=3D?=
+MIME-Version: 1.0
+
+--f40a9725e5a58defc6411fb052f30e0bea7ada69f0d685feccc0bf379f27
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Example Projects's weekly report
+
+5th of November =E2=80=93 12th of November 2025
+
+
+Status of all 25 active projects
+
+38 known vulnerabilities
+0 high severity
+6 medium severity
+32 low severity
+
+----
+
+
+
+Review the status of your projects on your dashboard: <https://email.snyk.i=
+o/c/eJyMkU1v3CAQhn8NXCJbMICxDxzabC1VqtTDSu0xAjy20fpLYGe1-fWVk_Wq7SlXnlfDM-9=
+4Oy42dJMh-isBmOyIBICILwTgN-JluD1FXOa47q_6RBsjvYKGouG6gKpUnHHaG1ci0wJFW6Gzvn=
+VMe40Vt8BBeck4DQYYKM45ADCpqrxRrFGSe1aVTpXCE8nSdLvkYaaD6dd1Se8SNYHaLkt-ZwTqO=
+XYE6rd1bLPk5ximjoh6W8eXYxUiTtd385fDvNhxmrfokYjTr4DXn9N5ul1oNDiEN-tw7fPk-yuG=
+KTmMHZHMjynv-5R38ytdzcfA7GMg3RLGe2HL5obgvzeP0lTZcOuRZ0oizyQvMbOVFpljUNhGScl=
+avYfh-f-6vx0qT-e_VY7s_uk_-fOP4vlBcbRheKDPbHU_6KuBPwEAAP__QNiesA">
+
+----
+
+1 recently vulnerable project
+----
+
+CMS-Enterprise/example(main):package.json: <https://email.snyk.io/c/eJyMkTl=
+v3DAQhX8N1RgUyOEhsmCReCMgQIoALlIaPEYrxbpAam3Yvz7QXkhSuSTfw5v3zUQ_rX44zo40Xw=
+nA7CckAER8IQC_EF_G94eM65K3_bc5VMnJqCBV6HijwRrFGa96ZxruQ0ClVWcEQFKNEVazLkoTk=
+PmuGhwwUJxzAGBS2ToplpTkkVkTlBGRSFbm95d6WKrR9du2lnOJlkDr17W-agTaJR8JtB_b1NES=
+lzzM-3PNy2-MG4FWBSG1Sh31vFFUhmSoNUZTsMBtQI9WIxHtaZueb-xEHN7OqM83VL3LZTnliEQ=
+cfl7Cq-xwHD58wK2vS-zfcJhLwHwkksWp1H1f6uPyWm3ukkYvadWpYL6udz2FcYjf033FyiTuI3=
+KqJHIquUHqbSNoYKB9UlKyrtnN8Pj_cb7dqjw8_V3l5t2H_uN_-qEf7ypOfhjv0meorud_dfAnA=
+AD__6F3qs8">
+
+Open a Fix PR: <https://email.snyk.io/c/eJyckktr3DAUhX-NvAky0rWeCy3aTA2FQku=
+z6DLocT0W8QvLk9evL05mhrarkqV0jq7Ox7nRj4vPx8kR_ZkATH5EAkCaTwTgF-LD8HKz4jKv23=
+6rD1VyIkpIFTquFVgjOeNV74RlNihuTGchRfBWQacaLRsvrNe6q7IDBpJzDgBMSFsnyZIUPDJrg=
+jRNJIKV6eWhznM1uH7blvIWoiXQ-mWpzxqBdl6PBNrXbexoifOap_3Y5WcCrQyNUDJ11HMtqQjJ=
+UGuMomCB24AerULStKdtvL9wk-bw9IZ5f8FUu1zm0xqRNIfvC05tfv7x86PvqtXhkF99wK2vS-y=
+fME8l4HokgsWx1H1f6uP8WG3ufR59n1edCq7nUpZTGHL8mq7FSJO4j8ipFMip4Aapt7qhgYHySQ=
+rBOr2b4fbfSr9cotzc_Rnl4t0__ct_903dXlUcfR6u0v9QnZfm0cHvAAAA__9f2b2o>
+
+  Medium severity: Allocation of Resources Without Limits or Throttling <ht=
+tps://email.snyk.io/c/eJyMkc1u4jAUhZ_G3iBH9vVfsvCCYSYS06pdZNF26dg3JCIJURJA9=
+OkrKKC2q259juTzfTf4bvDNpnfE_iEAve-QABC5JAAviNv2tBhx2I3z-dX-pdGpoCFSdMIayFIt=
+uKC1k1UljTJVUEqmVSwh09YEXnLMjI9R08YBBy2EAACudJZEzaNWIvAsLXUqA1F86k_bpNnR1tX=
+zPEyXETmB3A9Dcs0I5Id92xPIi6e3B_a_YMvX9XPBBBghrZV0dNg2777EuU6mUB-x6acSxw1RPH=
+RTUtdTstkd6OyOFzj2CUf3E45XBcO-bJuwjncNOo3CBxRMKxRMiRSZz6xkJQfjo1aKV_ZchtVPg=
+f9uUxbF1ym37vnTb_3i0azuKXa-ae_Rb6iuJzo4-AgAAP__6PqKlg> =20
+
+----
+
+View all: <https://email.snyk.io/c/eJyMkU1v3CAQhn8NvkS2YACDDxzabC1V6qmR0mOE=
+YdZGwR8CnNXm11eb7K7annrleTU8846z82bDuBiivhKAxc5IAAj_QgB-Ib7G80PCbU3l8qoOlTf=
+CSfAVGqZa6LRklFWTQY9eesaUU-yoeac5SqYkpa1v0WpaBQMUJGMMAKiQXeMl9VIwRzs9SM0dET=
+Qv59cmrFU0Uylb_pDoCfR225orI9CvaSTQv5f5WGe3prCMhPd7mV9uqxB-OH2Yv9zM2wvO654cE=
+n54Dnj6iQ6XEs_Pe1ww2SFilQzG8G4HLFOT3XTCsOQB00gEdXNupik34_pWFfM5vP4cXu0Z07W8=
+bR9icN_9vUCpPbMOWS0FslowjbXtFK8HCq31Ugh6VJcwPP5b_bebysPTnyq37OXTv_JPP9rHO8X=
+ZhnhH_7PV9bhvBn4HAAD__0jcoyc">
+
+----
+
+If you have any questions, email support@snyk.io. We're happy to help.
+
+Stay secure!
+The Snyk team
+
+Snyk Ltd, 100 Summer St, 7th floor Boston, MA 02110
+To unsubscribe, manage your notification settings: https://email.snyk.io/c/=
+eJyMkc1uwjAQhJ_GvqBE9sZO7IMPLS1Spd449OyfhVjkT7EB0aevQgG1PfW4OyPtfLPe9pON-8G=
+Q5pkADLZHAkCqJwLwgXjoLqsZp3HOy7Z5ocEILyFQNLypQSvJGaetYRi80pV2TksOzjvb1AoFKI=
+81asFpNMBAcs4BgAmpyyBZkIJ7ppWTqvJEsDRcDmUcaWfanKd0DbEhsLHTVN60ZfJ-PA6ZwGYYc=
+9xFb3Mch0Rng138tA5zWybfnjEOyeG8J4L5PpVtm8r9eKLZnK9YxTcWPSacb_DT0XXRv4VHAVIF=
+bj3yQgrkheAKC6ubqnAMahukEGzXLGZY_63u9R5ltf0Z5e5djv7yb9_r9UPF3sbuIf2H6vack4G=
+vAAAA___HpIuu
+
+--f40a9725e5a58defc6411fb052f30e0bea7ada69f0d685feccc0bf379f27
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en" style=3D"color-scheme:light dark;supported=
+-color-schemes:light dark;margin:0 auto;padding:0;height:100%;width:100%;fo=
+nt-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;line-height:24p=
+x;color:#000;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:gra=
+yscale;background-color:#fff" xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:=
+o=3D"urn:schemas-microsoft-com:office:office" xmlns:v=3D"urn:schemas-micros=
+oft-com:vml"><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">
+   =20
+    <meta content=3D"width=3Ddevice-width" name=3D"viewport">
+   =20
+    <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible">
+   =20
+    <meta name=3D"x-apple-disable-message-reformatting">
+   =20
+    <meta content=3D"light dark" name=3D"color-scheme">
+   =20
+    <meta content=3D"light dark" name=3D"supported-color-schemes">
+   =20
+    <title></title>=20
+
+   =20
+   =20
+
+   =20
+    <!--[if mso]>
+        <style>*{font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-se=
+rif!important}</style>
+    <![endif]-->
+
+   =20
+    <!--[if !mso]><!-->
+    <link href=3D"https://fonts.googleapis.com/css2?family=3DRoboto:wght@40=
+0;500;600&amp;display=3Dswap" rel=3D"stylesheet">
+    <!--<![endif]-->
+
+   =20
+
+   =20
+    <style>@media (prefers-color-scheme:dark){:root{--background-color:#030=
+328;--text-color:#FFFFFF;--text-color-secondary:#CCCCCC;--link-color:#5689F=
+0;--button-bg:#145DEB;--button-hover-bg:#777777;--header-gradient-start:#75=
+30a6;--header-gradient-end:#461d9f;--box-shadow-color:rgba(0, 0, 0, .5);--b=
+order-color:#333;--card-bg:#030328;--widget-bg:#1E1E3F;--warning-bg:#4D3800=
+;--warning-text:#FFB84D;--warning-border:#8A6800;--message-bg:#3A3A3A;--mes=
+sage-border:#555555;--message-text:#000;--trial-banner-bg-normal:#5E5C8D;--=
+trial-banner-bg-urgent:#D94FA3;--trial-banner-text-color:#FFFFFF;--table-bo=
+rder-color:#5A5A5A;--table-cell-highlight-bg:#1E1E3F;--severity-critical-co=
+lor:#D42A2A;--severity-high-color:#E56A2E;--severity-medium-color:#F39C12;-=
+-severity-low-color:#A09FB8;--severity-none-color:#4A4A4A;--severity-value-=
+text-color:#000000;--severity-label-text-color:#FFFFFF;--border-color-mediu=
+m-alpha:rgba(100, 100, 100, 0.50);--text-color-subtle:#AAAAAA;--border-colo=
+r-light:#73728F}}@media (prefers-color-scheme:dark){body,html{background-co=
+lor:var(--background-color,#030328)!important}div,h1,h2,h3,h4,h5,h6,p,span{=
+color:var(--text-color,#fff)!important}b,strong,td{color:var(--text-color,#=
+fff)!important}.email-title,.project-title-link,.section-title{color:var(--=
+text-color,#fff)!important}table{background-color:var(--card-bg,#2a2a2a)!im=
+portant}.card-bg-override>tbody>tr>td{background-color:var(--card-bg,#2a2a2=
+a)!important;color:var(--text-color,#fff)!important}.widget,.widget table,.=
+widget td,.widget tr{background-color:var(--widget-bg,#1e1e3f)!important}a:=
+not(.button-a,.button-fix-pr){color:var(--link-color,#5689f0)!important;fon=
+t-weight:500}.user-icon,.wr-project-icon,img[src*=3D"notifications/icon"],i=
+mg[src*=3Dicon-github],img[src*=3Dicon-heroku]{filter:brightness(0) invert(=
+1)!important}img[src*=3Dwarning]{filter:brightness(1.2)}.headerGradient{bac=
+kground:#461d9f;background:linear-gradient(to right,#7530a6 0,#461d9f 50%)}=
+.reviewer-request-card{background-color:var(--card-bg,#030328)!important;co=
+lor:var(--text-color,#fff)!important}.reviewer-request-card h3,.reviewer-re=
+quest-card p,.reviewer-request-card strong,.reviewer-request-card td{color:=
+var(--text-color,#fff)!important}.reviewer-request-card a{color:var(--link-=
+color,#5689f0)!important}.reviewer-request-card .message-box{border-color:v=
+ar(--link-color,#5689f0)!important;color:var(--text-color,#fff)!important}.=
+reviewer-request-card .message-box p,.reviewer-request-card .message-box st=
+rong{color:var(--text-color,#fff)!important}.reviewer-request-card .comment=
+-section{background-color:var(--widget-bg,#1e1e3f)!important;border-left-co=
+lor:var(--link-color,#5689f0)!important}.reviewer-request-card .comment-sec=
+tion p{color:var(--text-color,#fff)!important}.reviewer-request-card .repo-=
+name-bg{background-color:var(--widget-bg,#1e1e3f)!important;color:var(--tex=
+t-color,#fff)!important}.requester-request-card{background-color:var(--card=
+-bg,#030328)!important;color:var(--text-color,#fff)!important}.requester-re=
+quest-card .label,.requester-request-card .value,.requester-request-card h3=
+,.requester-request-card p,.requester-request-card strong,.requester-reques=
+t-card td{color:var(--text-color,#fff)!important}.requester-request-card a{=
+color:var(--link-color,#5689f0)!important}.requester-request-card .message-=
+box{border-color:var(--link-color,#5689f0)!important;color:var(--text-color=
+,#fff)!important}.requester-request-card .message-box p,.requester-request-=
+card .message-box strong{color:var(--text-color,#fff)!important}.requester-=
+request-card .comment-section{background-color:var(--widget-bg,#1e1e3f)!imp=
+ortant;border-left-color:var(--link-color,#5689f0)!important}.requester-req=
+uest-card .comment-section p{color:var(--text-color,#fff)!important}.reques=
+ter-request-card .repo-name-bg{background-color:var(--widget-bg,#1e1e3f)!im=
+portant;color:var(--text-color,#fff)!important}.requester-request-card *,.r=
+eviewer-request-card *{color:var(--text-color,#fff)!important}.comment-sect=
+ion{background-color:#eaf1ff!important}td.comment-section{background-color:=
+#eaf1ff!important}.comment-section table{background-color:#eaf1ff!important=
+}.comment-section td{background-color:#eaf1ff!important;color:#0f47c6!impor=
+tant}.comment-section p{color:#0f47c6!important}.project-header{background-=
+color:var(--table-cell-highlight-bg,#1e1e3f)!important}.project-header tabl=
+e{background-color:var(--table-cell-highlight-bg,#1e1e3f)!important}.projec=
+t-header td{background-color:var(--table-cell-highlight-bg,#1e1e3f)!importa=
+nt;color:var(--text-color,#fff)!important}td.project-header{background-colo=
+r:var(--table-cell-highlight-bg,#2a2a5a)!important}td.project-header table{=
+background-color:var(--table-cell-highlight-bg,#2a2a5a)!important}td.projec=
+t-header td{background-color:var(--table-cell-highlight-bg,#2a2a5a)!importa=
+nt;color:var(--text-color,#fff)!important}}.button-link{text-decoration:non=
+e}@media only screen and (min-device-width:320px) and (max-device-width:374=
+px){.email-container{min-width:320px}}@media only screen and (min-device-wi=
+dth:375px) and (max-device-width:413px){.email-container{min-width:375px}}@=
+media only screen and (min-device-width:414px){.email-container{min-width:4=
+14px}}.button-a:hover,.button-td:hover{background:var(--button-hover-bg,#55=
+5);border-color:var(--button-hover-bg,#555)}.button-fix-pr:hover{background=
+-color:#f6f7fb;border-color:#b8bcc8;box-shadow:0 2px 4px rgba(0,0,0,.1)}@me=
+dia screen and (max-width:600px){.email-container{width:100%}.fluid{max-wid=
+th:100%;height:auto;margin-left:auto;margin-right:auto}.stack-column,.stack=
+-column-center{display:block;width:100%;max-width:100%;direction:ltr}.stack=
+-column-center{text-align:center}.center-on-narrow{text-align:center;displa=
+y:block;margin-left:auto;margin-right:auto;float:none}table.center-on-narro=
+w{display:inline-block}.email-container p{font-size:18px}}</style>
+   =20
+
+   =20
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+    <!--[if mso | IE]>
+    <style>#EmailWrapper{border:none}</style>
+    <![endif]-->
+
+  </head>
+  <body style=3D"height:100%;width:100%;font-family:Roboto,'Franklin Gothic=
+ Medium',Tahoma,sans-serif;line-height:24px;color:#000;-webkit-font-smoothi=
+ng:antialiased;-moz-osx-font-smoothing:grayscale;background-color:#fff;marg=
+in:0;padding:0;mso-line-height-rule:exactly" width=3D"100%">
+    <!--[if mso | IE]>
+    <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%">
+    <tr>
+    <td>
+    <![endif]-->
+   =20
+    <table style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacin=
+g:0;border-collapse:collapse;table-layout:fixed;margin:0 auto;max-width:600=
+px" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"email-contain=
+er" role=3D"presentation">
+      <tr>
+        <td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:=
+Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;font-si=
+ze:16px;line-height:24px;margin:0 0 16px 0;background-color:#fff" bgcolor=
+=3D"#FFFFFF">
+         =20
+          <table style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;border-=
+spacing:0;border-collapse:collapse;table-layout:fixed;margin:0 auto;backgro=
+und-color:#fff;max-width:600px;width:100%" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"headerTable" bgcolor=3D"#FFFFFF" r=
+ole=3D"presentation">
+            <tr>
+              <td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;font-f=
+amily:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;m=
+argin:0 0 16px 0;text-align:center;vertical-align:top;padding:0;font-size:0=
+;line-height:0" valign=3D"top" width=3D"600" align=3D"center">
+                <img alt=3D"Snyk Header" src=3D"https://res.cloudinary.com/=
+snyk/image/upload/w_1200,q_auto:best/v1748957392/header_eq8jnn.png" style=
+=3D"-ms-interpolation-mode:bicubic;width:100%;max-width:600px;display:block=
+;border:0" width=3D"600">
+              </td>
+            </tr>
+          </table>
+         =20
+
+         =20
+          <table style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;border-=
+spacing:0;border-collapse:collapse;table-layout:fixed;margin:0 auto;width:1=
+00%;max-width:600px" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" class=3D"card-bg-override" role=3D"main">
+            <style>@media (prefers-color-scheme:dark){.wr-summary-critical =
+.wr-summary-count{background-color:#4d2a2a!important;color:#f4cccc!importan=
+t}.wr-summary-critical .wr-summary-letter{background-color:var(--severity-c=
+ritical-color,#d42a2a)!important}.wr-summary-high .wr-summary-count{backgro=
+und-color:#593822!important;color:#fce5cd!important}.wr-summary-high .wr-su=
+mmary-letter{background-color:var(--severity-high-color,#e56a2e)!important}=
+.wr-summary-medium .wr-summary-count{background-color:#5c4422!important;col=
+or:#ffe8cd!important}.wr-summary-medium .wr-summary-letter{background-color=
+:var(--severity-medium-color,#f39c12)!important}.wr-summary-low .wr-summary=
+-count{background-color:#4d4d57!important;color:#e7e7e7!important}.wr-summa=
+ry-low .wr-summary-letter{background-color:var(--severity-low-color,#a09fb8=
+)!important}tr[style*=3D"border-bottom: 1px solid #f3f4f6"]{border-bottom:1=
+px solid var(--border-color-light,#73728f)!important}.wr-vulnerability-titl=
+e{color:var(--text-color,#fff)!important}.wr-project-icon{filter:brightness=
+(0) invert(1)}.button-fix-pr{background-color:var(--widget-bg,#1e1e3f)!impo=
+rtant;color:var(--text-color,#fff)!important;border-color:var(--border-colo=
+r-light,#73728f)!important}.button-fix-pr:hover{background:var(--button-hov=
+er-bg,#777)!important;border-color:var(--button-hover-bg,#777)!important}}<=
+/style>
+<tr>
+  <td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:Roboto=
+,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;font-size:16p=
+x;line-height:24px;margin:0 0 16px 0" valign=3D"top" id=3D"bodyCell" align=
+=3D"center">
+    <table style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacin=
+g:0;border-collapse:collapse;table-layout:auto;background-color:#fff;margin=
+:15px" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#FFFFFF"=
+ id=3D"templateContainer">
+      <tr>
+        <td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:=
+Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;font-si=
+ze:16px;line-height:24px;margin:0 0 16px 0" valign=3D"top">
+          <table style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;border-=
+spacing:0;border-collapse:collapse;margin:0 auto;table-layout:auto;width:60=
+0px" width=3D"600" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"t=
+emplateBody">
+            <tr>
+              <td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;font-f=
+amily:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;f=
+ont-size:16px;line-height:24px;margin:0 0 16px 0;padding:15px 15px 0 15px" =
+valign=3D"top" class=3D"bodyContent">
+                <header>
+                  <h1 class=3D"weekly-report-title" style=3D"font-family:Ro=
+boto,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;color:#00=
+0;font-weight:500;font-size:26px;line-height:32px;margin:0 0 15px 0">
+                    Example Projects's weekly report
+                 =20
+                  <p style=3D"font-family:Roboto,'Franklin Gothic Medium',T=
+ahoma,sans-serif;font-style:normal;font-weight:400;font-size:18px;line-heig=
+ht:26px;margin:0 0 30px 0" class=3D"weekly-report-date">
+                    5th of November =E2=80=93 12th of November 2025
+                  </p>
+                </h1></header>
+                  <table style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt=
+;border-spacing:0;border-collapse:collapse;table-layout:auto;margin:0 0 35p=
+x 0" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+                    <tr>
+                      <td style=3D"mso-table-lspace:0pt;mso-table-rspace:0p=
+t;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:=
+normal;font-size:16px;line-height:24px;margin:0 0 16px 0;background-color:#=
+f6f7fb;padding:20px;border-radius:8px" class=3D"widget" bgcolor=3D"#F6F7FB"=
+>
+                        <h2 style=3D"font-family:Roboto,'Franklin Gothic Me=
+dium',Tahoma,sans-serif;font-style:normal;color:#000;margin:0 0 12px 0;font=
+-weight:500;font-size:24px;line-height:30px;margin-top:0;margin-bottom:20px=
+" class=3D"section-title">
+                          Status of
+                          25 active projects
+                        </h2>
+                        <table style=3D"mso-table-lspace:0pt;mso-table-rspa=
+ce:0pt;border-spacing:0;border-collapse:collapse;margin:0 auto;table-layout=
+:auto" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+                          <tr>
+                            <td style=3D"mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;font-=
+style:normal;font-size:16px;line-height:24px;margin:0 0 16px 0" valign=3D"t=
+op" width=3D"48%">
+                              <table style=3D"mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;border-spacing:0;border-collapse:collapse;margin:0 auto;table-=
+layout:auto;background-color:#f6f7fb" width=3D"100%" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" bgcolor=3D"#F6F7FB">
+                                <tr>
+                                  <td style=3D"mso-table-lspace:0pt;mso-tab=
+le-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif=
+;font-style:normal;font-size:16px;line-height:24px;margin:0 0 16px 0;paddin=
+g:20px;border-radius:6px;background-color:#f6f7fb" valign=3D"top" bgcolor=
+=3D"#F6F7FB">
+                                    <table style=3D"mso-table-lspace:0pt;ms=
+o-table-rspace:0pt;border-spacing:0;border-collapse:collapse;margin:0 auto;=
+table-layout:auto;width:100%;background-color:#f6f7fb" width=3D"100%" bgcol=
+or=3D"#F6F7FB">
+                                      <tr>
+                                        <td style=3D"mso-table-lspace:0pt;m=
+so-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans=
+-serif;font-style:normal;font-size:16px;padding:0;margin:0;line-height:1.1"=
+>
+                                          <span style=3D"font-family:Roboto=
+,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;margin:0 0 16=
+px 0;font-weight:500;font-size:24px;line-height:30px;display:block;margin-b=
+ottom:0" class=3D"vulnerability-count">
+                                            38
+                                          </span>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td style=3D"mso-table-lspace:0pt;m=
+so-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans=
+-serif;font-style:normal;font-size:16px;line-height:24px;margin:0 0 16px 0"=
+>
+                                          <span style=3D"font-family:Roboto=
+,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;margin:0 0 16=
+px 0;font-weight:400;font-size:16px;margin-bottom:8px;line-height:1.1" clas=
+s=3D"vulnerability-label">
+                                            known vulnerabilities
+                                          </span>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                      <table style=3D"mso-table-lspace:0pt;=
+mso-table-rspace:0pt;border-spacing:0;border-collapse:collapse;margin:0 aut=
+o;table-layout:auto;margin-top:10px" width=3D"100%" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0">
+                                        <tr>
+                                          <td style=3D"mso-table-lspace:0pt=
+;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sa=
+ns-serif;font-style:normal;font-size:16px;line-height:24px;margin:0 0 16px =
+0;padding-right:4px">
+                                            <!--[if mso]>
+                                            <table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0">
+                                              <tr>
+                                                <td style=3D"background-col=
+or:#f4cccc;border:1px solid #ab1a1a;border-right:none;vertical-align:middle=
+;text-align:center;font-family:sans-serif;font-size:14px;color:#7a2e2e" wid=
+th=3D"28" height=3D"24">
+                                                  0
+                                                </td>
+                                                <td style=3D"background-col=
+or:#ab1a1a;border:1px solid #ab1a1a;vertical-align:middle;text-align:center=
+;font-family:sans-serif;font-size:14px;color:#fff;font-weight:700" width=3D=
+"24" height=3D"24">
+                                                  C
+                                                </td>
+                                              </tr>
+                                            </table>
+                                            <![endif]-->
+                                            <table style=3D"mso-table-lspac=
+e:0pt;mso-table-rspace:0pt;border-spacing:0;border-collapse:collapse;margin=
+:0 auto;table-layout:auto;display:table;width:54px;height:20px;mso-hide:all=
+" width=3D"54" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"wr=
+-summary-severity-box wr-summary-critical" height=3D"20">
+                                              <tr>
+                                                <td style=3D"mso-table-lspa=
+ce:0pt;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tah=
+oma,sans-serif;font-style:normal;margin:0 0 16px 0;display:table-cell;width=
+:34px;height:20px;border-radius:2px 0 0 2px;text-align:center;vertical-alig=
+n:middle;font-weight:600;font-size:12px;line-height:20px;background:#f4cccc=
+;background-color:#f4cccc;color:#7a2e2e" valign=3D"middle" width=3D"34" ali=
+gn=3D"center" class=3D"wr-summary-count" bgcolor=3D"#F4CCCC" height=3D"20">
+                                                  0
+                                                </td>
+                                                <td style=3D"mso-table-lspa=
+ce:0pt;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tah=
+oma,sans-serif;font-style:normal;margin:0 0 16px 0;display:table-cell;width=
+:20px;height:20px;border-radius:0 2px 2px 0;text-align:center;vertical-alig=
+n:middle;font-size:12px;line-height:20px;color:#fff;background:#ab1a1a;back=
+ground-color:#ab1a1a" valign=3D"middle" width=3D"20" align=3D"center" class=
+=3D"wr-summary-letter" bgcolor=3D"#AB1A1A" height=3D"20">
+                                                  C
+                                                </td>
+                                              </tr>
+                                            </table>
+                                          </td>
+                                          <td style=3D"mso-table-lspace:0pt=
+;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sa=
+ns-serif;font-style:normal;font-size:16px;line-height:24px;margin:0 0 16px =
+0;padding-right:4px">
+                                            <!--[if mso]>
+                                            <table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0">
+                                              <tr>
+                                                <td style=3D"background-col=
+or:#fce5cd;border:1px solid #ce5019;border-right:none;vertical-align:middle=
+;text-align:center;font-family:sans-serif;font-size:14px;color:#b45f06" wid=
+th=3D"28" height=3D"24">
+                                                  0
+                                                </td>
+                                                <td style=3D"background-col=
+or:#ce5019;border:1px solid #ce5019;vertical-align:middle;text-align:center=
+;font-family:sans-serif;font-size:14px;color:#fff;font-weight:700" width=3D=
+"24" height=3D"24">
+                                                  H
+                                                </td>
+                                              </tr>
+                                            </table>
+                                            <![endif]-->
+                                            <table style=3D"mso-table-lspac=
+e:0pt;mso-table-rspace:0pt;border-spacing:0;border-collapse:collapse;margin=
+:0 auto;table-layout:auto;display:table;width:54px;height:20px;mso-hide:all=
+" width=3D"54" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"wr=
+-summary-severity-box wr-summary-high" height=3D"20">
+                                              <tr>
+                                                <td style=3D"mso-table-lspa=
+ce:0pt;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tah=
+oma,sans-serif;font-style:normal;margin:0 0 16px 0;display:table-cell;width=
+:34px;height:20px;border-radius:2px 0 0 2px;text-align:center;vertical-alig=
+n:middle;font-weight:600;font-size:12px;line-height:20px;background:#fce5cd=
+;background-color:#fce5cd;color:#b45f06" valign=3D"middle" width=3D"34" ali=
+gn=3D"center" class=3D"wr-summary-count" bgcolor=3D"#FCE5CD" height=3D"20">
+                                                  0
+                                                </td>
+                                                <td style=3D"mso-table-lspa=
+ce:0pt;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tah=
+oma,sans-serif;font-style:normal;margin:0 0 16px 0;display:table-cell;width=
+:20px;height:20px;border-radius:0 2px 2px 0;text-align:center;vertical-alig=
+n:middle;font-size:12px;line-height:20px;color:#fff;background:#ce5019;back=
+ground-color:#ce5019" valign=3D"middle" width=3D"20" align=3D"center" class=
+=3D"wr-summary-letter" bgcolor=3D"#CE5019" height=3D"20">
+                                                  H
+                                                </td>
+                                              </tr>
+                                            </table>
+                                          </td>
+                                          <td style=3D"mso-table-lspace:0pt=
+;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sa=
+ns-serif;font-style:normal;font-size:16px;line-height:24px;margin:0 0 16px =
+0;padding-right:4px">
+                                            <!--[if mso]>
+                                            <table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0">
+                                              <tr>
+                                                <td style=3D"background-col=
+or:#ffe8cd;border:1px solid #d68000;border-right:none;vertical-align:middle=
+;text-align:center;font-family:sans-serif;font-size:14px;color:#925c1e" wid=
+th=3D"28" height=3D"24">
+                                                  6
+                                                </td>
+                                                <td style=3D"background-col=
+or:#d68000;border:1px solid #d68000;vertical-align:middle;text-align:center=
+;font-family:sans-serif;font-size:14px;color:#fff;font-weight:700" width=3D=
+"24" height=3D"24">
+                                                  M
+                                                </td>
+                                              </tr>
+                                            </table>
+                                            <![endif]-->
+                                            <table style=3D"mso-table-lspac=
+e:0pt;mso-table-rspace:0pt;border-spacing:0;border-collapse:collapse;margin=
+:0 auto;table-layout:auto;display:table;width:54px;height:20px;mso-hide:all=
+" width=3D"54" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"wr=
+-summary-severity-box wr-summary-medium" height=3D"20">
+                                              <tr>
+                                                <td style=3D"mso-table-lspa=
+ce:0pt;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tah=
+oma,sans-serif;font-style:normal;margin:0 0 16px 0;display:table-cell;width=
+:34px;height:20px;border-radius:2px 0 0 2px;text-align:center;vertical-alig=
+n:middle;font-weight:600;font-size:12px;line-height:20px;background:#ffe8cd=
+;background-color:#ffe8cd;color:#925c1e" valign=3D"middle" width=3D"34" ali=
+gn=3D"center" class=3D"wr-summary-count" bgcolor=3D"#FFE8CD" height=3D"20">
+                                                  6
+                                                </td>
+                                                <td style=3D"mso-table-lspa=
+ce:0pt;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tah=
+oma,sans-serif;font-style:normal;margin:0 0 16px 0;display:table-cell;width=
+:20px;height:20px;border-radius:0 2px 2px 0;text-align:center;vertical-alig=
+n:middle;font-size:12px;line-height:20px;color:#fff;background:#d68000;back=
+ground-color:#d68000" valign=3D"middle" width=3D"20" align=3D"center" class=
+=3D"wr-summary-letter" bgcolor=3D"#D68000" height=3D"20">
+                                                  M
+                                                </td>
+                                              </tr>
+                                            </table>
+                                          </td>
+                                          <td style=3D"mso-table-lspace:0pt=
+;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sa=
+ns-serif;font-style:normal;font-size:16px;line-height:24px;margin:0 0 16px =
+0;padding-right:0">
+                                            <!--[if mso]>
+                                            <table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0">
+                                              <tr>
+                                                <td style=3D"background-col=
+or:#e7e7e7;border:1px solid #bebebe;border-right:none;vertical-align:middle=
+;text-align:center;font-family:sans-serif;font-size:14px;color:#828282" wid=
+th=3D"28" height=3D"24">
+                                                  32
+                                                </td>
+                                                <td style=3D"background-col=
+or:#bebebe;border:1px solid #bebebe;vertical-align:middle;text-align:center=
+;font-family:sans-serif;font-size:14px;color:#fff;font-weight:700" width=3D=
+"24" height=3D"24">
+                                                  L
+                                                </td>
+                                              </tr>
+                                            </table>
+                                            <![endif]-->
+                                            <table style=3D"mso-table-lspac=
+e:0pt;mso-table-rspace:0pt;border-spacing:0;border-collapse:collapse;margin=
+:0 auto;table-layout:auto;display:table;width:54px;height:20px;mso-hide:all=
+" width=3D"54" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"wr=
+-summary-severity-box wr-summary-low" height=3D"20">
+                                              <tr>
+                                                <td style=3D"mso-table-lspa=
+ce:0pt;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tah=
+oma,sans-serif;font-style:normal;margin:0 0 16px 0;display:table-cell;width=
+:34px;height:20px;border-radius:2px 0 0 2px;text-align:center;vertical-alig=
+n:middle;font-weight:600;font-size:12px;line-height:20px;background:#e7e7e7=
+;background-color:#e7e7e7;color:#828282" valign=3D"middle" width=3D"34" ali=
+gn=3D"center" class=3D"wr-summary-count" bgcolor=3D"#E7E7E7" height=3D"20">
+                                                  32
+                                                </td>
+                                                <td style=3D"mso-table-lspa=
+ce:0pt;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tah=
+oma,sans-serif;font-style:normal;margin:0 0 16px 0;display:table-cell;width=
+:20px;height:20px;border-radius:0 2px 2px 0;text-align:center;vertical-alig=
+n:middle;font-size:12px;line-height:20px;color:#fff;background:#bebebe;back=
+ground-color:#88879e" valign=3D"middle" width=3D"20" align=3D"center" class=
+=3D"wr-summary-letter" bgcolor=3D"#88879E" height=3D"20">L</td>
+                                              </tr>
+                                            </table>
+                                          </td>
+                                        </tr>
+                                      </table>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                            <td style=3D"mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;font-=
+style:normal;font-size:16px;line-height:24px;margin:0 0 16px 0" width=3D"4%=
+"></td>
+                            <td style=3D"mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;font-=
+style:normal;font-size:16px;line-height:24px;margin:0 0 16px 0" valign=3D"t=
+op" width=3D"48%">
+                              <table style=3D"mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;border-spacing:0;border-collapse:collapse;margin:0 auto;table-=
+layout:auto;background-color:#f6f7fb" width=3D"100%" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" bgcolor=3D"#F6F7FB">
+                                <tr>
+                                  <td style=3D"mso-table-lspace:0pt;mso-tab=
+le-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif=
+;font-style:normal;font-size:16px;line-height:24px;margin:0 0 16px 0;paddin=
+g:20px;border-radius:6px;background-color:#f6f7fb" valign=3D"middle" bgcolo=
+r=3D"#F6F7FB">
+                                    <table style=3D"mso-table-lspace:0pt;ms=
+o-table-rspace:0pt;border-spacing:0;border-collapse:collapse;margin:0 auto;=
+table-layout:auto;width:100%;background-color:#f6f7fb" width=3D"100%" bgcol=
+or=3D"#F6F7FB">
+                                      <tr>
+                                        <td style=3D"mso-table-lspace:0pt;m=
+so-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans=
+-serif;font-style:normal;font-size:16px;padding:0;margin:0;line-height:1.1"=
+>
+                                          <span style=3D"font-family:Roboto=
+,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;margin:0 0 16=
+px 0;font-weight:500;font-size:24px;line-height:30px;display:block;margin-b=
+ottom:0" class=3D"vulnerability-count">545</span>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td style=3D"mso-table-lspace:0pt;m=
+so-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans=
+-serif;font-style:normal;font-size:16px;line-height:24px;margin:0 0 16px 0"=
+>
+                                          <span style=3D"font-family:Roboto=
+,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;margin:0 0 16=
+px 0;font-weight:400;font-size:16px;margin-bottom:8px;line-height:1.1" clas=
+s=3D"vulnerability-label">total dependencies</span>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <div style=3D"font-family:Roboto,'Franklin Gothic M=
+edium',Tahoma,sans-serif;font-style:normal;font-size:16px;line-height:24px;=
+margin:0 0 16px 0;margin-top:20px;padding-top:20px;border-top:1px solid #d3=
+d3d9" class=3D"wr-cta-container">
+                          <table style=3D"mso-table-lspace:0pt;mso-table-rs=
+pace:0pt;border-spacing:0;border-collapse:collapse;margin:0 auto;table-layo=
+ut:auto;width:100%" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" class=3D"wr-cta-table">
+                            <tr>
+                              <td style=3D"mso-table-lspace:0pt;mso-table-r=
+space:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;fon=
+t-style:normal;font-size:16px;margin:0 0 16px 0;vertical-align:middle;line-=
+height:1.1" valign=3D"middle" class=3D"wr-cta-text">
+                                Review the status of your projects on your =
+dashboard.
+                              </td>
+                              <td style=3D"mso-table-lspace:0pt;mso-table-r=
+space:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;fon=
+t-style:normal;font-size:16px;line-height:24px;margin:0 0 16px 0;text-align=
+:right;vertical-align:middle;width:140px" valign=3D"middle" width=3D"140" a=
+lign=3D"right" class=3D"wr-cta-button-cell">
+                                <!--[if mso]>
+                                <v:roundrect xmlns:v=3D"urn:schemas-microso=
+ft-com:vml" xmlns:w=3D"urn:schemas-microsoft-com:office:word" href=3D"https=
+://email.snyk.io/c/eJyMkU1v3CAQhn8NXCJbMICxDxzabC1VqtTDSu0xAjy20fpLYGe1-fWV=
+k_Wq7SlXnlfDM-94Oy42dJMh-isBmOyIBICILwTgN-JluD1FXOa47q_6RBsjvYKGouG6gKpUnHH=
+aG1ci0wJFW6GzvnVMe40Vt8BBeck4DQYYKM45ADCpqrxRrFGSe1aVTpXCE8nSdLvkYaaD6dd1Se=
+8SNYHaLkt-ZwTqOXYE6rd1bLPk5ximjoh6W8eXYxUiTtd385fDvNhxmrfokYjTr4DXn9N5ul1oN=
+DiEN-tw7fPk-yuGKTmMHZHMjynv-5R38ytdzcfA7GMg3RLGe2HL5obgvzeP0lTZcOuRZ0oizyQv=
+MbOVFpljUNhGSclavYfh-f-6vx0qT-e_VY7s_uk_-fOP4vlBcbRheKDPbHU_6KuBPwEAAP__QNi=
+esA" style=3D"height:36px;v-text-anchor:middle;width:140px" arcsize=3D"8%" =
+strokecolor=3D"#145DEB" fillcolor=3D"#145DEB">
+                                  <w:anchorlock>
+                                  <center style=3D"color:#fff;font-family:s=
+ans-serif;font-size:14px">View my Projects</center>
+                                </v:roundrect>
+                                <![endif]-->
+                                <a href=3D"https://email.snyk.io/c/eJyMkU1v=
+3CAQhn8NXCJbMICxDxzabC1VqtTDSu0xAjy20fpLYGe1-fWVk_Wq7SlXnlfDM-94Oy42dJMh-is=
+BmOyIBICILwTgN-JluD1FXOa47q_6RBsjvYKGouG6gKpUnHHaG1ci0wJFW6GzvnVMe40Vt8BBec=
+k4DQYYKM45ADCpqrxRrFGSe1aVTpXCE8nSdLvkYaaD6dd1Se8SNYHaLkt-ZwTqOXYE6rd1bLPk5=
+ximjoh6W8eXYxUiTtd385fDvNhxmrfokYjTr4DXn9N5ul1oNDiEN-tw7fPk-yuGKTmMHZHMjynv=
+-5R38ytdzcfA7GMg3RLGe2HL5obgvzeP0lTZcOuRZ0oizyQvMbOVFpljUNhGSclavYfh-f-6vx0=
+qT-e_VY7s_uk_-fOP4vlBcbRheKDPbHU_6KuBPwEAAP__QNiesA" style=3D"transition:al=
+l .1s ease-in;background-color:#145deb;background:#145deb;border-radius:4px=
+;color:#fff;display:inline-block;font-size:14px;font-weight:400;line-height=
+:1;margin:10px 0;padding:8px 16px;text-decoration:none;white-space:nowrap;m=
+so-hide:all" class=3D"button-a">View my Projects</a>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                  <div style=3D"font-family:Roboto,'Franklin Gothic Medium'=
+,Tahoma,sans-serif;font-style:normal;font-size:16px;line-height:24px;margin=
+:0 0 16px 0;padding-left:15px;padding-right:15px;margin-bottom:20px">
+                      <h2 style=3D"font-family:Roboto,'Franklin Gothic Medi=
+um',Tahoma,sans-serif;font-style:normal;color:#000;margin:0 0 12px 0;font-w=
+eight:500;font-size:24px;line-height:30px;margin-top:28px;margin-bottom:10p=
+x" class=3D"section-title">
+                        1 recently vulnerable project
+                      </h2>
+                      <table style=3D"mso-table-lspace:0pt;mso-table-rspace=
+:0pt;border-collapse:collapse;margin:0 auto;table-layout:auto;width:100%;bo=
+rder-spacing:0 15px" width=3D"100%">
+                          <tr>
+                            <td style=3D"mso-table-lspace:0pt;mso-table-rsp=
+ace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;font-=
+style:normal;font-size:16px;line-height:24px;margin:0 0 16px 0;border-botto=
+m:1px solid #ddd">
+                              <table style=3D"mso-table-lspace:0pt;mso-tabl=
+e-rspace:0pt;border-spacing:0;border-collapse:collapse;margin:0 auto;table-=
+layout:auto;background-color:#fff;border-radius:4px;padding:16px" width=3D"=
+100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"wr-project-=
+container" bgcolor=3D"#fff">
+                                <tbody>
+                                  <tr>
+                                    <td style=3D"mso-table-lspace:0pt;mso-t=
+able-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-ser=
+if;font-style:normal;font-size:16px;line-height:24px;margin:0 0 16px 0;vert=
+ical-align:top;padding-right:16px;padding-top:20px" valign=3D"top" width=3D=
+"100%" class=3D"wr-project-content">
+                                      <div style=3D"font-family:Roboto,'Fra=
+nklin Gothic Medium',Tahoma,sans-serif;font-style:normal;font-size:16px;lin=
+e-height:24px;margin:0 0 16px 0;margin-bottom:16px" class=3D"wr-project-hea=
+der">
+                                        <table style=3D"mso-table-lspace:0p=
+t;mso-table-rspace:0pt;border-spacing:0;border-collapse:collapse;table-layo=
+ut:auto;margin:0 0 8px 0" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+                                          <tr>
+                                            <td style=3D"mso-table-lspace:0=
+pt;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,=
+sans-serif;font-style:normal;margin:0 0 16px 0;padding:0;vertical-align:mid=
+dle;font-size:0;line-height:0" valign=3D"middle" width=3D"20">
+                                                <img alt=3D"yarn project" s=
+rc=3D"https://res.cloudinary.com/snyk/image/upload/w_20,h_20,c_pad,f_png,q_=
+80,dpr_2.0/v1473845952/notifications/weekly-report/icon-type-yarn.png" styl=
+e=3D"-ms-interpolation-mode:bicubic;vertical-align:middle;display:block;mar=
+gin-right:4px" width=3D"20" class=3D"wr-project-icon" height=3D"20">
+                                            </td>
+                                            <td style=3D"mso-table-lspace:0=
+pt;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,=
+sans-serif;font-style:normal;font-size:16px;line-height:24px;margin:0 0 16p=
+x 0;vertical-align:middle" valign=3D"middle">
+                                              <span style=3D"font-family:Ro=
+boto,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;font-size=
+:16px;margin:0 0 16px 0;line-height:18px;color:#145deb;vertical-align:middl=
+e;text-decoration:none" class=3D"wr-project-name">
+                                                <a href=3D"https://email.sn=
+yk.io/c/eJyMkTlv3DAQhX8N1RgUyOEhsmCReCMgQIoALlIaPEYrxbpAam3Yvz7QXkhSuSTfw5v=
+3zUQ_rX44zo40XwnA7CckAER8IQC_EF_G94eM65K3_bc5VMnJqCBV6HijwRrFGa96ZxruQ0ClVW=
+cEQFKNEVazLkoTkPmuGhwwUJxzAGBS2ToplpTkkVkTlBGRSFbm95d6WKrR9du2lnOJlkDr17W-a=
+gTaJR8JtB_b1NESlzzM-3PNy2-MG4FWBSG1Sh31vFFUhmSoNUZTsMBtQI9WIxHtaZueb-xEHN7O=
+qM83VL3LZTnliEQcfl7Cq-xwHD58wK2vS-zfcJhLwHwkksWp1H1f6uPyWm3ukkYvadWpYL6udz2=
+FcYjf033FyiTuI3KqJHIquUHqbSNoYKB9UlKyrtnN8Pj_cb7dqjw8_V3l5t2H_uN_-qEf7ypOfh=
+jv0meorud_dfAnAAD__6F3qs8" style=3D"color:#145deb;text-decoration:none">CMS=
+-Enterprise/example(main):package.json</a>
+                                              </span>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </div>
+                                          <table style=3D"mso-table-lspace:=
+0pt;mso-table-rspace:0pt;border-spacing:0;border-collapse:collapse;table-la=
+yout:auto;width:100%;margin:0" width=3D"100%" class=3D"wr-vulnerability-tab=
+le" align=3D"left">
+                                            <tr>
+                                              <td style=3D"mso-table-lspace=
+:0pt;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahom=
+a,sans-serif;font-style:normal;font-size:16px;line-height:24px;margin:0 0 1=
+6px 0;padding-top:6px;padding-left:0" width=3D"36">
+                                                  <!--[if mso]>
+                                                  <v:roundrect xmlns:v=3D"u=
+rn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schemas-microsoft-com:office:w=
+ord" style=3D"height:24px;v-text-anchor:middle;width:24px" arcsize=3D"25%" =
+strokecolor=3D"#D68000" fillcolor=3D"#D68000">
+                                                    <w:anchorlock>
+                                                    <center style=3D"color:=
+#fff;font-family:sans-serif;font-size:14px;font-weight:700">M</center>
+                                                  </v:roundrect>
+                                                  <![endif]-->
+                                                  <div style=3D"font-family=
+:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;margin=
+:4px 0 10px 0;color:#fff;display:block;text-align:center;width:20px;height:=
+20px;line-height:20px;border-radius:2px;font-size:12px;background-color:#d6=
+8000;mso-hide:all" class=3D"wr-severity-box wr-severity-medium">M</div>
+                                              </td>
+                                              <td style=3D"mso-table-lspace=
+:0pt;mso-table-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahom=
+a,sans-serif;font-style:normal;font-size:16px;line-height:24px;margin:0 0 1=
+6px 0;padding-top:6px">
+                                                <h3 class=3D"wr-vulnerabili=
+ty-title" style=3D"font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-=
+serif;font-style:normal;line-height:22px;padding:0;margin:0;font-weight:400=
+;font-size:16px;color:#000">Allocation of Resources Without Limits or Throt=
+tling</h3>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                    </td>
+                                    <td style=3D"mso-table-lspace:0pt;mso-t=
+able-rspace:0pt;font-family:Roboto,'Franklin Gothic Medium',Tahoma,sans-ser=
+if;font-style:normal;font-size:16px;line-height:24px;margin:0 0 16px 0;text=
+-align:right;vertical-align:top;width:140px;padding-top:20px" valign=3D"top=
+" width=3D"140" align=3D"right" class=3D"wr-button-column">
+                                        <div style=3D"font-family:Roboto,'F=
+ranklin Gothic Medium',Tahoma,sans-serif;font-style:normal;font-size:16px;l=
+ine-height:24px;margin:0 0 16px 0">
+                                          <!--[if mso]>
+                                          <v:roundrect xmlns:v=3D"urn:schem=
+as-microsoft-com:vml" xmlns:w=3D"urn:schemas-microsoft-com:office:word" hre=
+f=3D"https://email.snyk.io/c/eJyckktr3DAUhX-NvAky0rWeCy3aTA2FQkuz6DLocT0W8Q=
+vLk9evL05mhrarkqV0jq7Ox7nRj4vPx8kR_ZkATH5EAkCaTwTgF-LD8HKz4jKv236rD1VyIkpIF=
+TquFVgjOeNV74RlNihuTGchRfBWQacaLRsvrNe6q7IDBpJzDgBMSFsnyZIUPDJrgjRNJIKV6eWh=
+znM1uH7blvIWoiXQ-mWpzxqBdl6PBNrXbexoifOap_3Y5WcCrQyNUDJ11HMtqQjJUGuMomCB24A=
+erULStKdtvL9wk-bw9IZ5f8FUu1zm0xqRNIfvC05tfv7x86PvqtXhkF99wK2vS-yfME8l4Hokgs=
+Wx1H1f6uP8WG3ufR59n1edCq7nUpZTGHL8mq7FSJO4j8ipFMip4Aapt7qhgYHySQrBOr2b4fbfS=
+r9cotzc_Rnl4t0__ct_903dXlUcfR6u0v9QnZfm0cHvAAAA__9f2b2o" style=3D"height:36=
+px;v-text-anchor:middle;width:150px" arcsize=3D"8%" strokecolor=3D"#145DEB"=
+ fillcolor=3D"#145DEB">
+                                            <w:anchorlock>
+                                            <center style=3D"color:#fff;fon=
+t-family:sans-serif;font-size:14px">Open a Fix PR</center>
+                                          </v:roundrect>
+                                          <![endif]-->
+                                          <a href=3D"https://email.snyk.io/=
+c/eJyckktr3DAUhX-NvAky0rWeCy3aTA2FQkuz6DLocT0W8QvLk9evL05mhrarkqV0jq7Ox7nRj=
+4vPx8kR_ZkATH5EAkCaTwTgF-LD8HKz4jKv236rD1VyIkpIFTquFVgjOeNV74RlNihuTGchRfBW=
+QacaLRsvrNe6q7IDBpJzDgBMSFsnyZIUPDJrgjRNJIKV6eWhznM1uH7blvIWoiXQ-mWpzxqBdl6=
+PBNrXbexoifOap_3Y5WcCrQyNUDJ11HMtqQjJUGuMomCB24AerULStKdtvL9wk-bw9IZ5f8FUu1=
+zm0xqRNIfvC05tfv7x86PvqtXhkF99wK2vS-yfME8l4HokgsWx1H1f6uP8WG3ufR59n1edCq7nU=
+pZTGHL8mq7FSJO4j8ipFMip4Aapt7qhgYHySQrBOr2b4fbfSr9cotzc_Rnl4t0__ct_903dXlUc=
+fR6u0v9QnZfm0cHvAAAA__9f2b2o" style=3D"transition:all .1s ease-in;backgroun=
+d-color:#145deb;background:#145deb;border-radius:4px;color:#fff;display:inl=
+ine-block;font-size:14px;font-weight:400;line-height:1;margin:10px 0;paddin=
+g:8px 16px;text-decoration:none;white-space:nowrap;mso-hide:all" class=3D"b=
+utton-a">Open a Fix PR</a>
+                                        </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                      </table>
+                    <p style=3D"font-family:Roboto,'Franklin Gothic Medium'=
+,Tahoma,sans-serif;font-style:normal;font-size:16px;line-height:24px;margin=
+:0 0 16px 0;margin-bottom:0">
+                      Stay secure!
+                      <br>
+                      <i>The Snyk team</i>
+                    </p>
+                    <p style=3D"font-family:Roboto,'Franklin Gothic Medium'=
+,Tahoma,sans-serif;font-style:normal;line-height:24px;margin:0 0 16px 0;fon=
+t-size:14px;color:#666;margin-top:20px;margin-bottom:0">
+                      Snyk Ltd
+                      <br>
+                      100 Summer St, 7th floor Boston, MA 02110
+                    </p>
+                    <p style=3D"font-family:Roboto,'Franklin Gothic Medium'=
+,Tahoma,sans-serif;font-style:normal;line-height:24px;margin:0 0 16px 0;fon=
+t-size:12px;color:#666;margin-bottom:0">
+                      To unsubscribe, manage your <a href=3D"https://email.=
+snyk.io/c/eJyMkc1uwjAQhJ_GvqBE9sZO7IMPLS1Spd449OyfhVjkT7EB0aevQgG1PfW4OyPtf=
+LPe9pON-8GQ5pkADLZHAkCqJwLwgXjoLqsZp3HOy7Z5ocEILyFQNLypQSvJGaetYRi80pV2TksO=
+zjvb1AoFKI81asFpNMBAcs4BgAmpyyBZkIJ7ppWTqvJEsDRcDmUcaWfanKd0DbEhsLHTVN60ZfJ=
+-PA6ZwGYYc9xFb3Mch0Rng138tA5zWybfnjEOyeG8J4L5PpVtm8r9eKLZnK9YxTcWPSacb_DT0X=
+XRv4VHAVIFbj3yQgrkheAKC6ubqnAMahukEGzXLGZY_63u9R5ltf0Z5e5djv7yb9_r9UPF3sbuI=
+f2H6vack4GvAAAA___HpIuu" style=3D"color:#145deb">notification settings</a>.
+                    </p>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+          </table>
+
+         =20
+       =20
+
+       =20
+        <table style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;border-sp=
+acing:0;border-collapse:collapse;table-layout:fixed;margin:0 auto;max-width=
+:600px" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cla=
+ss=3D"card-bg-override footer-table" role=3D"presentation" id=3D"EmailFoote=
+r">
+          <tr>
+            <td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;font-fam=
+ily:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;mar=
+gin:0 0 16px 0;text-align:center;padding:0;font-size:0;line-height:0" width=
+=3D"600" align=3D"center">
+              <img alt=3D"Snyk Footer" src=3D"https://res.cloudinary.com/sn=
+yk/image/upload/f_auto,q_auto,dpr_auto/v1748957392/footer_v4sfxf.png" style=
+=3D"-ms-interpolation-mode:bicubic;width:100%;max-width:600px;display:block=
+;border:0" width=3D"600">
+            </td>
+          </tr>
+        </table>
+
+
+        </td></tr><tr>
+          <td style=3D"mso-table-lspace:0pt;mso-table-rspace:0pt;font-famil=
+y:Roboto,'Franklin Gothic Medium',Tahoma,sans-serif;font-style:normal;margi=
+n:0 0 16px 0;font-size:30px;line-height:30px" height=3D"30"></td>
+        </tr>
+      </table>
+
+      <!--[if mso | IE]>
+   =20
+   =20
+   =20
+    <![endif]-->
+    <img width=3D"1" height=3D"1" alt=3D"" src=3D"https://email.snyk.io/o/e=
+JyMkLtu6zAQRL-GbAwJ3CWXogoW9zopAqRzkZqPtUVYkg3JDzhfHzixjSRV2p0B9pxJYdiHshm9=
+aP4LxDEMLBCF_icQ35i3_WUx8X43Ha7X5klmbxJhluyhsdg6AgWy82skxQjJxRjZAlqrtTJWx-j=
+WmtDK4lEhAQAiKkNtnUllMpBU6yI5nYRR83jZ1mUnJ899eQ-RD109p-7MZZwjTxthVBrmuuvmer=
+M7yYM_fwJWX4DyOPN009gfY1_SS36okMsQEkNFhqEy4LgKbaOrqNCGTMaodXMt4_L3CM93lMXqO=
+8q9e336o796tctHykMo_SP6i9Vt5pPHjwAAAP__WNR4VA"></body>
+  </html>=
+
+--f40a9725e5a58defc6411fb052f30e0bea7ada69f0d685feccc0bf379f27--

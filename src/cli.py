@@ -46,6 +46,7 @@ from generators.llm_generator import is_llm_available
 # CUI imports
 from generators.cui import CUIGeneratorFactory
 from formatters.cui_formatter import CUIDocxFormatter, CUIEmailFormatter, CUIPdfFormatter, CUIXlsxFormatter
+from formatters.pdf_form_populator import CustomerTemplateManager
 
 # Initialize CLI app and console
 app = typer.Typer(
@@ -562,6 +563,7 @@ class MedForgeCUIGenerator:
         categories: Optional[List[str]] = None,
         formats: Optional[List[str]] = None,
         llm_percentage: float = 0.2,
+        cui_notice: str = "random",
     ):
         """
         Initialize CUI generator
@@ -572,6 +574,7 @@ class MedForgeCUIGenerator:
             categories: List of CUI categories to generate (defaults to all)
             formats: List of formats to generate (defaults to all)
             llm_percentage: Percentage of LLM-enhanced documents (0.0-1.0)
+            cui_notice: Include CUI notice (random/always/never)
         """
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -605,6 +608,7 @@ class MedForgeCUIGenerator:
         self.seed = seed
         self.formats = formats or ["pdf", "docx", "xlsx", "eml"]
         self.llm_percentage = llm_percentage
+        self.cui_notice = cui_notice
 
         if seed is not None:
             random.seed(seed)
@@ -645,6 +649,124 @@ class MedForgeCUIGenerator:
             "xlsx": CUIXlsxFormatter(output_dir=str(self.output_dir)),
             "eml": CUIEmailFormatter(output_dir=str(self.output_dir)),
         }
+
+        # Initialize customer template manager for real CMS forms
+        # Templates are in ./cust_templates directory
+        self.customer_templates = CustomerTemplateManager(
+            template_dir='./cust_templates',
+            output_dir=str(self.output_dir)
+        )
+
+    def _generate_from_customer_template(self, index: int, populate: bool, is_positive: bool) -> Optional[str]:
+        """
+        Generate a document from customer CMS template.
+
+        Args:
+            index: Document index
+            populate: Whether to populate fields or use blank
+            is_positive: True for positive (CUI-containing), False for negative
+
+        Returns:
+            Path to created file or None if no templates available
+        """
+        try:
+            # Map customer templates to CUI categories
+            # NOTE: EFT disabled - form fill not working reliably
+            template_category_map = {
+                # 'EFT Authorization Form': 'financial',  # DISABLED
+                'ReasonableAccommodationRequest': 'legal',
+            }
+
+            # Select a random template
+            available_templates = list(template_category_map.keys())
+            if not available_templates:
+                return None
+
+            template_key = random.choice(available_templates)
+            category = template_category_map[template_key]
+
+            # Get correct output directory
+            if is_positive:
+                output_subdir = str(self.category_positive_dirs.get(category, self.output_dir))
+            else:
+                output_subdir = str(self.category_negative_dirs.get(category, self.output_dir))
+
+            # Generate from template
+            filepath = self.customer_templates.generate_from_template(
+                template_key,
+                output_subdir,
+                index,
+                populate=populate
+            )
+
+            # Update statistics
+            self.stats["total_generated"] += 1
+            self.stats["template_based"] += 1
+            self.stats["by_format"]["pdf"] += 1
+            self.stats["by_category"][category] += 1
+
+            if is_positive:
+                self.stats["cui_positive"] += 1
+            else:
+                self.stats["cui_negative"] += 1
+
+            # Validate customer template PDF has data if positive
+            if is_positive and filepath:
+                try:
+                    import pikepdf
+                    pdf = pikepdf.open(filepath)
+
+                    # Check if form fields have values
+                    populated_count = 0
+                    if '/AcroForm' in pdf.Root and '/Fields' in pdf.Root.AcroForm:
+                        for field in pdf.Root.AcroForm.Fields:
+                            if '/V' in field:
+                                value = str(field.V).strip()
+                                if value and value not in ['False', '']:
+                                    populated_count += 1
+
+                    pdf.close()
+
+                    # Warn if positive PDF has no data
+                    if populated_count == 0:
+                        console.print(f"[yellow]⚠ Warning: Customer template {template_info['clean_name']} appears empty (0 fields populated)[/yellow]")
+                        self.stats["errors"].append(f"Customer template {template_info['clean_name']} at index {index} has no populated fields")
+
+                except Exception as e:
+                    pass  # Don't fail generation on validation errors
+
+            # Add to manifest
+            template_info = self.customer_templates.template_mappings[template_key]
+            self.manifest.append({
+                "file_path": str(Path(filepath).relative_to(self.output_dir)),
+                "cui_status": "positive" if is_positive else "negative",
+                "category": category,
+                "subcategory": "",
+                "document_type": template_info['clean_name'],
+                "classification": "CUI" if is_positive else "",
+                "authority": "",
+                "format": "pdf",
+                "index": index,
+                "llm_enhanced": False,
+                "source": "customer_template",
+            })
+
+            return filepath
+
+        except Exception as e:
+            # Fail silently and let regular generation take over
+            return None
+
+    def _apply_cui_notice_policy(self, doc_data: dict) -> dict:
+        """Apply CUI confidentiality notice based on policy setting."""
+        if self.cui_notice == "never":
+            if 'confidentiality_notice' in doc_data:
+                del doc_data['confidentiality_notice']
+        elif self.cui_notice == "random":
+            if random.random() < 0.5 and 'confidentiality_notice' in doc_data:
+                del doc_data['confidentiality_notice']
+        # "always" keeps notice
+        return doc_data
 
     def _enhance_with_llm(self, doc_data: dict) -> tuple[dict, bool]:
         """
@@ -743,6 +865,16 @@ class MedForgeCUIGenerator:
     def generate_single_cui_positive(self, index: int) -> Optional[str]:
         """Generate a single CUI positive document"""
         try:
+            # 20% chance to use customer CMS template
+            use_customer_template = random.random() < 0.2
+
+            if use_customer_template and 'pdf' in self.formats:
+                # Try to use a customer template
+                template_result = self._generate_from_customer_template(index, populate=True, is_positive=True)
+                if template_result:
+                    return template_result
+                # Fall through to regular generation if template fails
+
             # Generate document data
             doc_data = self.cui_generator.generate_positive()
             category = doc_data.get("category", "general")
@@ -754,6 +886,9 @@ class MedForgeCUIGenerator:
                 self.stats["llm_enhanced"] += 1
             else:
                 self.stats["template_based"] += 1
+
+            # Apply CUI notice policy
+            doc_data = self._apply_cui_notice_policy(doc_data)
 
             # Choose format
             available_formats = [f for f in self.formats if f in self.formatters]
@@ -819,6 +954,16 @@ class MedForgeCUIGenerator:
     def generate_single_cui_negative(self, index: int) -> Optional[str]:
         """Generate a single CUI negative document"""
         try:
+            # 20% chance to use customer CMS template
+            use_customer_template = random.random() < 0.2
+
+            if use_customer_template and 'pdf' in self.formats:
+                # Try to use a customer template (blank/unpopulated)
+                template_result = self._generate_from_customer_template(index, populate=False, is_positive=False)
+                if template_result:
+                    return template_result
+                # Fall through to regular generation if template fails
+
             # Generate document data
             doc_data = self.cui_generator.generate_negative()
             category = doc_data.get("category", "general")
@@ -1115,6 +1260,7 @@ def generate(
     cui_negative: Optional[int] = typer.Option(None, "--cui-negative", help="Number of CUI negative documents"),
     cui_categories: Optional[str] = typer.Option(None, "--cui-categories", help="Comma-separated CUI categories: financial,legal,tax,procurement,proprietary,law_enforcement,critical_infrastructure"),
     cui_all: bool = typer.Option(False, "--cui-all", help="Generate all CUI categories"),
+    cui_notice: str = typer.Option("random", "--cui-notice", help="CUI confidentiality notice: random (default), always, never"),
     # General options
     formats: str = typer.Option("pdf,docx,xlsx,eml,pptx", "--formats", "-f", help="Comma-separated list of formats"),
     output: str = typer.Option("output", "--output", "-o", help="Output directory"),
@@ -1205,8 +1351,8 @@ def generate(
         elif cui_positive is None:
             cui_positive = 0
         elif cui_negative is None:
-            # Default to 20% negative
-            cui_negative = max(0, int(cui_positive * 0.25))
+            # Don't auto-generate negatives unless explicitly requested
+            cui_negative = 0
     else:
         cui_positive = 0
         cui_negative = 0
@@ -1307,6 +1453,7 @@ def generate(
                 categories=selected_categories,
                 formats=cui_format_list,
                 llm_percentage=llm_percentage,
+                cui_notice=cui_notice,
             )
             all_stats["cui"] = cui_generator.generate_batch(
                 cui_positive_count=cui_positive,

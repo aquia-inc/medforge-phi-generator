@@ -5,15 +5,125 @@
 
 ## Project Overview
 
-**Customer:** CMS  
+**Customer:** CMS
 **Purpose:** Training Microsoft Purview DLP to detect accidental PHI in SharePoint and other locations
-**Repository:** `medforge` or `phantom-phi`  
+**Repository:** `medforge` or `phantom-phi`
 **Deliverables:**
 
 - 1,500 true positive documents (containing PHI)
 - 500 false positive documents (medical context, no PHI)
 - Multiple formats: PDF, MSG, EML, DOCX, PPTX
 - Nested scenarios: files in ZIPs, attachments in emails
+
+---
+
+## Working with Customer-Provided PDF Templates
+
+### Problem
+Customer-provided fillable PDF forms (from Elizabeth/CMS) need to be populated with synthetic data. Standard Python PDF libraries (PyPDF2, fillpdf, PyMuPDF) fail to properly render filled form fields in SharePoint/viewers.
+
+### CORRECT Solution: Use `pikepdf` with NeedAppearances Flag
+
+```python
+import pikepdf
+
+pdf = pikepdf.open("template.pdf")
+
+# Fill form fields
+for field in pdf.Root.AcroForm.Fields:
+    field_name = str(field.T) if '/T' in field else None
+
+    if field_name and field_name in your_data:
+        value = your_data[field_name]
+
+        # Set field value
+        if value is True:
+            field['/V'] = pikepdf.Name('/On')  # Checkboxes
+        elif value is False:
+            field['/V'] = pikepdf.Name('/Off')
+        else:
+            field['/V'] = str(value)  # Text fields
+
+        # Delete appearance stream to force regeneration
+        if '/AP' in field:
+            del field['/AP']
+
+# Critical: Tell PDF viewers to regenerate field appearances
+pdf.Root.AcroForm['/NeedAppearances'] = True
+
+# Save
+pdf.save("output.pdf")
+pdf.close()
+```
+
+### Why This Works
+1. **Sets `/V` values** - Actual form field data
+2. **Deletes `/AP`** - Removes stale appearance streams
+3. **Sets `/NeedAppearances=True`** - Tells SharePoint/Adobe to regenerate appearances
+4. **Result**: Data visible in SharePoint, Adobe, Office 365, but NOT in `pdftotext` (expected)
+
+### What Doesn't Work
+- ❌ `fillpdf` - Creates unfillable PDFs in SharePoint
+- ❌ `PyMuPDF` (fitz) - "bad rect" errors on complex forms
+- ❌ `PyPDF2.PdfWriter.update_page_form_field_values()` - Doesn't persist
+- ❌ `pdfrw` - Sets values but doesn't render without appearance regeneration
+
+### Verification
+Data is in the PDF even if `pdftotext` doesn't show it. Verify with:
+```python
+import pikepdf
+pdf = pikepdf.open("filled_form.pdf")
+for field in pdf.Root.AcroForm.Fields:
+    print(f"{field.T}: {field.V}")  # Should show your synthetic data
+```
+
+### Customer Templates Successfully Integrated
+
+**Location:** All 37 customer templates stored in `cust_templates/` directory
+
+**Working Templates:**
+- ✅ Medical Inquiry Form (PHI) - 29 fields populated with pikepdf + NeedAppearances
+- ✅ EFT Authorization Form (CUI-Finance) - Uses Elizabeth's pre-filled example (perfect as-is)
+- ✅ Reasonable Accommodation Request (CUI-Legal) - 8 fields with reportlab overlay at correct coordinates
+
+**Integration:**
+- Customer templates automatically mixed into generation at 20% rate
+- Synthetic data generated via Faker (names, addresses, banks, TINs, medical conditions)
+- Clean filenames (no positive/negative labels)
+- Proper CUI category placement
+
+**Remaining 34 Templates:**
+Available in `cust_templates/` for future integration:
+- BugCrowd/Snyk security emails (Critical Infrastructure)
+- Budget forms (AFR, DIBO) (Financial)
+- FISMA reporting templates (Critical Infrastructure)
+- ServiceNow tickets, vulnerability reports
+- HHS Rules of Behavior, KMP documents
+
+---
+
+## CUI Confidentiality Notice Control
+
+**New Feature:** `--cui-notice` flag controls generic "contains CUI" notices
+
+**Options:**
+- `random` (default): 50% of documents have confidentiality notices
+- `always`: All CUI documents include notices
+- `never`: No confidentiality footers (forces Purview to learn content patterns)
+
+**Usage:**
+```bash
+# Random notices (default) - trains on both with/without notices
+uv run medforge generate --cui-positive 100 --cui-all --cui-notice random
+
+# Never - forces pattern learning
+uv run medforge generate --cui-positive 100 --cui-all --cui-notice never
+
+# Always - traditional approach
+uv run medforge generate --cui-positive 100 --cui-all --cui-notice always
+```
+
+**Note:** CUI classification headers (e.g., "CONTROLLED UNCLASSIFIED INFORMATION - TAX") remain - these are authentic government markings. Only generic footers are controlled.
 
 ---
 
