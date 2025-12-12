@@ -78,11 +78,52 @@ for field in pdf.Root.AcroForm.Fields:
 ```
 
 ### Customer Templates Successfully Integrated
-- ✅ Medical Inquiry Form (PHI) - 29 fields populated
-- ✅ EFT Authorization Form (CUI-Finance) - 27 fields populated
-- ✅ Reasonable Accommodation Request (CUI-Legal) - 8 fields populated
 
-All use Faker for synthetic data (names, addresses, banks, TINs, medical conditions).
+**Location:** All 37 customer templates stored in `cust_templates/` directory
+
+**Working Templates:**
+- ✅ Medical Inquiry Form (PHI) - 29 fields populated with pikepdf + NeedAppearances
+- ✅ EFT Authorization Form (CUI-Finance) - Uses Elizabeth's pre-filled example (perfect as-is)
+- ✅ Reasonable Accommodation Request (CUI-Legal) - 8 fields with reportlab overlay at correct coordinates
+
+**Integration:**
+- Customer templates automatically mixed into generation at 20% rate
+- Synthetic data generated via Faker (names, addresses, banks, TINs, medical conditions)
+- Clean filenames (no positive/negative labels)
+- Proper CUI category placement
+
+**Remaining 34 Templates:**
+Available in `cust_templates/` for future integration:
+- BugCrowd/Snyk security emails (Critical Infrastructure)
+- Budget forms (AFR, DIBO) (Financial)
+- FISMA reporting templates (Critical Infrastructure)
+- ServiceNow tickets, vulnerability reports
+- HHS Rules of Behavior, KMP documents
+
+---
+
+## CUI Confidentiality Notice Control
+
+**New Feature:** `--cui-notice` flag controls generic "contains CUI" notices
+
+**Options:**
+- `random` (default): 50% of documents have confidentiality notices
+- `always`: All CUI documents include notices
+- `never`: No confidentiality footers (forces Purview to learn content patterns)
+
+**Usage:**
+```bash
+# Random notices (default) - trains on both with/without notices
+uv run medforge generate --cui-positive 100 --cui-all --cui-notice random
+
+# Never - forces pattern learning
+uv run medforge generate --cui-positive 100 --cui-all --cui-notice never
+
+# Always - traditional approach
+uv run medforge generate --cui-positive 100 --cui-all --cui-notice always
+```
+
+**Note:** CUI classification headers (e.g., "CONTROLLED UNCLASSIFIED INFORMATION - TAX") remain - these are authentic government markings. Only generic footers are controlled.
 
 ---
 
