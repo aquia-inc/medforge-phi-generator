@@ -563,6 +563,7 @@ class MedForgeCUIGenerator:
         categories: Optional[List[str]] = None,
         formats: Optional[List[str]] = None,
         llm_percentage: float = 0.2,
+        cui_notice: str = "random",
     ):
         """
         Initialize CUI generator
@@ -573,6 +574,7 @@ class MedForgeCUIGenerator:
             categories: List of CUI categories to generate (defaults to all)
             formats: List of formats to generate (defaults to all)
             llm_percentage: Percentage of LLM-enhanced documents (0.0-1.0)
+            cui_notice: Include CUI notice (random/always/never)
         """
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -606,6 +608,7 @@ class MedForgeCUIGenerator:
         self.seed = seed
         self.formats = formats or ["pdf", "docx", "xlsx", "eml"]
         self.llm_percentage = llm_percentage
+        self.cui_notice = cui_notice
 
         if seed is not None:
             random.seed(seed)
@@ -754,6 +757,17 @@ class MedForgeCUIGenerator:
             # Fail silently and let regular generation take over
             return None
 
+    def _apply_cui_notice_policy(self, doc_data: dict) -> dict:
+        """Apply CUI confidentiality notice based on policy setting."""
+        if self.cui_notice == "never":
+            if 'confidentiality_notice' in doc_data:
+                del doc_data['confidentiality_notice']
+        elif self.cui_notice == "random":
+            if random.random() < 0.5 and 'confidentiality_notice' in doc_data:
+                del doc_data['confidentiality_notice']
+        # "always" keeps notice
+        return doc_data
+
     def _enhance_with_llm(self, doc_data: dict) -> tuple[dict, bool]:
         """
         Enhance document content using LLM if available and selected
@@ -872,6 +886,9 @@ class MedForgeCUIGenerator:
                 self.stats["llm_enhanced"] += 1
             else:
                 self.stats["template_based"] += 1
+
+            # Apply CUI notice policy
+            doc_data = self._apply_cui_notice_policy(doc_data)
 
             # Choose format
             available_formats = [f for f in self.formats if f in self.formatters]
@@ -1243,6 +1260,7 @@ def generate(
     cui_negative: Optional[int] = typer.Option(None, "--cui-negative", help="Number of CUI negative documents"),
     cui_categories: Optional[str] = typer.Option(None, "--cui-categories", help="Comma-separated CUI categories: financial,legal,tax,procurement,proprietary,law_enforcement,critical_infrastructure"),
     cui_all: bool = typer.Option(False, "--cui-all", help="Generate all CUI categories"),
+    cui_notice: str = typer.Option("random", "--cui-notice", help="CUI confidentiality notice: random (default), always, never"),
     # General options
     formats: str = typer.Option("pdf,docx,xlsx,eml,pptx", "--formats", "-f", help="Comma-separated list of formats"),
     output: str = typer.Option("output", "--output", "-o", help="Output directory"),
@@ -1435,6 +1453,7 @@ def generate(
                 categories=selected_categories,
                 formats=cui_format_list,
                 llm_percentage=llm_percentage,
+                cui_notice=cui_notice,
             )
             all_stats["cui"] = cui_generator.generate_batch(
                 cui_positive_count=cui_positive,

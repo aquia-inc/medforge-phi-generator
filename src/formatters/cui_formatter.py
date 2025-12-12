@@ -302,6 +302,11 @@ class CUIDocxFormatter:
 
     def _add_confidentiality_notice(self, doc: Document, doc_data: Dict[str, Any]):
         """Add confidentiality notice at bottom of document."""
+        # Only add if notice is present and not empty
+        notice_text = doc_data.get('confidentiality_notice', '')
+        if not notice_text:
+            return  # Skip if no notice
+
         doc.add_paragraph()
         notice = doc.add_paragraph()
         notice.alignment = WD_ALIGN_PARAGRAPH.LEFT
@@ -309,10 +314,10 @@ class CUIDocxFormatter:
         run.bold = True
         run.font.size = Pt(10)
 
-        notice_text = doc.add_paragraph()
-        notice_text.add_run(doc_data.get('confidentiality_notice', self._get_default_notice()))
-        notice_text.runs[0].font.size = Pt(9)
-        notice_text.runs[0].italic = True
+        notice_para = doc.add_paragraph()
+        notice_para.add_run(notice_text)
+        notice_para.runs[0].font.size = Pt(9)
+        notice_para.runs[0].italic = True
 
     def _add_classification_footer(self, doc: Document, doc_data: Dict[str, Any]):
         """Add classification footer."""
@@ -597,19 +602,18 @@ class CUIPdfFormatter:
 
         # Confidentiality notice
         if doc_data.get('has_cui', False):
-            story.append(Spacer(1, 30))
-            notice_style = ParagraphStyle(
-                'Notice',
-                parent=styles['Normal'],
-                fontSize=9,
-                textColor=colors.gray,
-                spaceAfter=10
-            )
-            story.append(Paragraph('<b>CONFIDENTIALITY NOTICE:</b>', notice_style))
-            story.append(Paragraph(
-                doc_data.get('confidentiality_notice', 'This document contains CUI.'),
-                notice_style
-            ))
+            notice_text = doc_data.get('confidentiality_notice', '')
+            if notice_text:  # Only add if present
+                story.append(Spacer(1, 30))
+                notice_style = ParagraphStyle(
+                    'Notice',
+                    parent=styles['Normal'],
+                    fontSize=9,
+                    textColor=colors.gray,
+                    spaceAfter=10
+                )
+                story.append(Paragraph('<b>CONFIDENTIALITY NOTICE:</b>', notice_style))
+                story.append(Paragraph(notice_text, notice_style))
 
         doc.build(story)
         return filepath
@@ -705,13 +709,15 @@ class CUIXlsxFormatter:
 
         # Confidentiality notice
         if doc_data.get('has_cui', False):
-            row += 2
-            ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=4)
-            cell = ws.cell(row=row, column=1, value='CONFIDENTIALITY NOTICE:')
-            cell.font = Font(bold=True, size=9)
-            row += 1
-            ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=4)
-            ws.cell(row=row, column=1, value=doc_data.get('confidentiality_notice', ''))
+            notice_text = doc_data.get('confidentiality_notice', '')
+            if notice_text:  # Only add if present
+                row += 2
+                ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=4)
+                cell = ws.cell(row=row, column=1, value='CONFIDENTIALITY NOTICE:')
+                cell.font = Font(bold=True, size=9)
+                row += 1
+                ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=4)
+                ws.cell(row=row, column=1, value=notice_text)
 
         # Adjust column widths
         ws.column_dimensions['A'].width = 25
