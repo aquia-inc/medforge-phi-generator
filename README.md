@@ -5,11 +5,19 @@ Production-ready synthetic Protected Health Information (PHI) document generator
 ## Quick Start
 
 ```bash
-# Generate 100 documents (default mix)
-./medforge generate --count 100
+# Generate PHI documents (default mix)
+uv run medforge generate --phi-positive 100 --phi-negative 300
 
-# Generate with specific formats
-./medforge generate --count 500 --formats pdf,docx,eml
+# Generate CUI documents (all types)
+uv run medforge generate --cui-positive 70 --cui-negative 210 --cui-all
+
+# Generate with specific formats only
+uv run medforge generate --cui-positive 50 --cui-all --formats pdf,docx
+
+# Control CUI confidentiality notices
+uv run medforge generate --cui-positive 50 --cui-all --cui-notice random  # 50% have notices (default)
+uv run medforge generate --cui-positive 50 --cui-all --cui-notice never   # No notices
+uv run medforge generate --cui-positive 50 --cui-all --cui-notice always  # All have notices
 
 # Validate generated documents
 ./medforge validate output/medforge
@@ -43,25 +51,31 @@ chmod +x medforge
 ## Features
 
 ✅ **6 File Formats**: DOCX, PDF, XLSX, PPTX, EML, Nested (emails with attachments)
+✅ **PHI & CUI Support**: Generate both Protected Health Information and Controlled Unclassified Information
+✅ **Customer Templates**: Integrates 37 real CMS templates (PDFs, DOCX, XLSX, EML)
 ✅ **LLM Enhancement**: Claude 4.5 Sonnet for clinical narratives (20% default)
+✅ **Configurable CUI Notices**: Control confidentiality notices (random/always/never)
 ✅ **Component Mixing**: 240 unique layout variations per template
 ✅ **Parallel Processing**: Multi-worker generation for speed
 ✅ **Validation System**: Automated PHI detection and file integrity checks
 ✅ **Statistics & Reporting**: Comprehensive analysis of generated datasets
+✅ **No Training Labels**: All documents are realistic without positive/negative markers
 
 ## Project Structure
 
 ```
-synth_phi_data/
+medforge-phi-generator/
 ├── src/
 │   ├── cli.py                   # Main CLI interface
-│   ├── formatters/              # Document generators (6 formats)
-│   ├── generators/              # Data & LLM generators
+│   ├── formatters/              # Document generators (6 formats + customer templates)
+│   ├── generators/              # Data & LLM generators (PHI + CUI)
 │   ├── templates/               # Component mixing system
 │   └── validators/              # PHI validation
+├── cust_templates/              # Elizabeth's 37 real CMS templates (PDF, DOCX, XLSX, EML)
 ├── config/
 │   └── example.yaml             # Sample configuration
 ├── output/                      # Generated documents
+├── temp/output/                 # Temporary test outputs
 ├── medforge                     # CLI executable
 └── .env                         # API keys (create this)
 ```
@@ -87,14 +101,23 @@ Test scripts and old implementations are in `_archive/`:
 ```bash
 medforge generate [OPTIONS]
 
-Options:
-  --count, -c INTEGER              Total documents [default: 200]
+PHI Options:
+  --count, -c INTEGER              Total PHI documents [default: 200]
   --phi-positive INTEGER           PHI positive documents
   --phi-negative INTEGER           PHI negative documents
+
+CUI Options:
+  --cui-positive INTEGER           CUI positive documents
+  --cui-negative INTEGER           CUI negative documents
+  --cui-categories TEXT            Specific categories (comma-separated)
+  --cui-all                        Generate all 7 CUI categories
+  --cui-notice TEXT                Confidentiality notice: random/always/never [default: random]
+
+General Options:
   --formats, -f TEXT               Formats: pdf,docx,xlsx,eml,pptx
-  --output, -o PATH                Output directory
+  --output, -o PATH                Output directory [default: output]
   --llm-percentage FLOAT           LLM enhancement 0.0-1.0 [default: 0.2]
-  --seed, -s INTEGER               Random seed
+  --seed, -s INTEGER               Random seed for reproducibility
   --parallel-workers, -p INTEGER   Worker count [default: 1]
   --config PATH                    YAML config file
 ```
