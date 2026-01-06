@@ -71,9 +71,14 @@ class CUIDocxFormatter:
 
     def _add_classification_header(self, doc: Document, doc_data: Dict[str, Any]):
         """Add classification banner at top of document."""
+        # Only add header if classification is present and not empty
+        classification = doc_data.get('classification', '')
+        if not classification:
+            return
+
         header = doc.add_paragraph()
         header.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        run = header.add_run(doc_data.get('classification', 'CONTROLLED UNCLASSIFIED INFORMATION'))
+        run = header.add_run(classification)
         run.bold = True
         run.font.size = Pt(12)
         run.font.color.rgb = RGBColor(139, 0, 0)  # Dark red
@@ -321,10 +326,15 @@ class CUIDocxFormatter:
 
     def _add_classification_footer(self, doc: Document, doc_data: Dict[str, Any]):
         """Add classification footer."""
+        # Only add footer if classification is present and not empty
+        classification = doc_data.get('classification', '')
+        if not classification:
+            return
+
         doc.add_paragraph()
         footer = doc.add_paragraph()
         footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        run = footer.add_run(doc_data.get('classification', 'CUI'))
+        run = footer.add_run(classification)
         run.font.size = Pt(10)
         run.font.color.rgb = RGBColor(139, 0, 0)
 
@@ -392,8 +402,10 @@ class CUIEmailFormatter:
         """Build plain text email body."""
         lines = []
 
-        if doc_data.get('has_cui', False):
-            lines.append(doc_data.get('classification', 'CONTROLLED UNCLASSIFIED INFORMATION'))
+        # Only add classification if present and not empty
+        classification = doc_data.get('classification', '')
+        if doc_data.get('has_cui', False) and classification:
+            lines.append(classification)
             lines.append('')
 
         lines.append(doc_data.get('title', 'Document'))
@@ -478,10 +490,12 @@ class CUIEmailFormatter:
         """Build HTML email body."""
         html_parts = ['<html><head></head><body style="font-family: Arial, sans-serif;">']
 
-        if doc_data.get('has_cui', False):
+        # Only add classification if present and not empty
+        classification = doc_data.get('classification', '')
+        if doc_data.get('has_cui', False) and classification:
             html_parts.append(
                 f'<p style="color: darkred; font-weight: bold; text-align: center;">'
-                f'{doc_data.get("classification", "CONTROLLED UNCLASSIFIED INFORMATION")}</p>'
+                f'{classification}</p>'
             )
 
         html_parts.append(f'<h2>{doc_data.get("title", "Document")}</h2>')
@@ -566,7 +580,8 @@ class CUIPdfFormatter:
         story = []
 
         # Classification header
-        if doc_data.get('has_cui', False):
+        classification = doc_data.get('classification', '')
+        if doc_data.get('has_cui', False) and classification:
             cui_style = ParagraphStyle(
                 'CUIHeader',
                 parent=styles['Normal'],
@@ -577,7 +592,7 @@ class CUIPdfFormatter:
                 fontName='Helvetica-Bold'
             )
             story.append(Paragraph(
-                doc_data.get('classification', 'CONTROLLED UNCLASSIFIED INFORMATION'),
+                classification,
                 cui_style
             ))
 
@@ -673,10 +688,11 @@ class CUIXlsxFormatter:
 
         row = 1
 
-        # Classification header
-        if doc_data.get('has_cui', False):
+        # Classification header - only add if classification is present and not empty
+        classification = doc_data.get('classification', '')
+        if doc_data.get('has_cui', False) and classification:
             ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=4)
-            cell = ws.cell(row=row, column=1, value=doc_data.get('classification', 'CUI'))
+            cell = ws.cell(row=row, column=1, value=classification)
             cell.font = Font(bold=True, color='8B0000')
             cell.alignment = Alignment(horizontal='center')
             row += 2

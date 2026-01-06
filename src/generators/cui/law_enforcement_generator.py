@@ -103,7 +103,6 @@ class LawEnforcementCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('criminal_history', subcategory, is_positive=True)
         doc.update({
             'title': 'Criminal History Record Information',
-            'classification': 'CONTROLLED UNCLASSIFIED INFORMATION - CRIMINAL HISTORY',
             'record_id': f"CHR-{self.fake.uuid4()[:10].upper()}",
             'subject': {
                 'name': subject_name,
@@ -154,7 +153,6 @@ class LawEnforcementCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('investigation_report', subcategory, is_positive=True)
         doc.update({
             'title': 'Investigation Report',
-            'classification': 'CONTROLLED UNCLASSIFIED INFORMATION - INVESTIGATION',
             'case_number': f"{random.randint(2020, 2025)}-INV-{random.randint(100000, 999999)}",
             'investigating_agency': agency,
             'case_agent': {

@@ -107,7 +107,7 @@ class TaxCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('taxpayer_record', subcategory, is_positive=True)
         doc.update({
             'title': 'Taxpayer Account Record',
-            'classification': 'FEDERAL TAX INFORMATION - CUI',
+            'classification': 'FEDERAL TAX INFORMATION',
             'record_type': 'Individual Taxpayer Account Transcript',
             'taxpayer': {
                 'name': taxpayer_name,
@@ -160,7 +160,7 @@ class TaxCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('audit_workpapers', subcategory, is_positive=True)
         doc.update({
             'title': 'Examination Workpapers',
-            'classification': 'FEDERAL TAX INFORMATION - CUI',
+            'classification': 'FEDERAL TAX INFORMATION',
             'case_number': f"EX-{random.randint(2020, 2025)}-{random.randint(100000, 999999)}",
             'taxpayer': {
                 'name': taxpayer_name,
@@ -218,7 +218,7 @@ class TaxCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('collection_case', subcategory, is_positive=True)
         doc.update({
             'title': 'Collection Case File',
-            'classification': 'FEDERAL TAX INFORMATION - CUI',
+            'classification': 'FEDERAL TAX INFORMATION',
             'case_number': f"COL-{random.randint(2020, 2025)}-{random.randint(100000, 999999)}",
             'taxpayer': {
                 'name': taxpayer_name,
@@ -282,7 +282,6 @@ class TaxCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('written_determination', subcategory, is_positive=True)
         doc.update({
             'title': f'{determination_type} (DRAFT)',
-            'classification': 'CONTROLLED UNCLASSIFIED INFORMATION - TAX',
             'document_status': 'DRAFT - PRE-RELEASE',
             'document_number': f"PLR-{random.randint(2024, 2025)}{random.randint(10000, 99999)}",
             'taxpayer_identifier': f"Taxpayer {random.randint(1, 999):03d}",

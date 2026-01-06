@@ -115,7 +115,6 @@ class FinancialCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('budget_memo', subcategory, is_positive=True)
         doc.update({
             'title': 'Presidential Budget Decision Memorandum',
-            'classification': 'CONTROLLED UNCLASSIFIED INFORMATION - BUDGET',
             'to': agency,
             'from': 'Office of Management and Budget',
             'subject': f'FY {fiscal_year} Budget Decision - {program}',
@@ -146,7 +145,6 @@ class FinancialCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('sar', 'bank_secrecy', is_positive=True)
         doc.update({
             'title': 'Suspicious Activity Report (SAR)',
-            'classification': 'CONTROLLED UNCLASSIFIED INFORMATION - BANK SECRECY',
             'sar_number': f"SAR-{self.fake.uuid4()[:12].upper()}",
             'filing_date': self.generate_date_in_range(-30, 0).strftime('%B %d, %Y'),
             'filing_institution': {
@@ -191,7 +189,6 @@ class FinancialCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('eft_authorization', 'eft', is_positive=True)
         doc.update({
             'title': 'Electronic Funds Transfer Authorization',
-            'classification': 'CONTROLLED UNCLASSIFIED INFORMATION - EFT',
             'authorization_number': f"EFT-{random.randint(100000, 999999)}",
             'agency': agency,
             'payee': {
@@ -237,7 +234,6 @@ class FinancialCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('retirement_estimate', 'retirement', is_positive=True)
         doc.update({
             'title': f'{retirement_system} Retirement Estimate',
-            'classification': 'CONTROLLED UNCLASSIFIED INFORMATION - RETIREMENT',
             'estimate_number': f"RET-{random.randint(100000, 999999)}",
             'employee': {
                 'name': employee_name,
@@ -284,7 +280,6 @@ class FinancialCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('comptroller_report', 'comptroller_general', is_positive=True)
         doc.update({
             'title': 'Government Accountability Office Report (DRAFT)',
-            'classification': 'CONTROLLED UNCLASSIFIED INFORMATION - COMPTROLLER GENERAL',
             'report_number': f"GAO-{self.generate_fiscal_year()}-{random.randint(100, 999)}",
             'agency_reviewed': agency,
             'topic': random.choice(report_topics),

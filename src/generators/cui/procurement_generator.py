@@ -156,7 +156,7 @@ class ProcurementCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('evaluation_report', subcategory, is_positive=True)
         doc.update({
             'title': 'Technical Evaluation Report',
-            'classification': 'SOURCE SELECTION SENSITIVE - CUI',
+            'classification': 'SOURCE SELECTION SENSITIVE',
             'solicitation_number': f"{random.randint(10, 99)}S{random.randint(100, 999)}D{random.randint(1000, 9999)}",
             'offeror': offeror,
             'offeror_cage_code': ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', k=5)),
@@ -204,7 +204,7 @@ class ProcurementCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('igce', subcategory, is_positive=True)
         doc.update({
             'title': 'Independent Government Cost Estimate (IGCE)',
-            'classification': 'SOURCE SELECTION INFORMATION - CUI',
+            'classification': 'SOURCE SELECTION INFORMATION',
             'solicitation_number': f"{random.randint(10, 99)}S{random.randint(100, 999)}D{random.randint(1000, 9999)}",
             'agency': agency,
             'prepared_by': {
@@ -270,7 +270,7 @@ class ProcurementCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('award_recommendation', subcategory, is_positive=True)
         doc.update({
             'title': 'Award Recommendation Memorandum',
-            'classification': 'SOURCE SELECTION INFORMATION - CUI',
+            'classification': 'SOURCE SELECTION INFORMATION',
             'solicitation_number': f"{random.randint(10, 99)}S{random.randint(100, 999)}D{random.randint(1000, 9999)}",
             'agency': agency,
             'to': {
@@ -318,7 +318,6 @@ class ProcurementCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('sbir_evaluation', subcategory, is_positive=True)
         doc.update({
             'title': f'{program} Proposal Evaluation',
-            'classification': 'CUI - PROCUREMENT',
             'topic_number': f"{program}-{random.randint(2024, 2025)}-{random.randint(100, 999)}",
             'proposal_number': f"P{random.randint(10000, 99999)}",
             'company': {

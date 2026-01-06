@@ -564,6 +564,7 @@ class MedForgeCUIGenerator:
         formats: Optional[List[str]] = None,
         llm_percentage: float = 0.2,
         cui_notice: str = "random",
+        cui_classification: str = "never",
     ):
         """
         Initialize CUI generator
@@ -575,6 +576,7 @@ class MedForgeCUIGenerator:
             formats: List of formats to generate (defaults to all)
             llm_percentage: Percentage of LLM-enhanced documents (0.0-1.0)
             cui_notice: Include CUI notice (random/always/never)
+            cui_classification: Include CUI classification headers (always/never)
         """
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -609,6 +611,7 @@ class MedForgeCUIGenerator:
         self.formats = formats or ["pdf", "docx", "xlsx", "eml"]
         self.llm_percentage = llm_percentage
         self.cui_notice = cui_notice
+        self.cui_classification = cui_classification
 
         if seed is not None:
             random.seed(seed)
@@ -768,6 +771,14 @@ class MedForgeCUIGenerator:
         # "always" keeps notice
         return doc_data
 
+    def _apply_cui_classification_policy(self, doc_data: dict) -> dict:
+        """Apply CUI classification header based on policy setting."""
+        if self.cui_classification == "never":
+            if 'classification' in doc_data:
+                del doc_data['classification']
+        # "always" keeps classification
+        return doc_data
+
     def _enhance_with_llm(self, doc_data: dict) -> tuple[dict, bool]:
         """
         Enhance document content using LLM if available and selected
@@ -889,6 +900,9 @@ class MedForgeCUIGenerator:
 
             # Apply CUI notice policy
             doc_data = self._apply_cui_notice_policy(doc_data)
+
+            # Apply CUI classification policy
+            doc_data = self._apply_cui_classification_policy(doc_data)
 
             # Choose format
             available_formats = [f for f in self.formats if f in self.formatters]
@@ -1261,6 +1275,7 @@ def generate(
     cui_categories: Optional[str] = typer.Option(None, "--cui-categories", help="Comma-separated CUI categories: financial,legal,tax,procurement,proprietary,law_enforcement,critical_infrastructure"),
     cui_all: bool = typer.Option(False, "--cui-all", help="Generate all CUI categories"),
     cui_notice: str = typer.Option("random", "--cui-notice", help="CUI confidentiality notice: random (default), always, never"),
+    cui_classification: str = typer.Option("never", "--cui-classification", help="CUI classification headers: always, never (default)"),
     # General options
     formats: str = typer.Option("pdf,docx,xlsx,eml,pptx", "--formats", "-f", help="Comma-separated list of formats"),
     output: str = typer.Option("output", "--output", "-o", help="Output directory"),
@@ -1454,6 +1469,7 @@ def generate(
                 formats=cui_format_list,
                 llm_percentage=llm_percentage,
                 cui_notice=cui_notice,
+                cui_classification=cui_classification,
             )
             all_stats["cui"] = cui_generator.generate_batch(
                 cui_positive_count=cui_positive,

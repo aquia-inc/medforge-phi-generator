@@ -97,7 +97,6 @@ class ProprietaryCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('sam_registration', subcategory, is_positive=True)
         doc.update({
             'title': 'SAM Entity Registration Record',
-            'classification': 'CONTROLLED UNCLASSIFIED INFORMATION - PROPRIETARY',
             'registration_status': 'Active',
             'entity': {
                 'legal_business_name': company,
@@ -171,7 +170,7 @@ class ProprietaryCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('trade_secret', subcategory, is_positive=True)
         doc.update({
             'title': 'Trade Secret and Proprietary Information Disclosure',
-            'classification': 'PROPRIETARY INFORMATION - CUI',
+            'classification': 'PROPRIETARY INFORMATION',
             'disclosure_number': f"TS-{random.randint(2024, 2025)}-{random.randint(1000, 9999)}",
             'disclosing_party': {
                 'company': company,
@@ -224,7 +223,7 @@ class ProprietaryCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('contractor_info', subcategory, is_positive=True)
         doc.update({
             'title': 'Contractor Proprietary Information',
-            'classification': 'CUI - BUSINESS CONFIDENTIAL',
+            'classification': 'BUSINESS CONFIDENTIAL',
             'contract_number': f"GS-{random.randint(10, 99)}F-{random.randint(1000, 9999)}W",
             'contractor': {
                 'name': company,
@@ -273,7 +272,7 @@ class ProprietaryCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('financial_data', subcategory, is_positive=True)
         doc.update({
             'title': 'Proprietary Financial Data Submission',
-            'classification': 'CUI - PROPRIETARY',
+            'classification': 'PROPRIETARY',
             'company': company,
             'fiscal_year': f"FY {random.randint(2022, 2024)}",
             'submission_date': self.generate_date_in_range(-30, 0).strftime('%B %d, %Y'),
