@@ -106,7 +106,7 @@ class LegalCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('attorney_memo', subcategory, is_positive=True)
         doc.update({
             'title': 'Attorney-Client Privileged Memorandum',
-            'classification': 'ATTORNEY-CLIENT PRIVILEGED - CUI',
+            'classification': 'ATTORNEY-CLIENT PRIVILEGED',
             'memo_number': f"OGC-{random.randint(2024, 2025)}-{random.randint(100, 999)}",
             'attorney': {
                 'name': attorney,
@@ -157,7 +157,6 @@ class LegalCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('bargaining_proposal', subcategory, is_positive=True)
         doc.update({
             'title': 'Collective Bargaining Proposal',
-            'classification': 'CONTROLLED UNCLASSIFIED INFORMATION - COLLECTIVE BARGAINING',
             'proposal_number': f"CBP-{random.randint(2024, 2025)}-{random.randint(10, 99)}",
             'agency': agency,
             'union': union,
@@ -209,7 +208,6 @@ class LegalCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('congressional_testimony', subcategory, is_positive=True)
         doc.update({
             'title': 'Draft Congressional Testimony',
-            'classification': 'CONTROLLED UNCLASSIFIED INFORMATION - LEGISLATIVE',
             'document_status': 'DRAFT - PRE-DECISIONAL',
             'witness': {
                 'name': official,
@@ -254,7 +252,6 @@ class LegalCUIGenerator(BaseCUIGenerator):
         doc = self._build_base_document('hearing_record', subcategory, is_positive=True)
         doc.update({
             'title': 'Administrative Hearing Record',
-            'classification': 'CONTROLLED UNCLASSIFIED INFORMATION - ADMINISTRATIVE PROCEEDINGS',
             'docket_number': f"{random.randint(2020, 2025)}-{random.randint(1000, 9999)}",
             'case_type': random.choice([
                 'Adverse Personnel Action Appeal',

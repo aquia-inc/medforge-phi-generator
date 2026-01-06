@@ -119,9 +119,9 @@ class BaseCUIGenerator(ABC):
         Returns:
             Formatted classification header string
         """
-        if subcategory:
-            return f"CONTROLLED UNCLASSIFIED INFORMATION - {subcategory.upper().replace('_', ' ')}"
-        return f"CONTROLLED UNCLASSIFIED INFORMATION - {self.CATEGORY.upper().replace('_', ' ')}"
+        # Return empty string - avoid generic "CONTROLLED UNCLASSIFIED INFORMATION" headers
+        # Authentic specific markings (e.g., "FEDERAL TAX INFORMATION") are set directly in generators
+        return ""
 
     def get_marking(self, abbreviated: bool = False) -> str:
         """
