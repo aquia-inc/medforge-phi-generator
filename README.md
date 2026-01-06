@@ -14,10 +14,14 @@ uv run medforge generate --cui-positive 70 --cui-negative 210 --cui-all
 # Generate with specific formats only
 uv run medforge generate --cui-positive 50 --cui-all --formats pdf,docx
 
-# Control CUI confidentiality notices
+# Control CUI confidentiality notices and classification headers
 uv run medforge generate --cui-positive 50 --cui-all --cui-notice random  # 50% have notices (default)
 uv run medforge generate --cui-positive 50 --cui-all --cui-notice never   # No notices
 uv run medforge generate --cui-positive 50 --cui-all --cui-notice always  # All have notices
+
+# Remove generic CUI classification headers (recommended for Purview training)
+uv run medforge generate --cui-positive 70 --cui-negative 210 --cui-all --cui-classification never
+uv run medforge generate --cui-positive 50 --cui-all --cui-classification always  # Keep authentic headers
 
 # Validate generated documents
 ./medforge validate output/medforge
@@ -54,12 +58,12 @@ chmod +x medforge
 ✅ **PHI & CUI Support**: Generate both Protected Health Information and Controlled Unclassified Information
 ✅ **Customer Templates**: Integrates 37 real CMS templates (PDFs, DOCX, XLSX, EML)
 ✅ **LLM Enhancement**: Claude 4.5 Sonnet for clinical narratives (20% default)
-✅ **Configurable CUI Notices**: Control confidentiality notices (random/always/never)
+✅ **Configurable CUI Controls**: Control confidentiality notices and classification headers (random/always/never)
 ✅ **Component Mixing**: 240 unique layout variations per template
 ✅ **Parallel Processing**: Multi-worker generation for speed
 ✅ **Validation System**: Automated PHI detection and file integrity checks
 ✅ **Statistics & Reporting**: Comprehensive analysis of generated datasets
-✅ **No Training Labels**: All documents are realistic without positive/negative markers
+✅ **No Training Labels**: All documents are realistic without positive/negative markers in content
 
 ## Project Structure
 
@@ -112,6 +116,7 @@ CUI Options:
   --cui-categories TEXT            Specific categories (comma-separated)
   --cui-all                        Generate all 7 CUI categories
   --cui-notice TEXT                Confidentiality notice: random/always/never [default: random]
+  --cui-classification TEXT        Classification headers: always/never [default: never]
 
 General Options:
   --formats, -f TEXT               Formats: pdf,docx,xlsx,eml,pptx
