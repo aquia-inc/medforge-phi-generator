@@ -42,11 +42,56 @@ uv run medforge generate --cui-positive 50 --cui-all --cui-classification always
 # Install dependencies
 uv sync
 
-# Set API key in .env
-echo "ANTHROPIC_API_KEY=your-key-here" >> .env
-
 # Make CLI executable
 chmod +x medforge
+```
+
+### Configure LLM Enhancement (Required for --llm-percentage > 0)
+
+1. **Create a `.env` file** in the project root with your Anthropic API key:
+
+```bash
+# Create .env file (note: KEY=VALUE format, no spaces or quotes)
+echo "ANTHROPIC_API_KEY=sk-ant-api03-your-key-here" > .env
+```
+
+**Important:** The `.env` file must use the format `KEY=VALUE`:
+- Correct: `ANTHROPIC_API_KEY=sk-ant-api03-xxxxx`
+- Wrong: `sk-ant-api03-xxxxx` (missing key name)
+- Wrong: `ANTHROPIC_API_KEY = sk-ant-api03-xxxxx` (spaces around `=`)
+- Wrong: `ANTHROPIC_API_KEY="sk-ant-api03-xxxxx"` (quotes may cause issues)
+
+2. **Verify your configuration:**
+
+```bash
+uv run python -m src.cli setup --check
+```
+
+You should see:
+```
+┌───────────────────┬──────────┬─────────────────────────┐
+│ Setting           │ Status   │ Details                 │
+├───────────────────┼──────────┼─────────────────────────┤
+│ .env file         │ ✓ Found  │ /path/to/.env           │
+│ ANTHROPIC_API_KEY │ ✓ Set    │ Value: sk-ant-a...xxxx  │
+│ LLM Generator     │ ✓ Ready  │ Model: claude-sonnet-4  │
+└───────────────────┴──────────┴─────────────────────────┘
+```
+
+3. **If you don't have an API key**, you can still generate documents without LLM enhancement:
+
+```bash
+uv run medforge generate --cui-positive 50 --cui-all --llm-percentage 0
+```
+
+### Other Setup Commands
+
+```bash
+# Interactive configuration
+uv run python -m src.cli setup --prompt
+
+# Show example YAML config
+uv run python -m src.cli setup --example
 
 # Run linting checks (optional)
 ./lint.sh
@@ -75,6 +120,8 @@ medforge-phi-generator/
 │   ├── generators/              # Data & LLM generators (PHI + CUI)
 │   ├── templates/               # Component mixing system
 │   └── validators/              # PHI validation
+├── scripts/
+│   └── generate_all_cui.sh      # Bulk generation script (all categories)
 ├── cust_templates/              # Elizabeth's 37 real CMS templates (PDF, DOCX, XLSX, EML)
 ├── config/
 │   └── example.yaml             # Sample configuration
@@ -136,6 +183,24 @@ medforge validate <path> [--verbose]
 ```bash
 medforge stats <path> [--tree]
 ```
+
+## Bulk Generation Script
+
+For generating large datasets across all CUI categories:
+
+```bash
+# Generate all categories (500 positive + 1500 negative each)
+./scripts/generate_all_cui.sh
+
+# Reset and start fresh
+./scripts/generate_all_cui.sh --reset
+```
+
+Features:
+- Generates 7 CUI categories + PHI documents (~16,000 total)
+- Tracks progress with resume capability
+- 8 parallel workers with 80% LLM enhancement
+- Outputs to `temp/output/`
 
 ## Performance
 

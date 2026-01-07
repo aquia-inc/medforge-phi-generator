@@ -675,13 +675,22 @@ class MedForgeCUIGenerator:
         try:
             # Map customer templates to CUI categories
             # NOTE: EFT disabled - form fill not working reliably
+            # Full mapping of all customer templates to their CUI categories
             template_category_map = {
-                # 'EFT Authorization Form': 'financial',  # DISABLED
+                # 'EFT Authorization Form': 'financial',  # DISABLED - form fill not working
                 'ReasonableAccommodationRequest': 'legal',
+                # Future templates can be added here with their correct category mapping:
+                # 'TemplateName': 'category_name',  # category must match CUI_CATEGORIES
             }
 
-            # Select a random template
-            available_templates = list(template_category_map.keys())
+            # IMPORTANT: Only use templates that match the current generation categories
+            # This prevents mixing CUI types (e.g., legal docs in financial runs)
+            available_templates = [
+                key for key, cat in template_category_map.items()
+                if cat in self.categories
+            ]
+
+            # If no templates match current categories, skip customer template generation
             if not available_templates:
                 return None
 
@@ -1866,6 +1875,9 @@ parallel_workers: 1       # Number of parallel workers
                 "[green]✓ Found[/green]",
                 str(env_file.absolute())
             )
+            # Load .env file so we can check API key (same behavior as llm_generator)
+            from dotenv import load_dotenv
+            load_dotenv(override=True)
         else:
             config_table.add_row(
                 ".env file",
