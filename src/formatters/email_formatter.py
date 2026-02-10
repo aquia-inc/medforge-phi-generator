@@ -2,21 +2,32 @@
 Email formatter for EML and MSG formats
 Creates PHI-containing and PHI-negative emails
 """
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.utils import formatdate
+from datetime import datetime
 import os
 import random
 
-from formatters.base_email_formatter import BaseEmailFormatter
 
-
-class EmailFormatter(BaseEmailFormatter):
+class EmailFormatter:
     """Creates EML email files with PHI content"""
+
+    def __init__(self, output_dir='output'):
+        self.output_dir = output_dir
+        os.makedirs(output_dir, exist_ok=True)
 
     def create_provider_to_provider_email(self, patient, sender_provider, recipient_provider, filename):
         """Create provider-to-provider email with PHI (EML format)"""
 
-        subject = f"Patient Consultation: {patient['last_name']}, {patient['first_name']}"
-        from_addr = f"{sender_provider['first_name']} {sender_provider['last_name']} <{sender_provider['email']}>"
-        to_addr = f"{recipient_provider['first_name']} {recipient_provider['last_name']} <{recipient_provider['email']}>"
+        msg = MIMEMultipart('alternative')
+
+        # Email headers
+        msg['Subject'] = f"Patient Consultation: {patient['last_name']}, {patient['first_name']}"
+        msg['From'] = f"{sender_provider['first_name']} {sender_provider['last_name']} <{sender_provider['email']}>"
+        msg['To'] = f"{recipient_provider['first_name']} {recipient_provider['last_name']} <{recipient_provider['email']}>"
+        msg['Date'] = formatdate(localtime=True)
+        msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
         # Email body (plain text)
         plain_text = f"""
@@ -101,18 +112,30 @@ Fax: {sender_provider['fax']}
 </html>
 """
 
-        return self._build_and_save_email(
-            subject=subject, from_addr=from_addr, to_addr=to_addr,
-            plain_body=plain_text, html_body=html_text,
-            filename=filename, message_id_domain='healthsystem.org',
-        )
+        # Attach parts
+        part1 = MIMEText(plain_text, 'plain', 'utf-8')
+        part2 = MIMEText(html_text, 'html', 'utf-8')
+        msg.attach(part1)
+        msg.attach(part2)
+
+        # Save as EML
+        filepath = os.path.join(self.output_dir, filename)
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
+
+        return filepath
 
     def create_test_result_notification(self, patient, provider, lab_data, filename):
         """Create test result notification email with PHI (EML format)"""
 
-        subject = f"Lab Results Available - {patient['last_name']}, {patient['first_name']}"
-        from_addr = f"{provider['first_name']} {provider['last_name']} <{provider['email']}>"
-        to_addr = f"{patient['first_name']} {patient['last_name']} <{patient['email']}>"
+        msg = MIMEMultipart('alternative')
+
+        # Email headers
+        msg['Subject'] = f"Lab Results Available - {patient['last_name']}, {patient['first_name']}"
+        msg['From'] = f"{provider['first_name']} {provider['last_name']} <{provider['email']}>"
+        msg['To'] = f"{patient['first_name']} {patient['last_name']} <{patient['email']}>"
+        msg['Date'] = formatdate(localtime=True)
+        msg['Message-ID'] = f"<{random.randint(100000, 999999)}@patientportal.org>"
 
         # Plain text body
         plain_text = f"""
@@ -187,18 +210,30 @@ If you received this in error, please delete it immediately and notify the sende
 </html>
 """
 
-        return self._build_and_save_email(
-            subject=subject, from_addr=from_addr, to_addr=to_addr,
-            plain_body=plain_text, html_body=html_text,
-            filename=filename, message_id_domain='patientportal.org',
-        )
+        # Attach parts
+        part1 = MIMEText(plain_text, 'plain', 'utf-8')
+        part2 = MIMEText(html_text, 'html', 'utf-8')
+        msg.attach(part1)
+        msg.attach(part2)
+
+        # Save as EML
+        filepath = os.path.join(self.output_dir, filename)
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
+
+        return filepath
 
     def create_office_announcement(self, facility, filename):
         """Create office announcement email (PHI Negative - No Patient Data)"""
 
-        subject = "Office Closure Notice - Holiday Schedule"
-        from_addr = f"Office Administrator <admin@{facility['name'].lower().replace(' ', '')}.org>"
-        to_addr = f"All Staff <staff@{facility['name'].lower().replace(' ', '')}.org>"
+        msg = MIMEMultipart('alternative')
+
+        # Email headers
+        msg['Subject'] = "Office Closure Notice - Holiday Schedule"
+        msg['From'] = f"Office Administrator <admin@{facility['name'].lower().replace(' ', '')}.org>"
+        msg['To'] = f"All Staff <staff@{facility['name'].lower().replace(' ', '')}.org>"
+        msg['Date'] = formatdate(localtime=True)
+        msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
         # Plain text body
         plain_text = f"""
@@ -260,18 +295,30 @@ Phone: {facility['phone']}
 </html>
 """
 
-        return self._build_and_save_email(
-            subject=subject, from_addr=from_addr, to_addr=to_addr,
-            plain_body=plain_text, html_body=html_text,
-            filename=filename, message_id_domain='healthsystem.org',
-        )
+        # Attach parts
+        part1 = MIMEText(plain_text, 'plain', 'utf-8')
+        part2 = MIMEText(html_text, 'html', 'utf-8')
+        msg.attach(part1)
+        msg.attach(part2)
+
+        # Save as EML
+        filepath = os.path.join(self.output_dir, filename)
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
+
+        return filepath
 
     def create_policy_update_email(self, facility, filename):
         """Create policy update email (PHI Negative - No Patient Data)"""
 
-        subject = "Updated Clinical Documentation Policy"
-        from_addr = f"Compliance Department <compliance@{facility['name'].lower().replace(' ', '')}.org>"
-        to_addr = f"Clinical Staff <clinical@{facility['name'].lower().replace(' ', '')}.org>"
+        msg = MIMEMultipart('alternative')
+
+        # Email headers
+        msg['Subject'] = "Updated Clinical Documentation Policy"
+        msg['From'] = f"Compliance Department <compliance@{facility['name'].lower().replace(' ', '')}.org>"
+        msg['To'] = f"Clinical Staff <clinical@{facility['name'].lower().replace(' ', '')}.org>"
+        msg['Date'] = formatdate(localtime=True)
+        msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
         # Plain text body
         plain_text = f"""
@@ -345,11 +392,18 @@ Phone: {facility['phone']}
 </html>
 """
 
-        return self._build_and_save_email(
-            subject=subject, from_addr=from_addr, to_addr=to_addr,
-            plain_body=plain_text, html_body=html_text,
-            filename=filename, message_id_domain='healthsystem.org',
-        )
+        # Attach parts
+        part1 = MIMEText(plain_text, 'plain', 'utf-8')
+        part2 = MIMEText(html_text, 'html', 'utf-8')
+        msg.attach(part1)
+        msg.attach(part2)
+
+        # Save as EML
+        filepath = os.path.join(self.output_dir, filename)
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
+
+        return filepath
 
     # Helper methods for formatting
     def _format_diagnoses_text(self, diagnoses):
@@ -406,6 +460,10 @@ class MSGFormatter:
 
         For cross-platform compatibility, we'll primarily use EML format.
         """
+        # For MVP, we'll note this limitation and focus on EML
+        # Production version could use olefile or msg-extractor on Windows
+        # or convert via email to create MSG-like structure
+
         print("Note: MSG format requires Windows/Outlook COM automation.")
         print(f"Using EML format for cross-platform compatibility: {eml_path}")
 
