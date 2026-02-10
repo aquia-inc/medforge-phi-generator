@@ -109,6 +109,10 @@ class PurviewFidelityValidator:
         if ext in ('.docx', '.xlsx', '.pptx'):
             self._check_ooxml(result)
 
+        # PPTX-specific: slide count and content check
+        if ext == '.pptx':
+            self._check_pptx_slides(result)
+
         return result
 
     # ---- Individual checks ----
@@ -471,6 +475,37 @@ class PurviewFidelityValidator:
             result.add_issue(10, FATAL, f"Cannot open as ZIP: {e}")
 
 
+    def _check_pptx_slides(self, result: FileValidationResult):
+        """Check 19: PPTX has at least 2 slides and contains text content."""
+        try:
+            from pptx import Presentation
+            prs = Presentation(result.filepath)
+            slide_count = len(prs.slides)
+
+            if slide_count < 2:
+                result.add_issue(19, HIGH,
+                    f"PPTX has only {slide_count} slide(s), expected >= 2")
+            else:
+                result.add_pass(19, f"PPTX has {slide_count} slides")
+
+            # Check for text content in slides
+            total_text = 0
+            for slide in prs.slides:
+                for shape in slide.shapes:
+                    if hasattr(shape, "text_frame"):
+                        total_text += len(shape.text_frame.text)
+
+            if total_text == 0:
+                result.add_issue(19, HIGH, "PPTX contains no text content")
+            else:
+                result.add_pass(19, f"PPTX has {total_text} chars of text content")
+
+        except ImportError:
+            result.add_issue(19, MEDIUM, "python-pptx not installed, cannot check slides")
+        except Exception as e:
+            result.add_issue(19, FATAL, f"Cannot open PPTX: {e}")
+
+
 def check_lab_data_consistency(output_dir: str) -> list:
     """
     Check 17: Lab data self-consistent (flags match values).
@@ -592,6 +627,7 @@ def generate_report(results: list, lab_issues: list, output_format: str = 'text'
             16: "UTF-8 encoding throughout",
             17: "Lab data self-consistent",
             18: "English content only",
+            19: "PPTX slides and content check",
         }
         for check_num in sorted(issues_by_check.keys()):
             items = issues_by_check[check_num]
