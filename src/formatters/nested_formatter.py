@@ -7,6 +7,7 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email.mime.application import MIMEApplication
 from email import encoders
+from email.utils import formatdate
 from datetime import datetime
 import os
 import random
@@ -39,7 +40,7 @@ class NestedEmailFormatter:
         msg['Subject'] = f"Lab Results - {patient['first_name']} {patient['last_name']}"
         msg['From'] = f"{provider['first_name']} {provider['last_name']} <{provider['email']}>"
         msg['To'] = f"{patient['first_name']} {patient['last_name']} <{patient['email']}>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
         # Email body
@@ -65,7 +66,7 @@ CONFIDENTIAL: This email contains protected health information (PHI).
 Unauthorized disclosure or forwarding is prohibited under HIPAA regulations.
 """
 
-        body = MIMEText(body_text, 'plain')
+        body = MIMEText(body_text, 'plain', 'utf-8')
         msg.attach(body)
 
         # Attach the PDF file
@@ -81,8 +82,8 @@ Unauthorized disclosure or forwarding is prohibited under HIPAA regulations.
 
         # Save as EML
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 
@@ -97,7 +98,7 @@ Unauthorized disclosure or forwarding is prohibited under HIPAA regulations.
         msg['Subject'] = f"Medical Records - {patient['last_name']}, {patient['first_name']}"
         msg['From'] = "Medical Records <records@healthsystem.org>"
         msg['To'] = f"{provider['first_name']} {provider['last_name']} <{provider['email']}>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
         # Email body
@@ -125,7 +126,7 @@ CONFIDENTIAL MEDICAL RECORDS: This email and all attachments contain protected h
 Handle in accordance with HIPAA privacy regulations.
 """
 
-        body = MIMEText(body_text, 'plain')
+        body = MIMEText(body_text, 'plain', 'utf-8')
         msg.attach(body)
 
         # Attach all files
@@ -135,8 +136,8 @@ Handle in accordance with HIPAA privacy regulations.
 
         # Save as EML
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 
@@ -152,7 +153,7 @@ Handle in accordance with HIPAA privacy regulations.
         msg['Subject'] = f"Patient Referral: {patient['last_name']}, {patient['first_name']}"
         msg['From'] = f"{referring_provider['first_name']} {referring_provider['last_name']} <{referring_provider['email']}>"
         msg['To'] = f"{specialist_provider['first_name']} {specialist_provider['last_name']} <{specialist_provider['email']}>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
         # Email body
@@ -198,7 +199,7 @@ Phone: {referring_provider['phone']}
 Fax: {referring_provider['fax']}
 """
 
-        body = MIMEText(body_text, 'plain')
+        body = MIMEText(body_text, 'plain', 'utf-8')
         msg.attach(body)
 
         # Attach progress note
@@ -207,8 +208,8 @@ Fax: {referring_provider['fax']}
 
         # Save as EML
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 
@@ -223,7 +224,7 @@ Fax: {referring_provider['fax']}
         msg['Subject'] = "Updated Patient Registration Forms"
         msg['From'] = f"Office Manager <manager@{facility['name'].lower().replace(' ', '')}.org>"
         msg['To'] = f"Front Desk Staff <frontdesk@{facility['name'].lower().replace(' ', '')}.org>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
         # Email body
@@ -253,7 +254,7 @@ Office Management
 Phone: {facility['phone']}
 """
 
-        body = MIMEText(body_text, 'plain')
+        body = MIMEText(body_text, 'plain', 'utf-8')
         msg.attach(body)
 
         # Attach blank form
@@ -262,8 +263,8 @@ Phone: {facility['phone']}
 
         # Save as EML
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 
@@ -278,7 +279,7 @@ Phone: {facility['phone']}
         msg['Subject'] = "New Clinical Documentation Policy - Action Required"
         msg['From'] = f"Compliance Department <compliance@{facility['name'].lower().replace(' ', '')}.org>"
         msg['To'] = f"All Clinical Staff <clinical@{facility['name'].lower().replace(' ', '')}.org>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
         # Email body
@@ -313,7 +314,7 @@ Compliance Department
 Phone: {facility['phone']}
 """
 
-        body = MIMEText(body_text, 'plain')
+        body = MIMEText(body_text, 'plain', 'utf-8')
         msg.attach(body)
 
         # Attach policy PDF
@@ -322,8 +323,8 @@ Phone: {facility['phone']}
 
         # Save as EML
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 
@@ -626,7 +627,7 @@ Phone: {facility['phone']}
         msg['Subject'] = f"Lab Results - {patient['first_name']} {patient['last_name']}"
         msg['From'] = f"{provider['first_name']} {provider['last_name']} <{provider['email']}>"
         msg['To'] = f"{patient['first_name']} {patient['last_name']} <{patient['email']}>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
         # Email body with PHI
@@ -651,7 +652,7 @@ Phone: {provider['phone']}
 CONFIDENTIAL: This email contains protected health information (PHI).
 """
 
-        body = MIMEText(body_text, 'plain')
+        body = MIMEText(body_text, 'plain', 'utf-8')
         msg.attach(body)
 
         # Decide on attachment type (20% ZIP, 80% single doc)
@@ -683,8 +684,8 @@ CONFIDENTIAL: This email contains protected health information (PHI).
 
         # Save as EML
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 
@@ -699,7 +700,7 @@ CONFIDENTIAL: This email contains protected health information (PHI).
         msg['Subject'] = "Updated Clinical Documentation Policy"
         msg['From'] = f"Compliance <compliance@{facility['name'].lower().replace(' ', '')}.org>"
         msg['To'] = f"All Staff <staff@{facility['name'].lower().replace(' ', '')}.org>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
         # Email body with NO patient data
@@ -719,7 +720,7 @@ Compliance Department
 Phone: {facility['phone']}
 """
 
-        body = MIMEText(body_text, 'plain')
+        body = MIMEText(body_text, 'plain', 'utf-8')
         msg.attach(body)
 
         # Decide on attachment type (20% ZIP, 80% single doc)
@@ -751,7 +752,7 @@ Phone: {facility['phone']}
 
         # Save as EML
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath

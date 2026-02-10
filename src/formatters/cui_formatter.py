@@ -10,6 +10,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.utils import formatdate
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -382,20 +383,20 @@ class CUIEmailFormatter:
         msg['Subject'] = subject
         msg['From'] = f"noreply@{agency_domain}"
         msg['To'] = f"recipient@{agency_domain}"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S -0500')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@{agency_domain}>"
 
         # Build email body
         plain_text = self._build_plain_text(doc_data)
         html_text = self._build_html(doc_data)
 
-        msg.attach(MIMEText(plain_text, 'plain'))
-        msg.attach(MIMEText(html_text, 'html'))
+        msg.attach(MIMEText(plain_text, 'plain', 'utf-8'))
+        msg.attach(MIMEText(html_text, 'html', 'utf-8'))
 
         # Save email
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
         return filepath
 
     def _build_plain_text(self, doc_data: Dict[str, Any]) -> str:

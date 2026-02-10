@@ -342,10 +342,6 @@ class PatientGenerator:
 
     def _generate_drug_screen(self):
         """10-Panel Urine Drug Screen"""
-        # Most results negative, occasional positive for realistic data
-        def get_result():
-            return 'POSITIVE' if random.random() < 0.08 else 'NEGATIVE'
-
         drugs = [
             ('Amphetamines (AMP)', '1000 ng/mL'),
             ('Barbiturates (BAR)', '300 ng/mL'),
@@ -359,12 +355,19 @@ class PatientGenerator:
             ('Propoxyphene (PPX)', '300 ng/mL'),
         ]
 
-        return [
-            {'test': drug[0], 'value': get_result(), 'unit': '',
-             'reference_range': 'NEGATIVE', 'flag': 'A' if get_result() == 'POSITIVE' else '',
-             'cutoff': drug[1]}
-            for drug in drugs
-        ]
+        results = []
+        for drug_name, cutoff in drugs:
+            # Single random call determines both value and flag consistently
+            is_positive = random.random() < 0.08
+            results.append({
+                'test': drug_name,
+                'value': 'POSITIVE' if is_positive else 'NEGATIVE',
+                'unit': '',
+                'reference_range': 'NEGATIVE',
+                'flag': 'A' if is_positive else '',
+                'cutoff': cutoff,
+            })
+        return results
 
     def _generate_a1c_panel(self):
         """Hemoglobin A1C with estimated average glucose"""

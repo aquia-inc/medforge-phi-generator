@@ -6,6 +6,7 @@ Can be template-based or LLM-enhanced.
 """
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.utils import formatdate
 from datetime import datetime
 import random
 import os
@@ -319,7 +320,7 @@ class SnykEmailGenerator:
         msg['Subject'] = f"[snyk] Vulnerability alert for the {organization} organization"
         msg['From'] = 'Snyk <support-noreply@snyk.io>'
         msg['To'] = recipient_email
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(10000000000, 99999999999)}@snyk.io>"
         msg['X-Mailgun-Tag'] = 'new-vulnerabilities'
 
@@ -333,13 +334,13 @@ class SnykEmailGenerator:
             findings, organization, critical_count, high_count, medium_count, low_count
         )
 
-        msg.attach(MIMEText(plain_text, 'plain'))
-        msg.attach(MIMEText(html_text, 'html'))
+        msg.attach(MIMEText(plain_text, 'plain', 'utf-8'))
+        msg.attach(MIMEText(html_text, 'html', 'utf-8'))
 
         # Save email
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 
@@ -537,7 +538,7 @@ class SnykEmailGenerator:
         msg['Subject'] = f"[snyk] {project_name}'s weekly report"
         msg['From'] = 'Snyk <support-noreply@snyk.io>'
         msg['To'] = recipient
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(10000000000, 99999999999)}@snyk.io>"
 
         # Weekly summary stats
@@ -608,13 +609,13 @@ https://snyk.io
 </html>
 """
 
-        msg.attach(MIMEText(plain_text, 'plain'))
-        msg.attach(MIMEText(html_text, 'html'))
+        msg.attach(MIMEText(plain_text, 'plain', 'utf-8'))
+        msg.attach(MIMEText(html_text, 'html', 'utf-8'))
 
         # Save email
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 

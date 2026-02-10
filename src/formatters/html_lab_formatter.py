@@ -7,6 +7,7 @@ import random
 from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.utils import formatdate
 
 
 class HTMLLabFormatter:
@@ -63,7 +64,7 @@ class HTMLLabFormatter:
         msg['Subject'] = f"Your {lab_data.get('panel_name', 'Lab')} Results Are Ready - {lab['name']}"
         msg['From'] = f"{lab['name']} <noreply@{lab['name'].lower().replace(' ', '')}.com>"
         msg['To'] = f"{patient['first_name']} {patient['last_name']} <{patient['email']}>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0000')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000000, 999999999)}@{lab['name'].lower().replace(' ', '')}.com>"
 
         # Build results table
@@ -196,12 +197,12 @@ View full results at: {lab['url']}
 CONFIDENTIALITY NOTICE: This email contains Protected Health Information (PHI).
 """
 
-        msg.attach(MIMEText(plain_text, 'plain'))
-        msg.attach(MIMEText(html_content, 'html'))
+        msg.attach(MIMEText(plain_text, 'plain', 'utf-8'))
+        msg.attach(MIMEText(html_content, 'html', 'utf-8'))
 
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 
@@ -217,7 +218,7 @@ CONFIDENTIALITY NOTICE: This email contains Protected Health Information (PHI).
         msg['Subject'] = f"New Lab Results Available - {lab['name']}"
         msg['From'] = f"{lab['name']} <noreply@{lab['name'].lower().replace(' ', '')}.com>"
         msg['To'] = f"Patient <patient@example.com>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0000')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000000, 999999999)}@{lab['name'].lower().replace(' ', '')}.com>"
 
         html_content = f"""
@@ -331,12 +332,12 @@ Customer Service: {lab['phone']}
 This is an automated notification. Please do not reply to this email.
 """
 
-        msg.attach(MIMEText(plain_text, 'plain'))
-        msg.attach(MIMEText(html_content, 'html'))
+        msg.attach(MIMEText(plain_text, 'plain', 'utf-8'))
+        msg.attach(MIMEText(html_content, 'html', 'utf-8'))
 
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 
@@ -349,7 +350,7 @@ This is an automated notification. Please do not reply to this email.
         msg['Subject'] = f"Your Immunization Record - {facility['name']}"
         msg['From'] = f"{facility['name']} <records@{facility['name'].lower().replace(' ', '')}.org>"
         msg['To'] = f"{patient['first_name']} {patient['last_name']} <{patient['email']}>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0000')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000000, 999999999)}@healthsystem.org>"
 
         # Build vaccine table
@@ -461,12 +462,12 @@ Primary Care Provider: {provider['first_name']} {provider['last_name']}, {provid
 This document contains Protected Health Information (PHI).
 """
 
-        msg.attach(MIMEText(plain_text, 'plain'))
-        msg.attach(MIMEText(html_content, 'html'))
+        msg.attach(MIMEText(plain_text, 'plain', 'utf-8'))
+        msg.attach(MIMEText(html_content, 'html', 'utf-8'))
 
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 

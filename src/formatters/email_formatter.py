@@ -4,6 +4,7 @@ Creates PHI-containing and PHI-negative emails
 """
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.utils import formatdate
 from datetime import datetime
 import os
 import random
@@ -25,7 +26,7 @@ class EmailFormatter:
         msg['Subject'] = f"Patient Consultation: {patient['last_name']}, {patient['first_name']}"
         msg['From'] = f"{sender_provider['first_name']} {sender_provider['last_name']} <{sender_provider['email']}>"
         msg['To'] = f"{recipient_provider['first_name']} {recipient_provider['last_name']} <{recipient_provider['email']}>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
         # Email body (plain text)
@@ -112,15 +113,15 @@ Fax: {sender_provider['fax']}
 """
 
         # Attach parts
-        part1 = MIMEText(plain_text, 'plain')
-        part2 = MIMEText(html_text, 'html')
+        part1 = MIMEText(plain_text, 'plain', 'utf-8')
+        part2 = MIMEText(html_text, 'html', 'utf-8')
         msg.attach(part1)
         msg.attach(part2)
 
         # Save as EML
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 
@@ -133,7 +134,7 @@ Fax: {sender_provider['fax']}
         msg['Subject'] = f"Lab Results Available - {patient['last_name']}, {patient['first_name']}"
         msg['From'] = f"{provider['first_name']} {provider['last_name']} <{provider['email']}>"
         msg['To'] = f"{patient['first_name']} {patient['last_name']} <{patient['email']}>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@patientportal.org>"
 
         # Plain text body
@@ -210,15 +211,15 @@ If you received this in error, please delete it immediately and notify the sende
 """
 
         # Attach parts
-        part1 = MIMEText(plain_text, 'plain')
-        part2 = MIMEText(html_text, 'html')
+        part1 = MIMEText(plain_text, 'plain', 'utf-8')
+        part2 = MIMEText(html_text, 'html', 'utf-8')
         msg.attach(part1)
         msg.attach(part2)
 
         # Save as EML
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 
@@ -231,7 +232,7 @@ If you received this in error, please delete it immediately and notify the sende
         msg['Subject'] = "Office Closure Notice - Holiday Schedule"
         msg['From'] = f"Office Administrator <admin@{facility['name'].lower().replace(' ', '')}.org>"
         msg['To'] = f"All Staff <staff@{facility['name'].lower().replace(' ', '')}.org>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
         # Plain text body
@@ -295,15 +296,15 @@ Phone: {facility['phone']}
 """
 
         # Attach parts
-        part1 = MIMEText(plain_text, 'plain')
-        part2 = MIMEText(html_text, 'html')
+        part1 = MIMEText(plain_text, 'plain', 'utf-8')
+        part2 = MIMEText(html_text, 'html', 'utf-8')
         msg.attach(part1)
         msg.attach(part2)
 
         # Save as EML
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 
@@ -316,7 +317,7 @@ Phone: {facility['phone']}
         msg['Subject'] = "Updated Clinical Documentation Policy"
         msg['From'] = f"Compliance Department <compliance@{facility['name'].lower().replace(' ', '')}.org>"
         msg['To'] = f"Clinical Staff <clinical@{facility['name'].lower().replace(' ', '')}.org>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        msg['Date'] = formatdate(localtime=True)
         msg['Message-ID'] = f"<{random.randint(100000, 999999)}@healthsystem.org>"
 
         # Plain text body
@@ -392,15 +393,15 @@ Phone: {facility['phone']}
 """
 
         # Attach parts
-        part1 = MIMEText(plain_text, 'plain')
-        part2 = MIMEText(html_text, 'html')
+        part1 = MIMEText(plain_text, 'plain', 'utf-8')
+        part2 = MIMEText(html_text, 'html', 'utf-8')
         msg.attach(part1)
         msg.attach(part2)
 
         # Save as EML
         filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
+        with open(filepath, 'wb') as f:
+            f.write(msg.as_bytes())
 
         return filepath
 
