@@ -46,6 +46,10 @@ from generators.llm_generator import is_llm_available
 # CUI imports
 from generators.cui import CUIGeneratorFactory
 from formatters.cui_formatter import CUIDocxFormatter, CUIEmailFormatter, CUIPdfFormatter, CUIXlsxFormatter
+from formatters.cui_pptx_formatter import CUIPPTXFormatter
+from formatters.cui_nested_formatter import CUINestedEmailFormatter
+from formatters.cui_html_email_formatter import CUIHTMLEmailFormatter
+from formatters.snyk_email_generator import SnykEmailGenerator
 from formatters.pdf_form_populator import CustomerTemplateManager
 
 # Initialize CLI app and console
@@ -608,7 +612,7 @@ class MedForgeCUIGenerator:
             self.category_negative_dirs[category] = negative_dir
 
         self.seed = seed
-        self.formats = formats or ["pdf", "docx", "xlsx", "eml"]
+        self.formats = formats or ["pdf", "docx", "xlsx", "eml", "pptx"]
         self.llm_percentage = llm_percentage
         self.cui_notice = cui_notice
         self.cui_classification = cui_classification
@@ -651,6 +655,10 @@ class MedForgeCUIGenerator:
             "pdf": CUIPdfFormatter(output_dir=str(self.output_dir)),
             "xlsx": CUIXlsxFormatter(output_dir=str(self.output_dir)),
             "eml": CUIEmailFormatter(output_dir=str(self.output_dir)),
+            "pptx": CUIPPTXFormatter(output_dir=str(self.output_dir)),
+            "nested_eml": CUINestedEmailFormatter(output_dir=str(self.output_dir)),
+            "html_eml": CUIHTMLEmailFormatter(output_dir=str(self.output_dir)),
+            "snyk_eml": SnykEmailGenerator(output_dir=str(self.output_dir)),
         }
 
         # Initialize customer template manager for real CMS forms
@@ -909,8 +917,30 @@ class MedForgeCUIGenerator:
             if not available_formats:
                 return None
 
-            # Prefer certain formats for certain document types
-            if doc_type in ["vulnerability_alert", "servicenow_ticket"]:
+            # ~7% chance of nested email (matching PHI pipeline)
+            use_nested = random.random() < 0.07 and "eml" in available_formats
+            # ~50% Snyk for critical_infrastructure vulnerability alerts
+            use_snyk = (
+                category == "critical_infrastructure"
+                and doc_type in ["vulnerability_alert", "fisma_report"]
+                and "eml" in available_formats
+                and random.random() < 0.5
+            )
+            # ~30% HTML email for vulnerability alerts
+            use_html_email = (
+                doc_type in ["vulnerability_alert", "budget_memo", "investigation_summary"]
+                and "eml" in available_formats
+                and random.random() < 0.3
+                and not use_snyk
+            )
+
+            if use_snyk:
+                fmt = "eml"
+            elif use_nested:
+                fmt = "eml"
+            elif use_html_email:
+                fmt = "eml"
+            elif doc_type in ["vulnerability_alert", "servicenow_ticket"]:
                 fmt = "eml" if "eml" in available_formats else random.choice(available_formats)
             elif doc_type in ["taxpayer_record", "eft_authorization", "sam_registration"]:
                 fmt = "xlsx" if "xlsx" in available_formats else random.choice(available_formats)
@@ -923,17 +953,37 @@ class MedForgeCUIGenerator:
 
             # Set output directory for formatter (use display name folder)
             category_dir = self.category_positive_dirs.get(category, self.output_dir)
-            self.formatters[fmt].output_dir = str(category_dir)
 
-            # Create document
-            if fmt == "docx":
+            # Create document based on format and variant
+            if use_snyk:
+                self.formatters["snyk_eml"].output_dir = str(category_dir)
+                filepath = self.formatters["snyk_eml"].create_snyk_vulnerability_alert(
+                    filename, is_positive=True)
+                fmt = "eml"
+            elif use_nested:
+                self.formatters["nested_eml"].output_dir = str(category_dir)
+                filepath = self.formatters["nested_eml"].create_cui_email_with_attachment(
+                    doc_data, filename, is_positive=True)
+                fmt = "eml"
+            elif use_html_email:
+                self.formatters["html_eml"].output_dir = str(category_dir)
+                filepath = self.formatters["html_eml"].create_cui_html_email(doc_data, filename)
+                fmt = "eml"
+            elif fmt == "docx":
+                self.formatters[fmt].output_dir = str(category_dir)
                 filepath = self.formatters[fmt].create_cui_document(doc_data, filename)
             elif fmt == "pdf":
+                self.formatters[fmt].output_dir = str(category_dir)
                 filepath = self.formatters[fmt].create_cui_pdf(doc_data, filename)
             elif fmt == "xlsx":
+                self.formatters[fmt].output_dir = str(category_dir)
                 filepath = self.formatters[fmt].create_cui_xlsx(doc_data, filename)
             elif fmt == "eml":
+                self.formatters[fmt].output_dir = str(category_dir)
                 filepath = self.formatters[fmt].create_cui_email(doc_data, filename)
+            elif fmt == "pptx":
+                self.formatters[fmt].output_dir = str(category_dir)
+                filepath = self.formatters[fmt].create_cui_presentation(doc_data, filename)
             else:
                 return None
 
@@ -942,6 +992,15 @@ class MedForgeCUIGenerator:
             self.stats["cui_positive"] += 1
             self.stats["by_format"][fmt] += 1
             self.stats["by_category"][category] += 1
+
+            # Determine variant for manifest
+            variant = "standard"
+            if use_snyk:
+                variant = "snyk_alert"
+            elif use_nested:
+                variant = "nested_attachment"
+            elif use_html_email:
+                variant = "html_styled"
 
             # Add to manifest
             manifest_entry = {
@@ -953,6 +1012,7 @@ class MedForgeCUIGenerator:
                 "classification": doc_data.get("classification", ""),
                 "authority": doc_data.get("authority", ""),
                 "format": fmt,
+                "variant": variant,
                 "index": index,
                 "llm_enhanced": was_enhanced,
             }
@@ -991,7 +1051,29 @@ class MedForgeCUIGenerator:
             if not available_formats:
                 return None
 
-            fmt = random.choice(available_formats)
+            # ~7% nested email, ~50% Snyk for servicenow_ticket negatives
+            use_nested = random.random() < 0.07 and "eml" in available_formats
+            use_snyk = (
+                category == "critical_infrastructure"
+                and doc_type == "servicenow_ticket"
+                and "eml" in available_formats
+                and random.random() < 0.5
+            )
+            use_html_email = (
+                doc_type in ["servicenow_ticket", "policy_update", "compliance_report"]
+                and "eml" in available_formats
+                and random.random() < 0.3
+                and not use_snyk
+            )
+
+            if use_snyk:
+                fmt = "eml"
+            elif use_nested:
+                fmt = "eml"
+            elif use_html_email:
+                fmt = "eml"
+            else:
+                fmt = random.choice(available_formats)
 
             # Generate filename
             type_prefix = doc_type.replace("_", "").title()[:15]
@@ -999,19 +1081,48 @@ class MedForgeCUIGenerator:
 
             # Set output directory for formatter (use display name folder)
             category_dir = self.category_negative_dirs.get(category, self.output_dir)
-            self.formatters[fmt].output_dir = str(category_dir)
 
-            # Create document
-            if fmt == "docx":
+            # Create document based on format and variant
+            if use_snyk:
+                self.formatters["snyk_eml"].output_dir = str(category_dir)
+                filepath = self.formatters["snyk_eml"].create_snyk_vulnerability_alert(
+                    filename, is_positive=False)
+                fmt = "eml"
+            elif use_nested:
+                self.formatters["nested_eml"].output_dir = str(category_dir)
+                filepath = self.formatters["nested_eml"].create_cui_email_with_attachment(
+                    doc_data, filename, is_positive=False)
+                fmt = "eml"
+            elif use_html_email:
+                self.formatters["html_eml"].output_dir = str(category_dir)
+                filepath = self.formatters["html_eml"].create_cui_html_email(doc_data, filename)
+                fmt = "eml"
+            elif fmt == "docx":
+                self.formatters[fmt].output_dir = str(category_dir)
                 filepath = self.formatters[fmt].create_cui_document(doc_data, filename)
             elif fmt == "pdf":
+                self.formatters[fmt].output_dir = str(category_dir)
                 filepath = self.formatters[fmt].create_cui_pdf(doc_data, filename)
             elif fmt == "xlsx":
+                self.formatters[fmt].output_dir = str(category_dir)
                 filepath = self.formatters[fmt].create_cui_xlsx(doc_data, filename)
             elif fmt == "eml":
+                self.formatters[fmt].output_dir = str(category_dir)
                 filepath = self.formatters[fmt].create_cui_email(doc_data, filename)
+            elif fmt == "pptx":
+                self.formatters[fmt].output_dir = str(category_dir)
+                filepath = self.formatters[fmt].create_cui_presentation(doc_data, filename)
             else:
                 return None
+
+            # Determine variant for manifest
+            variant = "standard"
+            if use_snyk:
+                variant = "snyk_alert"
+            elif use_nested:
+                variant = "nested_attachment"
+            elif use_html_email:
+                variant = "html_styled"
 
             # Update statistics
             self.stats["total_generated"] += 1
@@ -1029,6 +1140,7 @@ class MedForgeCUIGenerator:
                 "classification": "",
                 "authority": "",
                 "format": fmt,
+                "variant": variant,
                 "index": index,
                 "llm_enhanced": False,
             })
@@ -1461,12 +1573,11 @@ def generate(
         # Generate CUI documents
         if generate_cui and (cui_positive > 0 or cui_negative > 0):
             console.print("\n[bold cyan]Generating CUI documents...[/bold cyan]\n")
-            cui_format_list = [f for f in format_list if f != "pptx"]  # CUI doesn't support pptx
             cui_generator = MedForgeCUIGenerator(
                 output_dir=str(run_dir),
                 seed=seed,
                 categories=selected_categories,
-                formats=cui_format_list,
+                formats=format_list,
                 llm_percentage=llm_percentage,
                 cui_notice=cui_notice,
                 cui_classification=cui_classification,

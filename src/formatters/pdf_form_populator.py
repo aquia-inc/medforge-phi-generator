@@ -4,12 +4,15 @@ PDF Form Field Populator
 Populates fillable PDF forms with synthetic data using Faker.
 Works with customer-provided CMS template forms.
 """
+import logging
 import pikepdf
 from faker import Faker
 import random
 import os
 from datetime import datetime
 from typing import Dict, Any, Optional
+
+logger = logging.getLogger(__name__)
 
 
 class PDFFormPopulator:
@@ -38,6 +41,7 @@ class PDFFormPopulator:
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
         # Use reportlab to overlay text on template PDF (only way that renders everywhere)
+        primary_error = None
         try:
             from reportlab.pdfgen import canvas
             from reportlab.lib.pagesizes import letter
@@ -86,60 +90,60 @@ class PDFFormPopulator:
                 output.add_page(template.pages[i])
 
             # Write
-            os.makedirs(os.path.dirname(output_path), exist_ok=True)
             with open(output_path, 'wb') as f:
                 output.write(f)
 
+        except ImportError as e:
+            logger.warning("reportlab/PyPDF2 not installed, using pikepdf fallback: %s", e)
+            primary_error = e
         except Exception as e:
-            print(f"Warning: reportlab overlay error: {e}")
-            # Fallback: use pikepdf method
-            try:
-                pdf = pikepdf.open(template_path)
+            logger.warning("reportlab overlay failed for %s: %s", template_path, e)
+            primary_error = e
 
-                if '/AcroForm' in pdf.Root and '/Fields' in pdf.Root.AcroForm:
-                    for field in pdf.Root.AcroForm.Fields:
-                        field_name = str(field.T) if '/T' in field else None
+        if primary_error is None:
+            return output_path
 
-                        if field_name and field_name in field_data:
-                            value = field_data[field_name]
+        # Fallback: use pikepdf to set form field values.
+        # NOTE: pikepdf form field values are NOT extractable by SharePoint/Purview
+        # text indexers. This fallback produces viewer-visible but non-indexable text.
+        try:
+            pdf = pikepdf.open(template_path)
 
-                            if value is True:
-                                field['/V'] = pikepdf.Name('/On')
-                            elif value is False:
-                                field['/V'] = pikepdf.Name('/Off')
-                            else:
-                                field['/V'] = str(value) if value else ''
+            if '/AcroForm' in pdf.Root and '/Fields' in pdf.Root.AcroForm:
+                for field in pdf.Root.AcroForm.Fields:
+                    field_name = str(field.T) if '/T' in field else None
 
-                            if '/AP' in field:
-                                del field['/AP']
+                    if field_name and field_name in field_data:
+                        value = field_data[field_name]
 
-                    pdf.Root.AcroForm['/NeedAppearances'] = True
+                        if value is True:
+                            field['/V'] = pikepdf.Name('/On')
+                        elif value is False:
+                            field['/V'] = pikepdf.Name('/Off')
+                        else:
+                            field['/V'] = str(value) if value else ''
 
-                # Save to temp file first
-                temp_path = output_path + ".tmp.pdf"
-                pdf.save(temp_path, normalize_content=True)
-                pdf.close()
+                        if '/AP' in field:
+                            del field['/AP']
 
-                # Flatten by removing AcroForm (keeps field text as static content)
-                pdf2 = pikepdf.open(temp_path)
-                if '/AcroForm' in pdf2.Root:
-                    del pdf2.Root['/AcroForm']
-                pdf2.save(output_path)
-                pdf2.close()
+                pdf.Root.AcroForm['/NeedAppearances'] = True
 
-                # Clean up temp
-                if os.path.exists(temp_path):
-                    os.remove(temp_path)
-            except:
-                # Final fallback
-                import shutil
-                shutil.copy(template_path, output_path)
+            pdf.save(output_path)
+            pdf.close()
+            logger.warning(
+                "Used pikepdf fallback for %s -- form field data may not be "
+                "extractable by Purview/SharePoint text indexers", output_path
+            )
 
-        except Exception as e:
-            print(f"Warning: pikepdf error: {e}")
-            # Fallback: copy template
-            import shutil
-            shutil.copy(template_path, output_path)
+        except Exception as e2:
+            logger.error(
+                "Both reportlab and pikepdf failed for %s: %s / %s",
+                template_path, primary_error, e2
+            )
+            raise RuntimeError(
+                f"Cannot populate PDF form {template_path}: "
+                f"reportlab error: {primary_error}, pikepdf error: {e2}"
+            ) from e2
 
         return output_path
 

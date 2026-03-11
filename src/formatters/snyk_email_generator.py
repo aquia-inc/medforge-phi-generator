@@ -4,15 +4,15 @@ Snyk Security Email Generator
 Generates realistic Snyk vulnerability alert emails with varied findings.
 Can be template-based or LLM-enhanced.
 """
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 from datetime import datetime
 import random
 import os
 from typing import Dict, Any, Optional
 
+from formatters.base_email_formatter import BaseEmailFormatter
 
-class SnykEmailGenerator:
+
+class SnykEmailGenerator(BaseEmailFormatter):
     """Generates Snyk security alert emails with varied vulnerability findings."""
 
     # Real npm packages from 2025 supply chain attacks and common government use
@@ -307,21 +307,13 @@ class SnykEmailGenerator:
         Returns:
             Path to created email file
         """
-        msg = MIMEMultipart('alternative')
-
         # Count by severity
         critical_count = sum(1 for f in findings if f['severity'] == 'Critical')
         high_count = sum(1 for f in findings if f['severity'] == 'High')
         medium_count = sum(1 for f in findings if f['severity'] == 'Medium')
         low_count = sum(1 for f in findings if f['severity'] == 'Low')
 
-        # Email headers
-        msg['Subject'] = f"[snyk] Vulnerability alert for the {organization} organization"
-        msg['From'] = 'Snyk <support-noreply@snyk.io>'
-        msg['To'] = recipient_email
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
-        msg['Message-ID'] = f"<{random.randint(10000000000, 99999999999)}@snyk.io>"
-        msg['X-Mailgun-Tag'] = 'new-vulnerabilities'
+        subject = f"[snyk] Vulnerability alert for the {organization} organization"
 
         # Build plain text body
         plain_text = self._build_plain_text_vulnerability_alert(
@@ -333,15 +325,16 @@ class SnykEmailGenerator:
             findings, organization, critical_count, high_count, medium_count, low_count
         )
 
-        msg.attach(MIMEText(plain_text, 'plain'))
-        msg.attach(MIMEText(html_text, 'html'))
-
-        # Save email
-        filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
-
-        return filepath
+        return self._build_and_save_email(
+            subject=subject,
+            from_addr='Snyk <support-noreply@snyk.io>',
+            to_addr=recipient_email,
+            plain_body=plain_text,
+            html_body=html_text,
+            custom_headers={'X-Mailgun-Tag': 'new-vulnerabilities'},
+            filename=filename,
+            message_id_domain='snyk.io',
+        )
 
     def _build_plain_text_vulnerability_alert(self, findings, organization, crit, high, med, low):
         """Build plain text email body for vulnerability alert."""
@@ -521,8 +514,6 @@ class SnykEmailGenerator:
         Returns:
             Path to created file
         """
-        msg = MIMEMultipart('alternative')
-
         # Select project
         if is_positive:
             organization = random.choice(['CMS', 'HHS'])
@@ -533,12 +524,7 @@ class SnykEmailGenerator:
             project_name = random.choice(self.PUBLIC_PROJECTS)
             recipient = 'dev@example.com'
 
-        # Email headers
-        msg['Subject'] = f"[snyk] {project_name}'s weekly report"
-        msg['From'] = 'Snyk <support-noreply@snyk.io>'
-        msg['To'] = recipient
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
-        msg['Message-ID'] = f"<{random.randint(10000000000, 99999999999)}@snyk.io>"
+        subject = f"[snyk] {project_name}'s weekly report"
 
         # Weekly summary stats
         new_vulns = random.randint(0, 5)
@@ -608,15 +594,15 @@ https://snyk.io
 </html>
 """
 
-        msg.attach(MIMEText(plain_text, 'plain'))
-        msg.attach(MIMEText(html_text, 'html'))
-
-        # Save email
-        filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
-
-        return filepath
+        return self._build_and_save_email(
+            subject=subject,
+            from_addr='Snyk <support-noreply@snyk.io>',
+            to_addr=recipient,
+            plain_body=plain_text,
+            html_body=html_text,
+            filename=filename,
+            message_id_domain='snyk.io',
+        )
 
 
 if __name__ == "__main__":

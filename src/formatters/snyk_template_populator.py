@@ -7,6 +7,7 @@ Preserves authentic Snyk formatting while generating different findings.
 import email
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.utils import formatdate
 import re
 import random
 from datetime import datetime
@@ -175,7 +176,7 @@ class SnykTemplatePopulator:
         new_msg['Subject'] = f"[snyk] Vulnerability alert for the {organization} organization"
         new_msg['From'] = 'Snyk <support-noreply@snyk.io>'
         new_msg['To'] = f"{recipient_name} <{recipient_email}>"
-        new_msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S %z')
+        new_msg['Date'] = formatdate(localtime=True)
         new_msg['Message-Id'] = f"<{datetime.now().strftime('%Y%m%d%H%M%S')}.{random.randint(100000000, 999999999)}@snyk.io>"
         new_msg['X-Mailgun-Tag'] = 'new-vulnerabilities'
 
@@ -188,8 +189,8 @@ class SnykTemplatePopulator:
 
         # Save
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        with open(output_path, 'w') as f:
-            f.write(new_msg.as_string())
+        with open(output_path, 'wb') as f:
+            f.write(new_msg.as_bytes())
 
         return output_path
 

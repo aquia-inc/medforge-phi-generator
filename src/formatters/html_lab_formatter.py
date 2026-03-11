@@ -5,16 +5,15 @@ Creates realistic lab result emails and documents with modern styling
 import os
 import random
 from datetime import datetime
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+
+from formatters.base_email_formatter import BaseEmailFormatter
 
 
-class HTMLLabFormatter:
+class HTMLLabFormatter(BaseEmailFormatter):
     """Creates professional HTML lab result documents and emails"""
 
     def __init__(self, output_dir='output'):
-        self.output_dir = output_dir
-        os.makedirs(output_dir, exist_ok=True)
+        super().__init__(output_dir)
 
         # Lab company branding options
         self.lab_companies = [
@@ -58,13 +57,11 @@ class HTMLLabFormatter:
         This is what Purview SHOULD detect
         """
         lab = self._get_lab_company()
-        msg = MIMEMultipart('alternative')
 
-        msg['Subject'] = f"Your {lab_data.get('panel_name', 'Lab')} Results Are Ready - {lab['name']}"
-        msg['From'] = f"{lab['name']} <noreply@{lab['name'].lower().replace(' ', '')}.com>"
-        msg['To'] = f"{patient['first_name']} {patient['last_name']} <{patient['email']}>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0000')
-        msg['Message-ID'] = f"<{random.randint(100000000, 999999999)}@{lab['name'].lower().replace(' ', '')}.com>"
+        subject = f"Your {lab_data.get('panel_name', 'Lab')} Results Are Ready - {lab['name']}"
+        from_addr = f"{lab['name']} <noreply@{lab['name'].lower().replace(' ', '')}.com>"
+        to_addr = f"{patient['first_name']} {patient['last_name']} <{patient['email']}>"
+        domain = f"{lab['name'].lower().replace(' ', '')}.com"
 
         # Build results table
         results_html = self._build_results_table(lab_data['results'], lab['color'])
@@ -196,14 +193,11 @@ View full results at: {lab['url']}
 CONFIDENTIALITY NOTICE: This email contains Protected Health Information (PHI).
 """
 
-        msg.attach(MIMEText(plain_text, 'plain'))
-        msg.attach(MIMEText(html_content, 'html'))
-
-        filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
-
-        return filepath
+        return self._build_and_save_email(
+            subject=subject, from_addr=from_addr, to_addr=to_addr,
+            plain_body=plain_text, html_body=html_content,
+            filename=filename, message_id_domain=domain,
+        )
 
     def create_lab_notification_phi_negative(self, facility, filename):
         """
@@ -212,13 +206,11 @@ CONFIDENTIALITY NOTICE: This email contains Protected Health Information (PHI).
         This is what Purview should NOT flag
         """
         lab = self._get_lab_company()
-        msg = MIMEMultipart('alternative')
 
-        msg['Subject'] = f"New Lab Results Available - {lab['name']}"
-        msg['From'] = f"{lab['name']} <noreply@{lab['name'].lower().replace(' ', '')}.com>"
-        msg['To'] = f"Patient <patient@example.com>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0000')
-        msg['Message-ID'] = f"<{random.randint(100000000, 999999999)}@{lab['name'].lower().replace(' ', '')}.com>"
+        subject = f"New Lab Results Available - {lab['name']}"
+        from_addr = f"{lab['name']} <noreply@{lab['name'].lower().replace(' ', '')}.com>"
+        to_addr = f"Patient <patient@example.com>"
+        domain = f"{lab['name'].lower().replace(' ', '')}.com"
 
         html_content = f"""
 <!DOCTYPE html>
@@ -331,26 +323,19 @@ Customer Service: {lab['phone']}
 This is an automated notification. Please do not reply to this email.
 """
 
-        msg.attach(MIMEText(plain_text, 'plain'))
-        msg.attach(MIMEText(html_content, 'html'))
-
-        filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
-
-        return filepath
+        return self._build_and_save_email(
+            subject=subject, from_addr=from_addr, to_addr=to_addr,
+            plain_body=plain_text, html_body=html_content,
+            filename=filename, message_id_domain=domain,
+        )
 
     def create_immunization_record_email(self, patient, provider, facility, imm_data, filename):
         """
         Create professional immunization record email with full PHI
         """
-        msg = MIMEMultipart('alternative')
-
-        msg['Subject'] = f"Your Immunization Record - {facility['name']}"
-        msg['From'] = f"{facility['name']} <records@{facility['name'].lower().replace(' ', '')}.org>"
-        msg['To'] = f"{patient['first_name']} {patient['last_name']} <{patient['email']}>"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S +0000')
-        msg['Message-ID'] = f"<{random.randint(100000000, 999999999)}@healthsystem.org>"
+        subject = f"Your Immunization Record - {facility['name']}"
+        from_addr = f"{facility['name']} <records@{facility['name'].lower().replace(' ', '')}.org>"
+        to_addr = f"{patient['first_name']} {patient['last_name']} <{patient['email']}>"
 
         # Build vaccine table
         vaccine_rows = ""
@@ -461,14 +446,11 @@ Primary Care Provider: {provider['first_name']} {provider['last_name']}, {provid
 This document contains Protected Health Information (PHI).
 """
 
-        msg.attach(MIMEText(plain_text, 'plain'))
-        msg.attach(MIMEText(html_content, 'html'))
-
-        filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
-
-        return filepath
+        return self._build_and_save_email(
+            subject=subject, from_addr=from_addr, to_addr=to_addr,
+            plain_body=plain_text, html_body=html_content,
+            filename=filename, message_id_domain='healthsystem.org',
+        )
 
     def _build_results_table(self, results, color):
         """Build HTML table for lab results"""

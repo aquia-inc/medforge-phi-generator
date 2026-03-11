@@ -8,8 +8,7 @@ from docx import Document
 from docx.shared import Pt, Inches, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+from formatters.base_email_formatter import BaseEmailFormatter
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -352,12 +351,8 @@ class CUIDocxFormatter:
                 "and Government-wide policies.")
 
 
-class CUIEmailFormatter:
+class CUIEmailFormatter(BaseEmailFormatter):
     """Creates EML email files with CUI content."""
-
-    def __init__(self, output_dir: str = 'output'):
-        self.output_dir = output_dir
-        os.makedirs(output_dir, exist_ok=True)
 
     def create_cui_email(self, doc_data: Dict[str, Any], filename: str) -> str:
         """
@@ -370,33 +365,23 @@ class CUIEmailFormatter:
         Returns:
             Path to created file
         """
-        msg = MIMEMultipart('alternative')
-
-        # Build subject without classification marking (for realistic training data)
         subject = doc_data.get('title', 'Document')
 
-        # Generate sender/recipient
         agency = doc_data.get('agency', 'Department of Health and Human Services')
         agency_domain = agency.lower().replace(' ', '').replace('of', '')[:10] + '.gov'
 
-        msg['Subject'] = subject
-        msg['From'] = f"noreply@{agency_domain}"
-        msg['To'] = f"recipient@{agency_domain}"
-        msg['Date'] = datetime.now().strftime('%a, %d %b %Y %H:%M:%S -0500')
-        msg['Message-ID'] = f"<{random.randint(100000, 999999)}@{agency_domain}>"
-
-        # Build email body
         plain_text = self._build_plain_text(doc_data)
         html_text = self._build_html(doc_data)
 
-        msg.attach(MIMEText(plain_text, 'plain'))
-        msg.attach(MIMEText(html_text, 'html'))
-
-        # Save email
-        filepath = os.path.join(self.output_dir, filename)
-        with open(filepath, 'w') as f:
-            f.write(msg.as_string())
-        return filepath
+        return self._build_and_save_email(
+            subject=subject,
+            from_addr=f"noreply@{agency_domain}",
+            to_addr=f"recipient@{agency_domain}",
+            plain_body=plain_text,
+            html_body=html_text,
+            filename=filename,
+            message_id_domain=agency_domain,
+        )
 
     def _build_plain_text(self, doc_data: Dict[str, Any]) -> str:
         """Build plain text email body."""
