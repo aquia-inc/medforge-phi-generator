@@ -79,26 +79,105 @@ for field in pdf.Root.AcroForm.Fields:
 
 ### Customer Templates Successfully Integrated
 
-**Location:** All 37 customer templates stored in `cust_templates/` directory
+**Location:** All customer templates stored in `cust_templates/` directory
+**Full registration guide:** `docs/adding-customer-templates.md`
 
-**Working Templates:**
-- ✅ Medical Inquiry Form (PHI) - 29 fields populated with pikepdf + NeedAppearances
-- ✅ EFT Authorization Form (CUI-Finance) - Uses Elizabeth's pre-filled example (perfect as-is)
-- ✅ Reasonable Accommodation Request (CUI-Legal) - 8 fields with reportlab overlay at correct coordinates
+**18 Active Templates (4 categories):**
 
-**Integration:**
-- Customer templates automatically mixed into generation at 20% rate
-- Synthetic data generated via Faker (names, addresses, banks, TINs, medical conditions)
+| Category | Templates | Fill Method |
+|----------|-----------|-------------|
+| Procurement (9) | IGCE, CLIN Templates, Market Research, RFC Memo, AGX RFC Memo, JA Limited Source, JOFOC, OAGM Source Selection, Acquisition Plan | XLSX copy / DOCX table fill / underline fill |
+| Critical Infrastructure (3) | KMP, Rules of Behavior, Incident Response | DOCX sub / table fill (pos+neg pairs) |
+| Financial (3) | AFR Additional Info, DIBO AFR, Supplemental AFR | DOCX sub (pos+neg pairs) |
+| Legal (1) | Reasonable Accommodation Request | PDF fillable (reportlab overlay) |
+| PHI (1) | Medical Inquiry Form | PDF fillable (reportlab overlay) |
+| Financial (1, disabled) | EFT Authorization Form | PDF copy pair (disabled — form fill unreliable) |
+
+**Integration Details:**
+- Customer templates mixed into generation at 20% rate
+- **Category-weighted selection:** picks category first (uniform), then template within category — prevents bias when one category has more templates
+- Synthetic data generated via Faker (names, addresses, contract numbers, prices, system names)
+- Supports 5 fill patterns: PDF fillable, PDF copy, DOCX placeholder sub, DOCX table fill, DOCX underline fill
 - Clean filenames (no positive/negative labels)
-- Proper CUI category placement
 
-**Remaining 34 Templates:**
-Available in `cust_templates/` for future integration:
-- BugCrowd/Snyk security emails (Critical Infrastructure)
-- Budget forms (AFR, DIBO) (Financial)
-- FISMA reporting templates (Critical Infrastructure)
-- ServiceNow tickets, vulnerability reports
-- HHS Rules of Behavior, KMP documents
+**Remaining Unintegrated Templates:**
+- BugCrowd/Snyk security emails (Critical Infrastructure) — requires MIME parsing
+- FISMA reporting XLSX (Critical Infrastructure) — ~6MB, verify Purview limits
+- HHS Rules of Behavior PDF (Critical Infrastructure) — PDF copy pair
+- Test Validation Reports (Critical Infrastructure) — PDF positive-only
+- CMS Things to Know (TBD classification)
+
+---
+
+### Design Patterns for Template Generators
+
+When adding new customer templates, follow these patterns:
+
+**1. Generator methods go on `PDFFormPopulator` (not `CustomerTemplateManager`)**
+- Location: `src/formatters/pdf_form_populator.py`
+- Method naming: `generate_<template_name>_data(self) -> Dict[str, Any]`
+- Use `self.fake` for Faker data, `random` for choices
+- Helper methods: `self._contract_number()`, `self._task_order_number()`, `self.generate_currency_amount()`, `self.format_currency()`
+
+**2. Three fill mechanisms (can be combined in one generator):**
+```python
+def generate_example_data(self) -> Dict[str, Any]:
+    return {
+        # Text placeholder substitution: replaces literal strings
+        'MockSystem': self.fake.company(),
+
+        # Underline fills: replaces ___ blanks in document order
+        # WARNING: consumed in order: body paragraphs → table cells → headers/footers
+        '_underline_fills': ['value1', 'value2'],
+
+        # Table fills: writes into cells by position (None = skip/preserve)
+        '_table_data': [
+            {'table_index': 0, 'start_row': 1, 'rows': [['a', None, 'c']]}
+        ],
+    }
+```
+
+**3. Registration requires two locations:**
+- `template_mappings` dict in `CustomerTemplateManager.__init__()` (~line 884)
+- `template_category_map` dict in `_generate_from_customer_template()` (~line 686)
+
+**4. Category values in `template_category_map` must be one of:**
+`critical_infrastructure`, `financial`, `law_enforcement`, `legal`, `procurement`, `proprietary`, `tax`
+
+**5. Template selection is category-weighted** — adding 10 procurement templates won't flood output; each category gets equal selection probability.
+
+### Testing Templates
+
+```bash
+# Quick smoke test for a single template
+uv run python -c "
+from src.formatters.pdf_form_populator import CustomerTemplateManager
+mgr = CustomerTemplateManager(template_dir='./cust_templates', output_dir='./output/test')
+pos = mgr.generate_from_template('TemplateName', './output/test', 1, populate=True)
+neg = mgr.generate_from_template('TemplateName', './output/test', 2, populate=False)
+print(f'pos={pos} neg={neg}')
+"
+
+# Category-specific pipeline test
+uv run python -m src.cli generate --cui-positive 10 --cui-negative 5 --cui-categories <category> --seed 42
+
+# Full regression (all categories)
+uv run python -m src.cli generate --cui-positive 10 --cui-negative 10 --cui-all --seed 99
+
+# Validation
+latest=$(ls -td output/production_run_* | head -1)
+uv run python tests/validate_file_fidelity.py "$latest"
+
+# Check manifest for template usage
+uv run python -c "
+import json, glob
+from collections import Counter
+p = sorted(glob.glob('output/production_run_*/metadata/cui_manifest.json'))[-1]
+with open(p) as f: m = json.load(f)
+tmpl = [e['category'] for e in m['files'] if e.get('source') == 'customer_template']
+print('Template cats:', dict(Counter(tmpl)))
+"
+```
 
 ---
 
@@ -114,13 +193,13 @@ Available in `cust_templates/` for future integration:
 **Usage:**
 ```bash
 # Random notices (default) - trains on both with/without notices
-uv run medforge generate --cui-positive 100 --cui-all --cui-notice random
+uv run python -m src.cli generate --cui-positive 100 --cui-all --cui-notice random
 
 # Never - forces pattern learning
-uv run medforge generate --cui-positive 100 --cui-all --cui-notice never
+uv run python -m src.cli generate --cui-positive 100 --cui-all --cui-notice never
 
 # Always - traditional approach
-uv run medforge generate --cui-positive 100 --cui-all --cui-notice always
+uv run python -m src.cli generate --cui-positive 100 --cui-all --cui-notice always
 ```
 
 **Note:** CUI classification headers (e.g., "CONTROLLED UNCLASSIFIED INFORMATION - TAX") remain - these are authentic government markings. Only generic footers are controlled.
