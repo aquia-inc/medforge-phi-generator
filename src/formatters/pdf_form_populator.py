@@ -409,13 +409,81 @@ class CustomerTemplateManager:
             if populate:
                 # Generate synthetic data and fill form
                 field_data = template_info['generator']()
-                return self.populator.populate_form(template_path, output_path, field_data)
+                if ext.lower() == '.pdf':
+                    return self.populator.populate_form(
+                        template_path, output_path, field_data,
+                        field_positions=template_info.get('field_positions'))
+                elif ext.lower() == '.docx':
+                    return self.populate_docx_template(template_path, output_path, field_data)
+                else:
+                    # For other formats, copy and let caller handle
+                    import shutil
+                    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+                    shutil.copy(template_path, output_path)
+                    return output_path
             else:
                 # Copy blank template
                 import shutil
                 os.makedirs(os.path.dirname(output_path), exist_ok=True)
                 shutil.copy(template_path, output_path)
                 return output_path
+
+    def populate_docx_template(self, template_path: str, output_path: str,
+                                replacements: Dict[str, str]) -> str:
+        """
+        Populate a DOCX template by replacing placeholder text with synthetic values.
+
+        Replaces text in paragraph runs and table cells while preserving formatting.
+
+        Args:
+            template_path: Path to DOCX template
+            output_path: Path to save populated DOCX
+            replacements: Dict mapping placeholder strings to replacement values
+
+        Returns:
+            Path to created file
+        """
+        from docx import Document
+
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        doc = Document(template_path)
+
+        def replace_in_runs(paragraph):
+            """Replace placeholder text in paragraph runs, preserving formatting."""
+            full_text = paragraph.text
+            for placeholder, value in replacements.items():
+                if placeholder in full_text:
+                    full_text = full_text.replace(placeholder, str(value))
+
+            if full_text != paragraph.text:
+                # Rebuild runs: put all text in first run, clear the rest
+                if paragraph.runs:
+                    paragraph.runs[0].text = full_text
+                    for run in paragraph.runs[1:]:
+                        run.text = ""
+
+        for paragraph in doc.paragraphs:
+            replace_in_runs(paragraph)
+
+        for table in doc.tables:
+            for row in table.rows:
+                for cell in row.cells:
+                    for paragraph in cell.paragraphs:
+                        replace_in_runs(paragraph)
+
+        # Also check headers and footers
+        for section in doc.sections:
+            for header in [section.header, section.first_page_header, section.even_page_header]:
+                if header and header.is_linked_to_previous is False:
+                    for paragraph in header.paragraphs:
+                        replace_in_runs(paragraph)
+            for footer in [section.footer, section.first_page_footer, section.even_page_footer]:
+                if footer and footer.is_linked_to_previous is False:
+                    for paragraph in footer.paragraphs:
+                        replace_in_runs(paragraph)
+
+        doc.save(output_path)
+        return output_path
 
     def list_available_templates(self):
         """List all available customer templates."""
