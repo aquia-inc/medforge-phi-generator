@@ -687,6 +687,7 @@ class MedForgeCUIGenerator:
                 # 'EFT Authorization Form': 'financial',  # DISABLED
                 'ReasonableAccommodationRequest': 'legal',
                 'IGCE': 'procurement',
+                'CLINTemplates': 'procurement',
             }
 
             # Filter templates to active categories
