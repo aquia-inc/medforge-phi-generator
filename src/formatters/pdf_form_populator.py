@@ -444,36 +444,60 @@ class CustomerTemplateManager:
     def populate_docx_template(self, template_path: str, output_path: str,
                                 replacements: Dict[str, str]) -> str:
         """
-        Populate a DOCX template by replacing placeholder text with synthetic values.
+        Populate a DOCX template with synthetic values.
 
-        Replaces text in paragraph runs and table cells while preserving formatting.
+        Supports three fill mechanisms (all optional, can be combined):
+        1. Text placeholder substitution: {'PlaceholderText': 'replacement'}
+        2. Underline blank fills: {'_underline_fills': ['val1', 'val2', ...]}
+           Replaces ___ blanks in document order
+        3. Table data fills: {'_table_data': [{'table_index': 0, 'start_row': 3,
+           'rows': [['a','b'], ['c','d']]}]}
+           Writes values into table cells by position
 
         Args:
             template_path: Path to DOCX template
             output_path: Path to save populated DOCX
-            replacements: Dict mapping placeholder strings to replacement values
+            replacements: Dict with text replacements and optional _table_data/_underline_fills
 
         Returns:
             Path to created file
         """
         from docx import Document
+        import re
 
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         doc = Document(template_path)
 
+        # Extract special keys before text substitution
+        table_data = replacements.pop('_table_data', None)
+        underline_fills = replacements.pop('_underline_fills', None)
+        underline_iter = iter(underline_fills) if underline_fills else None
+
         def replace_in_runs(paragraph):
             """Replace placeholder text in paragraph runs, preserving formatting."""
             full_text = paragraph.text
+            changed = False
+
+            # Standard placeholder substitution
             for placeholder, value in replacements.items():
                 if placeholder in full_text:
                     full_text = full_text.replace(placeholder, str(value))
+                    changed = True
 
-            if full_text != paragraph.text:
-                # Rebuild runs: put all text in first run, clear the rest
-                if paragraph.runs:
-                    paragraph.runs[0].text = full_text
-                    for run in paragraph.runs[1:]:
-                        run.text = ""
+            # Underline blank substitution: replace each ___ with next value
+            if underline_iter and re.search(r'_{3,}', full_text):
+                def replace_blank(match):
+                    try:
+                        return next(underline_iter)
+                    except StopIteration:
+                        return match.group(0)
+                full_text = re.sub(r'_{3,}', replace_blank, full_text)
+                changed = True
+
+            if changed and paragraph.runs:
+                paragraph.runs[0].text = full_text
+                for run in paragraph.runs[1:]:
+                    run.text = ""
 
         for paragraph in doc.paragraphs:
             replace_in_runs(paragraph)
@@ -495,8 +519,50 @@ class CustomerTemplateManager:
                     for paragraph in footer.paragraphs:
                         replace_in_runs(paragraph)
 
+        # Table data fill: write values into empty cells by position
+        if table_data:
+            self._populate_docx_tables(doc, table_data)
+
         doc.save(output_path)
         return output_path
+
+    def _populate_docx_tables(self, doc, table_data: list):
+        """
+        Fill table rows with synthetic data.
+
+        Args:
+            doc: python-docx Document (mutated in place)
+            table_data: list of dicts:
+                {
+                    'table_index': int,   # which table in the doc
+                    'start_row': int,     # first data row to fill
+                    'rows': [             # data rows
+                        ['val1', 'val2', ...],
+                    ]
+                }
+        """
+        for entry in table_data:
+            table_idx = entry['table_index']
+            start_row = entry['start_row']
+            rows = entry['rows']
+
+            if table_idx >= len(doc.tables):
+                continue
+
+            table = doc.tables[table_idx]
+            for row_offset, row_values in enumerate(rows):
+                row_idx = start_row + row_offset
+                if row_idx >= len(table.rows):
+                    break
+                row = table.rows[row_idx]
+                for col_idx, value in enumerate(row_values):
+                    if col_idx >= len(row.cells):
+                        break
+                    cell = row.cells[col_idx]
+                    if cell.paragraphs:
+                        cell.paragraphs[0].text = str(value)
+                    else:
+                        cell.text = str(value)
 
     def list_available_templates(self):
         """List all available customer templates."""
