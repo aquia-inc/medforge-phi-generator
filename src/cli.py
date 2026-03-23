@@ -710,10 +710,14 @@ class MedForgeCUIGenerator:
                 populate=populate
             )
 
+            # Detect format from output filepath extension
+            detected_ext = os.path.splitext(filepath)[1].lstrip('.').lower()
+            detected_format = detected_ext if detected_ext else 'pdf'
+
             # Update statistics
             self.stats["total_generated"] += 1
             self.stats["template_based"] += 1
-            self.stats["by_format"]["pdf"] += 1
+            self.stats["by_format"][detected_format] += 1
             self.stats["by_category"][category] += 1
 
             if is_positive:
@@ -721,8 +725,10 @@ class MedForgeCUIGenerator:
             else:
                 self.stats["cui_negative"] += 1
 
-            # Validate customer template PDF has data if positive
-            if is_positive and filepath:
+            template_info = self.customer_templates.template_mappings[template_key]
+
+            # Validate customer template PDF has data if positive (only for PDF files)
+            if is_positive and filepath and detected_format == 'pdf':
                 try:
                     import pikepdf
                     pdf = pikepdf.open(filepath)
@@ -747,7 +753,6 @@ class MedForgeCUIGenerator:
                     pass  # Don't fail generation on validation errors
 
             # Add to manifest
-            template_info = self.customer_templates.template_mappings[template_key]
             self.manifest.append({
                 "file_path": str(Path(filepath).relative_to(self.output_dir)),
                 "cui_status": "positive" if is_positive else "negative",
@@ -756,7 +761,7 @@ class MedForgeCUIGenerator:
                 "document_type": template_info['clean_name'],
                 "classification": "CUI" if is_positive else "",
                 "authority": "",
-                "format": "pdf",
+                "format": detected_format,
                 "index": index,
                 "llm_enhanced": False,
                 "source": "customer_template",
@@ -887,7 +892,7 @@ class MedForgeCUIGenerator:
             # 20% chance to use customer CMS template
             use_customer_template = random.random() < 0.2
 
-            if use_customer_template and 'pdf' in self.formats:
+            if use_customer_template and {'pdf', 'docx', 'xlsx', 'eml'} & set(self.formats):
                 # Try to use a customer template
                 template_result = self._generate_from_customer_template(index, populate=True, is_positive=True)
                 if template_result:
@@ -1031,7 +1036,7 @@ class MedForgeCUIGenerator:
             # 20% chance to use customer CMS template
             use_customer_template = random.random() < 0.2
 
-            if use_customer_template and 'pdf' in self.formats:
+            if use_customer_template and {'pdf', 'docx', 'xlsx', 'eml'} & set(self.formats):
                 # Try to use a customer template (blank/unpopulated)
                 template_result = self._generate_from_customer_template(index, populate=False, is_positive=False)
                 if template_result:

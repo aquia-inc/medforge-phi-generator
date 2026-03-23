@@ -25,7 +25,8 @@ class PDFFormPopulator:
             Faker.seed(seed)
             random.seed(seed)
 
-    def populate_form(self, template_path: str, output_path: str, field_data: Dict[str, Any]) -> str:
+    def populate_form(self, template_path: str, output_path: str, field_data: Dict[str, Any],
+                      field_positions: Optional[Dict[str, tuple]] = None) -> str:
         """
         Populate a PDF form with synthetic data.
 
@@ -33,6 +34,8 @@ class PDFFormPopulator:
             template_path: Path to blank PDF template
             output_path: Path to save populated PDF
             field_data: Dictionary mapping field names to values
+            field_positions: Optional dict mapping field names to (x, y) coordinates.
+                           If None, uses default Reasonable Accommodation positions.
 
         Returns:
             Path to created file
@@ -52,18 +55,18 @@ class PDFFormPopulator:
             packet = BytesIO()
             can = canvas.Canvas(packet, pagesize=letter)
 
-            # Map field names to actual positions from PDF (extracted via pikepdf)
-            # Coordinates are (x, y) for bottom-left corner of text
-            field_positions = {
-                'Name': (145, 620),
-                'Component': (145, 596),
-                'Telephone number': (180, 574),
-                'Location': (200, 548),
-                'Grade': (150, 525),
-                'Date of Birth': (147, 501),
-                'Manager': (130, 476),
-                'Discription': (88, 380),  # Large text area
-            }
+            # Use provided positions or default Reasonable Accommodation form positions
+            if field_positions is None:
+                field_positions = {
+                    'Name': (145, 620),
+                    'Component': (145, 596),
+                    'Telephone number': (180, 574),
+                    'Location': (200, 548),
+                    'Grade': (150, 525),
+                    'Date of Birth': (147, 501),
+                    'Manager': (130, 476),
+                    'Discription': (88, 380),  # Large text area
+                }
 
             # Draw text on PDF
             can.setFont("Helvetica", 10)
@@ -387,7 +390,8 @@ class CustomerTemplateManager:
             # Just copy the appropriate template (positive already has data)
             template_path = os.path.join(self.template_dir, template_file)
             clean_name = template_info['clean_name']
-            filename = f"{clean_name}_{index:04d}.pdf"
+            ext = os.path.splitext(template_file)[1]  # Detect extension from template
+            filename = f"{clean_name}_{index:04d}{ext}"
             output_path = os.path.join(output_subdir, filename)
 
             import shutil
@@ -398,7 +402,8 @@ class CustomerTemplateManager:
             # Single template - need to populate
             template_path = os.path.join(self.template_dir, template_info['template'])
             clean_name = template_info['clean_name']
-            filename = f"{clean_name}_{index:04d}.pdf"
+            ext = os.path.splitext(template_info['template'])[1]  # Detect extension from template
+            filename = f"{clean_name}_{index:04d}{ext}"
             output_path = os.path.join(output_subdir, filename)
 
             if populate:
