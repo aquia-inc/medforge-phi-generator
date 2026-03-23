@@ -695,6 +695,12 @@ class MedForgeCUIGenerator:
                 'JOFOC': 'procurement',
                 'OAGMSourceSelection': 'procurement',
                 'AcquisitionPlan': 'procurement',
+                'KMP': 'critical_infrastructure',
+                'RulesOfBehavior': 'critical_infrastructure',
+                'IncidentResponse': 'critical_infrastructure',
+                'AFRAdditionalInfo': 'financial',
+                'DIBOAFR': 'financial',
+                'SupplementalAFR': 'financial',
             }
 
             # Filter templates to active categories
