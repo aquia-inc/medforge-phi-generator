@@ -703,16 +703,18 @@ class MedForgeCUIGenerator:
                 'SupplementalAFR': 'financial',
             }
 
-            # Filter templates to active categories
-            available_templates = [
-                k for k, cat in template_category_map.items()
-                if cat in self.categories
-            ]
-            if not available_templates:
+            # Group templates by active category, then select category-first
+            # to avoid bias when one category has many more templates than others
+            templates_by_category = {}
+            for k, cat in template_category_map.items():
+                if cat in self.categories:
+                    templates_by_category.setdefault(cat, []).append(k)
+
+            if not templates_by_category:
                 return None
 
-            template_key = random.choice(available_templates)
-            category = template_category_map[template_key]
+            category = random.choice(list(templates_by_category.keys()))
+            template_key = random.choice(templates_by_category[category])
 
             # Get correct output directory
             if is_positive:

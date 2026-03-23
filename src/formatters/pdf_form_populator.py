@@ -1117,6 +1117,10 @@ class CustomerTemplateManager:
         # Extract special keys before text substitution
         table_data = replacements.pop('_table_data', None)
         underline_fills = replacements.pop('_underline_fills', None)
+        # NOTE: _underline_fills values are consumed in iteration order:
+        # body paragraphs → table cells → headers/footers.
+        # Generators must provide values matching this order, not visual page order.
+        # If a template mixes underlines across these regions, use _table_data instead.
         underline_iter = iter(underline_fills) if underline_fills else None
 
         def replace_in_runs(paragraph):
