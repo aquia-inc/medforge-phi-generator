@@ -297,6 +297,199 @@ class PDFFormPopulator:
 
         return form_data
 
+    # --- Critical Infrastructure generators ---
+
+    def generate_kmp_data(self) -> Dict[str, Any]:
+        """Generate data for Key Management Plan (CUI-Critical Infrastructure)."""
+        SYSTEM_NAMES = [
+            'CloudVault', 'SecureEdge', 'DataShield', 'NetGuard', 'CipherNet',
+            'TrustCore', 'SafeLink', 'VaultStream', 'InfoSentry', 'CryptoGrid',
+        ]
+        system = random.choice(SYSTEM_NAMES)
+        system_lower = system.lower().replace(' ', '-')
+        return {
+            'Mock System': system,
+            'Mock-system': f"{system_lower}",
+            'MockSystem': system.replace(' ', ''),
+            'Mock system': system,
+        }
+
+    def generate_rules_of_behavior_data(self) -> Dict[str, Any]:
+        """Generate data for Rules of Behavior (CUI-Critical Infrastructure).
+
+        The negative template has [MAC NAME] placeholders; positive is pre-filled.
+        """
+        MAC_NAMES = [
+            'CCSQ MAC', 'FISS MAC', 'HIGLAS MAC', 'MCS MAC', 'VMS MAC',
+            'BCRC MAC', 'EDPS MAC', 'HETS MAC', 'MFFS MAC', 'SPS MAC',
+        ]
+        mac = random.choice(MAC_NAMES)
+        return {
+            '[MAC NAME]': mac,
+            'MAC NAME': mac,
+        }
+
+    def generate_incident_response_data(self) -> Dict[str, Any]:
+        """Generate data for Incident Response Report (CUI-Critical Infrastructure).
+
+        Fills tables with synthetic incident data: contacts, incident details, timeline.
+        """
+        reporter_first = self.fake.first_name()
+        reporter_last = self.fake.last_name()
+        reporter_email = f"{reporter_first}.{reporter_last}@cms.hhs.gov".lower()
+        mgr_first = self.fake.first_name()
+        mgr_last = self.fake.last_name()
+        mgr_email = f"{mgr_first}.{mgr_last}@cms.hhs.gov".lower()
+        fisma = random.choice([
+            'CMS Cloud Services', 'Medicare Fee-for-Service', 'Healthcare.gov',
+            'Marketplace Platform', 'Quality Payment Program', 'HCFAC System',
+        ])
+        CMS_OFFICES = ['OIT', 'CCIIO', 'CM', 'CMCS', 'OFM']
+        incident_date = self.fake.date_between(start_date='-60d', end_date='today')
+        phone1 = self.fake.numerify('443-555-####')
+        phone2 = self.fake.numerify('443-555-####')
+        phone3 = self.fake.numerify('443-555-####')
+
+        actions = [
+            'Isolated affected systems and blocked malicious IP addresses',
+            'Reviewed system logs and identified unauthorized access attempts',
+            'Disabled compromised user accounts and reset credentials',
+            'Deployed updated endpoint protection signatures',
+            'Notified CISO and initiated forensic analysis',
+        ]
+
+        return {
+            '_table_data': [
+                # Table 0: Contact info (rows 2 and 4 have data)
+                {
+                    'table_index': 0,
+                    'start_row': 2,
+                    'rows': [
+                        [reporter_first, reporter_last, 'Contractor', 'Contractor',
+                         reporter_email, reporter_email],
+                    ],
+                },
+                {
+                    'table_index': 0,
+                    'start_row': 4,
+                    'rows': [
+                        [phone1, phone2, phone3,
+                         random.choice(CMS_OFFICES), random.choice(CMS_OFFICES),
+                         f"E{random.randint(100, 999)}"],
+                    ],
+                },
+                # Table 1: Impact counts
+                {
+                    'table_index': 1,
+                    'start_row': 1,
+                    'rows': [
+                        [None, random.choice(['Yes', 'No'])],
+                        [None, str(random.randint(1, 500))],
+                        [None, str(random.randint(0, 100))],
+                    ],
+                },
+                # Table 2: Timeline
+                {
+                    'table_index': 2,
+                    'start_row': 1,
+                    'rows': [
+                        [None, incident_date.strftime('%b %d, %Y')],
+                        [random.choice(actions), random.choice(actions)],
+                        [None, incident_date.strftime('%b %d, %Y')],
+                        [random.choice(actions), random.choice(actions)],
+                        [None, incident_date.strftime('%b %d, %Y')],
+                        ['Containment actions initiated per incident response plan.',
+                         'Containment actions initiated per incident response plan.'],
+                        [None, incident_date.strftime('%b %d, %Y')],
+                        ['Recovery procedures in progress; monitoring for recurrence.',
+                         'Recovery procedures in progress; monitoring for recurrence.'],
+                    ],
+                },
+                # Table 3: System info
+                {
+                    'table_index': 3,
+                    'start_row': 1,
+                    'rows': [
+                        [None, fisma, fisma, fisma, fisma, fisma, fisma],
+                    ],
+                },
+                {
+                    'table_index': 3,
+                    'start_row': 4,
+                    'rows': [
+                        [None, mgr_first, mgr_last, 'Manager',
+                         mgr_email, phone2, 'Y'],
+                        [None, reporter_first, reporter_last, 'Analyst',
+                         reporter_email, phone1, 'Y'],
+                    ],
+                },
+            ],
+        }
+
+    # --- Financial generators ---
+
+    def generate_afr_additional_info_data(self) -> Dict[str, Any]:
+        """Generate data for Additional Info AFR (CUI-Financial)."""
+        SECURITY_TOOLS = [
+            'CrowdStrike Falcon', 'Palo Alto Cortex', 'Splunk Enterprise Security',
+            'Tenable.io', 'Qualys VMDR', 'Carbon Black Cloud', 'SentinelOne Singularity',
+        ]
+        VENDORS = ['Accenture Federal', 'Deloitte', 'Booz Allen Hamilton',
+                   'GDIT', 'Leidos', 'CGI Federal', 'Perspecta']
+        tool = random.choice(SECURITY_TOOLS)
+        vendor = random.choice(VENDORS)
+        old_vendors = random.sample(['Symantec', 'McAfee', 'Trend Micro', 'FireEye', 'Forcepoint'], 2)
+        return {
+            'Mock Security Tool': tool,
+            'Mock Security Tool from PRIORITY VENDOR': f"{tool} from {vendor}",
+            'PRIORITY VENDOR': vendor,
+            'Special Computers': random.choice(['CMS workstations', 'HHS endpoints', 'agency laptops',
+                                                  'cloud instances', 'server infrastructure']),
+            'OTHERVENDOR': random.choice(VENDORS),
+            'OldVendor': old_vendors[0],
+            'OldProduct': f"{old_vendors[1]} Endpoint Protection",
+        }
+
+    def generate_dibo_afr_data(self) -> Dict[str, Any]:
+        """Generate data for DIBO AFR (CUI-Financial)."""
+        CLOUD_PRODUCTS = [
+            'CloudSecure', 'GovCloud Pro', 'FedConnect', 'DataVault Enterprise',
+            'SecureHost', 'CipherStack', 'NetShield Pro', 'InfoGuard Cloud',
+        ]
+        product = random.choice(CLOUD_PRODUCTS)
+        contract_num = f"HHSM-500-{random.randint(2030, 2036)}-{random.randint(10000, 99999)}I"
+        task_order = self._contract_number()
+        base_budget = random.randint(300000, 800000)
+        base_cost = random.randint(1000000, 3000000)
+        return {
+            f"HHSM-500-2034-00016I_75FCMC34R0002 BestCloud (BestCloud)":
+                f"{contract_num}_{task_order} {product} ({product})",
+            'BestCloud': product,
+            f"$428,293": self.format_currency(base_budget),
+            f"$1,868,293": self.format_currency(base_cost),
+            f"$1,440,000": self.format_currency(base_cost - base_budget),
+            f"$1,954,129": self.format_currency(base_cost * 1.046),
+            f"$1,525,836": self.format_currency(base_cost * 1.046 - base_budget),
+            f"$2,044,024": self.format_currency(base_cost * 1.094),
+            f"$1,615,731": self.format_currency(base_cost * 1.094 - base_budget),
+        }
+
+    def generate_supplemental_afr_data(self) -> Dict[str, Any]:
+        """Generate data for Supplemental AFR (CUI-Financial)."""
+        PRODUCTS = [
+            'Zero Trust Gateway', 'Cloud Access Broker', 'Privileged Access Manager',
+            'Threat Intelligence Platform', 'Container Security Suite',
+            'API Gateway Manager', 'Identity Governance Platform',
+        ]
+        product = random.choice(PRODUCTS)
+        return {
+            'SuperSecure Support': f"{product} Support",
+            'Internal Products and Service Now': f"{product} and ServiceNow",
+            'Internal Products': product,
+            'SSS solution': f"{self.fake.company()} solution",
+            'SecurityKeys': random.choice(['YubiKeys', 'PIV cards', 'FIDO2 tokens', 'smart cards']),
+        }
+
     def _contract_number(self) -> str:
         return f"75FCMC{random.randint(20, 25)}F{random.randint(1000, 9999)}"
 
@@ -771,6 +964,50 @@ class CustomerTemplateManager:
                 'clean_name': 'AcquisitionPlan',
                 'positive_only': True,
             },
+            # Critical Infrastructure: fillable DOCX pairs
+            'KMP': {
+                'template': 'KMP-MockSystem-CUI-Critical Infrastructure-Positive.docx',
+                'template_negative': 'KMPTemplate-CUI-Critical Infrastructure-negative.docx',
+                'generator': self.populator.generate_kmp_data,
+                'category': 'CUI-CritInfra',
+                'clean_name': 'KMP',
+            },
+            'RulesOfBehavior': {
+                'template': '2025 PQCRA Rules of Behavior - MAC NAME-CUI-Critical Infrastructure-positive.docx',
+                'template_negative': '2025 PQCRA Rules of Behavior - MAC NAME-CUI-Critical Infrastructure-negative.docx',
+                'generator': self.populator.generate_rules_of_behavior_data,
+                'category': 'CUI-CritInfra',
+                'clean_name': 'RulesOfBehavior',
+            },
+            'IncidentResponse': {
+                'template': 'rmh-chapter-08-incident-response-incident-report-template-CUI-Critical Infrastructure-positive.docx',
+                'template_negative': 'rmh-chapter-08-incident-response-incident-report-template-CUI-Critical Infrastructure-negative.docx',
+                'generator': self.populator.generate_incident_response_data,
+                'category': 'CUI-CritInfra',
+                'clean_name': 'IncidentResponse',
+            },
+            # Financial: fillable DOCX pairs
+            'AFRAdditionalInfo': {
+                'template': 'Additional Information OIT FO-Mock AFR-CUI-Budget-positive.docx',
+                'template_negative': 'Additional Information OIT FO form-CUI-Budget-negative.docx',
+                'generator': self.populator.generate_afr_additional_info_data,
+                'category': 'CUI-Financial',
+                'clean_name': 'AFRAdditionalInfo',
+            },
+            'DIBOAFR': {
+                'template': 'DIBO AFR -AMI-CUI-Budget-Positive.docx',
+                'template_negative': 'DIBO AFR Guidance-template-CUI-Budget-Negative.docx',
+                'generator': self.populator.generate_dibo_afr_data,
+                'category': 'CUI-Financial',
+                'clean_name': 'DIBOAFR',
+            },
+            'SupplementalAFR': {
+                'template': 'Supplemental AFR Information-MockProject-CUI-Budget-Positive.docx',
+                'template_negative': 'Supplemental AFR Information-template-CUI-Budget-negative.docx',
+                'generator': self.populator.generate_supplemental_afr_data,
+                'category': 'CUI-Financial',
+                'clean_name': 'SupplementalAFR',
+            },
         }
 
     def generate_from_template(self, template_key: str, output_subdir: str,
@@ -837,8 +1074,15 @@ class CustomerTemplateManager:
                     shutil.copy(template_path, output_path)
                     return output_path
             else:
-                # Copy blank template
+                # Copy blank/negative template
                 import shutil
+                # Use separate negative template if available
+                if 'template_negative' in template_info:
+                    neg_path = os.path.join(self.template_dir, template_info['template_negative'])
+                    ext = os.path.splitext(template_info['template_negative'])[1]
+                    filename = f"{clean_name}_{index:04d}{ext}"
+                    output_path = os.path.join(output_subdir, filename)
+                    template_path = neg_path
                 os.makedirs(os.path.dirname(output_path), exist_ok=True)
                 shutil.copy(template_path, output_path)
                 return output_path
