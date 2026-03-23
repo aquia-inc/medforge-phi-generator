@@ -686,10 +686,14 @@ class MedForgeCUIGenerator:
             template_category_map = {
                 # 'EFT Authorization Form': 'financial',  # DISABLED
                 'ReasonableAccommodationRequest': 'legal',
+                'IGCE': 'procurement',
             }
 
-            # Select a random template
-            available_templates = list(template_category_map.keys())
+            # Filter templates to active categories
+            available_templates = [
+                k for k, cat in template_category_map.items()
+                if cat in self.categories
+            ]
             if not available_templates:
                 return None
 

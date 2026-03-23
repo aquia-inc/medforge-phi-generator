@@ -362,6 +362,13 @@ class CustomerTemplateManager:
                 'category': 'CUI',
                 'clean_name': 'ReasonableAccommodationRequest'
             },
+            # Procurement: IGCE XLSX (positive-only, copy mode — openpyxl can't parse drawings)
+            'IGCE': {
+                'template_positive': 'IaaS Mainframe MFA IGCE OY1-CUI-Procurement and Acquisition-positive.xlsx',
+                'category': 'CUI-Procurement',
+                'clean_name': 'IGCE',
+                'positive_only': True,
+            },
         }
 
     def generate_from_template(self, template_key: str, output_subdir: str,
@@ -380,13 +387,19 @@ class CustomerTemplateManager:
         """
         template_info = self.template_mappings[template_key]
 
+        # Skip positive-only templates when generating negatives
+        if not populate and template_info.get('positive_only'):
+            return None
+
         # Choose template based on positive/negative and whether we have separate templates
         if 'template_positive' in template_info:
             # Has separate positive/negative templates (e.g., EFT)
             if populate:
                 template_file = template_info['template_positive']
-            else:
+            elif 'template_negative' in template_info:
                 template_file = template_info['template_negative']
+            else:
+                return None  # No negative template available
             # Just copy the appropriate template (positive already has data)
             template_path = os.path.join(self.template_dir, template_file)
             clean_name = template_info['clean_name']
