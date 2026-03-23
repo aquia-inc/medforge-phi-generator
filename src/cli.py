@@ -689,6 +689,12 @@ class MedForgeCUIGenerator:
                 'IGCE': 'procurement',
                 'CLINTemplates': 'procurement',
                 'MarketResearch': 'procurement',
+                'RFCMemo': 'procurement',
+                'AGXRFCMemo': 'procurement',
+                'JALimitedSource': 'procurement',
+                'JOFOC': 'procurement',
+                'OAGMSourceSelection': 'procurement',
+                'AcquisitionPlan': 'procurement',
             }
 
             # Filter templates to active categories
