@@ -706,6 +706,13 @@ class MedForgeCUIGenerator:
                 'HHSRBD': 'critical_infrastructure',
                 'TestValidationMAC': 'critical_infrastructure',
                 'TestValidationPC': 'critical_infrastructure',
+                'B6Letter': 'legal',
+                'FullRelease': 'legal',
+                'Form339Letter': 'legal',
+                'SubpoenaResponse': 'legal',
+                'FOIAMedicareAuth': 'legal',
+                'FOIAGuidance': 'legal',
+                'FOIARequestDeceasedBene': 'legal',
             }
 
             # Group templates by active category, then select category-first
