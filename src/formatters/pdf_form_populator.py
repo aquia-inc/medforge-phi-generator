@@ -636,6 +636,160 @@ class PDFFormPopulator:
             ],
         }
 
+    # --- Legal / FOIA generators ---
+
+    def generate_foia_medicare_auth_data(self) -> Dict[str, Any]:
+        """Generate data for FOIA Medicare Records Authorization Form (CUI-Legal).
+
+        Fills 27 PDF form fields: beneficiary info, record details, authorization.
+        """
+        first = self.fake.first_name()
+        last = self.fake.last_name()
+        middle = self.fake.first_name()
+        dob = self.fake.date_of_birth(minimum_age=30, maximum_age=90)
+        # Medicare ID format: 1 letter + 9 digits (MBI format)
+        mbi_letter = random.choice('ACDEFGHJKMNPQRTUVWXY')
+        mbi = f"{mbi_letter}{random.randint(100000000, 999999999)}"
+        start_date = self.fake.date_between(start_date='-5y', end_date='-1y')
+        end_date = self.fake.date_between(start_date='-1y', end_date='today')
+        states = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL',
+                  'IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT',
+                  'NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI',
+                  'SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
+
+        return {
+            'FirstName': first,
+            'MiddleName': middle,
+            'LastName': last,
+            'MedicareID': mbi,
+            'Birthdate': dob.strftime('%m/%d/%Y'),
+            'StreetAddress': self.fake.street_address(),
+            'City': self.fake.city(),
+            'State': random.choice(states),
+            'Zipcode': self.fake.zipcode(),
+            'ReleaseRecords': True,
+            'TimeframeStart': start_date.strftime('%m/%d/%Y'),
+            'TimeframeEnd': end_date.strftime('%m/%d/%Y'),
+            'IndividualRequest': random.choice([True, False]),
+            'LitigationRequest': random.choice([True, False]),
+            'BeneRecipient': True,
+            'Recipient1-Name': self.fake.name(),
+            'Recipient1-Email': self.fake.email(),
+            'Recipient1-MailingAddress': self.fake.address().replace('\n', ', '),
+            'AuthorizationExpiry': True,
+            'AuthorizationExpDate': self.fake.date_between(start_date='+30d', end_date='+2y').strftime('%m/%d/%Y'),
+            'SignedDate': datetime.now().strftime('%m/%d/%Y'),
+            'Signature1': f"{first} {last}",
+        }
+
+    def generate_b6_letter_data(self) -> Dict[str, Any]:
+        """Generate data for FOIA B6 Letter — partial release response (CUI-Legal).
+
+        Replaces: NAME, COMPANY, ADDRESS, control number, staff names, dates, page counts.
+        """
+        requester = self.fake.name()
+        company = self.fake.company()
+        director = self.fake.name()
+        liaison = self.fake.name()
+        total_pages = random.randint(15, 200)
+        released = random.randint(int(total_pages * 0.4), int(total_pages * 0.8))
+        withheld = total_pages - released
+        request_date = self.fake.date_between(start_date='-1y', end_date='-30d')
+        gender = random.choice(['Ms.', 'Mr.'])
+        return {
+            'NAME': requester,
+            'COMPANY': company,
+            'ADDRESS': self.fake.street_address(),
+            'CITY, STATE ZIP': f"{self.fake.city()}, {self.fake.state_abbr()} {self.fake.zipcode()}",
+            '123456789': str(random.randint(100000000, 999999999)),
+            'ABCD': ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=4)),
+            f'MS/MR.': f'{gender}',
+            '6/30/2020': request_date.strftime('%-m/%-d/%Y'),
+            'fifty (50)': f"{self._number_word(total_pages)} ({total_pages})",
+            'Twenty-five': self._number_word(withheld),
+            'Hugh Gilmore': director,
+            'Joseph Tripline': liaison,
+            'LLC.': f"{company}.",
+        }
+
+    def generate_full_release_data(self) -> Dict[str, Any]:
+        """Generate data for FOIA Full Release letter (CUI-Legal).
+
+        Replaces: NAME, ADDRESS, EMAIL, requester name, staff names, dates, page counts.
+        """
+        requester = self.fake.name()
+        director = self.fake.name()
+        liaison = self.fake.name()
+        total_pages = random.randint(5, 100)
+        request_date = self.fake.date_between(start_date='-1y', end_date='-30d')
+        return {
+            'NAME\nADDRESS': f"{requester}\n{self.fake.street_address()}",
+            'ADDRESS': f"{self.fake.city()}, {self.fake.state_abbr()} {self.fake.zipcode()}",
+            'EMAIL': self.fake.email(),
+            'Ms. Halldorsson': f"{'Ms.' if random.random() < 0.5 else 'Mr.'} {requester.split()[-1]}",
+            '2/28/2020': request_date.strftime('%-m/%-d/%Y'),
+            f'twenty-four pages, (NO #S IN PARENS)': f"{self._number_word(total_pages)} pages, ({total_pages})",
+            '123456789': str(random.randint(100000000, 999999999)),
+            'ABCD': ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=4)),
+            'Hugh Gilmore': director,
+            'Joseph Tripline': liaison,
+        }
+
+    def generate_form339_letter_data(self) -> Dict[str, Any]:
+        """Generate data for FOIA Form 339 Exemption 4 withholding letter (CUI-Legal).
+
+        Replaces: Insert Name, reference number, dates, page counts, staff name.
+        """
+        requester = self.fake.name()
+        director = self.fake.name()
+        total_pages = random.randint(10, 150)
+        released = random.randint(int(total_pages * 0.3), int(total_pages * 0.7))
+        withheld = total_pages - released
+        request_date = self.fake.date_between(start_date='-1y', end_date='-30d')
+        return {
+            'Insert Name': requester,
+            'XXXXXXXX': str(random.randint(100000000, 999999999)),
+            '(insert date)': request_date.strftime('%B %d, %Y'),
+            '(insert recipient)': random.choice([
+                'the Centers for Medicare & Medicaid Services',
+                'the Department of Health and Human Services',
+                'the CMS Freedom of Information Group',
+            ]),
+            '(insert description of documents, and the CMS 339-Questionnaire)':
+                f"{random.randint(2, 8)} CMS-339 Questionnaire forms and supporting financial documentation",
+            '(insert number) pages, I have determined to release (insert number)':
+                f"{total_pages} pages, I have determined to release {released}",
+            'Hugh Gilmore': director,
+        }
+
+    def generate_subpoena_response_data(self) -> Dict[str, Any]:
+        """Generate data for FOIA Subpoena Duces Tecum response (CUI-Legal).
+
+        Replaces: (INSERT DATE HERE) x2.
+        """
+        subpoena_date = self.fake.date_between(start_date='-90d', end_date='-7d')
+        return {
+            '(INSERT DATE HERE)': subpoena_date.strftime('%B %d, %Y'),
+        }
+
+    def _number_word(self, n: int) -> str:
+        """Convert a number to its word form for page counts."""
+        words = {
+            1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five',
+            6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten',
+            11: 'eleven', 12: 'twelve', 13: 'thirteen', 14: 'fourteen',
+            15: 'fifteen', 16: 'sixteen', 17: 'seventeen', 18: 'eighteen',
+            19: 'nineteen', 20: 'twenty', 30: 'thirty', 40: 'forty',
+            50: 'fifty', 60: 'sixty', 70: 'seventy', 80: 'eighty', 90: 'ninety',
+        }
+        if n in words:
+            return words[n].capitalize()
+        if n < 100:
+            tens = (n // 10) * 10
+            ones = n % 10
+            return f"{words.get(tens, str(tens))}-{words.get(ones, str(ones))}".capitalize()
+        return str(n)
+
     def _contract_number(self) -> str:
         return f"75FCMC{random.randint(20, 25)}F{random.randint(1000, 9999)}"
 
@@ -1190,6 +1344,56 @@ class CustomerTemplateManager:
                 'clean_name': 'TestValidationPC',
                 'positive_only': True,
             },
+            # Legal / FOIA: fillable positives with negative pairs
+            'B6Letter': {
+                'template': 'B6 Letter-CUI-Legal-positive.docx',
+                'template_negative': 'FOIA RequestLetter-CUI-Legal-negative.pdf',
+                'generator': self.populator.generate_b6_letter_data,
+                'category': 'CUI-Legal',
+                'clean_name': 'B6Letter',
+            },
+            'FullRelease': {
+                'template': 'Full Release-CUI-Legal-positive.docx',
+                'template_negative': 'FOIA RequestLetterLivingBene-CUI-Legal-negative.pdf',
+                'generator': self.populator.generate_full_release_data,
+                'category': 'CUI-Legal',
+                'clean_name': 'FullRelease',
+            },
+            'Form339Letter': {
+                'template': 'Form339 Letter-CUI-Legal-positive.docx',
+                'template_negative': 'FOIA RequestLetterOwnRecords-CUI-Legal-negative.pdf',
+                'generator': self.populator.generate_form339_letter_data,
+                'category': 'CUI-Legal',
+                'clean_name': 'Form339Letter',
+            },
+            'SubpoenaResponse': {
+                'template': 'Subpoena Response-CUI-Legal-positive.docx',
+                'template_negative': 'FOIA Appeal-CUI-Legal-negative.pdf',
+                'generator': self.populator.generate_subpoena_response_data,
+                'category': 'CUI-Legal',
+                'clean_name': 'SubpoenaResponse',
+            },
+            # Legal / FOIA: fillable positive only (Medicare Auth — contains PHI-level data)
+            'FOIAMedicareAuth': {
+                'template': 'FOIA MedicareAuth-CUI-Legal-positive.pdf',
+                'generator': self.populator.generate_foia_medicare_auth_data,
+                'category': 'CUI-Legal',
+                'clean_name': 'FOIAMedicareAuth',
+                'positive_only': True,
+            },
+            # Legal / FOIA: copy-only negatives
+            'FOIAGuidance': {
+                'template_positive': 'FOIA Guidance-CUI-Legal-negative.docx',
+                'category': 'CUI-Legal',
+                'clean_name': 'FOIAGuidance',
+                'negative_only': True,
+            },
+            'FOIARequestDeceasedBene': {
+                'template_positive': 'FOIA RequestLetterDeceasedBene-CUI-Legal-negative.pdf',
+                'category': 'CUI-Legal',
+                'clean_name': 'FOIARequestDeceasedBene',
+                'negative_only': True,
+            },
         }
 
     def generate_from_template(self, template_key: str, output_subdir: str,
@@ -1211,6 +1415,9 @@ class CustomerTemplateManager:
         # Skip positive-only templates when generating negatives
         if not populate and template_info.get('positive_only'):
             return None
+        # Skip negative-only templates when generating positives
+        if populate and template_info.get('negative_only'):
+            return None
 
         # Choose template based on positive/negative and whether we have separate templates
         if 'template_positive' in template_info:
@@ -1219,6 +1426,9 @@ class CustomerTemplateManager:
                 template_file = template_info['template_positive']
             elif 'template_negative' in template_info:
                 template_file = template_info['template_negative']
+            elif template_info.get('negative_only'):
+                # negative_only: the template_positive file IS the negative content
+                template_file = template_info['template_positive']
             else:
                 return None  # No negative template available
             # Just copy the appropriate template (positive already has data)
