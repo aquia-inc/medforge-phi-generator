@@ -297,6 +297,79 @@ class PDFFormPopulator:
 
         return form_data
 
+    def generate_market_research_data(self) -> Dict[str, Any]:
+        """Generate data for TAB D Market Research Report (CUI-Procurement).
+
+        Fills 4 tables: acquisition team, vendor assessments, business size
+        counts, and vendor capability list.
+        """
+        CMS_OFFICES = ['OAGM', 'OIT', 'CMCS', 'CCIIO', 'CM', 'OFM', 'OA']
+        ROLES = [
+            'Requirements development and technical evaluation',
+            'Acquisition planning and contract execution',
+            'Contract administration and oversight',
+            'Technical oversight and acceptance',
+            'Small business coordination and outreach',
+            'Subject matter expertise',
+        ]
+        CAPABILITIES = [
+            'Demonstrated capability in cloud migration and hosting for federal agencies',
+            'Strong past performance on similar HHS/CMS contracts',
+            'Certified FedRAMP High cloud service provider',
+            'Experienced in Agile development with DevSecOps practices',
+            'Holds relevant CMMI Level 3 or higher certification',
+            'Proven 508 compliance and accessibility testing capabilities',
+            'Extensive experience with Medicare/Medicaid IT systems',
+            'ISO 27001 certified information security management',
+        ]
+        BIZ_SIZES = ['Small Business', 'Small Business', 'Large Business',
+                     'Small Business', 'Large Business']
+
+        # Table 0: Acquisition team (rows 1-6, col 0=name, 2=office, 3=phone, 4=email)
+        team_rows = []
+        for ri in range(6):
+            name = self.fake.name()
+            office = random.choice(CMS_OFFICES)
+            phone = self.fake.phone_number()
+            email = f"{name.split()[0].lower()}.{name.split()[-1].lower()}@cms.hhs.gov"
+            role = ROLES[ri] if ri < len(ROLES) else random.choice(ROLES)
+            # Only fill cols 0, 2, 3, 4, 5 — col 1 (title) is pre-filled
+            team_rows.append([name, None, office, phone, email, role])
+
+        # Table 1: Vendor assessments (3 rows)
+        vendor_rows = []
+        for _ in range(3):
+            vendor_rows.append([
+                self.fake.company(),
+                f"{self.fake.city()}, {self.fake.state_abbr()}",
+                self.fake.name(),
+                random.choice(CAPABILITIES),
+            ])
+
+        # Table 2: Business size counts (rows 1-10, col 1 = count)
+        size_rows = []
+        for _ in range(10):
+            count = random.choice([0, 0, 1, 2, 3, 5, 8])
+            size_rows.append([None, str(count)])
+
+        # Table 3: Vendor capability list (5 rows)
+        cap_rows = []
+        for _ in range(5):
+            cap_rows.append([
+                self.fake.company(),
+                random.choice(BIZ_SIZES),
+                random.choice(CAPABILITIES),
+            ])
+
+        return {
+            '_table_data': [
+                {'table_index': 0, 'start_row': 1, 'rows': team_rows},
+                {'table_index': 1, 'start_row': 1, 'rows': vendor_rows},
+                {'table_index': 2, 'start_row': 1, 'rows': size_rows},
+                {'table_index': 3, 'start_row': 1, 'rows': cap_rows},
+            ]
+        }
+
     def generate_clin_template_data(self) -> Dict[str, Any]:
         """Generate data for CLIN Templates (CUI-Procurement).
 
@@ -461,6 +534,13 @@ class CustomerTemplateManager:
                 'generator': self.populator.generate_clin_template_data,
                 'category': 'CUI-Procurement',
                 'clean_name': 'CLINTemplates',
+                'positive_only': True,
+            },
+            'MarketResearch': {
+                'template': 'TAB D Market Research-CUI-Procurement-positive.docx',
+                'generator': self.populator.generate_market_research_data,
+                'category': 'CUI-Procurement',
+                'clean_name': 'MarketResearch',
                 'positive_only': True,
             },
         }
@@ -650,8 +730,8 @@ class CustomerTemplateManager:
                     break
                 row = table.rows[row_idx]
                 for col_idx, value in enumerate(row_values):
-                    if col_idx >= len(row.cells):
-                        break
+                    if col_idx >= len(row.cells) or value is None:
+                        continue  # None = skip, preserve existing cell content
                     cell = row.cells[col_idx]
                     if cell.paragraphs:
                         cell.paragraphs[0].text = str(value)
