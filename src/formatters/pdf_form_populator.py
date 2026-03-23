@@ -297,6 +297,192 @@ class PDFFormPopulator:
 
         return form_data
 
+    def _contract_number(self) -> str:
+        return f"75FCMC{random.randint(20, 25)}F{random.randint(1000, 9999)}"
+
+    def _task_order_number(self) -> str:
+        return f"75FCMC{random.randint(20, 25)}T{random.randint(10000, 99999)}"
+
+    def generate_currency_amount(self, min_amt: int = 1000, max_amt: int = 10000000) -> float:
+        return round(random.uniform(min_amt, max_amt), 2)
+
+    def format_currency(self, amount: float) -> str:
+        return f"${amount:,.2f}"
+
+    def generate_rfc_memo_data(self) -> Dict[str, Any]:
+        """Generate data for RFC Memo (CUI-Procurement).
+
+        Fills 4 underline blanks: modification checkmarks and signature block.
+        """
+        mod_type = random.choice(['Administrative', 'No-Cost Extension', 'Option Exercise',
+                                   'Incremental Funding', 'Change Order'])
+        return {
+            'XX/XX/XXXX': datetime.now().strftime('%m/%d/%Y'),
+            '75FCMCXXXXXXXX / (if applicable) 75FCMCXXXXXXXX':
+                f"{self._contract_number()} / {self._task_order_number()}",
+            'TBD': f"APP-{random.randint(2024, 2026)}-{random.randint(100, 999)}",
+            '_underline_fills': [
+                f"__X__ {mod_type}" if mod_type in ['Administrative', 'No-Cost Extension', 'Option Exercise'] else f"_____ {mod_type}",
+                f"__X__ {mod_type}" if mod_type in ['Incremental Funding', 'Change Order'] else f"_____ {mod_type}",
+                '',  # Negotiated Change line
+                self.fake.name(),  # Signature
+            ],
+        }
+
+    def generate_agx_rfc_memo_data(self) -> Dict[str, Any]:
+        """Generate data for AGX RFC Memo (CUI-Procurement).
+
+        Same structure as RFC Memo with slightly different contract format.
+        """
+        mod_type = random.choice(['Administrative', 'No-Cost Extension', 'Option Exercise',
+                                   'Incremental Funding', 'Change Order'])
+        return {
+            'XX/XX/XXXX': datetime.now().strftime('%m/%d/%Y'),
+            '75FCMC 23F0113 / (if applicable) 75FCMCXXXXXXXX':
+                f"{self._contract_number()} / {self._task_order_number()}",
+            'TBD': f"APP-{random.randint(2024, 2026)}-{random.randint(100, 999)}",
+            '_underline_fills': [
+                f"__X__ {mod_type}" if mod_type in ['Administrative', 'No-Cost Extension', 'Option Exercise'] else f"_____ {mod_type}",
+                f"__X__ {mod_type}" if mod_type in ['Incremental Funding', 'Change Order'] else f"_____ {mod_type}",
+                '',
+                self.fake.name(),
+            ],
+        }
+
+    def generate_ja_limited_source_data(self) -> Dict[str, Any]:
+        """Generate data for JA Limited Source Justification (CUI-Procurement).
+
+        Fills 9 underline blanks (signature/approval lines).
+        """
+        names = [self.fake.name() for _ in range(5)]
+        dates = [self.fake.date_between(start_date='-90d', end_date='today').strftime('%m/%d/%Y')
+                 for _ in range(5)]
+        return {
+            '_underline_fills': [
+                names[0],  # COR signature
+                dates[0],
+                names[1],  # Program Manager
+                dates[1],
+                names[2],  # Contracting Officer
+                dates[2],
+                names[3],  # Competition Advocate
+                dates[3],
+                f"{names[4]}, Head of Contracting Activity",
+            ],
+        }
+
+    def generate_jofoc_data(self) -> Dict[str, Any]:
+        """Generate data for JOFOC (CUI-Procurement).
+
+        Fills 4 underline blanks and 1 table (option year cost estimates).
+        """
+        base_cost = self.generate_currency_amount(500000, 5000000)
+        return {
+            '_underline_fills': [
+                random.choice(['Unique Source', 'Unusual and Compelling Urgency',
+                               'Statutory Authority', 'National Security']),
+                self.fake.name(),  # COR
+                self.fake.name(),  # CO
+                self.fake.name(),  # Competition Advocate
+            ],
+            '_table_data': [
+                {
+                    'table_index': 0,
+                    'start_row': 1,
+                    'rows': [[
+                        self.format_currency(base_cost),
+                        self.format_currency(base_cost * 1.03),
+                        self.format_currency(base_cost * 1.06),
+                        self.format_currency(base_cost * 1.09),
+                        self.format_currency(base_cost * 1.12),
+                    ]],
+                }
+            ],
+        }
+
+    def generate_oagm_source_selection_data(self) -> Dict[str, Any]:
+        """Generate data for OAGM Source Selection Determination (CUI-Procurement).
+
+        Fills header table, offeror evaluation table, and signature line.
+        """
+        offerors = [self.fake.company() for _ in range(random.randint(3, 5))]
+        ratings = ['Outstanding', 'Good', 'Acceptable', 'Marginal']
+
+        eval_rows = []
+        for offeror in offerors:
+            orig_score = random.randint(70, 98)
+            fpr_score = orig_score + random.randint(-3, 5)
+            orig_cost = self.generate_currency_amount(1000000, 50000000)
+            fpr_cost = orig_cost * random.uniform(0.95, 1.05)
+            eval_rows.append([
+                offeror,
+                f"{orig_score} - {random.choice(ratings)}",
+                f"{min(fpr_score, 100)} - {random.choice(ratings[:2])}",
+                self.format_currency(orig_cost),
+                self.format_currency(fpr_cost),
+            ])
+
+        return {
+            '_underline_fills': [
+                f"{self.fake.name()}    {datetime.now().strftime('%m/%d/%Y')}",
+            ],
+            '_table_data': [
+                {
+                    'table_index': 0,
+                    'start_row': 0,
+                    'rows': [
+                        [None, datetime.now().strftime('%B %d, %Y')],
+                        [None, self.fake.name()],
+                        [None, 'Source Selection Determination'],
+                    ],
+                },
+                {
+                    'table_index': 1,
+                    'start_row': 1,
+                    'rows': eval_rows,
+                },
+            ],
+        }
+
+    def generate_acquisition_plan_data(self) -> Dict[str, Any]:
+        """Generate data for CMS Streamlined Acquisition Plan (CUI-Procurement).
+
+        Fills Table 0 (basic info header) and underline blanks.
+        """
+        CMS_COMPONENTS = ['OAGM', 'OIT', 'CMCS', 'CCIIO', 'CM', 'OFM']
+        project_titles = [
+            'Enterprise Cloud Hosting Services',
+            'Medicare Beneficiary Data Analytics',
+            'Cybersecurity Operations Center Support',
+            'Healthcare.gov Platform Maintenance',
+            'Quality Payment Program IT Support',
+            'Marketplace IT Infrastructure',
+        ]
+        return {
+            '_underline_fills': [
+                random.choice(['Mission Critical', 'Business Essential', 'Business Support']),
+                self.format_currency(self.generate_currency_amount(1000000, 50000000)),
+                f"LCID-{random.randint(2024, 2026)}-{random.randint(100, 999)}",
+            ],
+            '_table_data': [
+                {
+                    'table_index': 0,
+                    'start_row': 0,
+                    'rows': [
+                        [None, ''],  # Row 0 header
+                        [None, random.choice(CMS_COMPONENTS)],
+                        [None, random.choice(project_titles)],
+                        [None, self.fake.name()],
+                        [None, self.fake.phone_number()],
+                        [None, f"{self.fake.first_name().lower()}.{self.fake.last_name().lower()}@cms.hhs.gov"],
+                        [None, self.format_currency(self.generate_currency_amount(5000000, 200000000))],
+                        [None, self.fake.date_between(start_date='today', end_date='+1y').strftime('%m/%d/%Y')],
+                        [None, f"AS-{random.randint(2024, 2026)}-{random.randint(100, 999)}"],
+                    ],
+                },
+            ],
+        }
+
     def generate_market_research_data(self) -> Dict[str, Any]:
         """Generate data for TAB D Market Research Report (CUI-Procurement).
 
@@ -541,6 +727,48 @@ class CustomerTemplateManager:
                 'generator': self.populator.generate_market_research_data,
                 'category': 'CUI-Procurement',
                 'clean_name': 'MarketResearch',
+                'positive_only': True,
+            },
+            'RFCMemo': {
+                'template': 'RFC Memo-CUI-Procurement-positive.docx',
+                'generator': self.populator.generate_rfc_memo_data,
+                'category': 'CUI-Procurement',
+                'clean_name': 'RFCMemo',
+                'positive_only': True,
+            },
+            'AGXRFCMemo': {
+                'template': 'AGX RFC Memo-CUI-Procurement-positive.docx',
+                'generator': self.populator.generate_agx_rfc_memo_data,
+                'category': 'CUI-Procurement',
+                'clean_name': 'AGXRFCMemo',
+                'positive_only': True,
+            },
+            'JALimitedSource': {
+                'template': 'JA LimitedSource-CUI-Procurement-positive.docx',
+                'generator': self.populator.generate_ja_limited_source_data,
+                'category': 'CUI-Procurement',
+                'clean_name': 'JALimitedSource',
+                'positive_only': True,
+            },
+            'JOFOC': {
+                'template': 'JOFOC-CUI-Procurement-positive.docx',
+                'generator': self.populator.generate_jofoc_data,
+                'category': 'CUI-Procurement',
+                'clean_name': 'JOFOC',
+                'positive_only': True,
+            },
+            'OAGMSourceSelection': {
+                'template': 'OAGM SourceSelection-CUI-Procurement-positive.docx',
+                'generator': self.populator.generate_oagm_source_selection_data,
+                'category': 'CUI-Procurement',
+                'clean_name': 'OAGMSourceSelection',
+                'positive_only': True,
+            },
+            'AcquisitionPlan': {
+                'template': 'CMS AcquisitionPlan-CUI-Procurement-positive.docx',
+                'generator': self.populator.generate_acquisition_plan_data,
+                'category': 'CUI-Procurement',
+                'clean_name': 'AcquisitionPlan',
                 'positive_only': True,
             },
         }
