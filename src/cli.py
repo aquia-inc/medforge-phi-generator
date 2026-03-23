@@ -688,6 +688,7 @@ class MedForgeCUIGenerator:
                 'ReasonableAccommodationRequest': 'legal',
                 'IGCE': 'procurement',
                 'CLINTemplates': 'procurement',
+                'MarketResearch': 'procurement',
             }
 
             # Filter templates to active categories
