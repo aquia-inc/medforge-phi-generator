@@ -329,6 +329,77 @@ class PDFFormPopulator:
             'MAC NAME': mac,
         }
 
+    def generate_hhs_rbd_data(self) -> Dict[str, Any]:
+        """Generate data for HHS Rules of Behavior Deviation (CUI-Critical Infrastructure).
+
+        Fills 57 PDF form fields: names, system info, risk justifications, approvals.
+        """
+        employee = self.fake.name()
+        sso = self.fake.name()
+        so = self.fake.name()
+        opdiv_dir = self.fake.name()
+        ciso = self.fake.name()
+        ao = self.fake.name()
+        cfo = self.fake.name()
+
+        FISMA_SYSTEMS = [
+            'CMS Cloud Services', 'Medicare Fee-for-Service', 'Healthcare.gov',
+            'Marketplace Platform', 'Quality Payment Program', 'HCFAC System',
+            'Enterprise Identity Management', 'CMS Data Exchange',
+        ]
+        system_name = random.choice(FISMA_SYSTEMS)
+
+        WEAKNESSES = [
+            'Legacy system requires extended password expiration beyond 90-day policy',
+            'Third-party application does not support multi-factor authentication',
+            'Contractor VPN access requires broader network permissions than standard policy',
+            'Cloud service provider audit logging does not meet NIST 800-53 AU-3 requirements',
+            'System uses deprecated TLS 1.1 pending vendor migration to TLS 1.3',
+        ]
+        MITIGATIONS = [
+            'Compensating controls include enhanced monitoring and quarterly access reviews',
+            'Additional logging and alerting configured at network boundary',
+            'Risk accepted with condition of quarterly review and 12-month remediation plan',
+            'Dedicated security monitoring with automated anomaly detection in place',
+            'Network segmentation isolates affected system from production environment',
+        ]
+        JUSTIFICATIONS = [
+            'System upgrade scheduled for next fiscal year; interim deviation required for operations',
+            'Vendor roadmap confirms compliance capability in next major release',
+            'Mission-critical operations depend on this system; no alternative currently available',
+            'Cost of immediate remediation exceeds approved budget; phased approach required',
+        ]
+
+        return {
+            'S1: Name': employee,
+            'S1: Email/Phone': f"{employee.split()[0].lower()}.{employee.split()[-1].lower()}@cms.hhs.gov",
+            'S1: OpDiv Name': 'CMS',
+            's1: System Name': system_name,
+            's1: UUID': f"CMS-{random.randint(10000, 99999)}",
+            'Request Duration': random.choice(['1 year', '2 years', '3 years']),
+            'Program Area': random.choice(['CISO', 'OIT', 'CMCS', 'CCIIO', 'CM']),
+            'System Security Officer Name': sso,
+            'System Owner Name': so,
+            's1: System Overview': f"{system_name} provides critical services for CMS operations and requires a deviation from standard security policy.",
+            's2: Policy Directive': 'HHS Approved Physical Access and Logical Access Security Policy',
+            's2: State the policy': f"The standard policy requires compliance with NIST 800-53 controls as implemented by {system_name}.",
+            's3: Weakness Description': random.choice(WEAKNESSES),
+            's3: Weakness Identifier': f"POA&M-{random.randint(2024, 2026)}-{random.randint(100, 999)}",
+            's3: Risk Mitigation Controls': random.choice(MITIGATIONS),
+            's3:Operational Justification': random.choice(JUSTIFICATIONS),
+            's3: Plan for Compliance': 'Remediation plan targets full compliance within the approved deviation period.',
+            's4: PII impact details': 'No direct impact to PII expected under this deviation.',
+            's5: System Security Officer Name': sso,
+            's5: SO Name': so,
+            's6: OpDiv Director Name': opdiv_dir,
+            's6: OpDiv Chief Financial Officer Name': cfo,
+            's6: OpDiv Senior Official Name': opdiv_dir,
+            's6: CISO Name': ciso,
+            's6: AO Name': ao,
+            'Security Request': True,
+            'New Request': True,
+        }
+
     def generate_incident_response_data(self) -> Dict[str, Any]:
         """Generate data for Incident Response Report (CUI-Critical Infrastructure).
 
@@ -488,6 +559,81 @@ class PDFFormPopulator:
             'Internal Products': product,
             'SSS solution': f"{self.fake.company()} solution",
             'SecurityKeys': random.choice(['YubiKeys', 'PIV cards', 'FIDO2 tokens', 'smart cards']),
+        }
+
+    def generate_oit_fo_aif_data(self) -> Dict[str, Any]:
+        """Generate data for OIT FO Additional Info Form (CUI-Financial).
+
+        Fills the blank questionnaire with realistic budget justification answers.
+        """
+        PRODUCTS = [
+            'Cloud Migration Accelerator', 'AI-Powered Claims Processing',
+            'Zero Trust Architecture Implementation', 'Enterprise Data Lake',
+            'Automated Compliance Monitoring', 'Digital Identity Platform',
+        ]
+        product = random.choice(PRODUCTS)
+        cost = self.generate_currency_amount(500000, 10000000)
+        return {
+            'Additional Funds Request - Additional Information': f"Additional Funds Request - {product}",
+            # These appear after the question text on the same or next line
+            '_underline_fills': [],  # No underlines in this template
+            # The template has questions as paragraphs - we insert answers after key sections
+            'How does the request align with CMS mission and strategic priorities?':
+                f"How does the request align with CMS mission and strategic priorities?\n{product} directly supports CMS's digital modernization initiative and reduces manual processing by an estimated 40%.",
+            'How do they specifically support our Strategic blueprint OKRs or other CIO/OIT priorities?':
+                f"How do they specifically support our Strategic blueprint OKRs or other CIO/OIT priorities?\nAligns with OKR 2.3 (Modernize IT Infrastructure) and OKR 4.1 (Improve Operational Efficiency).",
+            'What specific problem does the investment solve and the expected impact?':
+                f"What specific problem does the investment solve and the expected impact?\nCurrent manual processes result in {random.randint(5,20)}-day turnaround times. {product} reduces this to under 24 hours.",
+            'Which stakeholders will it benefit, and how?':
+                f"Which stakeholders will it benefit, and how?\nPrimary: {random.choice(['CMCS', 'CCIIO', 'CM', 'OIT'])} staff. Secondary: contractor workforce and external partners.",
+            'What is the total cost including development, deployment, and maintenance? How much have we invested to-date?':
+                f"What is the total cost including development, deployment, and maintenance? How much have we invested to-date?\nTotal: {self.format_currency(cost)}. Invested to-date: {self.format_currency(cost * 0.3)}.",
+        }
+
+    def generate_supplemental_afr_blank_data(self) -> Dict[str, Any]:
+        """Generate data for blank Supplemental AFR form (CUI-Financial).
+
+        Fills labeled fields and tables with synthetic budget data.
+        """
+        PRODUCTS = [
+            'FedRAMP Cloud Broker', 'Continuous Diagnostics Platform',
+            'Automated Testing Suite', 'Secure Container Runtime',
+            'Configuration Management Database', 'IT Asset Discovery Tool',
+        ]
+        CONTRACTORS = [
+            'Accenture Federal', 'Deloitte', 'GDIT', 'Booz Allen Hamilton',
+            'CGI Federal', 'Leidos', 'Perspecta', 'SAIC',
+        ]
+        product = random.choice(PRODUCTS)
+        funding = self.generate_currency_amount(200000, 5000000)
+        return {
+            'Product Description: ': f"Product Description: {product}",
+            'Purpose: ': f"Purpose: OIT requires additional funding to procure and deploy {product} to enhance CMS cybersecurity posture and operational efficiency.",
+            'Target Users: ': f"Target Users: OIT staff, {random.choice(['CMCS', 'CCIIO', 'CM'])} program teams, and contractor support personnel ({random.randint(50, 500)} users).",
+            'Contractor: ': f"Contractor: {random.choice(CONTRACTORS)}",
+            'Key Features: ': f"Key Features: Automated vulnerability scanning, real-time compliance dashboards, integrated incident response workflows.",
+            'Features supported by Funding:': f"Features supported by Funding: License renewal, deployment support, and 12-month managed services.",
+            'Business Value:': f"Business Value: Reduces mean time to detect threats from {random.randint(24, 72)} hours to under 1 hour. Eliminates {random.randint(100, 500)} hours/year of manual compliance reporting.",
+            '_table_data': [
+                {
+                    'table_index': 0,
+                    'start_row': 1,
+                    'rows': [[
+                        'Operational Efficiency',
+                        f"Automates {random.choice(['compliance reporting', 'vulnerability scanning', 'access reviews'])}",
+                        f"{random.randint(20, 60)}% reduction in manual effort",
+                    ]],
+                },
+                {
+                    'table_index': 1,
+                    'start_row': 1,
+                    'rows': [[
+                        f"{product} License + Support",
+                        self.format_currency(funding),
+                        self.format_currency(funding * random.uniform(1.5, 3.0)),
+                    ]],
+                },
+            ],
         }
 
     def _contract_number(self) -> str:
@@ -1007,6 +1153,42 @@ class CustomerTemplateManager:
                 'generator': self.populator.generate_supplemental_afr_data,
                 'category': 'CUI-Financial',
                 'clean_name': 'SupplementalAFR',
+            },
+            # Financial: additional fillable templates
+            'OITFOAdditionalInfo': {
+                'template': 'OIT FO - AIF-CUI-Budget-negative.docx',
+                'generator': self.populator.generate_oit_fo_aif_data,
+                'category': 'CUI-Financial',
+                'clean_name': 'OITFOAdditionalInfo',
+                'positive_only': True,
+            },
+            'SupplementalAFRBlank': {
+                'template': 'Supplemental AFR-CUI-Budget-negative.docx',
+                'generator': self.populator.generate_supplemental_afr_blank_data,
+                'category': 'CUI-Financial',
+                'clean_name': 'SupplementalAFRBlank',
+                'positive_only': True,
+            },
+            # Critical Infrastructure: HHS RBD fillable PDF (pos+neg pair)
+            'HHSRBD': {
+                'template': 'hhs-RBD-CUI-Critical Infrastructure-positive.pdf',
+                'template_negative': 'hhs-RBD-CUI-Critical Infrastructure-negative.pdf',
+                'generator': self.populator.generate_hhs_rbd_data,
+                'category': 'CUI-CritInfra',
+                'clean_name': 'HHSRBD',
+            },
+            # Critical Infrastructure: Test Validation Reports (positive-only, copy mode)
+            'TestValidationMAC': {
+                'template_positive': 'Test_Validation_Report_Yubikey Manager MAC_v1.2.6-CUI-Critical Infrastructure-positive.pdf',
+                'category': 'CUI-CritInfra',
+                'clean_name': 'TestValidationMAC',
+                'positive_only': True,
+            },
+            'TestValidationPC': {
+                'template_positive': 'Test_Validation_Report_Yubikey Manager PC_v1.2.6-CUI-Critical Infrastructure-positive.pdf',
+                'category': 'CUI-CritInfra',
+                'clean_name': 'TestValidationPC',
+                'positive_only': True,
             },
         }
 
