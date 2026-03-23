@@ -297,6 +297,93 @@ class PDFFormPopulator:
 
         return form_data
 
+    def generate_clin_template_data(self) -> Dict[str, Any]:
+        """Generate data for CLIN Templates (CUI-Procurement).
+
+        Fills all 3 contract line item tables (Fixed Price, Cost Reimbursement, T&M)
+        with 2-4 synthetic CLINs each.
+        """
+        PSC_CODES = [
+            'D302', 'D306', 'D307', 'D308', 'D310', 'D311', 'D314', 'D316', 'D317', 'D399',
+            'R408', 'R413', 'R425', 'R497', 'R499', 'R707', 'R799',
+        ]
+        CLIN_DESCRIPTIONS = [
+            'Cloud Infrastructure Hosting Services',
+            'Cybersecurity Operations and Monitoring',
+            'Application Development and Maintenance',
+            'Enterprise Data Analytics Platform',
+            'Help Desk and End User Support',
+            'IT Program Management Support',
+            'Network Operations Center Services',
+            'Identity and Access Management Services',
+            'System Integration and Testing',
+            'Cloud Migration and Modernization',
+            'Database Administration Services',
+            'Quality Assurance and IV&V',
+            'Disaster Recovery and COOP Services',
+            'Section 508 Compliance Testing',
+            'DevSecOps Pipeline Support',
+        ]
+        UNITS = ['Month', 'Each', 'Hour', 'Lot', 'Year']
+
+        def _acct_class():
+            return f"75-{random.randint(100,999)}0-0-1-{random.randint(300,399)}"
+
+        def _make_ffp_rows(n):
+            rows = []
+            for i in range(n):
+                clin = f"000{i+1}"
+                desc = random.choice(CLIN_DESCRIPTIONS)
+                unit = random.choice(UNITS)
+                qty = random.randint(1, 24)
+                price = round(random.uniform(5000, 150000), 2)
+                total = round(price * qty, 2)
+                rows.append([clin, desc, random.choice(PSC_CODES), _acct_class(),
+                             unit, str(qty), f"${price:,.2f}", f"${total:,.2f}"])
+            return rows
+
+        def _make_cr_rows(n):
+            rows = []
+            for i in range(n):
+                clin = f"000{i+1}"
+                desc = random.choice(CLIN_DESCRIPTIONS)
+                unit = random.choice(UNITS)
+                qty = random.randint(1, 12)
+                cost = round(random.uniform(50000, 500000), 2)
+                fee = round(cost * random.uniform(0.05, 0.10), 2)
+                total = round(cost + fee, 2)
+                pop_start = self.fake.date_between(start_date='-1y', end_date='today')
+                pop_end = self.fake.date_between(start_date='today', end_date='+2y')
+                pop = f"{pop_start.strftime('%m/%d/%Y')} - {pop_end.strftime('%m/%d/%Y')}"
+                rows.append([clin, desc, random.choice(PSC_CODES), _acct_class(),
+                             unit, str(qty), f"${cost:,.2f}", f"${fee:,.2f}",
+                             f"${total:,.2f}", pop])
+            return rows
+
+        def _make_tm_rows(n):
+            rows = []
+            for i in range(n):
+                clin = f"000{i+1}"
+                desc = random.choice(CLIN_DESCRIPTIONS)
+                unit = random.choice(['Hour', 'Month'])
+                qty = random.randint(100, 5000) if unit == 'Hour' else random.randint(6, 24)
+                cost = round(random.uniform(75000, 750000), 2)
+                pop_start = self.fake.date_between(start_date='-1y', end_date='today')
+                pop_end = self.fake.date_between(start_date='today', end_date='+2y')
+                pop = f"{pop_start.strftime('%m/%d/%Y')} - {pop_end.strftime('%m/%d/%Y')}"
+                rows.append([clin, desc, random.choice(PSC_CODES), _acct_class(),
+                             unit, str(qty), f"${cost:,.2f}", pop])
+            return rows
+
+        num_clins = random.randint(2, 4)
+        return {
+            '_table_data': [
+                {'table_index': 0, 'start_row': 3, 'rows': _make_ffp_rows(num_clins)},
+                {'table_index': 1, 'start_row': 3, 'rows': _make_cr_rows(num_clins)},
+                {'table_index': 2, 'start_row': 3, 'rows': _make_tm_rows(num_clins)},
+            ]
+        }
+
     def generate_reasonable_accommodation_data(self) -> Dict[str, Any]:
         """Generate data for Reasonable Accommodation Request (CUI)."""
 
@@ -367,6 +454,13 @@ class CustomerTemplateManager:
                 'template_positive': 'IaaS Mainframe MFA IGCE OY1-CUI-Procurement and Acquisition-positive.xlsx',
                 'category': 'CUI-Procurement',
                 'clean_name': 'IGCE',
+                'positive_only': True,
+            },
+            'CLINTemplates': {
+                'template': 'CLIN Templates-CUI-Procurement-positive.docx',
+                'generator': self.populator.generate_clin_template_data,
+                'category': 'CUI-Procurement',
+                'clean_name': 'CLINTemplates',
                 'positive_only': True,
             },
         }
