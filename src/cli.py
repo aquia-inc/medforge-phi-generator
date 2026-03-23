@@ -701,6 +701,11 @@ class MedForgeCUIGenerator:
                 'AFRAdditionalInfo': 'financial',
                 'DIBOAFR': 'financial',
                 'SupplementalAFR': 'financial',
+                'OITFOAdditionalInfo': 'financial',
+                'SupplementalAFRBlank': 'financial',
+                'HHSRBD': 'critical_infrastructure',
+                'TestValidationMAC': 'critical_infrastructure',
+                'TestValidationPC': 'critical_infrastructure',
             }
 
             # Group templates by active category, then select category-first
