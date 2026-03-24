@@ -3,11 +3,14 @@ LLM Generator using Claude 4.5 Sonnet
 Generates clinical narratives and template variations
 """
 import json
+import logging
 import os
 from typing import List, Optional
 from pydantic import BaseModel, Field
 from anthropic import Anthropic
 from dotenv import load_dotenv
+
+logger = logging.getLogger(__name__)
 
 # Force reload environment variables, override existing
 load_dotenv(override=True)
@@ -212,7 +215,7 @@ Return your response as valid JSON with these exact keys:
             return ClinicalNarrative(**data)
 
         except Exception as e:
-            print(f"Warning: Claude API error: {e}")
+            logger.debug(f"LLM enhancement failed, using template fallback: {e}")
             # Fallback to template-based narrative
             return self._fallback_narrative(patient, diagnoses, medications, vitals)
 
@@ -274,7 +277,7 @@ Return your response as valid JSON with these exact keys:
             return ProviderCorrespondence(**data)
 
         except Exception as e:
-            print(f"Warning: Claude API error: {e}")
+            logger.debug(f"LLM enhancement failed, using template fallback: {e}")
             return self._fallback_provider_email(patient, sender_provider, recipient_provider, reason)
 
     def generate_patient_communication(self, patient: dict, context: str,
@@ -332,7 +335,7 @@ Return your response as valid JSON with these exact keys:
             return EmailBody(**data)
 
         except Exception as e:
-            print(f"Warning: Claude API error: {e}")
+            logger.debug(f"LLM enhancement failed, using template fallback: {e}")
             return self._fallback_patient_email(patient, context)
 
     def generate_template_variation(self, base_template: str, variation_type: str) -> str:
@@ -370,7 +373,7 @@ Generate a brief description (2-3 sentences) of how this variation differs in:
             return response.content[0].text
 
         except Exception as e:
-            print(f"Warning: Claude API error: {e}")
+            logger.debug(f"LLM enhancement failed, using template fallback: {e}")
             return f"{base_template} - {variation_type} variation"
 
     # CUI Generation Methods
@@ -430,7 +433,7 @@ Return your response as valid JSON with these exact keys:
             return CUIBudgetMemo(**data)
 
         except Exception as e:
-            print(f"Warning: Claude API error: {e}")
+            logger.debug(f"LLM enhancement failed, using template fallback: {e}")
             return self._fallback_budget_memo(agency, program, fiscal_year, amount)
 
     def generate_cui_security_report(self, system_name: str, vulnerability_type: str,
@@ -489,7 +492,7 @@ Return your response as valid JSON with these exact keys:
             return CUISecurityReport(**data)
 
         except Exception as e:
-            print(f"Warning: Claude API error: {e}")
+            logger.debug(f"LLM enhancement failed, using template fallback: {e}")
             return self._fallback_security_report(system_name, vulnerability_type, severity, agency)
 
     def generate_cui_legal_memo(self, subject: str, agency: str,
@@ -545,7 +548,7 @@ Return your response as valid JSON with these exact keys:
             return CUILegalMemo(**data)
 
         except Exception as e:
-            print(f"Warning: Claude API error: {e}")
+            logger.debug(f"LLM enhancement failed, using template fallback: {e}")
             return self._fallback_legal_memo(subject, agency, legal_issue)
 
     def generate_cui_procurement_doc(self, acquisition_name: str, agency: str,
@@ -604,7 +607,7 @@ Return your response as valid JSON with these exact keys:
             return CUIProcurementDoc(**data)
 
         except Exception as e:
-            print(f"Warning: Claude API error: {e}")
+            logger.debug(f"LLM enhancement failed, using template fallback: {e}")
             return self._fallback_procurement_doc(acquisition_name, agency, estimated_value, vendors)
 
     def generate_cui_narrative(self, category: str, subcategory: str,
@@ -662,7 +665,7 @@ Return your response as valid JSON with these exact keys:
             return CUIDocumentNarrative(**data)
 
         except Exception as e:
-            print(f"Warning: Claude API error: {e}")
+            logger.debug(f"LLM enhancement failed, using template fallback: {e}")
             return self._fallback_cui_narrative(category, subcategory, document_type, context)
 
     # CUI Fallback methods

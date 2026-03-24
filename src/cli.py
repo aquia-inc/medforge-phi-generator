@@ -759,31 +759,6 @@ class MedForgeCUIGenerator:
 
             template_info = self.customer_templates.template_mappings[template_key]
 
-            # Validate customer template PDF has data if positive (only for PDF files)
-            if is_positive and filepath and detected_format == 'pdf':
-                try:
-                    import pikepdf
-                    pdf = pikepdf.open(filepath)
-
-                    # Check if form fields have values
-                    populated_count = 0
-                    if '/AcroForm' in pdf.Root and '/Fields' in pdf.Root.AcroForm:
-                        for field in pdf.Root.AcroForm.Fields:
-                            if '/V' in field:
-                                value = str(field.V).strip()
-                                if value and value not in ['False', '']:
-                                    populated_count += 1
-
-                    pdf.close()
-
-                    # Warn if positive PDF has no data
-                    if populated_count == 0:
-                        console.print(f"[yellow]⚠ Warning: Customer template {template_info['clean_name']} appears empty (0 fields populated)[/yellow]")
-                        self.stats["errors"].append(f"Customer template {template_info['clean_name']} at index {index} has no populated fields")
-
-                except Exception as e:
-                    pass  # Don't fail generation on validation errors
-
             # Add to manifest
             self.manifest.append({
                 "file_path": str(Path(filepath).relative_to(self.output_dir)),
