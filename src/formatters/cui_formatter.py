@@ -193,6 +193,18 @@ class CUIDocxFormatter:
             self._add_procurement_content(doc, doc_data, style_cfg=style_cfg)
         elif doc_type == 'taxpayer_record':
             self._add_tax_record_content(doc, doc_data, style_cfg=style_cfg)
+        elif doc_type == 'sar':
+            self._add_sar_content(doc, doc_data, style_cfg=style_cfg)
+        elif doc_type == 'written_determination':
+            self._add_written_determination_content(doc, doc_data, style_cfg=style_cfg)
+        elif doc_type == 'comptroller_report':
+            self._add_comptroller_content(doc, doc_data, style_cfg=style_cfg)
+        elif doc_type == 'bargaining_proposal':
+            self._add_bargaining_content(doc, doc_data, style_cfg=style_cfg)
+        elif doc_type == 'congressional_testimony':
+            self._add_testimony_content(doc, doc_data, style_cfg=style_cfg)
+        elif doc_type == 'retirement_estimate':
+            self._add_retirement_content(doc, doc_data, style_cfg=style_cfg)
         else:
             self._add_generic_content(doc, doc_data, style_cfg=style_cfg)
 
@@ -384,6 +396,208 @@ class CUIDocxFormatter:
             summary = doc_data['account_summary']
             for key, value in summary.items():
                 doc.add_paragraph(f"{key.replace('_', ' ').title()}: {value}")
+
+    def _add_sar_content(self, doc: Document, doc_data: Dict[str, Any],
+                          style_cfg: Optional[Dict] = None):
+        """Add Suspicious Activity Report content."""
+        doc.add_paragraph(f"SAR Number: {doc_data.get('sar_number', '')}")
+        doc.add_paragraph(f"Filing Date: {doc_data.get('filing_date', '')}")
+
+        inst = doc_data.get('filing_institution', {})
+        if isinstance(inst, dict):
+            self._add_styled_heading(doc, 'FILING INSTITUTION', style_cfg=style_cfg)
+            doc.add_paragraph(f"Name: {inst.get('name', '')}")
+            doc.add_paragraph(f"RSSD ID: {inst.get('rssd_id', '')}")
+
+        subject = doc_data.get('subject', {})
+        if isinstance(subject, dict):
+            self._add_styled_heading(doc, 'SUBJECT INFORMATION', style_cfg=style_cfg)
+            doc.add_paragraph(f"Name: {subject.get('name', '')}")
+            doc.add_paragraph(f"DOB: {subject.get('dob', '')}")
+            doc.add_paragraph(f"SSN (last 4): {subject.get('ssn_last4', '')}")
+
+        activity = doc_data.get('suspicious_activity', {})
+        if isinstance(activity, dict):
+            self._add_styled_heading(doc, 'SUSPICIOUS ACTIVITY', style_cfg=style_cfg)
+            doc.add_paragraph(f"Type: {activity.get('type', '')}")
+            doc.add_paragraph(f"Amount: {activity.get('amount_formatted', activity.get('amount', ''))}")
+            date_range = activity.get('date_range', {})
+            if isinstance(date_range, dict):
+                doc.add_paragraph(f"Period: {date_range.get('start', '')} - {date_range.get('end', '')}")
+            narrative = activity.get('narrative', '')
+            if narrative:
+                self._add_styled_heading(doc, 'NARRATIVE', style_cfg=style_cfg)
+                self._add_narrative_paragraphs(doc, narrative, style_cfg=style_cfg)
+
+    def _add_written_determination_content(self, doc: Document, doc_data: Dict[str, Any],
+                                            style_cfg: Optional[Dict] = None):
+        """Add IRS written determination content (IRAC format)."""
+        doc.add_paragraph(f"Document Number: {doc_data.get('document_number', '')}")
+        doc.add_paragraph(f"Issue Date: {doc_data.get('issue_date', '')}")
+
+        det_type = doc_data.get('determination_type', '')
+        if det_type:
+            doc.add_paragraph(f"Type: {det_type}")
+
+        issues = doc_data.get('issues', [])
+        if issues:
+            self._add_styled_heading(doc, 'ISSUES', style_cfg=style_cfg)
+            for issue in (issues if isinstance(issues, list) else [issues]):
+                doc.add_paragraph(f"\u2022 {issue}")
+
+        code_sections = doc_data.get('code_sections', [])
+        if code_sections:
+            self._add_styled_heading(doc, 'APPLICABLE CODE SECTIONS', style_cfg=style_cfg)
+            for sec in (code_sections if isinstance(code_sections, list) else [code_sections]):
+                doc.add_paragraph(f"\u2022 {sec}")
+
+        self._add_styled_heading(doc, 'FACTS', style_cfg=style_cfg)
+        self._add_narrative_paragraphs(doc, doc_data.get('facts', ''), style_cfg=style_cfg)
+
+        self._add_styled_heading(doc, 'LAW AND ANALYSIS', style_cfg=style_cfg)
+        self._add_narrative_paragraphs(doc, doc_data.get('law_and_analysis', ''), style_cfg=style_cfg)
+
+        self._add_styled_heading(doc, 'CONCLUSION', style_cfg=style_cfg)
+        self._add_narrative_paragraphs(doc, doc_data.get('conclusion', ''), style_cfg=style_cfg)
+
+        caveats = doc_data.get('caveats', '')
+        if caveats:
+            self._add_styled_heading(doc, 'CAVEATS', style_cfg=style_cfg)
+            self._add_narrative_paragraphs(doc, caveats, style_cfg=style_cfg)
+
+    def _add_comptroller_content(self, doc: Document, doc_data: Dict[str, Any],
+                                  style_cfg: Optional[Dict] = None):
+        """Add GAO comptroller report content."""
+        doc.add_paragraph(f"Report Number: {doc_data.get('report_number', '')}")
+        doc.add_paragraph(f"Agency Reviewed: {doc_data.get('agency_reviewed', '')}")
+        doc.add_paragraph(f"Topic: {doc_data.get('topic', '')}")
+        doc.add_paragraph(f"Status: {doc_data.get('report_status', '')}")
+
+        review = doc_data.get('review_period', {})
+        if isinstance(review, dict):
+            doc.add_paragraph(f"Review Period: {review.get('start', '')} - {review.get('end', '')}")
+
+        if doc_data.get('executive_summary'):
+            self._add_styled_heading(doc, 'EXECUTIVE SUMMARY', style_cfg=style_cfg)
+            self._add_narrative_paragraphs(doc, doc_data['executive_summary'], style_cfg=style_cfg)
+
+        findings = doc_data.get('findings', [])
+        if findings:
+            self._add_styled_heading(doc, 'FINDINGS', style_cfg=style_cfg)
+            for f in findings:
+                if isinstance(f, dict):
+                    doc.add_paragraph(f"Finding {f.get('finding_number', '')}: {f.get('description', '')}")
+                    if f.get('significance'):
+                        doc.add_paragraph(f"  Significance: {f['significance']}")
+                else:
+                    doc.add_paragraph(f"\u2022 {f}")
+
+        doc.add_paragraph(f"Recommendations: {doc_data.get('recommendations', '')}")
+        doc.add_paragraph(f"Estimated Savings: {doc_data.get('estimated_savings', '')}")
+
+    def _add_bargaining_content(self, doc: Document, doc_data: Dict[str, Any],
+                                 style_cfg: Optional[Dict] = None):
+        """Add collective bargaining proposal content."""
+        doc.add_paragraph(f"Proposal Number: {doc_data.get('proposal_number', '')}")
+        doc.add_paragraph(f"Union: {doc_data.get('union', '')}")
+        doc.add_paragraph(f"Negotiation Status: {doc_data.get('negotiation_status', '')}")
+        doc.add_paragraph(f"Date Submitted: {doc_data.get('date_submitted', '')}")
+
+        articles = doc_data.get('articles_under_negotiation', [])
+        if articles:
+            self._add_styled_heading(doc, 'ARTICLES UNDER NEGOTIATION', style_cfg=style_cfg)
+            for art in articles:
+                if isinstance(art, dict):
+                    doc.add_paragraph(f"\u2022 {art.get('article', '')}: {art.get('subject', '')}")
+                else:
+                    doc.add_paragraph(f"\u2022 {art}")
+
+        rules = doc_data.get('ground_rules', {})
+        if isinstance(rules, dict):
+            self._add_styled_heading(doc, 'GROUND RULES', style_cfg=style_cfg)
+            doc.add_paragraph(f"Location: {rules.get('negotiation_location', '')}")
+            dates = rules.get('session_dates', [])
+            if dates:
+                doc.add_paragraph(f"Sessions: {', '.join(str(d) for d in dates)}")
+
+        for role in ('management_team_lead', 'union_team_lead'):
+            lead = doc_data.get(role, {})
+            if isinstance(lead, dict) and lead.get('name'):
+                label = role.replace('_', ' ').title()
+                doc.add_paragraph(f"{label}: {lead['name']} - {lead.get('title', '')}")
+
+    def _add_testimony_content(self, doc: Document, doc_data: Dict[str, Any],
+                                style_cfg: Optional[Dict] = None):
+        """Add congressional testimony content."""
+        status = doc_data.get('document_status', '')
+        if status:
+            doc.add_paragraph(f"Status: {status}")
+
+        witness = doc_data.get('witness', {})
+        if isinstance(witness, dict):
+            self._add_styled_heading(doc, 'WITNESS', style_cfg=style_cfg)
+            doc.add_paragraph(f"Name: {witness.get('name', '')}")
+            doc.add_paragraph(f"Title: {witness.get('title', '')}")
+            doc.add_paragraph(f"Agency: {witness.get('agency', '')}")
+
+        doc.add_paragraph(f"Committee: {doc_data.get('committee', '')}")
+        doc.add_paragraph(f"Hearing Topic: {doc_data.get('hearing_topic', '')}")
+        doc.add_paragraph(f"Scheduled Date: {doc_data.get('scheduled_date', '')}")
+
+        summary = doc_data.get('prepared_statement_summary', '')
+        if summary:
+            self._add_styled_heading(doc, 'PREPARED STATEMENT SUMMARY', style_cfg=style_cfg)
+            self._add_narrative_paragraphs(doc, summary, style_cfg=style_cfg)
+
+        messages = doc_data.get('key_messages', [])
+        if messages:
+            self._add_styled_heading(doc, 'KEY MESSAGES', style_cfg=style_cfg)
+            for msg in messages:
+                doc.add_paragraph(f"\u2022 {msg}")
+
+        doc.add_paragraph(f"Clearance Status: {doc_data.get('clearance_status', '')}")
+
+    def _add_retirement_content(self, doc: Document, doc_data: Dict[str, Any],
+                                 style_cfg: Optional[Dict] = None):
+        """Add retirement estimate content."""
+        doc.add_paragraph(f"Estimate Number: {doc_data.get('estimate_number', '')}")
+
+        emp = doc_data.get('employee', {})
+        if isinstance(emp, dict):
+            self._add_styled_heading(doc, 'EMPLOYEE INFORMATION', style_cfg=style_cfg)
+            doc.add_paragraph(f"Name: {emp.get('name', '')}")
+            doc.add_paragraph(f"Employee ID: {emp.get('employee_id', '')}")
+            doc.add_paragraph(f"Agency: {emp.get('agency', '')}")
+            doc.add_paragraph(f"Grade: {emp.get('grade', '')}")
+
+        svc = doc_data.get('service_computation', {})
+        if isinstance(svc, dict):
+            self._add_styled_heading(doc, 'SERVICE COMPUTATION', style_cfg=style_cfg)
+            doc.add_paragraph(f"Retirement System: {svc.get('retirement_system', '')}")
+            doc.add_paragraph(f"Years of Service: {svc.get('years_of_service', '')}")
+            doc.add_paragraph(f"Sick Leave Credit: {svc.get('sick_leave_credit_months', '')} months")
+
+        salary = doc_data.get('salary_information', {})
+        if isinstance(salary, dict):
+            self._add_styled_heading(doc, 'SALARY INFORMATION', style_cfg=style_cfg)
+            doc.add_paragraph(f"Current Salary: {salary.get('current_salary', '')}")
+            doc.add_paragraph(f"High-3 Average: {salary.get('high_3_average', '')}")
+
+        benefits = doc_data.get('estimated_benefits', {})
+        if isinstance(benefits, dict):
+            self._add_styled_heading(doc, 'ESTIMATED BENEFITS', style_cfg=style_cfg)
+            doc.add_paragraph(f"Gross Monthly Annuity: {benefits.get('gross_monthly_annuity', '')}")
+            if benefits.get('fers_supplement'):
+                doc.add_paragraph(f"FERS Supplement: {benefits['fers_supplement']}")
+            if benefits.get('tsp_balance'):
+                doc.add_paragraph(f"TSP Balance: {benefits['tsp_balance']}")
+
+        if doc_data.get('projected_retirement_date'):
+            doc.add_paragraph(f"Projected Retirement Date: {doc_data['projected_retirement_date']}")
+
+        if doc_data.get('executive_summary'):
+            self._add_styled_heading(doc, 'SUMMARY', style_cfg=style_cfg)
+            self._add_narrative_paragraphs(doc, doc_data['executive_summary'], style_cfg=style_cfg)
 
     def _add_generic_content(self, doc: Document, doc_data: Dict[str, Any],
                               style_cfg: Optional[Dict] = None):

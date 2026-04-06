@@ -991,10 +991,11 @@ class MedForgeCUIGenerator:
                 # source_selection_plan handler reads: solicitation_number, program,
                 # estimated_value, contract_type, evaluation_factors
                 doc_data["executive_summary"] = enhanced.acquisition_summary
-                if enhanced.evaluation_criteria:
+                criteria = enhanced.evaluation_criteria
+                if criteria and isinstance(criteria, str):
                     doc_data["evaluation_factors"] = [
                         {"factor": line.strip().rstrip('.'), "weight": random.randint(15, 40)}
-                        for line in enhanced.evaluation_criteria.split('.')
+                        for line in criteria.split('.')
                         if line.strip()
                     ][:4]
                 doc_data["justification"] = enhanced.justification
