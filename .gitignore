@@ -59,6 +59,10 @@ customer_requirements/*
 
 # Outputs are synthetic so they CAN be committed
 # Uncomment below if you want to exclude large output batches:
-output/*/
+output/*
 # !output/.gitkeep
 temp/*
+
+# Remove Claude if it is used.
+CLAUDE.md
+.claude/*
