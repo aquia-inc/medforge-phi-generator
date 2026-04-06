@@ -561,10 +561,25 @@ DOCX_FONT_MAP = {
     "Courier": "Courier New",
 }
 
+# Reverse mapping: Windows/generic -> PostScript (ReportLab built-in)
+PDF_FONT_MAP = {
+    "Arial": "Helvetica",
+    "Helvetica": "Helvetica",
+    "Times New Roman": "Times-Roman",
+    "Times-Roman": "Times-Roman",
+    "Courier New": "Courier",
+    "Courier": "Courier",
+}
+
 
 def get_docx_font_name(reportlab_name: str) -> str:
     """Map a PostScript/ReportLab font name to a Windows/DOCX font name."""
     return DOCX_FONT_MAP.get(reportlab_name, reportlab_name)
+
+
+def get_pdf_font_name(font_name: str) -> str:
+    """Map any font name to a ReportLab built-in PostScript font name."""
+    return PDF_FONT_MAP.get(font_name, "Helvetica")
 
 
 # CUI-specific section order variants (for filtering)

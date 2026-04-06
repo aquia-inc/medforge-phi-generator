@@ -5,7 +5,7 @@ Generates clinical narratives and template variations
 import json
 import logging
 import os
-from typing import List, Optional
+from typing import Dict, List, Optional
 from pydantic import BaseModel, Field
 from anthropic import Anthropic
 from dotenv import load_dotenv
@@ -667,6 +667,95 @@ Return your response as valid JSON with these exact keys:
         except Exception as e:
             logger.debug(f"LLM enhancement failed, using template fallback: {e}")
             return self._fallback_cui_narrative(category, subcategory, document_type, context)
+
+    # Customer template narrative enrichment
+
+    def generate_template_narrative(self, template_key: str,
+                                     context: Dict) -> Dict[str, str]:
+        """
+        Generate LLM-enriched narrative content for a customer template.
+
+        Args:
+            template_key: Template identifier (e.g., 'AcquisitionPlan', 'KMP')
+            context: Dict of Faker-generated data already in the template
+
+        Returns:
+            Dict of narrative field names to LLM-generated text
+        """
+        # Build a context summary from the Faker data
+        context_lines = []
+        for k, v in context.items():
+            if isinstance(v, str) and v and not k.startswith('_'):
+                context_lines.append(f"  {k}: {v}")
+        context_str = '\n'.join(context_lines[:10])
+
+        prompts = {
+            'AcquisitionPlan': f"""Generate realistic narrative sections for a CMS Streamlined Acquisition Plan.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a government contracting officer would write them:
+1. acquisition_strategy: 2-3 sentences describing the acquisition approach, contract type rationale, and competitive strategy
+2. market_research_summary: 2-3 sentences summarizing market research findings and vendor landscape
+3. cost_justification: 2-3 sentences justifying the cost estimate with references to historical pricing or independent estimates
+
+DO NOT include classification markings or labels. Write naturally as an internal government document.""",
+
+            'IncidentResponse': f"""Generate realistic narrative sections for a CMS Incident Response Report.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a cybersecurity analyst would write them:
+1. incident_summary: 2-3 sentences describing what happened, when, and initial impact assessment
+2. containment_actions: 2-3 sentences describing specific technical containment measures taken
+3. lessons_learned: 2-3 sentences describing what was learned and recommended preventive measures
+
+DO NOT include classification markings or labels. Write naturally as an internal security report.""",
+
+            'KMP': f"""Generate realistic narrative sections for a CMS Key Management Plan.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a system security officer would write them:
+1. system_description: 2-3 sentences describing the system's purpose, users, and data it processes
+2. key_management_procedures: 2-3 sentences describing how cryptographic keys are generated, distributed, stored, rotated, and destroyed
+3. compliance_justification: 2-3 sentences explaining how the key management approach meets NIST 800-57 and FISMA requirements
+
+DO NOT include classification markings or labels. Write naturally as an internal security document.""",
+        }
+
+        prompt = prompts.get(template_key)
+        if not prompt:
+            return {}
+
+        try:
+            json_keys = {
+                'AcquisitionPlan': '{"acquisition_strategy": "...", "market_research_summary": "...", "cost_justification": "..."}',
+                'IncidentResponse': '{"incident_summary": "...", "containment_actions": "...", "lessons_learned": "..."}',
+                'KMP': '{"system_description": "...", "key_management_procedures": "...", "compliance_justification": "..."}',
+            }
+            json_prompt = prompt + f"\n\nReturn your response as valid JSON with these exact keys:\n{json_keys[template_key]}"
+
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=1024,
+                messages=[{"role": "user", "content": json_prompt}]
+            )
+
+            text = response.content[0].text
+            if "```json" in text:
+                text = text.split("```json")[1].split("```")[0]
+            elif "```" in text:
+                text = text.split("```")[1].split("```")[0]
+            text = repair_json_string(text)
+            return json.loads(text)
+
+        except Exception as e:
+            logger.debug(f"Template narrative enrichment failed: {e}")
+            return {}
 
     # CUI Fallback methods
 

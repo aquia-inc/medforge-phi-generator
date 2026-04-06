@@ -22,7 +22,7 @@ import os
 import random
 from typing import Any, Dict, Optional
 
-from templates.components import ComponentConfiguration, get_docx_font_name
+from templates.components import ComponentConfiguration, get_docx_font_name, get_pdf_font_name
 
 # Alignment map for component configs -> python-docx
 _DOCX_ALIGNMENT_MAP = {
@@ -691,7 +691,7 @@ class CUIPdfFormatter:
         style_cfg = component_config.style.get_config() if component_config else None
         header_cfg = component_config.header.get_config() if component_config else None
 
-        font_name = style_cfg.get("font_family", "Helvetica") if style_cfg else "Helvetica"
+        font_name = get_pdf_font_name(style_cfg.get("font_family", "Helvetica")) if style_cfg else "Helvetica"
         font_size = style_cfg.get("font_size_body", 10) if style_cfg else 10
         title_size = style_cfg.get("font_size_title", 16) if style_cfg else 16
         leading = font_size * (style_cfg.get("line_height", 1.4) if style_cfg else 1.4)
