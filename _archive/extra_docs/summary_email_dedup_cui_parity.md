@@ -1,3 +1,14 @@
+# Email Dedup & CUI Format Parity — Branch Summary
+
+> **ARCHIVED** — This changelog documents a completed branch that was merged.
+> Moved from `docs/summary.md` on 2026-04-06.
+>
+> **Why completed:** All changes described below are merged and in production.
+> The `BaseEmailFormatter` base class is the shared MIME layer for all 8 email
+> formatters. CUI format parity (PPTX, nested email, HTML email) is live.
+> Purview fidelity fixes are validated by `tests/validate_file_fidelity.py` (19 checks).
+> This doc has no ongoing reference value — the code and git history are authoritative.
+
 ## Summary
 
 This branch brings the CUI pipeline to full format parity with PHI, eliminates ~400 LOC of duplicated MIME boilerplate across 5 email formatters, fixes several file fidelity issues that caused Purview classifier training timeouts, and adds automated validation tooling to prevent regressions.
