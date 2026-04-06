@@ -788,6 +788,66 @@ Generate three sections as a system security officer would write them:
 3. compliance_justification: 2-3 sentences explaining how the key management approach meets NIST 800-57 and FISMA requirements
 
 DO NOT include classification markings or labels. Write naturally as an internal security document.""",
+
+            'MarketResearch': f"""Generate realistic narrative sections for a CMS TAB D Market Research Report.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a contracting specialist would write them:
+1. market_overview: 2-3 sentences describing the vendor landscape, number of capable sources, and market maturity
+2. capability_assessment: 2-3 sentences assessing vendor capabilities relative to CMS requirements
+3. small_business_analysis: 2-3 sentences analyzing small business participation opportunities and set-aside recommendations
+
+DO NOT include classification markings or labels. Write naturally as an internal procurement document.""",
+
+            'JOFOC': f"""Generate realistic narrative sections for a CMS Justification for Other than Full and Open Competition (JOFOC).
+
+Context from the form:
+{context_str}
+
+Generate three sections as a contracting officer would write them:
+1. justification_narrative: 2-3 sentences describing why full and open competition is not feasible, citing FAR 6.302 authority
+2. market_research_findings: 2-3 sentences summarizing efforts to identify alternative sources and why they were insufficient
+3. determination_rationale: 2-3 sentences explaining the basis for the determination and price reasonableness assessment
+
+DO NOT include classification markings or labels. Write naturally as an internal procurement document.""",
+
+            'JALimitedSource': f"""Generate realistic narrative sections for a CMS Justification and Approval for Limited Source procurement.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a contracting officer would write them:
+1. competition_justification: 2-3 sentences explaining why competition was limited, citing specific FAR authority
+2. efforts_to_compete: 2-3 sentences describing efforts made to obtain competition and outreach conducted
+3. fair_pricing_determination: 2-3 sentences explaining how price reasonableness was determined (e.g., comparison to prior contracts, market rates, IGCE)
+
+DO NOT include classification markings or labels. Write naturally as an internal procurement document.""",
+
+            'SubpoenaResponse': f"""Generate realistic narrative sections for a CMS Subpoena Duces Tecum response letter.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a government attorney would write them:
+1. response_narrative: 2-3 sentences acknowledging the subpoena and describing the scope of the response
+2. privilege_log_summary: 2-3 sentences identifying categories of documents withheld under applicable privileges (deliberative process, attorney-client, privacy)
+3. production_scope: 2-3 sentences describing what responsive documents are being produced and any redactions applied
+
+DO NOT include classification markings or labels. Write naturally as a formal legal response.""",
+
+            'RFCMemo': f"""Generate realistic narrative sections for a CMS Request for Change (RFC) memorandum.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a program manager would write them:
+1. change_justification: 2-3 sentences explaining the business need driving this contract modification
+2. impact_analysis: 2-3 sentences describing the technical, schedule, and cost impact of the proposed change
+3. stakeholder_assessment: 2-3 sentences identifying affected stakeholders and their concurrence status
+
+DO NOT include classification markings or labels. Write naturally as an internal government memo.""",
         }
 
         prompt = prompts.get(template_key)
@@ -799,6 +859,11 @@ DO NOT include classification markings or labels. Write naturally as an internal
                 'AcquisitionPlan': '{"acquisition_strategy": "...", "market_research_summary": "...", "cost_justification": "..."}',
                 'IncidentResponse': '{"incident_summary": "...", "containment_actions": "...", "lessons_learned": "..."}',
                 'KMP': '{"system_description": "...", "key_management_procedures": "...", "compliance_justification": "..."}',
+                'MarketResearch': '{"market_overview": "...", "capability_assessment": "...", "small_business_analysis": "..."}',
+                'JOFOC': '{"justification_narrative": "...", "market_research_findings": "...", "determination_rationale": "..."}',
+                'JALimitedSource': '{"competition_justification": "...", "efforts_to_compete": "...", "fair_pricing_determination": "..."}',
+                'SubpoenaResponse': '{"response_narrative": "...", "privilege_log_summary": "...", "production_scope": "..."}',
+                'RFCMemo': '{"change_justification": "...", "impact_analysis": "...", "stakeholder_assessment": "..."}',
             }
             json_prompt = prompt + f"\n\nReturn your response as valid JSON with these exact keys:\n{json_keys[template_key]}"
 
