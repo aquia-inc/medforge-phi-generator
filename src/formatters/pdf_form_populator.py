@@ -1398,7 +1398,8 @@ class CustomerTemplateManager:
 
     def generate_from_template(self, template_key: str, output_subdir: str,
                                index: int, populate: bool = True,
-                               extra_data: dict = None) -> str:
+                               extra_data: dict = None,
+                               field_data: dict = None) -> str:
         """
         Generate a document from customer template.
 
@@ -1453,8 +1454,9 @@ class CustomerTemplateManager:
             output_path = os.path.join(output_subdir, filename)
 
             if populate:
-                # Generate synthetic data and fill form
-                field_data = template_info['generator']()
+                # Use pre-generated data if provided, otherwise generate now
+                if field_data is None:
+                    field_data = template_info['generator']()
                 # Merge LLM-enriched narratives if provided
                 if extra_data:
                     field_data.update(extra_data)

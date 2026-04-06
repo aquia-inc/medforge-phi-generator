@@ -743,12 +743,22 @@ class MedForgeCUIGenerator:
                 output_subdir = str(self.category_negative_dirs.get(category, self.output_dir))
 
             # Optionally enrich template with LLM narratives (positive only)
+            # Pre-generate Faker data so LLM enrichment and template fill
+            # use the same values (avoids name/number mismatch)
+            pre_generated_data = None
             extra_data = None
             llm_enriched = False
-            if populate and self.llm_generator and random.random() < self.llm_percentage:
-                extra_data = self._enrich_template_data_with_llm(template_key)
-                if extra_data:
-                    llm_enriched = True
+            template_info = self.customer_templates.template_mappings.get(template_key, {})
+            generator = template_info.get('generator')
+
+            if populate and generator:
+                pre_generated_data = generator()
+
+                if self.llm_generator and random.random() < self.llm_percentage:
+                    extra_data = self._enrich_template_data_with_llm(
+                        template_key, context=pre_generated_data)
+                    if extra_data:
+                        llm_enriched = True
 
             # Generate from template
             filepath = self.customer_templates.generate_from_template(
@@ -757,6 +767,7 @@ class MedForgeCUIGenerator:
                 index,
                 populate=populate,
                 extra_data=extra_data,
+                field_data=pre_generated_data,
             )
 
             # Detect format from output filepath extension
@@ -800,9 +811,15 @@ class MedForgeCUIGenerator:
             # Fail silently and let regular generation take over
             return None
 
-    def _enrich_template_data_with_llm(self, template_key: str) -> Optional[dict]:
+    def _enrich_template_data_with_llm(self, template_key: str,
+                                       context: Optional[dict] = None) -> Optional[dict]:
         """
         Generate LLM narrative content for a customer template.
+
+        Args:
+            template_key: Template identifier
+            context: Pre-generated Faker data to use as LLM context (avoids
+                     generating different data than what fills the template)
 
         Returns dict of extra fields to merge into template data, or None.
         The LLM narratives are converted to _append_paragraphs format for DOCX
@@ -816,10 +833,10 @@ class MedForgeCUIGenerator:
             return None
 
         try:
-            # Get the Faker data that would normally be generated, for context
-            template_info = self.customer_templates.template_mappings.get(template_key, {})
-            generator = template_info.get('generator')
-            context = generator() if generator else {}
+            if context is None:
+                template_info = self.customer_templates.template_mappings.get(template_key, {})
+                generator = template_info.get('generator')
+                context = generator() if generator else {}
 
             narratives = self.llm_generator.generate_template_narrative(template_key, context)
             if not narratives:
