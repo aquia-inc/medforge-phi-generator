@@ -893,7 +893,42 @@ class MedForgeCUIGenerator:
             # Generate enhanced content based on category.
             # Field names must match what CUI formatter type handlers read
             # (see cui_formatter.py _add_*_content methods).
-            if category == "financial" and "budget" in subcategory:
+            if category == "financial" and "bank_secrecy" in subcategory:
+                enhanced = self.llm_generator.generate_cui_narrative(
+                    category=category, subcategory=subcategory,
+                    document_type=doc_type,
+                    context={"organization": doc_data.get("organization", ""),
+                             "subject": doc_data.get("subject", "")}
+                )
+                # SAR handler reads suspicious_activity dict with narrative field
+                if "suspicious_activity" in doc_data and isinstance(doc_data["suspicious_activity"], dict):
+                    doc_data["suspicious_activity"]["narrative"] = enhanced.body_content
+                doc_data["executive_summary"] = enhanced.executive_summary
+
+            elif category == "financial" and "retirement" in subcategory:
+                enhanced = self.llm_generator.generate_cui_narrative(
+                    category=category, subcategory=subcategory,
+                    document_type=doc_type,
+                    context={"organization": doc_data.get("organization", ""),
+                             "employee": doc_data.get("employee", {}).get("name", "")}
+                )
+                doc_data["executive_summary"] = enhanced.executive_summary
+                doc_data["disclaimer"] = enhanced.body_content
+
+            elif category == "financial" and "comptroller" in subcategory:
+                enhanced = self.llm_generator.generate_cui_narrative(
+                    category=category, subcategory=subcategory,
+                    document_type=doc_type,
+                    context={"organization": doc_data.get("agency_reviewed", ""),
+                             "topic": doc_data.get("topic", "")}
+                )
+                doc_data["executive_summary"] = enhanced.executive_summary
+                # Enrich first finding description if present
+                findings = doc_data.get("findings", [])
+                if findings and isinstance(findings[0], dict):
+                    findings[0]["description"] = enhanced.body_content
+
+            elif category == "financial" and "budget" in subcategory:
                 enhanced = self.llm_generator.generate_cui_budget_memo(
                     agency=doc_data.get("organization", "Government Agency"),
                     program=doc_data.get("program", "Federal Program"),
@@ -964,6 +999,28 @@ class MedForgeCUIGenerator:
                     ][:4]
                 doc_data["justification"] = enhanced.justification
                 doc_data["recommendation"] = enhanced.recommendation
+
+            elif category == "tax" and "written" in subcategory:
+                enhanced = self.llm_generator.generate_cui_tax_determination(
+                    issue=doc_data.get("issues", ["tax treatment"])[0] if isinstance(doc_data.get("issues"), list) else doc_data.get("issues", "tax treatment"),
+                    code_sections=", ".join(doc_data.get("code_sections", ["IRC Section 61"])) if isinstance(doc_data.get("code_sections"), list) else doc_data.get("code_sections", "IRC Section 61"),
+                )
+                # written_determination handler reads: facts, law_and_analysis, conclusion
+                doc_data["facts"] = enhanced.facts
+                doc_data["law_and_analysis"] = enhanced.law_and_analysis
+                doc_data["conclusion"] = enhanced.conclusion
+
+            elif category == "tax":
+                enhanced = self.llm_generator.generate_cui_narrative(
+                    category=category, subcategory=subcategory,
+                    document_type=doc_type,
+                    context={
+                        "organization": doc_data.get("organization", "Internal Revenue Service"),
+                        "subject": doc_data.get("subject", "tax matter"),
+                    }
+                )
+                doc_data["executive_summary"] = enhanced.executive_summary
+                doc_data["body_content"] = enhanced.body_content
 
             else:
                 # Generic CUI narrative enhancement
