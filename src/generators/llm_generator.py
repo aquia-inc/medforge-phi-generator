@@ -885,6 +885,70 @@ DO NOT include classification markings or labels. Write naturally as an internal
             logger.debug(f"Template narrative enrichment failed: {e}")
             return {}
 
+    def generate_cui_negative_narrative(self, category: str, document_type: str,
+                                         context: dict) -> CUIDocumentNarrative:
+        """
+        Generate public-facing prose for CUI negative documents.
+
+        Content must be genuinely non-sensitive — suitable for unlimited public
+        distribution. No names, identification numbers, case numbers, or
+        pre-decisional information.
+
+        Args:
+            category: CUI category (financial, legal, tax, etc.)
+            document_type: Type of negative document (public_budget_summary, etc.)
+            context: Additional context dict
+
+        Returns:
+            CUIDocumentNarrative with public-facing content
+        """
+        context_str = ", ".join([f"{k}: {v}" for k, v in context.items() if v])
+        prompt = f"""Generate publicly available, non-sensitive government content for:
+
+Category: {category}
+Document Type: {document_type}
+Context: {context_str}
+
+Requirements:
+- This is a PUBLIC document suitable for unlimited distribution
+- Write 2-3 sentences per section in formal government style
+- DO NOT include any names, identification numbers, case numbers, SSNs, or dates tied to individuals
+- DO NOT include pre-decisional language, draft markings, or privilege assertions
+- DO NOT include classification markings or labels like "CUI", "Positive", "Negative"
+- Content should be informational, educational, or procedural — like a published guidance document
+- Examples: public policy overviews, training material descriptions, procedural guides, published rulings
+"""
+
+        try:
+            json_prompt = prompt + """
+
+Return your response as valid JSON with these exact keys:
+{"executive_summary": "...", "body_content": "...", "recommendations": "...", "distribution_statement": "..."}"""
+
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=1024,
+                messages=[{"role": "user", "content": json_prompt}]
+            )
+
+            text = response.content[0].text
+            if "```json" in text:
+                text = text.split("```json")[1].split("```")[0]
+            elif "```" in text:
+                text = text.split("```")[1].split("```")[0]
+            text = repair_json_string(text)
+            data = json.loads(text)
+            return CUIDocumentNarrative(**data)
+
+        except Exception as e:
+            logger.debug(f"Negative LLM enhancement failed, using fallback: {e}")
+            return CUIDocumentNarrative(
+                executive_summary=f"This document provides general information about {category.replace('_', ' ')} topics for public awareness.",
+                body_content=f"The information contained herein is publicly available and intended for educational purposes. It does not contain controlled or sensitive information.",
+                recommendations="Refer to official agency websites for the most current information and guidance.",
+                distribution_statement="Unlimited public distribution.",
+            )
+
     # CUI Fallback methods
 
     def _fallback_budget_memo(self, agency, program, fiscal_year, amount) -> CUIBudgetMemo:
