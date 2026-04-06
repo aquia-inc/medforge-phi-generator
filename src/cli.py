@@ -738,12 +738,21 @@ class MedForgeCUIGenerator:
             else:
                 output_subdir = str(self.category_negative_dirs.get(category, self.output_dir))
 
+            # Optionally enrich template with LLM narratives (positive only)
+            extra_data = None
+            llm_enriched = False
+            if populate and self.llm_generator and random.random() < self.llm_percentage:
+                extra_data = self._enrich_template_data_with_llm(template_key)
+                if extra_data:
+                    llm_enriched = True
+
             # Generate from template
             filepath = self.customer_templates.generate_from_template(
                 template_key,
                 output_subdir,
                 index,
-                populate=populate
+                populate=populate,
+                extra_data=extra_data,
             )
 
             # Detect format from output filepath extension
@@ -774,14 +783,71 @@ class MedForgeCUIGenerator:
                 "authority": "",
                 "format": detected_format,
                 "index": index,
-                "llm_enhanced": False,
+                "llm_enhanced": llm_enriched if populate else False,
                 "source": "customer_template",
             })
+
+            if llm_enriched:
+                self.stats["llm_enhanced"] += 1
 
             return filepath
 
         except Exception as e:
             # Fail silently and let regular generation take over
+            return None
+
+    def _enrich_template_data_with_llm(self, template_key: str) -> Optional[dict]:
+        """
+        Generate LLM narrative content for a customer template.
+
+        Returns dict of extra fields to merge into template data, or None.
+        The LLM narratives are converted to _append_paragraphs format for DOCX
+        and plain text substitutions for other formats.
+        """
+        ENRICHABLE_TEMPLATES = {'AcquisitionPlan', 'IncidentResponse', 'KMP'}
+        if template_key not in ENRICHABLE_TEMPLATES:
+            return None
+
+        try:
+            # Get the Faker data that would normally be generated, for context
+            template_info = self.customer_templates.template_mappings.get(template_key, {})
+            generator = template_info.get('generator')
+            context = generator() if generator else {}
+
+            narratives = self.llm_generator.generate_template_narrative(template_key, context)
+            if not narratives:
+                return None
+
+            # Convert LLM dict into _append_paragraphs sections for DOCX rendering
+            heading_map = {
+                # KMP
+                'system_description': 'System Description',
+                'key_management_procedures': 'Key Management Procedures',
+                'compliance_justification': 'Compliance Justification',
+                # Incident Response
+                'incident_summary': 'Incident Summary',
+                'containment_actions': 'Containment Actions',
+                'lessons_learned': 'Lessons Learned',
+                # Acquisition Plan
+                'acquisition_strategy': 'Acquisition Strategy',
+                'market_research_summary': 'Market Research Summary',
+                'cost_justification': 'Cost Justification',
+            }
+
+            sections = []
+            for key, text in narratives.items():
+                if isinstance(text, str) and text.strip():
+                    sections.append({
+                        'heading': heading_map.get(key, key.replace('_', ' ').title()),
+                        'text': text,
+                    })
+
+            if sections:
+                return {'_append_paragraphs': sections}
+            return None
+
+        except Exception as e:
+            self.stats["errors"].append(f"Template LLM enrichment failed for {template_key}: {str(e)}")
             return None
 
     def _apply_cui_notice_policy(self, doc_data: dict) -> dict:

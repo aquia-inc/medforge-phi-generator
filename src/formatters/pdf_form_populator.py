@@ -1397,7 +1397,8 @@ class CustomerTemplateManager:
         }
 
     def generate_from_template(self, template_key: str, output_subdir: str,
-                               index: int, populate: bool = True) -> str:
+                               index: int, populate: bool = True,
+                               extra_data: dict = None) -> str:
         """
         Generate a document from customer template.
 
@@ -1406,6 +1407,7 @@ class CustomerTemplateManager:
             output_subdir: Full path to output directory (not relative)
             index: Document index for filename
             populate: If True, populate with data. If False, use blank template.
+            extra_data: Optional dict of additional fields to merge (e.g., LLM narratives)
 
         Returns:
             Path to generated file
@@ -1453,6 +1455,9 @@ class CustomerTemplateManager:
             if populate:
                 # Generate synthetic data and fill form
                 field_data = template_info['generator']()
+                # Merge LLM-enriched narratives if provided
+                if extra_data:
+                    field_data.update(extra_data)
                 if ext.lower() == '.pdf':
                     return self.populator.populate_form(
                         template_path, output_path, field_data,
@@ -1509,6 +1514,7 @@ class CustomerTemplateManager:
         # Extract special keys before text substitution
         table_data = replacements.pop('_table_data', None)
         underline_fills = replacements.pop('_underline_fills', None)
+        append_paragraphs = replacements.pop('_append_paragraphs', None)
         # NOTE: _underline_fills values are consumed in iteration order:
         # body paragraphs → table cells → headers/footers.
         # Generators must provide values matching this order, not visual page order.
@@ -1564,6 +1570,23 @@ class CustomerTemplateManager:
         # Table data fill: write values into empty cells by position
         if table_data:
             self._populate_docx_tables(doc, table_data)
+
+        # Append LLM narrative sections at end of document
+        if append_paragraphs:
+            from docx.shared import Pt
+            doc.add_paragraph()  # Spacer
+            for section in append_paragraphs:
+                heading = section.get('heading', '')
+                text = section.get('text', '')
+                if heading:
+                    h = doc.add_paragraph()
+                    run = h.add_run(heading)
+                    run.bold = True
+                    run.font.size = Pt(11)
+                if text:
+                    for para in text.split('\n\n'):
+                        if para.strip():
+                            doc.add_paragraph(para.strip())
 
         doc.save(output_path)
         return output_path
