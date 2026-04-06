@@ -146,14 +146,18 @@ Each document has a configurable chance (`--llm-percentage`, default 0.2) of bei
 
 **What the LLM generates:**
 - **PHI:** Clinical SOAP notes, provider-to-provider correspondence, patient communications
-- **CUI:** Budget memos with fiscal analysis, security vulnerability reports, legal memos, procurement rationale documents
+- **CUI Positive:** Budget memos, SAR narratives, comptroller findings, retirement analyses, security vulnerability reports, legal memos (IRAC format), procurement rationale, tax written determinations (facts/law/analysis/conclusion)
+- **CUI Negative:** Public-facing prose for hard negatives — policy overviews, training descriptions, published guidance, taxpayer advice (at half the positive LLM rate)
+- **Customer Templates:** 8 enrichable templates get LLM-generated narrative sections appended (acquisition strategy, market research, justification narratives, incident summaries)
+- **Snyk Emails:** Highest-severity vulnerability finding gets LLM-generated description, impact analysis, and remediation narrative
 
 **When the LLM is NOT used:**
 - `ANTHROPIC_API_KEY` is not set — falls back silently to templates
 - `--llm-percentage 0` is specified — fully offline, free generation
 - The random roll doesn't select this document (80% of docs by default)
 - The API call fails — automatic silent fallback to template-based generation
-- Customer template generation — always uses the template populator, not LLM
+
+**CUI negative half-rate:** Negative documents use half the `--llm-percentage` rate (e.g., at 0.2, positives get 20% LLM and negatives get 10%). This balances realism against cost.
 
 **Cost:** ~$0.02-0.03 per LLM-enhanced document. Set `--llm-percentage 0` for free generation.
 
@@ -171,6 +175,8 @@ Each document has a configurable chance (`--llm-percentage`, default 0.2) of bei
 **Category-weighted selection** picks a category first (uniform random), then a template within that category. This prevents bias when one category has more templates than others.
 
 **Five fill patterns** are supported: PDF fillable (reportlab overlay), PDF copy pair, DOCX placeholder substitution, DOCX table fill, and DOCX underline fill. Synthetic data is generated via Faker (names, addresses, contract numbers, prices, system names).
+
+**LLM-enriched templates:** 8 templates (AcquisitionPlan, IncidentResponse, KMP, MarketResearch, JOFOC, JALimitedSource, SubpoenaResponse, RFCMemo) can receive LLM-generated narrative sections appended to the filled document. This is controlled by the same `--llm-percentage` rate.
 
 See [docs/adding-customer-templates.md](docs/adding-customer-templates.md) for the full registration guide.
 
@@ -219,6 +225,9 @@ Manifest files track each document's format, polarity, category, whether it was 
 ## Running Tests & Validation
 
 ```bash
+# LLM integration smoke test — validates all LLM enhancement paths (~2-3 min)
+uv run python tests/test_llm_smoke.py
+
 # Full artifact matrix — generates 114 artifacts covering all category x format x polarity combos
 uv run python tests/generate_artifact_matrix.py
 
