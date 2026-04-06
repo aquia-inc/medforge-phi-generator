@@ -51,6 +51,7 @@ from formatters.cui_nested_formatter import CUINestedEmailFormatter
 from formatters.cui_html_email_formatter import CUIHTMLEmailFormatter
 from formatters.snyk_email_generator import SnykEmailGenerator
 from formatters.pdf_form_populator import CustomerTemplateManager
+from templates.components import ComponentMixer, CUI_SECTION_ORDERS
 
 # Initialize CLI app and console
 app = typer.Typer(
@@ -634,6 +635,9 @@ class MedForgeCUIGenerator:
 
         self.manifest = []
 
+        # Initialize component mixer for visual variety in DOCX/PDF
+        self.component_mixer = ComponentMixer(seed=seed)
+
         # Initialize CUI generator factory
         self.cui_generator = CUIGeneratorFactory.create_composite_generator(
             categories=self.categories,
@@ -820,7 +824,9 @@ class MedForgeCUIGenerator:
             subcategory = doc_data.get("subcategory", "")
             doc_type = doc_data.get("document_type", "")
 
-            # Generate enhanced content based on category
+            # Generate enhanced content based on category.
+            # Field names must match what CUI formatter type handlers read
+            # (see cui_formatter.py _add_*_content methods).
             if category == "financial" and "budget" in subcategory:
                 enhanced = self.llm_generator.generate_cui_budget_memo(
                     agency=doc_data.get("organization", "Government Agency"),
@@ -828,10 +834,17 @@ class MedForgeCUIGenerator:
                     fiscal_year=str(doc_data.get("fiscal_year", "2025")),
                     amount=doc_data.get("amount", "$1,000,000")
                 )
+                # budget_memo handler reads: to, from, subject, decision, key_decision_points
+                doc_data["subject"] = enhanced.subject
+                doc_data["decision"] = enhanced.budget_justification
+                doc_data["key_decision_points"] = [
+                    enhanced.purpose,
+                    enhanced.fiscal_impact,
+                    enhanced.recommendation,
+                ]
+                # Also store for generic/email formatters
                 doc_data["executive_summary"] = enhanced.purpose
-                doc_data["body"] = enhanced.budget_justification
                 doc_data["fiscal_impact"] = enhanced.fiscal_impact
-                doc_data["recommendation"] = enhanced.recommendation
 
             elif category == "critical_infrastructure" or "vulnerability" in doc_type:
                 enhanced = self.llm_generator.generate_cui_security_report(
@@ -840,11 +853,17 @@ class MedForgeCUIGenerator:
                     severity=doc_data.get("severity", "High"),
                     agency=doc_data.get("organization", "Government Agency")
                 )
+                # vulnerability_alert handler reads: alert_id, severity, cvss_score,
+                # cve_id, affected_system, affected_versions, description, remediation
+                doc_data["description"] = enhanced.technical_details
+                doc_data["remediation"] = {
+                    "action": enhanced.mitigation_steps,
+                    "target_version": doc_data.get("remediation", {}).get("target_version", "Latest"),
+                    "deadline": enhanced.timeline,
+                }
+                # Also store for generic/email/coop formatters
                 doc_data["executive_summary"] = enhanced.incident_summary
-                doc_data["body"] = enhanced.technical_details
                 doc_data["risk_assessment"] = enhanced.risk_assessment
-                doc_data["mitigation"] = enhanced.mitigation_steps
-                doc_data["timeline"] = enhanced.timeline
 
             elif category == "legal":
                 enhanced = self.llm_generator.generate_cui_legal_memo(
@@ -852,10 +871,13 @@ class MedForgeCUIGenerator:
                     agency=doc_data.get("organization", "Government Agency"),
                     legal_issue=doc_data.get("legal_issue", "regulatory compliance")
                 )
+                # attorney_memo handler reads: privilege_assertion, attorney, client,
+                # subject, question_presented, brief_answer, analysis, recommendation
                 doc_data["subject"] = enhanced.subject
                 doc_data["question_presented"] = enhanced.question_presented
-                doc_data["body"] = enhanced.analysis
-                doc_data["conclusion"] = enhanced.conclusion
+                doc_data["brief_answer"] = enhanced.brief_answer
+                doc_data["analysis"] = enhanced.analysis
+                doc_data["recommendation"] = enhanced.conclusion
 
             elif category == "procurement":
                 vendors = doc_data.get("vendors", ["Vendor A", "Vendor B", "Vendor C"])
@@ -865,11 +887,17 @@ class MedForgeCUIGenerator:
                     estimated_value=doc_data.get("estimated_value", "$500,000"),
                     vendors=vendors if isinstance(vendors, list) else [vendors]
                 )
+                # source_selection_plan handler reads: solicitation_number, program,
+                # estimated_value, contract_type, evaluation_factors
                 doc_data["executive_summary"] = enhanced.acquisition_summary
-                doc_data["evaluation_criteria"] = enhanced.evaluation_criteria
-                doc_data["body"] = enhanced.vendor_analysis
-                doc_data["recommendation"] = enhanced.recommendation
+                if enhanced.evaluation_criteria:
+                    doc_data["evaluation_factors"] = [
+                        {"factor": line.strip().rstrip('.'), "weight": random.randint(15, 40)}
+                        for line in enhanced.evaluation_criteria.split('.')
+                        if line.strip()
+                    ][:4]
                 doc_data["justification"] = enhanced.justification
+                doc_data["recommendation"] = enhanced.recommendation
 
             else:
                 # Generic CUI narrative enhancement
@@ -883,7 +911,7 @@ class MedForgeCUIGenerator:
                     }
                 )
                 doc_data["executive_summary"] = enhanced.executive_summary
-                doc_data["body"] = enhanced.body_content
+                doc_data["body_content"] = enhanced.body_content
                 doc_data["recommendations"] = enhanced.recommendations
 
             return doc_data, True
@@ -983,10 +1011,20 @@ class MedForgeCUIGenerator:
                 fmt = "eml"
             elif fmt == "docx":
                 self.formatters[fmt].output_dir = str(category_dir)
-                filepath = self.formatters[fmt].create_cui_document(doc_data, filename)
+                component_config = self.component_mixer.get_random_configuration(
+                    avoid_duplicates=False,
+                    force_variant={"section_order": random.choice(CUI_SECTION_ORDERS)},
+                )
+                filepath = self.formatters[fmt].create_cui_document(
+                    doc_data, filename, component_config=component_config)
             elif fmt == "pdf":
                 self.formatters[fmt].output_dir = str(category_dir)
-                filepath = self.formatters[fmt].create_cui_pdf(doc_data, filename)
+                component_config = self.component_mixer.get_random_configuration(
+                    avoid_duplicates=False,
+                    force_variant={"section_order": random.choice(CUI_SECTION_ORDERS)},
+                )
+                filepath = self.formatters[fmt].create_cui_pdf(
+                    doc_data, filename, component_config=component_config)
             elif fmt == "xlsx":
                 self.formatters[fmt].output_dir = str(category_dir)
                 filepath = self.formatters[fmt].create_cui_xlsx(doc_data, filename)
@@ -1111,10 +1149,20 @@ class MedForgeCUIGenerator:
                 fmt = "eml"
             elif fmt == "docx":
                 self.formatters[fmt].output_dir = str(category_dir)
-                filepath = self.formatters[fmt].create_cui_document(doc_data, filename)
+                component_config = self.component_mixer.get_random_configuration(
+                    avoid_duplicates=False,
+                    force_variant={"section_order": random.choice(CUI_SECTION_ORDERS)},
+                )
+                filepath = self.formatters[fmt].create_cui_document(
+                    doc_data, filename, component_config=component_config)
             elif fmt == "pdf":
                 self.formatters[fmt].output_dir = str(category_dir)
-                filepath = self.formatters[fmt].create_cui_pdf(doc_data, filename)
+                component_config = self.component_mixer.get_random_configuration(
+                    avoid_duplicates=False,
+                    force_variant={"section_order": random.choice(CUI_SECTION_ORDERS)},
+                )
+                filepath = self.formatters[fmt].create_cui_pdf(
+                    doc_data, filename, component_config=component_config)
             elif fmt == "xlsx":
                 self.formatters[fmt].output_dir = str(category_dir)
                 filepath = self.formatters[fmt].create_cui_xlsx(doc_data, filename)

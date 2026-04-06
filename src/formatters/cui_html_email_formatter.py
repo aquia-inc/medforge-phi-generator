@@ -12,8 +12,38 @@ from typing import Any, Dict
 from formatters.base_email_formatter import BaseEmailFormatter
 
 
+# Color palettes per content type — randomly selected per email
+_PALETTES = {
+    'vulnerability': [
+        {'accent': '#4a148c', 'font': 'Arial, Helvetica, sans-serif'},
+        {'accent': '#b71c1c', 'font': 'Verdana, Geneva, sans-serif'},
+        {'accent': '#1b5e20', 'font': 'Arial, Helvetica, sans-serif'},
+        {'accent': '#263238', 'font': 'Georgia, serif'},
+    ],
+    'financial': [
+        {'accent': '#0d47a1', 'font': 'Arial, Helvetica, sans-serif'},
+        {'accent': '#004d40', 'font': 'Verdana, Geneva, sans-serif'},
+        {'accent': '#1b5e20', 'font': 'Georgia, serif'},
+        {'accent': '#37474f', 'font': 'Arial, Helvetica, sans-serif'},
+    ],
+    'legal': [
+        {'accent': '#37474f', 'font': 'Georgia, serif'},
+        {'accent': '#1a237e', 'font': 'Times New Roman, serif'},
+        {'accent': '#3e2723', 'font': 'Georgia, serif'},
+        {'accent': '#263238', 'font': 'Arial, Helvetica, sans-serif'},
+    ],
+    'generic': [
+        {'accent': '#1a5276', 'font': 'Arial, Helvetica, sans-serif'},
+        {'accent': '#1b5e20', 'font': 'Verdana, Geneva, sans-serif'},
+        {'accent': '#4a148c', 'font': 'Georgia, serif'},
+        {'accent': '#bf360c', 'font': 'Arial, Helvetica, sans-serif'},
+        {'accent': '#0d47a1', 'font': 'Verdana, Geneva, sans-serif'},
+    ],
+}
+
+
 class CUIHTMLEmailFormatter(BaseEmailFormatter):
-    """Creates CUI emails with professional HTML styling."""
+    """Creates CUI emails with professional HTML styling and color variation."""
 
     def create_cui_html_email(self, doc_data: Dict[str, Any], filename: str) -> str:
         """
@@ -41,18 +71,24 @@ class CUIHTMLEmailFormatter(BaseEmailFormatter):
         # Build plain text
         plain_text = self._build_plain_text(doc_data)
 
-        # Build HTML based on document type
+        # Build HTML based on document type, with randomized palette
         doc_type = doc_data.get('document_type', '')
         if doc_type == 'vulnerability_alert':
-            html_body = self._build_vulnerability_html(doc_data, classification, has_cui)
+            palette = random.choice(_PALETTES['vulnerability'])
+            html_body = self._build_vulnerability_html(doc_data, classification, has_cui, palette)
         elif doc_type in ('budget_memo', 'eft_authorization', 'retirement_estimate',
                           'taxpayer_record', 'sam_registration'):
-            html_body = self._build_financial_html(doc_data, classification, has_cui)
+            palette = random.choice(_PALETTES['financial'])
+            html_body = self._build_financial_html(doc_data, classification, has_cui, palette)
         elif doc_type in ('investigation_summary', 'criminal_history_check',
-                          'admin_proceedings', 'collective_bargaining'):
-            html_body = self._build_legal_html(doc_data, classification, has_cui)
+                          'admin_proceedings', 'collective_bargaining',
+                          'attorney_memo', 'bargaining_proposal',
+                          'congressional_testimony', 'hearing_record'):
+            palette = random.choice(_PALETTES['legal'])
+            html_body = self._build_legal_html(doc_data, classification, has_cui, palette)
         else:
-            html_body = self._build_generic_html(doc_data, classification, has_cui)
+            palette = random.choice(_PALETTES['generic'])
+            html_body = self._build_generic_html(doc_data, classification, has_cui, palette)
 
         return self._build_and_save_email(
             subject=subject,
@@ -96,7 +132,8 @@ class CUIHTMLEmailFormatter(BaseEmailFormatter):
         return '\n'.join(lines)
 
     def _wrap_html(self, content: str, classification: str, has_cui: bool,
-                   doc_data: Dict[str, Any], accent_color: str = '#1a5276') -> str:
+                   doc_data: Dict[str, Any], accent_color: str = '#1a5276',
+                   font_family: str = 'Arial, Helvetica, sans-serif') -> str:
         """Wrap content in standard CUI HTML email template."""
         banner = ''
         if has_cui and classification:
@@ -126,7 +163,7 @@ class CUIHTMLEmailFormatter(BaseEmailFormatter):
         return f'''<!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8"></head>
-<body style="margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; background-color: #f4f4f4;">
+<body style="margin: 0; padding: 0; font-family: {font_family}; background-color: #f4f4f4;">
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f4f4f4;">
         <tr>
             <td align="center" style="padding: 30px 0;">
@@ -151,7 +188,7 @@ class CUIHTMLEmailFormatter(BaseEmailFormatter):
 </body>
 </html>'''
 
-    def _build_vulnerability_html(self, doc_data, classification, has_cui):
+    def _build_vulnerability_html(self, doc_data, classification, has_cui, palette=None):
         """Build vulnerability alert HTML with severity-colored table."""
         severity = doc_data.get('severity', 'Unknown')
         severity_colors = {
@@ -200,9 +237,12 @@ class CUIHTMLEmailFormatter(BaseEmailFormatter):
                 <p style="margin: 5px 0 0;">Deadline: {rem.get('deadline', 'N/A')}</p>
             </div>'''
 
-        return self._wrap_html(content, classification, has_cui, doc_data, accent_color='#4a148c')
+        p = palette or {}
+        return self._wrap_html(content, classification, has_cui, doc_data,
+                               accent_color=p.get('accent', '#4a148c'),
+                               font_family=p.get('font', 'Arial, Helvetica, sans-serif'))
 
-    def _build_financial_html(self, doc_data, classification, has_cui):
+    def _build_financial_html(self, doc_data, classification, has_cui, palette=None):
         """Build financial document HTML with table layout."""
         rows = ''
         skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
@@ -226,9 +266,12 @@ class CUIHTMLEmailFormatter(BaseEmailFormatter):
                 {rows}
             </table>
         '''
-        return self._wrap_html(content, classification, has_cui, doc_data, accent_color='#0d47a1')
+        p = palette or {}
+        return self._wrap_html(content, classification, has_cui, doc_data,
+                               accent_color=p.get('accent', '#0d47a1'),
+                               font_family=p.get('font', 'Arial, Helvetica, sans-serif'))
 
-    def _build_legal_html(self, doc_data, classification, has_cui):
+    def _build_legal_html(self, doc_data, classification, has_cui, palette=None):
         """Build legal document HTML with formal styling."""
         rows = ''
         skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
@@ -249,9 +292,12 @@ class CUIHTMLEmailFormatter(BaseEmailFormatter):
                 {rows}
             </div>
         '''
-        return self._wrap_html(content, classification, has_cui, doc_data, accent_color='#37474f')
+        p = palette or {}
+        return self._wrap_html(content, classification, has_cui, doc_data,
+                               accent_color=p.get('accent', '#37474f'),
+                               font_family=p.get('font', 'Georgia, serif'))
 
-    def _build_generic_html(self, doc_data, classification, has_cui):
+    def _build_generic_html(self, doc_data, classification, has_cui, palette=None):
         """Build generic CUI HTML email."""
         rows = ''
         skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
@@ -275,4 +321,7 @@ class CUIHTMLEmailFormatter(BaseEmailFormatter):
                 {rows}
             </table>
         '''
-        return self._wrap_html(content, classification, has_cui, doc_data)
+        p = palette or {}
+        return self._wrap_html(content, classification, has_cui, doc_data,
+                               accent_color=p.get('accent', '#1a5276'),
+                               font_family=p.get('font', 'Arial, Helvetica, sans-serif'))
