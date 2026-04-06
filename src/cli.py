@@ -662,7 +662,11 @@ class MedForgeCUIGenerator:
             "pptx": CUIPPTXFormatter(output_dir=str(self.output_dir)),
             "nested_eml": CUINestedEmailFormatter(output_dir=str(self.output_dir)),
             "html_eml": CUIHTMLEmailFormatter(output_dir=str(self.output_dir)),
-            "snyk_eml": SnykEmailGenerator(output_dir=str(self.output_dir)),
+            "snyk_eml": SnykEmailGenerator(
+                output_dir=str(self.output_dir),
+                llm_generator=self.llm_generator,
+                llm_percentage=llm_percentage,
+            ),
         }
 
         # Initialize customer template manager for real CMS forms
