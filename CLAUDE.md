@@ -143,10 +143,16 @@ def generate_example_data(self) -> Dict[str, Any]:
 
 **5. Template selection is category-weighted** — adding 10 procurement templates won't flood output; each category gets equal selection probability.
 
-### Testing Templates
+### Testing
 
 ```bash
-# Quick smoke test for a single template
+# All pytest tests (75 tests, ~2 min)
+uv run python -m pytest tests/ -v
+
+# Fast unit tests only (~1 sec)
+uv run python -m pytest tests/test_component_mixer.py tests/test_cui_generators.py -v
+
+# Quick smoke test for a single customer template
 uv run python -c "
 from src.formatters.pdf_form_populator import CustomerTemplateManager
 mgr = CustomerTemplateManager(template_dir='./cust_templates', output_dir='./output/test')
@@ -155,29 +161,16 @@ neg = mgr.generate_from_template('TemplateName', './output/test', 2, populate=Fa
 print(f'pos={pos} neg={neg}')
 "
 
-# Category-specific pipeline test
-uv run python -m src.cli generate --cui-positive 10 --cui-negative 5 --cui-categories <category> --seed 42
-
-# Full regression (all categories)
+# Generate + validate
 uv run python -m src.cli generate --cui-positive 10 --cui-negative 10 --cui-all --seed 99
-
-# Validation
 latest=$(ls -td output/production_run_* | head -1)
 uv run python tests/validate_file_fidelity.py "$latest"
 
-# LLM smoke test (validates tax/financial LLM, template enrichment, negative LLM, content safety)
+# LLM smoke test (requires ANTHROPIC_API_KEY, ~2-3 min)
 uv run python tests/test_llm_smoke.py
-
-# Check manifest for template usage
-uv run python -c "
-import json, glob
-from collections import Counter
-p = sorted(glob.glob('output/production_run_*/metadata/cui_manifest.json'))[-1]
-with open(p) as f: m = json.load(f)
-tmpl = [e['category'] for e in m['files'] if e.get('source') == 'customer_template']
-print('Template cats:', dict(Counter(tmpl)))
-"
 ```
+
+See [docs/testing.md](docs/testing.md) for the full testing guide.
 
 ---
 

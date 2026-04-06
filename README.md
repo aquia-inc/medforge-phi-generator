@@ -222,24 +222,40 @@ Manifest files track each document's format, polarity, category, whether it was 
 
 ---
 
-## Running Tests & Validation
+## Testing
+
+MedForge has a layered test suite: fast unit tests, integration tests that generate real documents, and standalone validation scripts for production runs.
 
 ```bash
-# LLM integration smoke test — validates all LLM enhancement paths (~2-3 min)
-uv run python tests/test_llm_smoke.py
+# Run all unit + integration tests (~2 min)
+uv run python -m pytest tests/ -v
 
-# Full artifact matrix — generates 114 artifacts covering all category x format x polarity combos
-uv run python tests/generate_artifact_matrix.py
+# Run only fast unit tests (~1 sec)
+uv run python -m pytest tests/test_component_mixer.py tests/test_email_formatters.py tests/test_cui_formatters.py tests/test_cui_generators.py -v
 
-# Purview fidelity validation — 19 automated checks (MIME structure, encoding, content)
-uv run python tests/validate_file_fidelity.py output/production_run_*/
-
-# Unit tests
-uv run python -m pytest tests/
+# Run integration tests (~2 min, generates documents)
+uv run python -m pytest tests/test_integration.py -v
 
 # Linting (syntax + ruff critical checks)
 ./lint.sh
 ```
+
+### Standalone Validation Scripts
+
+These scripts validate production output and require generated documents:
+
+```bash
+# Purview fidelity validation — 19 automated checks (MIME structure, encoding, file integrity)
+uv run python tests/validate_file_fidelity.py output/production_run_*/
+
+# Full artifact matrix — generates 114 artifacts covering all category x format x polarity combos
+uv run python tests/generate_artifact_matrix.py
+
+# LLM integration smoke test — validates LLM enhancement paths (requires ANTHROPIC_API_KEY, ~2-3 min)
+uv run python tests/test_llm_smoke.py
+```
+
+See [docs/testing.md](docs/testing.md) for the full testing guide and [docs/test-coverage-tracker.md](docs/test-coverage-tracker.md) for coverage status.
 
 ---
 
@@ -272,10 +288,15 @@ medforge-phi-generator/
 │   └── validators/                  # PHI validation
 ├── cust_templates/                  # 56 CMS template files (27 registered, 1 disabled)
 ├── tests/
-│   ├── generate_artifact_matrix.py  # Full format x category coverage test
-│   ├── validate_file_fidelity.py    # 19 Purview fidelity checks
-│   ├── test_cui_generators.py       # CUI generator unit tests
-│   └── test_integration.py          # Integration tests
+│   ├── conftest.py                  # Shared pytest fixtures
+│   ├── test_component_mixer.py      # ComponentMixer + font mapping tests (17 tests)
+│   ├── test_cui_formatters.py       # CUI formatter output validation (14 tests)
+│   ├── test_cui_generators.py       # CUI generator data layer tests (23 tests)
+│   ├── test_email_formatters.py     # Email/MIME construction + nested emails (9 tests)
+│   ├── test_integration.py          # End-to-end generation tests (12 tests)
+│   ├── test_llm_smoke.py            # LLM integration smoke test (standalone)
+│   ├── generate_artifact_matrix.py  # Full format x category coverage (standalone)
+│   └── validate_file_fidelity.py    # 19 Purview fidelity checks (standalone)
 ├── config/
 │   └── example.yaml                 # Sample YAML configuration
 ├── docs/                            # Additional documentation
@@ -288,6 +309,8 @@ medforge-phi-generator/
 
 | Document | Purpose |
 |----------|---------|
+| [docs/testing.md](docs/testing.md) | Full testing guide: architecture, how to run, how to add tests |
+| [docs/test-coverage-tracker.md](docs/test-coverage-tracker.md) | Test coverage status and outstanding gaps |
 | [docs/adding-customer-templates.md](docs/adding-customer-templates.md) | Step-by-step guide for registering new CMS templates |
 | [docs/DEMO.md](docs/DEMO.md) | Customer demo script with talking points |
 | [CLAUDE.md](CLAUDE.md) | Developer notes: PDF filling, template patterns, CMS requirements |
