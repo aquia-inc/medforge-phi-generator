@@ -1072,6 +1072,40 @@ class MedForgeCUIGenerator:
             self.stats["errors"].append(f"LLM enhancement failed: {str(e)}")
             return doc_data, False
 
+    def _enhance_negative_with_llm(self, doc_data: dict) -> tuple[dict, bool]:
+        """
+        Enhance CUI negative document with LLM-generated public-facing prose.
+
+        Generates realistic but non-sensitive content suitable for unlimited
+        public distribution. No names, case numbers, or pre-decisional markers.
+
+        Returns:
+            Tuple of (enhanced_doc_data, was_enhanced)
+        """
+        try:
+            category = doc_data.get("category", "")
+            doc_type = doc_data.get("document_type", "")
+
+            enhanced = self.llm_generator.generate_cui_negative_narrative(
+                category=category,
+                document_type=doc_type,
+                context={
+                    "title": doc_data.get("title", ""),
+                    "publisher": doc_data.get("publisher", ""),
+                }
+            )
+
+            doc_data["executive_summary"] = enhanced.executive_summary
+            doc_data["body_content"] = enhanced.body_content
+            if enhanced.recommendations:
+                doc_data["recommendations"] = enhanced.recommendations
+
+            return doc_data, True
+
+        except Exception as e:
+            self.stats["errors"].append(f"Negative LLM enhancement failed: {str(e)}")
+            return doc_data, False
+
     def generate_single_cui_positive(self, index: int) -> Optional[str]:
         """Generate a single CUI positive document"""
         try:
@@ -1249,8 +1283,16 @@ class MedForgeCUIGenerator:
             category = doc_data.get("category", "general")
             doc_type = doc_data.get("document_type", "document")
 
-            # CUI negative documents are always template-based (no LLM enhancement)
-            self.stats["template_based"] += 1
+            # CUI negatives use half the positive LLM rate for public-facing prose
+            neg_llm_rate = self.llm_percentage / 2
+            was_enhanced = False
+            if self.llm_generator and random.random() < neg_llm_rate:
+                doc_data, was_enhanced = self._enhance_negative_with_llm(doc_data)
+
+            if was_enhanced:
+                self.stats["llm_enhanced"] += 1
+            else:
+                self.stats["template_based"] += 1
 
             # Choose format
             available_formats = [f for f in self.formats if f in self.formatters]
@@ -1363,7 +1405,7 @@ class MedForgeCUIGenerator:
                 "format": fmt,
                 "variant": variant,
                 "index": index,
-                "llm_enhanced": False,
+                "llm_enhanced": was_enhanced,
             })
 
             return filepath
