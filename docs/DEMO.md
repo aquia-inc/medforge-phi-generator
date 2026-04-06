@@ -12,7 +12,6 @@
 
 ```bash
 # Make sure you have a small batch ready to walk through
-cd ~/Desktop/synth_phi_data
 rm -rf output/medforge  # Start fresh
 uv run python -m src.cli generate --count 50 --parallel-workers 2
 ```
@@ -199,7 +198,7 @@ uv run python -m src.cli generate --help
 |---------|---------|
 | **100% Synthetic** | Zero compliance risk, unlimited training data |
 | **PHI-Positive/Negative Split** | Ready for Purview classifier training |
-| **5 File Formats** | Covers real-world healthcare document types |
+| **6 File Formats** | Covers real-world healthcare document types |
 | **Nested Emails** | Tests attachment scanning capability |
 | **LLM Enhancement** | Prevents overfitting to templates |
 | **Parallel Generation** | 1000 docs in ~2 minutes |
@@ -222,7 +221,7 @@ uv run python -m src.cli generate --help
 > Built-in validator checks every document for required PHI elements (identifier + medical data). Manifest tracks exactly what PHI is in each file.
 
 **Q: Can this generate CUI (Controlled Unclassified Information)?**
-> That's phase 2 - same architecture, different data categories (financial, legal, procurement). Already scoped in our requirements.
+> Yes! CUI generation is fully implemented across 7 categories: critical infrastructure, financial, law enforcement, legal, procurement, proprietary, and tax. Use `--cui-positive` and `--cui-all` flags to generate CUI documents alongside or independently from PHI.
 
 ---
 
