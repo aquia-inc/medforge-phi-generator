@@ -13,7 +13,11 @@ from formatters.base_email_formatter import BaseEmailFormatter
 
 
 class SnykEmailGenerator(BaseEmailFormatter):
-    """Generates Snyk security alert emails with varied vulnerability findings."""
+    """Generates Snyk security alert emails with varied vulnerability findings.
+
+    Optionally enriches the highest-severity finding with LLM-generated
+    description, impact, and remediation narratives.
+    """
 
     # Real npm packages from 2025 supply chain attacks and common government use
     NPM_PACKAGES = [
@@ -161,9 +165,18 @@ class SnykEmailGenerator(BaseEmailFormatter):
         'Public Health Dashboard',
     ]
 
-    def __init__(self, output_dir: str = 'output'):
-        """Initialize Snyk email generator."""
+    def __init__(self, output_dir: str = 'output', llm_generator=None,
+                 llm_percentage: float = 0.2):
+        """Initialize Snyk email generator.
+
+        Args:
+            output_dir: Output directory
+            llm_generator: Optional ClaudeGenerator for enriching vulnerability descriptions
+            llm_percentage: Probability of LLM enrichment per email (0.0-1.0)
+        """
         self.output_dir = output_dir
+        self.llm_generator = llm_generator
+        self.llm_percentage = llm_percentage
         os.makedirs(output_dir, exist_ok=True)
 
     def generate_vulnerability_finding(self, is_positive: bool = True) -> Dict[str, Any]:
@@ -492,6 +505,11 @@ class SnykEmailGenerator(BaseEmailFormatter):
 
         findings = [self.generate_vulnerability_finding(is_positive) for _ in range(finding_count)]
 
+        # Optionally enrich the highest-severity finding with LLM
+        if (self.llm_generator and random.random() < self.llm_percentage
+                and is_positive):
+            self._enrich_top_finding(findings)
+
         # Use first finding's org info for email level
         organization = findings[0]['organization']
 
@@ -502,6 +520,32 @@ class SnykEmailGenerator(BaseEmailFormatter):
             recipient = f"dev@example.com"
 
         return self.create_vulnerability_alert_email(recipient, findings, organization, filename)
+
+    def _enrich_top_finding(self, findings: list):
+        """Enrich the highest-severity finding with LLM-generated content.
+
+        Modifies the finding dict in-place. Only enriches one finding per email
+        to limit API calls.
+        """
+        if not findings:
+            return
+
+        # Find highest severity
+        severity_order = {'Critical': 0, 'High': 1, 'Medium': 2, 'Low': 3}
+        top = min(findings, key=lambda f: severity_order.get(f.get('severity', 'Low'), 4))
+
+        try:
+            enhanced = self.llm_generator.generate_cui_security_report(
+                system_name=top.get('project_name', 'Enterprise System'),
+                vulnerability_type=top.get('vulnerability_type', 'Security Vulnerability'),
+                severity=top.get('severity', 'High'),
+                agency=top.get('organization', 'CMS'),
+            )
+            top['description'] = enhanced.technical_details
+            top['impact'] = enhanced.risk_assessment
+            top['remediation'] = enhanced.mitigation_steps
+        except Exception:
+            pass  # Keep static template on failure
 
     def create_snyk_weekly_report(self, filename: str, is_positive: bool = True) -> str:
         """
