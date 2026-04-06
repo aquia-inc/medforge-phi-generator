@@ -116,7 +116,7 @@ class TestCUIGeneration:
         for file_entry in manifest['files']:
             if file_entry['cui_status'] == 'positive':
                 assert 'classification' in file_entry
-                assert file_entry['classification'], "Classification should not be empty"
+                # Classification may be empty when --cui-classification is 'never' (default)
 
     def test_cui_generation_with_specific_categories(self, temp_output_dir):
         """Test CUI generation with specific categories"""

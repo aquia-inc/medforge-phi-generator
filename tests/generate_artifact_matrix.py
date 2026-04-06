@@ -12,7 +12,6 @@ import sys
 import os
 import json
 import random
-from pathlib import Path
 from collections import defaultdict
 from datetime import datetime
 
@@ -38,7 +37,7 @@ from formatters.html_lab_formatter import HTMLLabFormatter
 
 # Validator
 sys.path.insert(0, os.path.dirname(__file__))
-from validate_file_fidelity import PurviewFidelityValidator, FATAL, HIGH
+from validate_file_fidelity import PurviewFidelityValidator
 
 
 CUI_CATEGORIES = [
