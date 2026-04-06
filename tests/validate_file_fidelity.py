@@ -14,8 +14,6 @@ import json
 import email
 import email.utils
 import zipfile
-import struct
-from pathlib import Path
 from datetime import datetime
 from collections import defaultdict
 
@@ -162,13 +160,11 @@ class PurviewFidelityValidator:
 
         # Try parsing as bytes first, then as string
         msg = None
-        parsed_as_bytes = True
         try:
             msg = email.message_from_bytes(raw_bytes)
         except Exception:
             try:
                 msg = email.message_from_string(raw_bytes.decode('utf-8', errors='replace'))
-                parsed_as_bytes = False
             except Exception as e:
                 result.add_issue(2, FATAL, f"Cannot parse EML MIME structure: {e}")
                 return
@@ -327,7 +323,7 @@ class PurviewFidelityValidator:
                     payload.decode('us-ascii')
                     if charset is None:
                         result.add_issue(6, HIGH,
-                            f"Text part missing explicit charset (defaulting to us-ascii)")
+                            "Text part missing explicit charset (defaulting to us-ascii)")
                     else:
                         result.add_pass(6, "us-ascii charset matches content")
                 except UnicodeDecodeError:
