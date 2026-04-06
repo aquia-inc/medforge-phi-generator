@@ -16,10 +16,27 @@ from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from openpyxl import Workbook
 from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
+from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT
 from datetime import datetime
 import os
 import random
 from typing import Any, Dict, Optional
+
+from templates.components import ComponentConfiguration, get_docx_font_name
+
+# Alignment map for component configs -> python-docx
+_DOCX_ALIGNMENT_MAP = {
+    "center": WD_ALIGN_PARAGRAPH.CENTER,
+    "left": WD_ALIGN_PARAGRAPH.LEFT,
+    "split": WD_ALIGN_PARAGRAPH.LEFT,
+}
+
+# Alignment map for component configs -> reportlab
+_PDF_ALIGNMENT_MAP = {
+    "center": TA_CENTER,
+    "left": TA_LEFT,
+    "split": TA_LEFT,
+}
 
 
 class CUIDocxFormatter:
@@ -29,35 +46,41 @@ class CUIDocxFormatter:
         self.output_dir = output_dir
         os.makedirs(output_dir, exist_ok=True)
 
-    def create_cui_document(self, doc_data: Dict[str, Any], filename: str) -> str:
+    def create_cui_document(self, doc_data: Dict[str, Any], filename: str,
+                            component_config: Optional[ComponentConfiguration] = None) -> str:
         """
-        Create a DOCX document from CUI data.
+        Create a DOCX document from CUI data with optional visual variation.
 
         Args:
             doc_data: Dictionary containing CUI document data
             filename: Output filename
+            component_config: Optional component configuration for visual variety
 
         Returns:
             Path to created file
         """
         doc = Document()
 
+        # Extract style settings from component config
+        style_cfg = component_config.style.get_config() if component_config else None
+        header_cfg = component_config.header.get_config() if component_config else None
+
         # Add classification header if CUI positive
         if doc_data.get('has_cui', False):
-            self._add_classification_header(doc, doc_data)
+            self._add_classification_header(doc, doc_data, header_cfg=header_cfg)
 
         # Add document title
-        self._add_title(doc, doc_data)
+        self._add_title(doc, doc_data, style_cfg=style_cfg, header_cfg=header_cfg)
 
         # Add metadata section
-        self._add_metadata_section(doc, doc_data)
+        self._add_metadata_section(doc, doc_data, style_cfg=style_cfg)
 
         # Add main content based on document type
-        self._add_content(doc, doc_data)
+        self._add_content(doc, doc_data, style_cfg=style_cfg)
 
         # Add confidentiality notice if CUI positive
         if doc_data.get('has_cui', False):
-            self._add_confidentiality_notice(doc, doc_data)
+            self._add_confidentiality_notice(doc, doc_data, style_cfg=style_cfg)
 
         # Add classification footer
         if doc_data.get('has_cui', False):
@@ -68,33 +91,57 @@ class CUIDocxFormatter:
         doc.save(filepath)
         return filepath
 
-    def _add_classification_header(self, doc: Document, doc_data: Dict[str, Any]):
+    def _add_classification_header(self, doc: Document, doc_data: Dict[str, Any],
+                                    header_cfg: Optional[Dict] = None):
         """Add classification banner at top of document."""
-        # Only add header if classification is present and not empty
         classification = doc_data.get('classification', '')
         if not classification:
             return
 
+        alignment = WD_ALIGN_PARAGRAPH.CENTER
+        if header_cfg:
+            alignment = _DOCX_ALIGNMENT_MAP.get(header_cfg.get("alignment", "center"),
+                                                 WD_ALIGN_PARAGRAPH.CENTER)
+
         header = doc.add_paragraph()
-        header.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        header.alignment = alignment
         run = header.add_run(classification)
         run.bold = True
         run.font.size = Pt(12)
-        run.font.color.rgb = RGBColor(139, 0, 0)  # Dark red
+        run.font.color.rgb = RGBColor(139, 0, 0)
         doc.add_paragraph()
 
-    def _add_title(self, doc: Document, doc_data: Dict[str, Any]):
-        """Add document title."""
+    def _add_title(self, doc: Document, doc_data: Dict[str, Any],
+                    style_cfg: Optional[Dict] = None, header_cfg: Optional[Dict] = None):
+        """Add document title with optional style variation."""
+        alignment = WD_ALIGN_PARAGRAPH.CENTER
+        font_name = None
+        font_size = Pt(14)
+        if style_cfg:
+            font_name = get_docx_font_name(style_cfg.get("font_family", "Arial"))
+            font_size = Pt(style_cfg.get("font_size_title", 14))
+        if header_cfg:
+            alignment = _DOCX_ALIGNMENT_MAP.get(header_cfg.get("alignment", "center"),
+                                                 WD_ALIGN_PARAGRAPH.CENTER)
+
         title = doc.add_paragraph()
-        title.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        title.alignment = alignment
         run = title.add_run(doc_data.get('title', 'Document'))
         run.bold = True
-        run.font.size = Pt(14)
+        run.font.size = font_size
+        if font_name:
+            run.font.name = font_name
+        if style_cfg and style_cfg.get("use_colors"):
+            try:
+                color = style_cfg.get("color_primary", "#000000").lstrip("#")
+                run.font.color.rgb = RGBColor(int(color[:2], 16), int(color[2:4], 16), int(color[4:6], 16))
+            except (ValueError, IndexError):
+                pass
         doc.add_paragraph()
 
-    def _add_metadata_section(self, doc: Document, doc_data: Dict[str, Any]):
-        """Add document metadata section."""
-        # Create metadata table
+    def _add_metadata_section(self, doc: Document, doc_data: Dict[str, Any],
+                               style_cfg: Optional[Dict] = None):
+        """Add document metadata section with optional style variation."""
         metadata_items = []
 
         if 'agency' in doc_data:
@@ -106,40 +153,94 @@ class CUIDocxFormatter:
         if doc_data.get('authority'):
             metadata_items.append(('Authority:', doc_data['authority']))
 
-        if metadata_items:
-            table = doc.add_table(rows=len(metadata_items), cols=2)
-            for i, (label, value) in enumerate(metadata_items):
-                table.rows[i].cells[0].text = label
-                table.rows[i].cells[1].text = str(value)
-                table.rows[i].cells[0].paragraphs[0].runs[0].bold = True
-            doc.add_paragraph()
+        if not metadata_items:
+            return
 
-    def _add_content(self, doc: Document, doc_data: Dict[str, Any]):
+        font_name = get_docx_font_name(style_cfg["font_family"]) if style_cfg else None
+        font_size = Pt(style_cfg.get("font_size_body", 11)) if style_cfg else None
+
+        table = doc.add_table(rows=len(metadata_items), cols=2)
+        for i, (label, value) in enumerate(metadata_items):
+            table.rows[i].cells[0].text = label
+            table.rows[i].cells[1].text = str(value)
+            label_run = table.rows[i].cells[0].paragraphs[0].runs[0]
+            label_run.bold = True
+            if font_name:
+                label_run.font.name = font_name
+                for run in table.rows[i].cells[1].paragraphs[0].runs:
+                    run.font.name = font_name
+            if font_size:
+                label_run.font.size = font_size
+                for run in table.rows[i].cells[1].paragraphs[0].runs:
+                    run.font.size = font_size
+        doc.add_paragraph()
+
+    def _add_content(self, doc: Document, doc_data: Dict[str, Any],
+                      style_cfg: Optional[Dict] = None):
         """Add main document content based on document type."""
         doc_type = doc_data.get('document_type', '')
 
         # Handle different document types
         if doc_type == 'coop_plan':
-            self._add_coop_plan_content(doc, doc_data)
+            self._add_coop_plan_content(doc, doc_data, style_cfg=style_cfg)
         elif doc_type == 'vulnerability_alert':
-            self._add_vulnerability_content(doc, doc_data)
+            self._add_vulnerability_content(doc, doc_data, style_cfg=style_cfg)
         elif doc_type == 'budget_memo':
-            self._add_budget_memo_content(doc, doc_data)
+            self._add_budget_memo_content(doc, doc_data, style_cfg=style_cfg)
         elif doc_type == 'attorney_memo':
-            self._add_attorney_memo_content(doc, doc_data)
+            self._add_attorney_memo_content(doc, doc_data, style_cfg=style_cfg)
         elif doc_type in ['source_selection_plan', 'evaluation_report', 'igce']:
-            self._add_procurement_content(doc, doc_data)
+            self._add_procurement_content(doc, doc_data, style_cfg=style_cfg)
         elif doc_type == 'taxpayer_record':
-            self._add_tax_record_content(doc, doc_data)
+            self._add_tax_record_content(doc, doc_data, style_cfg=style_cfg)
         else:
-            # Generic content handler
-            self._add_generic_content(doc, doc_data)
+            self._add_generic_content(doc, doc_data, style_cfg=style_cfg)
 
-    def _add_coop_plan_content(self, doc: Document, doc_data: Dict[str, Any]):
+    def _add_narrative_paragraphs(self, doc: Document, text: str,
+                                   style_cfg: Optional[Dict] = None):
+        """Split multi-paragraph text and render each as a styled paragraph."""
+        if not text:
+            return
+        font_name = get_docx_font_name(style_cfg["font_family"]) if style_cfg else None
+        font_size = Pt(style_cfg.get("font_size_body", 11)) if style_cfg else None
+        line_spacing = style_cfg.get("line_height", 1.15) if style_cfg else None
+
+        paragraphs = [p.strip() for p in text.split('\n\n') if p.strip()]
+        if not paragraphs:
+            paragraphs = [text]
+
+        for para_text in paragraphs:
+            p = doc.add_paragraph()
+            run = p.add_run(para_text)
+            if font_name:
+                run.font.name = font_name
+            if font_size:
+                run.font.size = font_size
+            if line_spacing:
+                p.paragraph_format.line_spacing = line_spacing
+
+    def _add_styled_heading(self, doc: Document, text: str,
+                             style_cfg: Optional[Dict] = None):
+        """Add a section heading with optional style variation."""
+        p = doc.add_paragraph(text, style='Heading 2')
+        if style_cfg:
+            for run in p.runs:
+                font_name = get_docx_font_name(style_cfg.get("font_family", "Arial"))
+                run.font.name = font_name
+                if style_cfg.get("use_colors"):
+                    try:
+                        color = style_cfg.get("color_primary", "#000000").lstrip("#")
+                        run.font.color.rgb = RGBColor(
+                            int(color[:2], 16), int(color[2:4], 16), int(color[4:6], 16))
+                    except (ValueError, IndexError):
+                        pass
+
+    def _add_coop_plan_content(self, doc: Document, doc_data: Dict[str, Any],
+                                style_cfg: Optional[Dict] = None):
         """Add COOP plan specific content."""
-        # Executive Summary
-        doc.add_paragraph('EXECUTIVE SUMMARY', style='Heading 2')
-        doc.add_paragraph(doc_data.get('executive_summary', ''))
+        self._add_styled_heading(doc, 'EXECUTIVE SUMMARY', style_cfg=style_cfg)
+        self._add_narrative_paragraphs(doc, doc_data.get('executive_summary', ''),
+                                       style_cfg=style_cfg)
 
         # Essential Functions
         if 'essential_functions' in doc_data:
@@ -169,60 +270,56 @@ class CUIDocxFormatter:
             doc.add_paragraph(f"ERG Size: {erg.get('size', '')} personnel")
             doc.add_paragraph(f"Deployment Time: Within {erg.get('deployment_hours', '')} hours")
 
-    def _add_vulnerability_content(self, doc: Document, doc_data: Dict[str, Any]):
+    def _add_vulnerability_content(self, doc: Document, doc_data: Dict[str, Any],
+                                     style_cfg: Optional[Dict] = None):
         """Add vulnerability alert content."""
-        # Alert details
-        doc.add_paragraph('ALERT DETAILS', style='Heading 2')
+        self._add_styled_heading(doc, 'ALERT DETAILS', style_cfg=style_cfg)
         doc.add_paragraph(f"Alert ID: {doc_data.get('alert_id', '')}")
         doc.add_paragraph(f"Severity: {doc_data.get('severity', '')}")
         doc.add_paragraph(f"CVSS Score: {doc_data.get('cvss_score', '')}")
         doc.add_paragraph(f"CVE: {doc_data.get('cve_id', '')}")
 
-        # Affected System
-        doc.add_paragraph('AFFECTED SYSTEM', style='Heading 2')
+        self._add_styled_heading(doc, 'AFFECTED SYSTEM', style_cfg=style_cfg)
         doc.add_paragraph(f"System: {doc_data.get('affected_system', '')}")
         doc.add_paragraph(f"Versions: {doc_data.get('affected_versions', '')}")
 
-        # Description
-        doc.add_paragraph('DESCRIPTION', style='Heading 2')
-        doc.add_paragraph(doc_data.get('description', ''))
+        self._add_styled_heading(doc, 'DESCRIPTION', style_cfg=style_cfg)
+        self._add_narrative_paragraphs(doc, doc_data.get('description', ''),
+                                       style_cfg=style_cfg)
 
-        # Remediation
         if 'remediation' in doc_data:
-            doc.add_paragraph('REMEDIATION', style='Heading 2')
+            self._add_styled_heading(doc, 'REMEDIATION', style_cfg=style_cfg)
             rem = doc_data['remediation']
-            doc.add_paragraph(f"Action: {rem.get('action', '')}")
+            self._add_narrative_paragraphs(doc, rem.get('action', ''), style_cfg=style_cfg)
             doc.add_paragraph(f"Target Version: {rem.get('target_version', '')}")
             doc.add_paragraph(f"Deadline: {rem.get('deadline', '')}")
 
-    def _add_budget_memo_content(self, doc: Document, doc_data: Dict[str, Any]):
+    def _add_budget_memo_content(self, doc: Document, doc_data: Dict[str, Any],
+                                  style_cfg: Optional[Dict] = None):
         """Add budget memo content."""
-        # TO/FROM section
         doc.add_paragraph(f"TO: {doc_data.get('to', '')}")
         doc.add_paragraph(f"FROM: {doc_data.get('from', '')}")
         doc.add_paragraph(f"SUBJECT: {doc_data.get('subject', '')}")
         doc.add_paragraph()
 
-        # Decision
-        doc.add_paragraph('PRESIDENTIAL DECISION:', style='Heading 2')
-        doc.add_paragraph(doc_data.get('decision', ''))
+        self._add_styled_heading(doc, 'PRESIDENTIAL DECISION:', style_cfg=style_cfg)
+        self._add_narrative_paragraphs(doc, doc_data.get('decision', ''),
+                                       style_cfg=style_cfg)
 
-        # Key Decision Points
         if 'key_decision_points' in doc_data:
-            doc.add_paragraph('KEY DECISION POINTS:', style='Heading 2')
+            self._add_styled_heading(doc, 'KEY DECISION POINTS:', style_cfg=style_cfg)
             for point in doc_data['key_decision_points']:
-                doc.add_paragraph(f"• {point}")
+                doc.add_paragraph(f"\u2022 {point}")
 
-    def _add_attorney_memo_content(self, doc: Document, doc_data: Dict[str, Any]):
+    def _add_attorney_memo_content(self, doc: Document, doc_data: Dict[str, Any],
+                                     style_cfg: Optional[Dict] = None):
         """Add attorney memorandum content."""
-        # Privilege assertion
         if 'privilege_assertion' in doc_data:
             para = doc.add_paragraph()
             para.alignment = WD_ALIGN_PARAGRAPH.CENTER
             run = para.add_run(' | '.join(doc_data['privilege_assertion']))
             run.italic = True
 
-        # Attorney/Client info
         attorney = doc_data.get('attorney', {})
         client = doc_data.get('client', {})
         doc.add_paragraph(f"TO: {client.get('name', '')} - {client.get('title', '')}")
@@ -230,23 +327,24 @@ class CUIDocxFormatter:
         doc.add_paragraph(f"RE: {doc_data.get('subject', '')}")
         doc.add_paragraph()
 
-        # Question Presented
-        doc.add_paragraph('QUESTION PRESENTED:', style='Heading 2')
-        doc.add_paragraph(doc_data.get('question_presented', ''))
+        self._add_styled_heading(doc, 'QUESTION PRESENTED:', style_cfg=style_cfg)
+        self._add_narrative_paragraphs(doc, doc_data.get('question_presented', ''),
+                                       style_cfg=style_cfg)
 
-        # Brief Answer
-        doc.add_paragraph('BRIEF ANSWER:', style='Heading 2')
-        doc.add_paragraph(doc_data.get('brief_answer', ''))
+        self._add_styled_heading(doc, 'BRIEF ANSWER:', style_cfg=style_cfg)
+        self._add_narrative_paragraphs(doc, doc_data.get('brief_answer', ''),
+                                       style_cfg=style_cfg)
 
-        # Analysis
-        doc.add_paragraph('ANALYSIS:', style='Heading 2')
-        doc.add_paragraph(doc_data.get('analysis', ''))
+        self._add_styled_heading(doc, 'ANALYSIS:', style_cfg=style_cfg)
+        self._add_narrative_paragraphs(doc, doc_data.get('analysis', ''),
+                                       style_cfg=style_cfg)
 
-        # Recommendation
-        doc.add_paragraph('RECOMMENDATION:', style='Heading 2')
-        doc.add_paragraph(doc_data.get('recommendation', ''))
+        self._add_styled_heading(doc, 'RECOMMENDATION:', style_cfg=style_cfg)
+        self._add_narrative_paragraphs(doc, doc_data.get('recommendation', ''),
+                                       style_cfg=style_cfg)
 
-    def _add_procurement_content(self, doc: Document, doc_data: Dict[str, Any]):
+    def _add_procurement_content(self, doc: Document, doc_data: Dict[str, Any],
+                                  style_cfg: Optional[Dict] = None):
         """Add procurement document content."""
         doc.add_paragraph(f"Solicitation Number: {doc_data.get('solicitation_number', '')}")
 
@@ -256,15 +354,25 @@ class CUIDocxFormatter:
             doc.add_paragraph(f"Contract Type: {doc_data.get('contract_type', '')}")
 
             if 'evaluation_factors' in doc_data:
-                doc.add_paragraph('EVALUATION FACTORS:', style='Heading 2')
+                self._add_styled_heading(doc, 'EVALUATION FACTORS:', style_cfg=style_cfg)
                 for factor in doc_data['evaluation_factors']:
-                    doc.add_paragraph(f"• {factor['factor']}: Weight {factor['weight']}%")
+                    doc.add_paragraph(f"\u2022 {factor['factor']}: Weight {factor['weight']}%")
+
+            if doc_data.get('executive_summary'):
+                self._add_styled_heading(doc, 'ACQUISITION SUMMARY:', style_cfg=style_cfg)
+                self._add_narrative_paragraphs(doc, doc_data['executive_summary'],
+                                               style_cfg=style_cfg)
+            if doc_data.get('justification'):
+                self._add_styled_heading(doc, 'JUSTIFICATION:', style_cfg=style_cfg)
+                self._add_narrative_paragraphs(doc, doc_data['justification'],
+                                               style_cfg=style_cfg)
 
         elif doc_data.get('document_type') == 'evaluation_report':
             doc.add_paragraph(f"Offeror: {doc_data.get('offeror', '')}")
             doc.add_paragraph(f"Overall Rating: {doc_data.get('overall_rating', '')}")
 
-    def _add_tax_record_content(self, doc: Document, doc_data: Dict[str, Any]):
+    def _add_tax_record_content(self, doc: Document, doc_data: Dict[str, Any],
+                                 style_cfg: Optional[Dict] = None):
         """Add tax record content."""
         taxpayer = doc_data.get('taxpayer', {})
         doc.add_paragraph(f"Taxpayer: {taxpayer.get('name', '')}")
@@ -277,39 +385,48 @@ class CUIDocxFormatter:
             for key, value in summary.items():
                 doc.add_paragraph(f"{key.replace('_', ' ').title()}: {value}")
 
-    def _add_generic_content(self, doc: Document, doc_data: Dict[str, Any]):
-        """Add generic document content."""
-        # Add any remaining text-based fields
+    def _add_generic_content(self, doc: Document, doc_data: Dict[str, Any],
+                              style_cfg: Optional[Dict] = None):
+        """Add generic document content with optional narrative rendering."""
         skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
                        'has_cui', 'classification', 'authority', 'distribution',
                        'generated_date', 'document_date', 'agency', 'title',
                        'confidentiality_notice'}
+        # Fields that contain LLM narrative text (render as multi-paragraph)
+        narrative_fields = {'executive_summary', 'body_content', 'analysis',
+                           'recommendations', 'risk_assessment', 'justification',
+                           'description', 'body'}
 
         for key, value in doc_data.items():
             if key in skip_fields:
                 continue
 
-            # Handle different value types
             if isinstance(value, str):
-                doc.add_paragraph(f"{key.replace('_', ' ').title()}: {value}")
+                if key in narrative_fields and '\n' in value:
+                    self._add_styled_heading(doc, key.replace('_', ' ').title(),
+                                             style_cfg=style_cfg)
+                    self._add_narrative_paragraphs(doc, value, style_cfg=style_cfg)
+                else:
+                    doc.add_paragraph(f"{key.replace('_', ' ').title()}: {value}")
             elif isinstance(value, list):
-                doc.add_paragraph(f"{key.replace('_', ' ').title()}:", style='Heading 2')
+                self._add_styled_heading(doc, key.replace('_', ' ').title(),
+                                         style_cfg=style_cfg)
                 for item in value:
-                    if isinstance(item, dict):
-                        doc.add_paragraph(f"• {item}")
-                    else:
-                        doc.add_paragraph(f"• {item}")
+                    doc.add_paragraph(f"\u2022 {item}")
             elif isinstance(value, dict):
-                doc.add_paragraph(f"{key.replace('_', ' ').title()}:", style='Heading 2')
+                self._add_styled_heading(doc, key.replace('_', ' ').title(),
+                                         style_cfg=style_cfg)
                 for k, v in value.items():
                     doc.add_paragraph(f"  {k}: {v}")
 
-    def _add_confidentiality_notice(self, doc: Document, doc_data: Dict[str, Any]):
+    def _add_confidentiality_notice(self, doc: Document, doc_data: Dict[str, Any],
+                                     style_cfg: Optional[Dict] = None):
         """Add confidentiality notice at bottom of document."""
-        # Only add if notice is present and not empty
         notice_text = doc_data.get('confidentiality_notice', '')
         if not notice_text:
-            return  # Skip if no notice
+            return
+
+        font_name = get_docx_font_name(style_cfg["font_family"]) if style_cfg else None
 
         doc.add_paragraph()
         notice = doc.add_paragraph()
@@ -317,11 +434,15 @@ class CUIDocxFormatter:
         run = notice.add_run('CONFIDENTIALITY NOTICE:')
         run.bold = True
         run.font.size = Pt(10)
+        if font_name:
+            run.font.name = font_name
 
         notice_para = doc.add_paragraph()
-        notice_para.add_run(notice_text)
-        notice_para.runs[0].font.size = Pt(9)
-        notice_para.runs[0].italic = True
+        nr = notice_para.add_run(notice_text)
+        nr.font.size = Pt(9)
+        nr.italic = True
+        if font_name:
+            nr.font.name = font_name
 
     def _add_classification_footer(self, doc: Document, doc_data: Dict[str, Any]):
         """Add classification footer."""
@@ -545,13 +666,15 @@ class CUIPdfFormatter:
         self.output_dir = output_dir
         os.makedirs(output_dir, exist_ok=True)
 
-    def create_cui_pdf(self, doc_data: Dict[str, Any], filename: str) -> str:
+    def create_cui_pdf(self, doc_data: Dict[str, Any], filename: str,
+                        component_config: Optional[ComponentConfiguration] = None) -> str:
         """
-        Create a PDF document from CUI data.
+        Create a PDF document from CUI data with optional visual variation.
 
         Args:
             doc_data: Dictionary containing CUI document data
             filename: Output filename
+            component_config: Optional component configuration for visual variety
 
         Returns:
             Path to created file
@@ -564,37 +687,49 @@ class CUIPdfFormatter:
         styles = getSampleStyleSheet()
         story = []
 
+        # Extract style settings from component config
+        style_cfg = component_config.style.get_config() if component_config else None
+        header_cfg = component_config.header.get_config() if component_config else None
+
+        font_name = style_cfg.get("font_family", "Helvetica") if style_cfg else "Helvetica"
+        font_size = style_cfg.get("font_size_body", 10) if style_cfg else 10
+        title_size = style_cfg.get("font_size_title", 16) if style_cfg else 16
+        leading = font_size * (style_cfg.get("line_height", 1.4) if style_cfg else 1.4)
+        pdf_alignment = TA_CENTER
+        if header_cfg:
+            pdf_alignment = _PDF_ALIGNMENT_MAP.get(
+                header_cfg.get("alignment", "center"), TA_CENTER)
+
+        body_style = ParagraphStyle(
+            'CUIBody', parent=styles['Normal'],
+            fontName=font_name, fontSize=font_size, leading=leading,
+            spaceBefore=4, spaceAfter=6,
+        )
+
         # Classification header
         classification = doc_data.get('classification', '')
         if doc_data.get('has_cui', False) and classification:
             cui_style = ParagraphStyle(
-                'CUIHeader',
-                parent=styles['Normal'],
-                fontSize=12,
-                textColor=colors.darkred,
-                alignment=1,  # Center
-                spaceAfter=20,
-                fontName='Helvetica-Bold'
+                'CUIHeader', parent=styles['Normal'],
+                fontSize=12, textColor=colors.darkred,
+                alignment=pdf_alignment, spaceAfter=20,
+                fontName=f'{font_name}-Bold' if font_name in ('Helvetica', 'Times-Roman', 'Courier') else font_name,
             )
-            story.append(Paragraph(
-                classification,
-                cui_style
-            ))
+            story.append(Paragraph(classification, cui_style))
 
         # Title
         title_style = ParagraphStyle(
-            'Title',
-            parent=styles['Heading1'],
-            alignment=1,
-            spaceAfter=20
+            'CUITitle', parent=styles['Heading1'],
+            fontName=font_name, fontSize=title_size,
+            alignment=pdf_alignment, spaceAfter=20,
         )
         story.append(Paragraph(doc_data.get('title', 'Document'), title_style))
 
         # Metadata
-        story.append(Paragraph(f"<b>Organization:</b> {doc_data.get('agency', '')}", styles['Normal']))
-        story.append(Paragraph(f"<b>Date:</b> {doc_data.get('document_date', '')}", styles['Normal']))
+        story.append(Paragraph(f"<b>Organization:</b> {doc_data.get('agency', '')}", body_style))
+        story.append(Paragraph(f"<b>Date:</b> {doc_data.get('document_date', '')}", body_style))
         if doc_data.get('authority'):
-            story.append(Paragraph(f"<b>Authority:</b> {doc_data.get('authority', '')}", styles['Normal']))
+            story.append(Paragraph(f"<b>Authority:</b> {doc_data.get('authority', '')}", body_style))
         story.append(Spacer(1, 20))
 
         # Content

@@ -34,6 +34,11 @@ class SectionOrderVariant(Enum):
     CLINICAL_FIRST = "clinical_first"
     DEMOGRAPHIC_LAST = "demographic_last"
     ALTERNATING = "alternating"
+    # CUI-specific orderings
+    CUI_METADATA_FIRST = "cui_metadata_first"
+    CUI_CONTENT_FIRST = "cui_content_first"
+    CUI_EXECUTIVE_SUMMARY_FIRST = "cui_executive_summary_first"
+    CUI_RECOMMENDATIONS_LAST = "cui_recommendations_last"
 
 
 class StyleVariant(Enum):
@@ -236,6 +241,51 @@ class SectionOrderComponent:
                     "follow_up",
                 ],
                 "description": "Alternating between admin and clinical sections",
+            },
+            # CUI-specific orderings
+            SectionOrderVariant.CUI_METADATA_FIRST: {
+                "order": [
+                    "metadata",
+                    "executive_summary",
+                    "content",
+                    "analysis",
+                    "recommendations",
+                    "notice",
+                ],
+                "description": "Metadata and classification first, content follows",
+            },
+            SectionOrderVariant.CUI_CONTENT_FIRST: {
+                "order": [
+                    "executive_summary",
+                    "content",
+                    "analysis",
+                    "recommendations",
+                    "metadata",
+                    "notice",
+                ],
+                "description": "Content first, metadata at the end",
+            },
+            SectionOrderVariant.CUI_EXECUTIVE_SUMMARY_FIRST: {
+                "order": [
+                    "executive_summary",
+                    "metadata",
+                    "content",
+                    "analysis",
+                    "recommendations",
+                    "notice",
+                ],
+                "description": "Executive summary leads, then metadata and details",
+            },
+            SectionOrderVariant.CUI_RECOMMENDATIONS_LAST: {
+                "order": [
+                    "metadata",
+                    "content",
+                    "analysis",
+                    "executive_summary",
+                    "recommendations",
+                    "notice",
+                ],
+                "description": "Recommendations and conclusions at the end",
             },
         }
         return configs[self.variant]
@@ -501,6 +551,29 @@ class ComponentMixer:
             "usage_percentage": (len(self.used_combinations) / self.total_combinations) * 100,
             "seed": self.seed,
         }
+
+
+# Font name mapping: PostScript (ReportLab) -> Windows (python-docx)
+DOCX_FONT_MAP = {
+    "Helvetica": "Arial",
+    "Arial": "Arial",
+    "Times-Roman": "Times New Roman",
+    "Courier": "Courier New",
+}
+
+
+def get_docx_font_name(reportlab_name: str) -> str:
+    """Map a PostScript/ReportLab font name to a Windows/DOCX font name."""
+    return DOCX_FONT_MAP.get(reportlab_name, reportlab_name)
+
+
+# CUI-specific section order variants (for filtering)
+CUI_SECTION_ORDERS = [
+    SectionOrderVariant.CUI_METADATA_FIRST,
+    SectionOrderVariant.CUI_CONTENT_FIRST,
+    SectionOrderVariant.CUI_EXECUTIVE_SUMMARY_FIRST,
+    SectionOrderVariant.CUI_RECOMMENDATIONS_LAST,
+]
 
 
 # Integration Helper Functions
