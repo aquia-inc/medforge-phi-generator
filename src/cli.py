@@ -804,7 +804,10 @@ class MedForgeCUIGenerator:
         The LLM narratives are converted to _append_paragraphs format for DOCX
         and plain text substitutions for other formats.
         """
-        ENRICHABLE_TEMPLATES = {'AcquisitionPlan', 'IncidentResponse', 'KMP'}
+        ENRICHABLE_TEMPLATES = {
+            'AcquisitionPlan', 'IncidentResponse', 'KMP',
+            'MarketResearch', 'JOFOC', 'JALimitedSource', 'SubpoenaResponse', 'RFCMemo',
+        }
         if template_key not in ENRICHABLE_TEMPLATES:
             return None
 
@@ -832,6 +835,26 @@ class MedForgeCUIGenerator:
                 'acquisition_strategy': 'Acquisition Strategy',
                 'market_research_summary': 'Market Research Summary',
                 'cost_justification': 'Cost Justification',
+                # Market Research
+                'market_overview': 'Market Overview',
+                'capability_assessment': 'Capability Assessment',
+                'small_business_analysis': 'Small Business Analysis',
+                # JOFOC
+                'justification_narrative': 'Justification',
+                'market_research_findings': 'Market Research Findings',
+                'determination_rationale': 'Determination Rationale',
+                # JA Limited Source
+                'competition_justification': 'Competition Justification',
+                'efforts_to_compete': 'Efforts to Obtain Competition',
+                'fair_pricing_determination': 'Fair Pricing Determination',
+                # Subpoena Response
+                'response_narrative': 'Response',
+                'privilege_log_summary': 'Privilege Log Summary',
+                'production_scope': 'Document Production Scope',
+                # RFC Memo
+                'change_justification': 'Change Justification',
+                'impact_analysis': 'Impact Analysis',
+                'stakeholder_assessment': 'Stakeholder Assessment',
             }
 
             sections = []
