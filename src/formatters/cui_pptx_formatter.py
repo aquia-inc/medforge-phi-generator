@@ -55,7 +55,6 @@ class CUIPPTXFormatter:
 
         # Extract style settings
         style_cfg = component_config.style.get_config() if component_config else None
-        header_cfg = component_config.header.get_config() if component_config else None
 
         # Resolve font name (PPTX uses Windows names like DOCX)
         font_name = get_docx_font_name(style_cfg["font_family"]) if style_cfg else None

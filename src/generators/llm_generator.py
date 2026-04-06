@@ -730,7 +730,7 @@ Return your response as valid JSON with these exact keys:
             return CUITaxDetermination(
                 facts=f"The taxpayer requested a determination regarding {issue} under {code_sections}.",
                 law_and_analysis=f"Under {code_sections} and applicable Treasury regulations, the proposed transaction meets the statutory requirements for the requested treatment.",
-                conclusion=f"Based on the facts presented and applicable law, the requested determination is granted, subject to the representations made by the taxpayer."
+                conclusion="Based on the facts presented and applicable law, the requested determination is granted, subject to the representations made by the taxpayer."
             )
 
     def generate_template_narrative(self, template_key: str,
@@ -944,7 +944,7 @@ Return your response as valid JSON with these exact keys:
             logger.debug(f"Negative LLM enhancement failed, using fallback: {e}")
             return CUIDocumentNarrative(
                 executive_summary=f"This document provides general information about {category.replace('_', ' ')} topics for public awareness.",
-                body_content=f"The information contained herein is publicly available and intended for educational purposes. It does not contain controlled or sensitive information.",
+                body_content="The information contained herein is publicly available and intended for educational purposes. It does not contain controlled or sensitive information.",
                 recommendations="Refer to official agency websites for the most current information and guidance.",
                 distribution_statement="Unlimited public distribution.",
             )
@@ -957,7 +957,7 @@ Return your response as valid JSON with these exact keys:
             subject=f"FY {fiscal_year} Budget Request - {program}",
             purpose=f"This memorandum requests approval for {amount} in funding for the {program} program for Fiscal Year {fiscal_year}.",
             budget_justification=f"The {agency} requires this funding to maintain critical program operations and meet statutory requirements. Current appropriations are insufficient to address increased demand and operational costs.",
-            fiscal_impact=f"Approval of this request will enable continued program operations. Denial may result in service disruptions and failure to meet compliance requirements.",
+            fiscal_impact="Approval of this request will enable continued program operations. Denial may result in service disruptions and failure to meet compliance requirements.",
             recommendation=f"Recommend approval of the {amount} funding request for {program} in FY {fiscal_year}."
         )
 
@@ -965,7 +965,7 @@ Return your response as valid JSON with these exact keys:
         """Fallback template for security reports"""
         return CUISecurityReport(
             incident_summary=f"A {severity} severity {vulnerability_type} vulnerability has been identified in the {system_name} system operated by {agency}.",
-            technical_details=f"The vulnerability affects the system's authentication and access control mechanisms. Exploitation could allow unauthorized access to sensitive data.",
+            technical_details="The vulnerability affects the system's authentication and access control mechanisms. Exploitation could allow unauthorized access to sensitive data.",
             risk_assessment=f"Risk Level: {severity}. Potential impact includes unauthorized data disclosure and system compromise. Likelihood of exploitation is assessed as moderate.",
             mitigation_steps="Apply vendor security patch immediately. Implement additional access controls. Review audit logs for signs of exploitation. Update security monitoring rules.",
             timeline="Immediate: Apply patches within 72 hours. Short-term: Complete security assessment within 30 days. Long-term: Implement enhanced monitoring within 90 days."
@@ -978,7 +978,7 @@ Return your response as valid JSON with these exact keys:
             question_presented=f"Whether {agency} may {legal_issue} consistent with applicable statutory and regulatory requirements.",
             brief_answer=f"Based on review of relevant authorities, {agency} has authority to proceed, subject to compliance with specified procedural requirements.",
             analysis="Review of applicable statutes, regulations, and case law supports the proposed action. The agency must ensure compliance with Administrative Procedure Act requirements and applicable agency regulations.",
-            conclusion=f"Recommend proceeding with the proposed action, subject to implementation of recommended procedural safeguards."
+            conclusion="Recommend proceeding with the proposed action, subject to implementation of recommended procedural safeguards."
         )
 
     def _fallback_procurement_doc(self, acquisition_name, agency, estimated_value, vendors) -> CUIProcurementDoc:

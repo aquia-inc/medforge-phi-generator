@@ -21,10 +21,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from generators.patient_generator import PatientGenerator, ProviderGenerator, FacilityGenerator
 from formatters.docx_formatter_enhanced import EnhancedPHIDocxFormatter
 from formatters.pdf_formatter import PHIPDFFormatter
-from formatters.xlsx_formatter import XLSXFormatter
 from formatters.pptx_formatter import PPTXFormatter
 from formatters.email_formatter import EmailFormatter
-from formatters.nested_formatter import NestedEmailFormatter
 
 
 @dataclass
@@ -136,10 +134,8 @@ def worker_process(task: BatchTask, progress_queue: Queue) -> WorkerStats:
             use_llm=False  # Disable LLM in parallel mode to avoid rate limits
         )
         pdf_formatter = PHIPDFFormatter(output_dir=task.output_dir)
-        xlsx_formatter = XLSXFormatter(output_dir=task.output_dir)
         pptx_formatter = PPTXFormatter(output_dir=task.output_dir)
         email_formatter = EmailFormatter(output_dir=task.output_dir)
-        nested_formatter = NestedEmailFormatter(output_dir=task.output_dir)
 
         # Generate patient data generator for lab results
         patient_gen = PatientGenerator(seed=worker_seed if task.seed else None)
@@ -171,13 +167,13 @@ def worker_process(task: BatchTask, progress_queue: Queue) -> WorkerStats:
                         lab_data = patient_gen.generate_lab_results()
                         if i % 2 == 0:
                             filename = f"PHI_POS_LabResult_W{task.task_id:02d}_{i:04d}.pdf"
-                            filepath = pdf_formatter.create_lab_result(
+                            pdf_formatter.create_lab_result(
                                 patient, provider, facility, lab_data, filename
                             )
                             stats['by_format']['pdf'] += 1
                         else:
                             filename = f"PHI_POS_LabResult_W{task.task_id:02d}_{i:04d}.docx"
-                            filepath = docx_formatter.create_lab_result(
+                            docx_formatter.create_lab_result(
                                 patient, provider, facility, lab_data, filename
                             )
                             stats['by_format']['docx'] += 1
@@ -187,7 +183,7 @@ def worker_process(task: BatchTask, progress_queue: Queue) -> WorkerStats:
                         sender = random.choice(task.providers)
                         recipient = random.choice([p for p in task.providers if p != sender])
                         filename = f"PHI_POS_ProviderEmail_W{task.task_id:02d}_{i:04d}.eml"
-                        filepath = email_formatter.create_provider_to_provider_email(
+                        email_formatter.create_provider_to_provider_email(
                             patient, sender, recipient, filename
                         )
                         stats['by_format']['eml'] += 1
@@ -195,7 +191,7 @@ def worker_process(task: BatchTask, progress_queue: Queue) -> WorkerStats:
 
                     elif doc_type == 'case_study':
                         filename = f"PHI_POS_CaseStudy_W{task.task_id:02d}_{i:04d}.pptx"
-                        filepath = pptx_formatter.create_case_study_presentation(
+                        pptx_formatter.create_case_study_presentation(
                             patient, provider, facility, filename
                         )
                         stats['by_format']['pptx'] += 1
@@ -212,30 +208,30 @@ def worker_process(task: BatchTask, progress_queue: Queue) -> WorkerStats:
                     if doc_type == 'policy':
                         if i % 2 == 0:
                             filename = f"PHI_NEG_Policy_W{task.task_id:02d}_{i:04d}.pdf"
-                            filepath = pdf_formatter.create_generic_medical_policy(facility, filename)
+                            pdf_formatter.create_generic_medical_policy(facility, filename)
                             stats['by_format']['pdf'] += 1
                         else:
                             from formatters.docx_formatter import PHIDocxFormatter
                             docx_fmt = PHIDocxFormatter(output_dir=task.output_dir)
                             filename = f"PHI_NEG_Policy_W{task.task_id:02d}_{i:04d}.docx"
-                            filepath = docx_fmt.create_generic_medical_policy(facility, filename)
+                            docx_fmt.create_generic_medical_policy(facility, filename)
                             stats['by_format']['docx'] += 1
 
                     elif doc_type == 'announcement':
                         filename = f"PHI_NEG_Announcement_W{task.task_id:02d}_{i:04d}.eml"
-                        filepath = email_formatter.create_office_announcement(facility, filename)
+                        email_formatter.create_office_announcement(facility, filename)
                         stats['by_format']['eml'] += 1
 
                     elif doc_type == 'education':
                         filename = f"PHI_NEG_Education_W{task.task_id:02d}_{i:04d}.pptx"
-                        filepath = pptx_formatter.create_educational_presentation(facility, filename)
+                        pptx_formatter.create_educational_presentation(facility, filename)
                         stats['by_format']['pptx'] += 1
 
                     elif doc_type == 'blank_form':
                         from formatters.docx_formatter import PHIDocxFormatter
                         docx_fmt = PHIDocxFormatter(output_dir=task.output_dir)
                         filename = f"PHI_NEG_BlankForm_W{task.task_id:02d}_{i:04d}.docx"
-                        filepath = docx_fmt.create_blank_form_template(facility, filename)
+                        docx_fmt.create_blank_form_template(facility, filename)
                         stats['by_format']['docx'] += 1
 
                     stats['phi_negative'] += 1
@@ -432,7 +428,7 @@ class ParallelBatchGenerator:
                 elif msg_type == 'done':
                     worker_stats.append(data)
 
-            except:
+            except Exception:
                 continue
 
         print()  # New line after progress
@@ -496,7 +492,7 @@ class ParallelBatchGenerator:
                 worker_func = partial(worker_process, progress_queue=progress_queue)
 
                 # Start async tasks
-                results = [pool.apply_async(worker_func, (task,)) for task in tasks]
+                _results = [pool.apply_async(worker_func, (task,)) for task in tasks]
 
                 # Monitor progress
                 worker_stats, errors = self._progress_monitor(progress_queue, phi_positive_count)
@@ -517,7 +513,7 @@ class ParallelBatchGenerator:
 
             with Pool(processes=self.num_workers) as pool:
                 worker_func = partial(worker_process, progress_queue=progress_queue)
-                results = [pool.apply_async(worker_func, (task,)) for task in tasks]
+                _results = [pool.apply_async(worker_func, (task,)) for task in tasks]
                 worker_stats, errors = self._progress_monitor(progress_queue, phi_negative_count)
                 pool.close()
                 pool.join()
@@ -673,7 +669,7 @@ def main():
         print()
 
     # Generate documents
-    stats = generator.generate_parallel(
+    generator.generate_parallel(
         phi_positive_count=PHI_POSITIVE_COUNT,
         phi_negative_count=PHI_NEGATIVE_COUNT
     )

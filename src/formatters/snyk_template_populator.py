@@ -4,11 +4,9 @@ Snyk Email Template Populator
 Uses Elizabeth's real Snyk email as a template and populates with varied vulnerability data.
 Preserves authentic Snyk formatting while generating different findings.
 """
-import email
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.utils import formatdate
-import re
 import random
 from datetime import datetime
 from typing import List, Dict, Any
@@ -151,10 +149,6 @@ class SnykTemplatePopulator:
         template_file = self.templates.get(template_type)
         if not template_file:
             raise ValueError(f"Unknown template type: {template_type}")
-
-        template_path = os.path.join(self.template_dir, template_file)
-        with open(template_path, 'r', errors='ignore') as f:
-            original_email = email.message_from_file(f)
 
         # Generate defaults if not provided
         if not recipient_name:

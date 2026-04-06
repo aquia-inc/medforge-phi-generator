@@ -5,7 +5,6 @@ Creates professional HTML-styled CUI emails with content-type routing:
 vulnerability alerts get severity-colored tables, budget memos get
 financial tables, legal memos get formal styling.
 """
-import os
 import random
 from typing import Any, Dict
 

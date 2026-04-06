@@ -133,7 +133,7 @@ class CriticalInfrastructureCUIGenerator(BaseCUIGenerator):
 
         doc = self._build_base_document('coop_plan', subcategory, is_positive=True)
         doc.update({
-            'title': f'Continuity of Operations Plan (COOP)',
+            'title': 'Continuity of Operations Plan (COOP)',
             'organization': org,
             'sub_organization': sub_org,
             'plan_version': f"{random.randint(1, 5)}.{random.randint(0, 9)}",

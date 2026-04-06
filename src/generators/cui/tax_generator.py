@@ -7,7 +7,6 @@ Generates synthetic CUI documents for:
 """
 from typing import Any, Dict, List, Optional
 import random
-from datetime import datetime, timedelta
 
 from .base import BaseCUIGenerator
 from .factory import CUIGeneratorFactory
@@ -277,7 +276,6 @@ class TaxCUIGenerator(BaseCUIGenerator):
     def _generate_written_determination(self, subcategory: str) -> Dict[str, Any]:
         """Generate a written determination (PLR, TAM, etc.)."""
         determination_type = random.choice(self.DETERMINATION_TYPES)
-        taxpayer_name = self.fake.name()
 
         doc = self._build_base_document('written_determination', subcategory, is_positive=True)
         doc.update({

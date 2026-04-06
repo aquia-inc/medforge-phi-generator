@@ -5,21 +5,17 @@ Creates CUI documents in various formats (DOCX, PDF, EML, XLSX)
 with proper classification headers, footers, and markings.
 """
 from docx import Document
-from docx.shared import Pt, Inches, RGBColor
+from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.enum.table import WD_TABLE_ALIGNMENT
 from formatters.base_email_formatter import BaseEmailFormatter
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import inch
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from openpyxl import Workbook
-from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
-from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT
-from datetime import datetime
+from openpyxl.styles import Font, Alignment
+from reportlab.lib.enums import TA_LEFT, TA_CENTER
 import os
-import random
 from typing import Any, Dict, Optional
 
 from templates.components import ComponentConfiguration, get_docx_font_name, get_pdf_font_name
@@ -832,7 +828,7 @@ class CUIEmailFormatter(BaseEmailFormatter):
         if doc_data.get('has_cui', False):
             html_parts.append('<hr>')
             html_parts.append('<p style="font-size: 10px; font-style: italic;">')
-            html_parts.append(f'<strong>CONFIDENTIALITY NOTICE:</strong><br>')
+            html_parts.append('<strong>CONFIDENTIALITY NOTICE:</strong><br>')
             html_parts.append(doc_data.get('confidentiality_notice', ''))
             html_parts.append('</p>')
 

@@ -3,7 +3,6 @@ Email formatter for EML and MSG formats
 Creates PHI-containing and PHI-negative emails
 """
 import os
-import random
 
 from formatters.base_email_formatter import BaseEmailFormatter
 

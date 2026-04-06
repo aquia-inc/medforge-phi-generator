@@ -807,7 +807,7 @@ class MedForgeCUIGenerator:
 
             return filepath
 
-        except Exception as e:
+        except Exception:
             # Fail silently and let regular generation take over
             return None
 

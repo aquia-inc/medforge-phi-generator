@@ -533,16 +533,16 @@ class PDFFormPopulator:
         base_budget = random.randint(300000, 800000)
         base_cost = random.randint(1000000, 3000000)
         return {
-            f"HHSM-500-2034-00016I_75FCMC34R0002 BestCloud (BestCloud)":
+            "HHSM-500-2034-00016I_75FCMC34R0002 BestCloud (BestCloud)":
                 f"{contract_num}_{task_order} {product} ({product})",
             'BestCloud': product,
-            f"$428,293": self.format_currency(base_budget),
-            f"$1,868,293": self.format_currency(base_cost),
-            f"$1,440,000": self.format_currency(base_cost - base_budget),
-            f"$1,954,129": self.format_currency(base_cost * 1.046),
-            f"$1,525,836": self.format_currency(base_cost * 1.046 - base_budget),
-            f"$2,044,024": self.format_currency(base_cost * 1.094),
-            f"$1,615,731": self.format_currency(base_cost * 1.094 - base_budget),
+            "$428,293": self.format_currency(base_budget),
+            "$1,868,293": self.format_currency(base_cost),
+            "$1,440,000": self.format_currency(base_cost - base_budget),
+            "$1,954,129": self.format_currency(base_cost * 1.046),
+            "$1,525,836": self.format_currency(base_cost * 1.046 - base_budget),
+            "$2,044,024": self.format_currency(base_cost * 1.094),
+            "$1,615,731": self.format_currency(base_cost * 1.094 - base_budget),
         }
 
     def generate_supplemental_afr_data(self) -> Dict[str, Any]:
@@ -581,7 +581,7 @@ class PDFFormPopulator:
             'How does the request align with CMS mission and strategic priorities?':
                 f"How does the request align with CMS mission and strategic priorities?\n{product} directly supports CMS's digital modernization initiative and reduces manual processing by an estimated 40%.",
             'How do they specifically support our Strategic blueprint OKRs or other CIO/OIT priorities?':
-                f"How do they specifically support our Strategic blueprint OKRs or other CIO/OIT priorities?\nAligns with OKR 2.3 (Modernize IT Infrastructure) and OKR 4.1 (Improve Operational Efficiency).",
+                "How do they specifically support our Strategic blueprint OKRs or other CIO/OIT priorities?\nAligns with OKR 2.3 (Modernize IT Infrastructure) and OKR 4.1 (Improve Operational Efficiency).",
             'What specific problem does the investment solve and the expected impact?':
                 f"What specific problem does the investment solve and the expected impact?\nCurrent manual processes result in {random.randint(5,20)}-day turnaround times. {product} reduces this to under 24 hours.",
             'Which stakeholders will it benefit, and how?':
@@ -611,8 +611,8 @@ class PDFFormPopulator:
             'Purpose: ': f"Purpose: OIT requires additional funding to procure and deploy {product} to enhance CMS cybersecurity posture and operational efficiency.",
             'Target Users: ': f"Target Users: OIT staff, {random.choice(['CMCS', 'CCIIO', 'CM'])} program teams, and contractor support personnel ({random.randint(50, 500)} users).",
             'Contractor: ': f"Contractor: {random.choice(CONTRACTORS)}",
-            'Key Features: ': f"Key Features: Automated vulnerability scanning, real-time compliance dashboards, integrated incident response workflows.",
-            'Features supported by Funding:': f"Features supported by Funding: License renewal, deployment support, and 12-month managed services.",
+            'Key Features: ': "Key Features: Automated vulnerability scanning, real-time compliance dashboards, integrated incident response workflows.",
+            'Features supported by Funding:': "Features supported by Funding: License renewal, deployment support, and 12-month managed services.",
             'Business Value:': f"Business Value: Reduces mean time to detect threats from {random.randint(24, 72)} hours to under 1 hour. Eliminates {random.randint(100, 500)} hours/year of manual compliance reporting.",
             '_table_data': [
                 {
@@ -703,7 +703,7 @@ class PDFFormPopulator:
             'CITY, STATE ZIP': f"{self.fake.city()}, {self.fake.state_abbr()} {self.fake.zipcode()}",
             '123456789': str(random.randint(100000000, 999999999)),
             'ABCD': ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=4)),
-            f'MS/MR.': f'{gender}',
+            'MS/MR.': f'{gender}',
             '6/30/2020': request_date.strftime('%-m/%-d/%Y'),
             'fifty (50)': f"{self._number_word(total_pages)} ({total_pages})",
             'Twenty-five': self._number_word(withheld),
@@ -728,7 +728,7 @@ class PDFFormPopulator:
             'EMAIL': self.fake.email(),
             'Ms. Halldorsson': f"{'Ms.' if random.random() < 0.5 else 'Mr.'} {requester.split()[-1]}",
             '2/28/2020': request_date.strftime('%-m/%-d/%Y'),
-            f'twenty-four pages, (NO #S IN PARENS)': f"{self._number_word(total_pages)} pages, ({total_pages})",
+            'twenty-four pages, (NO #S IN PARENS)': f"{self._number_word(total_pages)} pages, ({total_pages})",
             '123456789': str(random.randint(100000000, 999999999)),
             'ABCD': ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=4)),
             'Hugh Gilmore': director,
@@ -744,7 +744,6 @@ class PDFFormPopulator:
         director = self.fake.name()
         total_pages = random.randint(10, 150)
         released = random.randint(int(total_pages * 0.3), int(total_pages * 0.7))
-        withheld = total_pages - released
         request_date = self.fake.date_between(start_date='-1y', end_date='-30d')
         return {
             'Insert Name': requester,
