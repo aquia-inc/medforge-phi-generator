@@ -1180,7 +1180,12 @@ class MedForgeCUIGenerator:
                 filepath = self.formatters[fmt].create_cui_email(doc_data, filename)
             elif fmt == "pptx":
                 self.formatters[fmt].output_dir = str(category_dir)
-                filepath = self.formatters[fmt].create_cui_presentation(doc_data, filename)
+                pptx_config = self.component_mixer.get_random_configuration(
+                    avoid_duplicates=False,
+                    force_variant={"section_order": random.choice(CUI_SECTION_ORDERS)},
+                )
+                filepath = self.formatters[fmt].create_cui_presentation(
+                    doc_data, filename, component_config=pptx_config)
             else:
                 return None
 
@@ -1318,7 +1323,12 @@ class MedForgeCUIGenerator:
                 filepath = self.formatters[fmt].create_cui_email(doc_data, filename)
             elif fmt == "pptx":
                 self.formatters[fmt].output_dir = str(category_dir)
-                filepath = self.formatters[fmt].create_cui_presentation(doc_data, filename)
+                pptx_config = self.component_mixer.get_random_configuration(
+                    avoid_duplicates=False,
+                    force_variant={"section_order": random.choice(CUI_SECTION_ORDERS)},
+                )
+                filepath = self.formatters[fmt].create_cui_presentation(
+                    doc_data, filename, component_config=pptx_config)
             else:
                 return None
 
