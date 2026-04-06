@@ -136,6 +136,13 @@ class CUIProcurementDoc(BaseModel):
     justification: str = Field(description="Detailed justification for recommendation")
 
 
+class CUITaxDetermination(BaseModel):
+    """Structured output for tax written determination documents"""
+    facts: str = Field(description="Statement of relevant facts about the taxpayer's situation")
+    law_and_analysis: str = Field(description="Legal analysis citing IRC sections and Treasury regulations")
+    conclusion: str = Field(description="Determination, ruling, and any conditions or caveats")
+
+
 class ClaudeGenerator:
     """Generates clinical narratives using Claude 4.5 Sonnet"""
 
@@ -669,6 +676,62 @@ Return your response as valid JSON with these exact keys:
             return self._fallback_cui_narrative(category, subcategory, document_type, context)
 
     # Customer template narrative enrichment
+
+    def generate_cui_tax_determination(self, issue: str,
+                                         code_sections: str) -> CUITaxDetermination:
+        """
+        Generate a tax written determination (PLR/TAM style).
+
+        Args:
+            issue: Tax issue being determined
+            code_sections: Relevant IRC sections
+
+        Returns:
+            CUITaxDetermination with facts, law_and_analysis, conclusion
+        """
+        prompt = f"""Generate a realistic IRS written determination (Private Letter Ruling style) for:
+
+Issue: {issue}
+IRC Sections: {code_sections}
+
+Requirements:
+- Facts section: 2-3 sentences describing the taxpayer's situation and transaction
+- Law and Analysis: 3-4 sentences analyzing applicable IRC sections, Treasury regulations, and relevant precedent
+- Conclusion: 2-3 sentences stating the determination and any conditions
+- Use formal IRS legal writing style
+- Reference specific IRC section numbers and regulation citations
+- DO NOT include classification markings or labels like "CUI", "Positive", "Negative"
+- Write as if this is an authentic IRS determination document
+"""
+
+        try:
+            json_prompt = prompt + """
+
+Return your response as valid JSON with these exact keys:
+{"facts": "...", "law_and_analysis": "...", "conclusion": "..."}"""
+
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=1024,
+                messages=[{"role": "user", "content": json_prompt}]
+            )
+
+            text = response.content[0].text
+            if "```json" in text:
+                text = text.split("```json")[1].split("```")[0]
+            elif "```" in text:
+                text = text.split("```")[1].split("```")[0]
+            text = repair_json_string(text)
+            data = json.loads(text)
+            return CUITaxDetermination(**data)
+
+        except Exception as e:
+            logger.debug(f"LLM tax determination failed, using fallback: {e}")
+            return CUITaxDetermination(
+                facts=f"The taxpayer requested a determination regarding {issue} under {code_sections}.",
+                law_and_analysis=f"Under {code_sections} and applicable Treasury regulations, the proposed transaction meets the statutory requirements for the requested treatment.",
+                conclusion=f"Based on the facts presented and applicable law, the requested determination is granted, subject to the representations made by the taxpayer."
+            )
 
     def generate_template_narrative(self, template_key: str,
                                      context: Dict) -> Dict[str, str]:
