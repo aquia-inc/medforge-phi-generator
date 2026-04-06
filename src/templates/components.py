@@ -601,8 +601,6 @@ def apply_header_style(doc: Any, header_variant: HeaderComponent) -> None:
         doc: Document object (e.g., ReportLab canvas or similar)
         header_variant: HeaderComponent instance with style configuration
     """
-    config = header_variant.get_config()
-
     # This is a template function - actual implementation depends on your document library
     # Example pseudo-code:
     # if config["include_logo"] and config["logo_position"]:
@@ -628,8 +626,6 @@ def apply_layout(doc: Any, layout_variant: LayoutComponent, content: Dict[str, A
         layout_variant: LayoutComponent instance with layout configuration
         content: Content dictionary with section data
     """
-    config = layout_variant.get_config()
-
     # Template function - implement based on your document library
     # Example pseudo-code:
     # if config["structure"] == "table":
@@ -685,8 +681,6 @@ def apply_visual_style(doc: Any, style_variant: StyleComponent) -> None:
         doc: Document object
         style_variant: StyleComponent instance with style configuration
     """
-    config = style_variant.get_config()
-
     # Template function - implement based on your document library
     # Example pseudo-code:
     # doc.set_font(config["font_family"])

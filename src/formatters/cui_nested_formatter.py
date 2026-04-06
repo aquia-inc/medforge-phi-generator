@@ -5,10 +5,8 @@ Creates CUI emails with document attachments (PDF, DOCX, or ZIP),
 mirroring the PHI NestedEmailFormatter capabilities.
 """
 import io
-import os
 import random
 import zipfile
-from datetime import datetime
 from typing import Any, Dict
 
 from reportlab.lib import colors
@@ -107,14 +105,6 @@ class CUINestedEmailFormatter(BaseEmailFormatter):
         # Classification header
         classification = doc_data.get('classification', '')
         if doc_data.get('has_cui', False) and classification:
-            header_style = ParagraphStyle(
-                'CUIHeader',
-                parent=styles['Normal'],
-                fontSize=11,
-                textColor=colors.darkred,
-                alignment=1,  # Center
-                spaceAfter=12,
-            ) if False else styles['Normal']
             story.append(Paragraph(
                 f'<para alignment="center"><font color="darkred"><b>{classification}</b></font></para>',
                 styles['Normal'],
@@ -237,13 +227,13 @@ class CUINestedEmailFormatter(BaseEmailFormatter):
 
         with zipfile.ZipFile(buffer, 'w', zipfile.ZIP_DEFLATED) as zipf:
             pdf_data = self._generate_cui_pdf_in_memory(doc_data)
-            zipf.writestr(f"CUI_Document.pdf", pdf_data)
+            zipf.writestr("CUI_Document.pdf", pdf_data)
 
             docx_data = self._generate_cui_docx_in_memory(doc_data)
-            zipf.writestr(f"CUI_Document.docx", docx_data)
+            zipf.writestr("CUI_Document.docx", docx_data)
 
             if random.random() < 0.5:
-                zipf.writestr(f"CUI_Document_Copy.pdf", pdf_data)
+                zipf.writestr("CUI_Document_Copy.pdf", pdf_data)
 
         buffer.seek(0)
         return buffer.getvalue()

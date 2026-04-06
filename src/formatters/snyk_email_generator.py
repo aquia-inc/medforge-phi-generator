@@ -4,7 +4,6 @@ Snyk Security Email Generator
 Generates realistic Snyk vulnerability alert emails with varied findings.
 Can be template-based or LLM-enhanced.
 """
-from datetime import datetime
 import random
 import os
 from typing import Dict, Any, Optional
@@ -381,7 +380,7 @@ class SnykEmailGenerator(BaseEmailFormatter):
                 f"Fixed in: {finding['fixed_version']}",
                 f"CVE: {finding['cve_id']} | CVSS: {finding['cvss_score']} | {finding['cwe']}",
                 "",
-                f"Description:",
+                "Description:",
                 finding['description'],
                 "",
                 f"Impact: {finding['impact']}",
@@ -455,9 +454,9 @@ class SnykEmailGenerator(BaseEmailFormatter):
                 f'<p style="margin: 5px 0;"><strong>Vulnerable:</strong> {finding["vulnerable_version"]} and below</p>',
                 f'<p style="margin: 5px 0;"><strong>Fixed in:</strong> {finding["fixed_version"]}</p>',
                 f'<p style="margin: 5px 0;"><strong>CVE:</strong> {finding["cve_id"]} | <strong>CVSS:</strong> {finding["cvss_score"]} | <strong>CWE:</strong> {finding["cwe"]}</p>',
-                f'<p style="margin: 10px 0 5px 0;"><strong>Description:</strong></p>',
+                '<p style="margin: 10px 0 5px 0;"><strong>Description:</strong></p>',
                 f'<p style="margin: 0; color: #666;">{finding["description"]}</p>',
-                f'<p style="margin: 10px 0 5px 0;"><strong>Remediation:</strong></p>',
+                '<p style="margin: 10px 0 5px 0;"><strong>Remediation:</strong></p>',
                 f'<p style="margin: 0; color: #666;">{finding["remediation"]}</p>',
                 '</div>',
             ])
@@ -515,9 +514,9 @@ class SnykEmailGenerator(BaseEmailFormatter):
 
         # Recipient email
         if is_positive:
-            recipient = f"security.team@cms.hhs.gov"
+            recipient = "security.team@cms.hhs.gov"
         else:
-            recipient = f"dev@example.com"
+            recipient = "dev@example.com"
 
         return self.create_vulnerability_alert_email(recipient, findings, organization, filename)
 

@@ -4,7 +4,9 @@ Creates complex scenarios: emails containing PHI documents
 """
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
 from email.mime.application import MIMEApplication
+from email import encoders
 from email.utils import formatdate
 from datetime import datetime
 import os
@@ -17,7 +19,6 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import inch
 from reportlab.lib import colors
 from docx import Document
-from docx.shared import Pt, Inches
 
 from formatters.base_email_formatter import BaseEmailFormatter
 

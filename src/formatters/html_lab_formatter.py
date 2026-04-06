@@ -2,7 +2,6 @@
 Professional HTML Lab Result Formatter
 Creates realistic lab result emails and documents with modern styling
 """
-import os
 import random
 from datetime import datetime
 
@@ -209,7 +208,7 @@ CONFIDENTIALITY NOTICE: This email contains Protected Health Information (PHI).
 
         subject = f"New Lab Results Available - {lab['name']}"
         from_addr = f"{lab['name']} <noreply@{lab['name'].lower().replace(' ', '')}.com>"
-        to_addr = f"Patient <patient@example.com>"
+        to_addr = "Patient <patient@example.com>"
         domain = f"{lab['name'].lower().replace(' ', '')}.com"
 
         html_content = f"""

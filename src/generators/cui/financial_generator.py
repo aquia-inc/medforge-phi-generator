@@ -10,7 +10,6 @@ Generates synthetic CUI documents for:
 """
 from typing import Any, Dict, List, Optional
 import random
-from datetime import datetime, timedelta
 
 from .base import BaseCUIGenerator
 from .factory import CUIGeneratorFactory
