@@ -692,7 +692,7 @@ class MedForgeCUIGenerator:
             # Map customer templates to CUI categories
             # NOTE: EFT disabled - form fill not working reliably
             template_category_map = {
-                # 'EFT Authorization Form': 'financial',  # DISABLED
+                'EFT Authorization Form': 'financial',
                 'ReasonableAccommodationRequest': 'legal',
                 'IGCE': 'procurement',
                 'CLINTemplates': 'procurement',
@@ -712,8 +712,6 @@ class MedForgeCUIGenerator:
                 'OITFOAdditionalInfo': 'financial',
                 'SupplementalAFRBlank': 'financial',
                 'HHSRBD': 'critical_infrastructure',
-                'TestValidationMAC': 'critical_infrastructure',
-                'TestValidationPC': 'critical_infrastructure',
                 'B6Letter': 'legal',
                 'FullRelease': 'legal',
                 'Form339Letter': 'legal',
@@ -833,6 +831,7 @@ class MedForgeCUIGenerator:
         # PDF templates: LLM narratives are injected as free-text field values
         PDF_ENRICHABLE = {
             'EFT Authorization Form', 'FOIAMedicareAuth',
+            'Medical Inquiry  Form', 'ReasonableAccommodationRequest',
         }
         if template_key not in DOCX_ENRICHABLE and template_key not in PDF_ENRICHABLE:
             return None

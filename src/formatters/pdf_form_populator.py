@@ -6,6 +6,8 @@ Works with customer-provided CMS template forms.
 """
 import logging
 import pikepdf
+from pikepdf import Pdf
+from pikepdf.form import Form
 from faker import Faker
 import random
 import os
@@ -25,10 +27,49 @@ class PDFFormPopulator:
             Faker.seed(seed)
             random.seed(seed)
 
+    def populate_acroform(self, template_path: str, output_path: str,
+                          field_data: Dict[str, Any]) -> str:
+        """
+        Populate a PDF AcroForm with synthetic data using pikepdf.form.Form.
+
+        Uses the modern pikepdf Form API which handles NeedAppearances internally,
+        ensuring SharePoint/Purview render and index the filled content correctly.
+
+        Args:
+            template_path: Path to AcroForm PDF template
+            output_path: Path to save populated PDF
+            field_data: Dictionary mapping AcroForm field names to values.
+                        bool True → checked, bool False → unchecked.
+
+        Returns:
+            Path to created file
+        """
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        try:
+            with Pdf.open(template_path) as pdf:
+                form = Form(pdf)
+                for field_name, value in field_data.items():
+                    if field_name in form:
+                        if isinstance(value, bool):
+                            form[field_name].checked = value
+                        else:
+                            form[field_name].value = str(value) if value else ''
+                pdf.save(output_path)
+        except Exception as e:
+            raise RuntimeError(
+                f"pikepdf AcroForm population failed for {template_path}: {e}"
+            ) from e
+
+        return output_path
+
     def populate_form(self, template_path: str, output_path: str, field_data: Dict[str, Any],
                       field_positions: Optional[Dict[str, tuple]] = None) -> str:
         """
-        Populate a PDF form with synthetic data.
+        Populate a flat PDF (no AcroForm) with a reportlab text overlay.
+
+        For AcroForm PDFs (fillable forms with named fields), use populate_acroform()
+        instead — it uses pikepdf with NeedAppearances=True which SharePoint/Purview
+        render and index correctly.
 
         Args:
             template_path: Path to blank PDF template
@@ -106,9 +147,8 @@ class PDFFormPopulator:
         if primary_error is None:
             return output_path
 
-        # Fallback: use pikepdf to set form field values.
-        # NOTE: pikepdf form field values are NOT extractable by SharePoint/Purview
-        # text indexers. This fallback produces viewer-visible but non-indexable text.
+        # Fallback: reached only when reportlab overlay fails (import error or exception).
+        # For AcroForm PDFs, call populate_acroform() directly instead of this method.
         try:
             pdf = pikepdf.open(template_path)
 
@@ -1185,19 +1225,22 @@ class CustomerTemplateManager:
                 'template': 'saved_templates/Medical Inquiry  Form_508-blank-PHI-negative.pdf',
                 'generator': self.populator.generate_medical_inquiry_data,
                 'category': 'PHI',
-                'clean_name': 'MedicalInquiryForm'
+                'clean_name': 'MedicalInquiryForm',
+                'acroform': True,
             },
             'EFT Authorization Form': {
                 'template': 'saved_templates/EFT Authorization Form-blank-CUI-Finance-negative.pdf',
                 'generator': self.populator.generate_eft_authorization_data,
                 'category': 'CUI-Finance',
-                'clean_name': 'EFTAuthorizationForm'
+                'clean_name': 'EFTAuthorizationForm',
+                'acroform': True,
             },
             'ReasonableAccommodationRequest': {
                 'template': 'saved_templates/ReasonableAccommodationRequest-blank-CUI-negative.pdf',
                 'generator': self.populator.generate_reasonable_accommodation_data,
                 'category': 'CUI',
-                'clean_name': 'ReasonableAccommodationRequest'
+                'clean_name': 'ReasonableAccommodationRequest',
+                'acroform': True,
             },
             # Procurement: IGCE XLSX (positive-only, copy mode — openpyxl can't parse drawings)
             'IGCE': {
@@ -1328,19 +1371,7 @@ class CustomerTemplateManager:
                 'generator': self.populator.generate_hhs_rbd_data,
                 'category': 'CUI-CritInfra',
                 'clean_name': 'HHSRBD',
-            },
-            # Critical Infrastructure: Test Validation Reports (positive-only, copy mode)
-            'TestValidationMAC': {
-                'template_positive': 'Test_Validation_Report_Yubikey Manager MAC_v1.2.6-CUI-Critical Infrastructure-positive.pdf',
-                'category': 'CUI-CritInfra',
-                'clean_name': 'TestValidationMAC',
-                'positive_only': True,
-            },
-            'TestValidationPC': {
-                'template_positive': 'Test_Validation_Report_Yubikey Manager PC_v1.2.6-CUI-Critical Infrastructure-positive.pdf',
-                'category': 'CUI-CritInfra',
-                'clean_name': 'TestValidationPC',
-                'positive_only': True,
+                'acroform': True,
             },
             # Legal / FOIA: fillable positives with negative pairs
             'B6Letter': {
@@ -1378,6 +1409,7 @@ class CustomerTemplateManager:
                 'category': 'CUI-Legal',
                 'clean_name': 'FOIAMedicareAuth',
                 'positive_only': True,
+                'acroform': True,
             },
             # Legal / FOIA: copy-only negatives
             'FOIAGuidance': {
@@ -1459,6 +1491,9 @@ class CustomerTemplateManager:
                 if extra_data:
                     field_data.update(extra_data)
                 if ext.lower() == '.pdf':
+                    if template_info.get('acroform'):
+                        return self.populator.populate_acroform(
+                            template_path, output_path, field_data)
                     return self.populator.populate_form(
                         template_path, output_path, field_data,
                         field_positions=template_info.get('field_positions'))

@@ -872,6 +872,30 @@ Generate three realistic fields as a patient or authorized representative would 
 3. specific_records_needed: 1-2 sentences describing the specific types of Medicare records requested (e.g., claims history for specific date range, Part D prescription records, Medicare Summary Notices)
 
 DO NOT include real Medicare IDs, real names, or real medical information. Write as realistic FOIA request narrative.""",
+
+            'Medical Inquiry  Form': f"""Generate realistic narrative details for a CMS workplace medical inquiry form completed by a healthcare provider.
+
+Context from the form:
+{context_str}
+
+Generate three realistic fields as a licensed medical professional would write them:
+1. functional_limitations_detail: 2-3 sentences describing the specific functional limitations the employee experiences at work due to their medical condition (e.g., inability to sit for extended periods, difficulty with fine motor tasks, reduced concentration)
+2. provider_recommendation: 2-3 sentences with the provider's clinical recommendation for workplace accommodations, referencing the medical basis
+3. prognosis_statement: 1-2 sentences describing the expected duration and trajectory of the condition
+
+DO NOT include real diagnoses, real patient names, or real provider information. Write as realistic clinical documentation.""",
+
+            'ReasonableAccommodationRequest': f"""Generate realistic narrative details for a CMS Reasonable Accommodation Request form completed by HR.
+
+Context from the form:
+{context_str}
+
+Generate three realistic fields as an HR specialist would write them:
+1. accommodation_justification: 2-3 sentences explaining why the requested accommodation is reasonable and how it enables the employee to perform essential job functions
+2. business_impact_assessment: 2-3 sentences assessing the operational impact of the accommodation on the agency, addressing undue hardship considerations
+3. alternative_accommodations: 1-2 sentences describing any alternative accommodations considered and why the requested accommodation was selected
+
+DO NOT include real employee names, real medical diagnoses, or specific PII. Write as realistic internal HR documentation.""",
         }
 
         prompt = prompts.get(template_key)
@@ -890,6 +914,8 @@ DO NOT include real Medicare IDs, real names, or real medical information. Write
                 'RFCMemo': '{"change_justification": "...", "impact_analysis": "...", "stakeholder_assessment": "..."}',
                 'EFT Authorization Form': '{"payment_purpose": "...", "business_relationship": "...", "authorizing_official_title": "..."}',
                 'FOIAMedicareAuth': '{"purpose_of_request": "...", "requestor_relationship": "...", "specific_records_needed": "..."}',
+                'Medical Inquiry  Form': '{"functional_limitations_detail": "...", "provider_recommendation": "...", "prognosis_statement": "..."}',
+                'ReasonableAccommodationRequest': '{"accommodation_justification": "...", "business_impact_assessment": "...", "alternative_accommodations": "..."}',
             }
             json_prompt = prompt + f"\n\nReturn your response as valid JSON with these exact keys:\n{json_keys[template_key]}"
 
