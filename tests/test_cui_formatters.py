@@ -6,6 +6,7 @@ Distinct from test_cui_generators.py which tests the data generation layer.
 """
 import email
 import os
+import random
 
 from docx import Document
 from openpyxl import load_workbook
@@ -214,6 +215,84 @@ class TestSnykEmailGenerator:
         with open(filepath, 'rb') as f:
             msg = email.message_from_bytes(f.read())
         assert msg['Subject'] is not None
+
+    def test_weekly_report_positive_valid_eml(self, tmp_output_dir):
+        """create_snyk_weekly_report produces a valid EML with ZTMF scoring table."""
+        from formatters.snyk_email_generator import SnykEmailGenerator
+
+        gen = SnykEmailGenerator(output_dir=tmp_output_dir)
+        filepath = gen.create_snyk_weekly_report("test_weekly_pos.eml", is_positive=True)
+
+        assert os.path.exists(filepath)
+        with open(filepath, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        assert msg['Subject'] is not None
+        assert 'weekly report' in msg['Subject']
+
+        # Plain text body must contain ZTMF scoring section
+        plain_body = msg.get_payload(0).get_payload(decode=True).decode()
+        assert 'ZTMF APPLICATION SCORING' in plain_body
+        assert 'Business Owner' in plain_body
+        assert 'Pass' in plain_body and '%' in plain_body
+
+    def test_weekly_report_negative_valid_eml(self, tmp_output_dir):
+        """Negative weekly report generates without CMS org details."""
+        from formatters.snyk_email_generator import SnykEmailGenerator
+
+        gen = SnykEmailGenerator(output_dir=tmp_output_dir)
+        filepath = gen.create_snyk_weekly_report("test_weekly_neg.eml", is_positive=False)
+
+        assert os.path.exists(filepath)
+        with open(filepath, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        assert msg['Subject'] is not None
+
+    def test_weekly_report_percentages_sum_to_100(self):
+        """_ztmf_app_scores always returns rows where pass+marginal+fail == 100."""
+        from formatters.snyk_email_generator import SnykEmailGenerator
+
+        gen = SnykEmailGenerator.__new__(SnykEmailGenerator)
+        gen.ZTMF_APP_NAMES = SnykEmailGenerator.ZTMF_APP_NAMES
+        gen._FIRST_NAMES = SnykEmailGenerator._FIRST_NAMES
+        gen._LAST_NAMES = SnykEmailGenerator._LAST_NAMES
+
+        for _ in range(30):
+            rows = gen._ztmf_app_scores(random.randint(2, 5))
+            for row in rows:
+                total = row['pass_pct'] + row['marginal_pct'] + row['fail_pct']
+                assert total == 100, (
+                    f"Percentages for '{row['app']}' sum to {total}, expected 100"
+                )
+
+    def test_weekly_report_app_names_not_yubikey(self):
+        """ZTMF_APP_NAMES pool contains no reference to Yubikey Manager."""
+        from formatters.snyk_email_generator import SnykEmailGenerator
+
+        for name in SnykEmailGenerator.ZTMF_APP_NAMES:
+            assert 'Yubikey' not in name
+            assert 'yubikey' not in name.lower()
+
+    def test_weekly_report_has_both_plain_and_html(self, tmp_output_dir):
+        """Weekly report email contains both plain text and HTML parts."""
+        from formatters.snyk_email_generator import SnykEmailGenerator
+
+        gen = SnykEmailGenerator(output_dir=tmp_output_dir)
+        filepath = gen.create_snyk_weekly_report("test_weekly_parts.eml", is_positive=True)
+
+        with open(filepath, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        content_types = [p.get_content_type() for p in msg.get_payload()]
+        assert 'text/plain' in content_types
+        assert 'text/html' in content_types
+
+        # HTML must contain the ZTMF table
+        html_body = next(
+            p.get_payload(decode=True).decode()
+            for p in msg.get_payload()
+            if p.get_content_type() == 'text/html'
+        )
+        assert 'ZTMF Application Scoring' in html_body
+        assert 'Business Owner' in html_body
 
 
 class TestNegativeDocumentStructure:

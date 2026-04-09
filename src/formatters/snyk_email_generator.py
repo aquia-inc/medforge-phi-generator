@@ -164,6 +164,42 @@ class SnykEmailGenerator(BaseEmailFormatter):
         'Public Health Dashboard',
     ]
 
+    # Application names for ZTMF weekly scoring report (diverse CMS/HHS systems)
+    ZTMF_APP_NAMES = [
+        'Provider Enrollment API',
+        'Claims Processing Engine',
+        'Eligibility Verification Service',
+        'Beneficiary Data Platform',
+        'Medicare Payment Gateway',
+        'HIPAA Compliance Dashboard',
+        'Quality Reporting System',
+        'Identity & Access Management',
+        'Enterprise Data Warehouse',
+        'Medicaid Analytics Portal',
+        'Prior Authorization Service',
+        'Provider Directory Service',
+        'Appeals & Grievances System',
+        'Clinical Data Repository',
+        'Fraud Detection Platform',
+        'Interoperability API Gateway',
+        'Plan Management System',
+        'Health Equity Dashboard',
+        'Risk Adjustment Engine',
+        'Care Coordination Platform',
+    ]
+
+    # First and last name pools for fake business owners
+    _FIRST_NAMES = [
+        'James', 'Maria', 'David', 'Sarah', 'Michael', 'Jennifer', 'Robert',
+        'Lisa', 'William', 'Patricia', 'Richard', 'Linda', 'Thomas', 'Barbara',
+        'Charles', 'Susan', 'Christopher', 'Jessica', 'Daniel', 'Karen',
+    ]
+    _LAST_NAMES = [
+        'Carter', 'Santos', 'Nguyen', 'Williams', 'Johnson', 'Patel', 'Brown',
+        'Davis', 'Miller', 'Wilson', 'Moore', 'Taylor', 'Anderson', 'Thomas',
+        'Jackson', 'White', 'Harris', 'Martin', 'Thompson', 'Garcia',
+    ]
+
     def __init__(self, output_dir: str = 'output', llm_generator=None,
                  llm_percentage: float = 0.2):
         """Initialize Snyk email generator.
@@ -546,9 +582,35 @@ class SnykEmailGenerator(BaseEmailFormatter):
         except Exception:
             pass  # Keep static template on failure
 
+    def _fake_owner(self) -> str:
+        """Generate a random fake full name for a business owner."""
+        return f"{random.choice(self._FIRST_NAMES)} {random.choice(self._LAST_NAMES)}"
+
+    def _ztmf_app_scores(self, count: int) -> list:
+        """
+        Generate ZTMF pass/fail/marginal scores for `count` applications.
+        Each row sums to exactly 100%.
+
+        Returns list of dicts with keys: app, owner, pass_pct, marginal_pct, fail_pct.
+        """
+        apps = random.sample(self.ZTMF_APP_NAMES, min(count, len(self.ZTMF_APP_NAMES)))
+        rows = []
+        for app in apps:
+            pass_pct = random.randint(40, 85)
+            fail_pct = random.randint(5, min(30, 100 - pass_pct - 5))
+            marginal_pct = 100 - pass_pct - fail_pct
+            rows.append({
+                'app': app,
+                'owner': self._fake_owner(),
+                'pass_pct': pass_pct,
+                'marginal_pct': marginal_pct,
+                'fail_pct': fail_pct,
+            })
+        return rows
+
     def create_snyk_weekly_report(self, filename: str, is_positive: bool = True) -> str:
         """
-        Create a Snyk weekly summary report email.
+        Create a Snyk weekly summary report email with ZTMF scoring table.
 
         Args:
             filename: Output filename
@@ -557,85 +619,46 @@ class SnykEmailGenerator(BaseEmailFormatter):
         Returns:
             Path to created file
         """
-        # Select project
+        from datetime import timedelta, date
+
+        # Select org and recipient
         if is_positive:
             organization = random.choice(['CMS', 'HHS'])
-            project_name = random.choice(self.GOV_PROJECTS)
             recipient = 'security.team@cms.hhs.gov'
         else:
             organization = 'Public Repository'
-            project_name = random.choice(self.PUBLIC_PROJECTS)
             recipient = 'dev@example.com'
 
-        subject = f"[snyk] {project_name}'s weekly report"
+        # Random date range ending last week
+        end_offset = random.randint(1, 7)
+        report_end = date.today() - timedelta(days=end_offset)
+        report_start = report_end - timedelta(days=6)
+        date_range = (
+            f"{report_start.strftime('%B %-d')} \u2013 {report_end.strftime('%-d, %Y')}"
+        )
 
-        # Weekly summary stats
-        new_vulns = random.randint(0, 5)
-        fixed_vulns = random.randint(0, 8)
-        open_vulns = random.randint(5, 25)
-        dependencies = random.randint(150, 500)
+        subject = f"[snyk] {organization}'s weekly report"
 
-        plain_text = f"""
-{project_name} - Weekly Security Summary
+        # Overall stats
+        new_vulns = random.randint(0, 8)
+        fixed_vulns = random.randint(0, 10)
+        open_vulns = random.randint(5, 30)
+        dependencies = random.randint(150, 600)
+        needs_update = random.randint(1, 15)
+        critical_immediate = random.randint(0, 4)
 
-This week's activity:
-• {new_vulns} new vulnerabilities detected
-• {fixed_vulns} vulnerabilities fixed
-• {open_vulns} total open issues
+        # ZTMF scoring table (2-5 applications)
+        app_count = random.randint(2, 5)
+        scores = self._ztmf_app_scores(app_count)
 
-Dependency Health:
-• {dependencies} total dependencies scanned
-• {random.randint(1, 10)} dependencies need updates
-• {random.randint(0, 3)} critical issues require immediate attention
-
-Top Priority:
-Fix critical severity issues in production dependencies.
-
-View full report:
-https://app.snyk.io/org/{organization.lower().replace(' ', '-')}/projects/
-
----
-Snyk Security
-https://snyk.io
-"""
-
-        html_text = f"""
-<html>
-<body style="font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px;">
-<div style="max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px;">
-    <div style="background: #4a148c; color: white; padding: 20px; border-radius: 5px; margin-bottom: 20px;">
-        <h1 style="margin: 0;">{project_name}</h1>
-        <p style="margin: 5px 0 0 0;">Weekly Security Report</p>
-    </div>
-
-    <h2>This Week's Activity</h2>
-    <ul>
-        <li>{new_vulns} new vulnerabilities detected</li>
-        <li>{fixed_vulns} vulnerabilities fixed</li>
-        <li>{open_vulns} total open issues</li>
-    </ul>
-
-    <h2>Dependency Health</h2>
-    <ul>
-        <li>{dependencies} total dependencies scanned</li>
-        <li>{random.randint(1, 10)} dependencies need updates</li>
-        <li>{random.randint(0, 3)} critical issues require immediate attention</li>
-    </ul>
-
-    <div style="text-align: center; margin: 30px 0;">
-        <a href="https://app.snyk.io/org/{organization.lower().replace(' ', '-')}/projects/"
-           style="background: #4a148c; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px;">
-           View Full Report
-        </a>
-    </div>
-
-    <div style="border-top: 1px solid #ddd; padding-top: 20px; margin-top: 30px; color: #666; font-size: 12px;">
-        <p>Snyk Security | https://snyk.io</p>
-    </div>
-</div>
-</body>
-</html>
-"""
+        plain_text = self._build_plain_weekly(
+            organization, date_range, new_vulns, fixed_vulns, open_vulns,
+            dependencies, needs_update, critical_immediate, scores,
+        )
+        html_text = self._build_html_weekly(
+            organization, date_range, new_vulns, fixed_vulns, open_vulns,
+            dependencies, needs_update, critical_immediate, scores,
+        )
 
         return self._build_and_save_email(
             subject=subject,
@@ -646,6 +669,116 @@ https://snyk.io
             filename=filename,
             message_id_domain='snyk.io',
         )
+
+    def _build_plain_weekly(self, org, date_range, new_vulns, fixed_vulns,
+                            open_vulns, deps, needs_update, critical, scores):
+        """Build plain-text body for weekly ZTMF scoring report."""
+        col_w = 36
+        lines = [
+            f"{org} - Weekly Security Report",
+            f"Period: {date_range}",
+            "",
+            "=" * 70,
+            "VULNERABILITY SUMMARY",
+            f"  {new_vulns} new vulnerabilities detected",
+            f"  {fixed_vulns} vulnerabilities fixed",
+            f"  {open_vulns} total open issues",
+            "",
+            "DEPENDENCY HEALTH",
+            f"  {deps} total dependencies scanned",
+            f"  {needs_update} dependencies need updates",
+            f"  {critical} critical issues require immediate attention",
+            "",
+            "=" * 70,
+            "ZTMF APPLICATION SCORING",
+            "",
+            f"{'Application':<{col_w}} {'Business Owner':<22} {'Pass':>5}  {'Marginal':>8}  {'Fail':>5}",
+            "-" * 70,
+        ]
+        for row in scores:
+            lines.append(
+                f"{row['app']:<{col_w}} {row['owner']:<22} {row['pass_pct']:>4}%  "
+                f"{row['marginal_pct']:>7}%  {row['fail_pct']:>4}%"
+            )
+        lines += [
+            "",
+            "View full report:",
+            f"https://app.snyk.io/org/{org.lower().replace(' ', '-')}/projects/",
+            "",
+            "---",
+            "Snyk Security",
+            "https://snyk.io",
+        ]
+        return "\n".join(lines)
+
+    def _build_html_weekly(self, org, date_range, new_vulns, fixed_vulns,
+                           open_vulns, deps, needs_update, critical, scores):
+        """Build HTML body for weekly ZTMF scoring report."""
+        score_rows_html = ""
+        for row in scores:
+            pass_color = "#2e7d32" if row['pass_pct'] >= 70 else "#f57c00"
+            score_rows_html += (
+                f"<tr>"
+                f"<td style='padding:8px;border-bottom:1px solid #eee;'>{row['app']}</td>"
+                f"<td style='padding:8px;border-bottom:1px solid #eee;'>{row['owner']}</td>"
+                f"<td style='padding:8px;border-bottom:1px solid #eee;text-align:center;"
+                f"color:{pass_color};font-weight:bold;'>{row['pass_pct']}%</td>"
+                f"<td style='padding:8px;border-bottom:1px solid #eee;text-align:center;"
+                f"color:#f57c00;'>{row['marginal_pct']}%</td>"
+                f"<td style='padding:8px;border-bottom:1px solid #eee;text-align:center;"
+                f"color:#d32f2f;'>{row['fail_pct']}%</td>"
+                f"</tr>"
+            )
+
+        org_slug = org.lower().replace(' ', '-')
+        return f"""<html><head></head><body style="font-family:Arial,sans-serif;background:#f5f5f5;padding:20px;">
+<div style="max-width:700px;margin:0 auto;background:white;padding:30px;border-radius:8px;">
+  <div style="background:#4a148c;color:white;padding:20px;border-radius:5px;margin-bottom:20px;">
+    <h1 style="margin:0;font-size:22px;">{org}</h1>
+    <p style="margin:5px 0 0 0;opacity:0.85;">Weekly Security Report &bull; {date_range}</p>
+  </div>
+
+  <h2 style="color:#333;">Vulnerability Summary</h2>
+  <ul>
+    <li>{new_vulns} new vulnerabilities detected</li>
+    <li>{fixed_vulns} vulnerabilities fixed</li>
+    <li>{open_vulns} total open issues</li>
+  </ul>
+
+  <h2 style="color:#333;">Dependency Health</h2>
+  <ul>
+    <li>{deps} total dependencies scanned</li>
+    <li>{needs_update} dependencies need updates</li>
+    <li>{critical} critical issues require immediate attention</li>
+  </ul>
+
+  <h2 style="color:#333;">ZTMF Application Scoring</h2>
+  <table style="width:100%;border-collapse:collapse;font-size:14px;">
+    <thead>
+      <tr style="background:#f3e5f5;">
+        <th style="padding:10px;text-align:left;border-bottom:2px solid #4a148c;">Application</th>
+        <th style="padding:10px;text-align:left;border-bottom:2px solid #4a148c;">Business Owner</th>
+        <th style="padding:10px;text-align:center;border-bottom:2px solid #4a148c;">Pass</th>
+        <th style="padding:10px;text-align:center;border-bottom:2px solid #4a148c;">Marginal</th>
+        <th style="padding:10px;text-align:center;border-bottom:2px solid #4a148c;">Fail</th>
+      </tr>
+    </thead>
+    <tbody>{score_rows_html}</tbody>
+  </table>
+
+  <div style="text-align:center;margin:30px 0;">
+    <a href="https://app.snyk.io/org/{org_slug}/projects/"
+       style="background:#4a148c;color:white;padding:12px 30px;text-decoration:none;border-radius:5px;font-weight:bold;display:inline-block;">
+      View Full Report
+    </a>
+  </div>
+
+  <div style="border-top:1px solid #ddd;padding-top:20px;margin-top:30px;color:#666;font-size:12px;">
+    <p>Snyk Security | <a href="https://snyk.io">https://snyk.io</a></p>
+    <p>This is an automated security report. To manage notification preferences, visit your Snyk account settings.</p>
+  </div>
+</div>
+</body></html>"""
 
 
 if __name__ == "__main__":
@@ -673,13 +806,15 @@ if __name__ == "__main__":
     )
     print(f"   ✓ Created: {negative_file}")
 
-    # Test weekly report
-    print("\n3. Generating weekly report...")
-    weekly_file = generator.create_snyk_weekly_report(
-        'SnykWeekly_001.eml',
-        is_positive=True
-    )
-    print(f"   ✓ Created: {weekly_file}")
+    # Test weekly report (positive — ZTMF scoring table)
+    print("\n3. Generating weekly report (positive)...")
+    weekly_pos = generator.create_snyk_weekly_report('SnykWeekly_Positive_001.eml', is_positive=True)
+    print(f"   ✓ Created: {weekly_pos}")
+
+    # Test weekly report (negative)
+    print("\n4. Generating weekly report (negative)...")
+    weekly_neg = generator.create_snyk_weekly_report('SnykWeekly_Negative_001.eml', is_positive=False)
+    print(f"   ✓ Created: {weekly_neg}")
 
     print("\n" + "="*70)
     print("Snyk email generation complete!")
@@ -688,5 +823,6 @@ if __name__ == "__main__":
     print("  • 40+ real package names (npm, PyPI, Maven)")
     print("  • Randomized CVE IDs, CVSS scores, versions")
     print("  • 1-4 findings per email")
+    print("  • Weekly report: 2-5 apps with ZTMF pass/marginal/fail % (sum = 100%)")
     print("  • CUI-positive: internal CMS projects")
     print("  • CUI-negative: public/generic projects")
