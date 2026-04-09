@@ -849,6 +849,42 @@ Generate three sections as a program manager would write them:
 
 DO NOT include classification markings or labels. Write naturally as an internal government memo.""",
 
+            'B6Letter': f"""Generate realistic narrative sections for a CMS FOIA B6 (partial release) response letter.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a FOIA officer would write them:
+1. response_rationale: 2-3 sentences explaining the basis for the partial release determination and which FOIA exemptions apply
+2. exemption_analysis: 2-3 sentences describing the specific Exemption 6 (personal privacy) analysis conducted and balancing test applied
+3. disclosure_determination: 2-3 sentences summarizing what was released, what was withheld, and how segregable portions were identified
+
+DO NOT include classification markings or labels. Write naturally as a formal FOIA response.""",
+
+            'Form339Letter': f"""Generate realistic narrative sections for a CMS FOIA Form 339 Exemption 4 (confidential business information) withholding letter.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a FOIA officer would write them:
+1. withholding_justification: 2-3 sentences explaining why the business information qualifies for Exemption 4 protection under the Trade Secrets Act
+2. submitter_notice_summary: 2-3 sentences describing the submitter notification process under Executive Order 12600 and the submitter's response
+3. exemption_4_analysis: 2-3 sentences analyzing whether disclosure would cause substantial competitive harm to the submitter
+
+DO NOT include classification markings or labels. Write naturally as a formal FOIA determination letter.""",
+
+            'FullRelease': f"""Generate realistic narrative sections for a CMS FOIA full release response letter.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a FOIA officer would write them:
+1. release_summary: 2-3 sentences describing the scope of records located and the determination to release all responsive documents in full
+2. search_methodology: 2-3 sentences describing how the search for responsive records was conducted, which offices were queried, and what systems were searched
+3. processing_notes: 2-3 sentences noting any processing considerations such as duplicate removal, date range limitations, or format conversions applied
+
+DO NOT include classification markings or labels. Write naturally as a formal FOIA response.""",
+
             'EFT Authorization Form': f"""Generate realistic contextual details for a CMS Electronic Funds Transfer (EFT) Authorization Form.
 
 Context from the form:
@@ -912,6 +948,9 @@ DO NOT include real employee names, real medical diagnoses, or specific PII. Wri
                 'JALimitedSource': '{"competition_justification": "...", "efforts_to_compete": "...", "fair_pricing_determination": "..."}',
                 'SubpoenaResponse': '{"response_narrative": "...", "privilege_log_summary": "...", "production_scope": "..."}',
                 'RFCMemo': '{"change_justification": "...", "impact_analysis": "...", "stakeholder_assessment": "..."}',
+                'B6Letter': '{"response_rationale": "...", "exemption_analysis": "...", "disclosure_determination": "..."}',
+                'Form339Letter': '{"withholding_justification": "...", "submitter_notice_summary": "...", "exemption_4_analysis": "..."}',
+                'FullRelease': '{"release_summary": "...", "search_methodology": "...", "processing_notes": "..."}',
                 'EFT Authorization Form': '{"payment_purpose": "...", "business_relationship": "...", "authorizing_official_title": "..."}',
                 'FOIAMedicareAuth': '{"purpose_of_request": "...", "requestor_relationship": "...", "specific_records_needed": "..."}',
                 'Medical Inquiry  Form': '{"functional_limitations_detail": "...", "provider_recommendation": "...", "prognosis_statement": "..."}',

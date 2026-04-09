@@ -827,6 +827,7 @@ class MedForgeCUIGenerator:
         DOCX_ENRICHABLE = {
             'AcquisitionPlan', 'IncidentResponse', 'KMP',
             'MarketResearch', 'JOFOC', 'JALimitedSource', 'SubpoenaResponse', 'RFCMemo',
+            'B6Letter', 'Form339Letter', 'FullRelease',
         }
         # PDF templates: LLM narratives are injected as free-text field values
         PDF_ENRICHABLE = {
@@ -886,6 +887,18 @@ class MedForgeCUIGenerator:
                 'change_justification': 'Change Justification',
                 'impact_analysis': 'Impact Analysis',
                 'stakeholder_assessment': 'Stakeholder Assessment',
+                # B6 Letter
+                'response_rationale': 'Response Rationale',
+                'exemption_analysis': 'Exemption Analysis',
+                'disclosure_determination': 'Disclosure Determination',
+                # Form 339 Letter
+                'withholding_justification': 'Withholding Justification',
+                'submitter_notice_summary': 'Submitter Notice Summary',
+                'exemption_4_analysis': 'Exemption 4 Analysis',
+                # Full Release
+                'release_summary': 'Release Summary',
+                'search_methodology': 'Search Methodology',
+                'processing_notes': 'Processing Notes',
             }
 
             sections = []

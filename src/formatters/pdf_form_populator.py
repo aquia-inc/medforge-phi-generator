@@ -826,11 +826,16 @@ class PDFFormPopulator:
     def generate_subpoena_response_data(self) -> Dict[str, Any]:
         """Generate data for FOIA Subpoena Duces Tecum response (CUI-Legal).
 
-        Replaces: (INSERT DATE HERE) x2.
+        Replaces: dates, addressee greeting, director name.
         """
         subpoena_date = self.fake.date_between(start_date='-90d', end_date='-7d')
+        director, _ = self._foia_staff_names()
+        firm = self.fake.company()
         return {
             '(INSERT DATE HERE)': subpoena_date.strftime('%B %d, %Y'),
+            'Dear Sir or Madam:': f"Dear {firm} Counsel:",
+            'your firm': firm,
+            'Director, Freedom of Information Group': f"{director}\nDirector, Freedom of Information Group",
         }
 
     def _number_word(self, n: int) -> str:
