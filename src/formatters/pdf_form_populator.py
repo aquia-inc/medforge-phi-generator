@@ -339,13 +339,45 @@ class PDFFormPopulator:
 
     # --- Critical Infrastructure generators ---
 
+    # --- Shared helpers ---
+
+    FISMA_SYSTEMS = [
+        'CMS Cloud Services', 'Medicare Fee-for-Service', 'Healthcare.gov',
+        'Marketplace Platform', 'Quality Payment Program', 'HCFAC System',
+        'Enterprise Identity Management', 'CMS Data Exchange',
+    ]
+
+    SYSTEM_NAMES = [
+        'CloudVault', 'SecureEdge', 'DataShield', 'NetGuard', 'CipherNet',
+        'TrustCore', 'SafeLink', 'VaultStream', 'InfoSentry', 'CryptoGrid',
+    ]
+
+    CMS_OFFICES = ['OIT', 'CCIIO', 'CM', 'CMCS', 'OFM', 'OAGM', 'OA']
+
+    def _foia_staff_names(self) -> tuple:
+        """Return (director_name, liaison_name) for FOIA response letters."""
+        return self.fake.name(), self.fake.name()
+
+    def _rfc_memo_base_data(self, contract_placeholder: str) -> Dict[str, Any]:
+        """Shared fill data for RFC Memo and AGX RFC Memo."""
+        mod_type = random.choice(['Administrative', 'No-Cost Extension', 'Option Exercise',
+                                   'Incremental Funding', 'Change Order'])
+        return {
+            'XX/XX/XXXX': datetime.now().strftime('%m/%d/%Y'),
+            contract_placeholder:
+                f"{self._contract_number()} / {self._task_order_number()}",
+            'TBD': f"APP-{random.randint(2024, 2026)}-{random.randint(100, 999)}",
+            '_underline_fills': [
+                f"__X__ {mod_type}" if mod_type in ['Administrative', 'No-Cost Extension', 'Option Exercise'] else f"_____ {mod_type}",
+                f"__X__ {mod_type}" if mod_type in ['Incremental Funding', 'Change Order'] else f"_____ {mod_type}",
+                '',  # Negotiated Change line
+                self.fake.name(),  # Signature
+            ],
+        }
+
     def generate_kmp_data(self) -> Dict[str, Any]:
         """Generate data for Key Management Plan (CUI-Critical Infrastructure)."""
-        SYSTEM_NAMES = [
-            'CloudVault', 'SecureEdge', 'DataShield', 'NetGuard', 'CipherNet',
-            'TrustCore', 'SafeLink', 'VaultStream', 'InfoSentry', 'CryptoGrid',
-        ]
-        system = random.choice(SYSTEM_NAMES)
+        system = random.choice(self.SYSTEM_NAMES)
         system_lower = system.lower().replace(' ', '-')
         return {
             'Mock System': system,
@@ -382,12 +414,7 @@ class PDFFormPopulator:
         ao = self.fake.name()
         cfo = self.fake.name()
 
-        FISMA_SYSTEMS = [
-            'CMS Cloud Services', 'Medicare Fee-for-Service', 'Healthcare.gov',
-            'Marketplace Platform', 'Quality Payment Program', 'HCFAC System',
-            'Enterprise Identity Management', 'CMS Data Exchange',
-        ]
-        system_name = random.choice(FISMA_SYSTEMS)
+        system_name = random.choice(self.FISMA_SYSTEMS)
 
         WEAKNESSES = [
             'Legacy system requires extended password expiration beyond 90-day policy',
@@ -451,11 +478,8 @@ class PDFFormPopulator:
         mgr_first = self.fake.first_name()
         mgr_last = self.fake.last_name()
         mgr_email = f"{mgr_first}.{mgr_last}@cms.hhs.gov".lower()
-        fisma = random.choice([
-            'CMS Cloud Services', 'Medicare Fee-for-Service', 'Healthcare.gov',
-            'Marketplace Platform', 'Quality Payment Program', 'HCFAC System',
-        ])
-        CMS_OFFICES = ['OIT', 'CCIIO', 'CM', 'CMCS', 'OFM']
+        fisma = random.choice(self.FISMA_SYSTEMS)
+        CMS_OFFICES = self.CMS_OFFICES
         incident_date = self.fake.date_between(start_date='-60d', end_date='today')
         phone1 = self.fake.numerify('443-555-####')
         phone2 = self.fake.numerify('443-555-####')
@@ -485,7 +509,7 @@ class PDFFormPopulator:
                     'start_row': 4,
                     'rows': [
                         [phone1, phone2, phone3,
-                         random.choice(CMS_OFFICES), random.choice(CMS_OFFICES),
+                         random.choice(self.CMS_OFFICES), random.choice(self.CMS_OFFICES),
                          f"E{random.randint(100, 999)}"],
                     ],
                 },
@@ -729,8 +753,7 @@ class PDFFormPopulator:
         """
         requester = self.fake.name()
         company = self.fake.company()
-        director = self.fake.name()
-        liaison = self.fake.name()
+        director, liaison = self._foia_staff_names()
         total_pages = random.randint(15, 200)
         released = random.randint(int(total_pages * 0.4), int(total_pages * 0.8))
         withheld = total_pages - released
@@ -758,8 +781,7 @@ class PDFFormPopulator:
         Replaces: NAME, ADDRESS, EMAIL, requester name, staff names, dates, page counts.
         """
         requester = self.fake.name()
-        director = self.fake.name()
-        liaison = self.fake.name()
+        director, liaison = self._foia_staff_names()
         total_pages = random.randint(5, 100)
         request_date = self.fake.date_between(start_date='-1y', end_date='-30d')
         return {
@@ -781,7 +803,7 @@ class PDFFormPopulator:
         Replaces: Insert Name, reference number, dates, page counts, staff name.
         """
         requester = self.fake.name()
-        director = self.fake.name()
+        director, _ = self._foia_staff_names()
         total_pages = random.randint(10, 150)
         released = random.randint(int(total_pages * 0.3), int(total_pages * 0.7))
         request_date = self.fake.date_between(start_date='-1y', end_date='-30d')
@@ -846,40 +868,14 @@ class PDFFormPopulator:
 
         Fills 4 underline blanks: modification checkmarks and signature block.
         """
-        mod_type = random.choice(['Administrative', 'No-Cost Extension', 'Option Exercise',
-                                   'Incremental Funding', 'Change Order'])
-        return {
-            'XX/XX/XXXX': datetime.now().strftime('%m/%d/%Y'),
-            '75FCMCXXXXXXXX / (if applicable) 75FCMCXXXXXXXX':
-                f"{self._contract_number()} / {self._task_order_number()}",
-            'TBD': f"APP-{random.randint(2024, 2026)}-{random.randint(100, 999)}",
-            '_underline_fills': [
-                f"__X__ {mod_type}" if mod_type in ['Administrative', 'No-Cost Extension', 'Option Exercise'] else f"_____ {mod_type}",
-                f"__X__ {mod_type}" if mod_type in ['Incremental Funding', 'Change Order'] else f"_____ {mod_type}",
-                '',  # Negotiated Change line
-                self.fake.name(),  # Signature
-            ],
-        }
+        return self._rfc_memo_base_data('75FCMCXXXXXXXX / (if applicable) 75FCMCXXXXXXXX')
 
     def generate_agx_rfc_memo_data(self) -> Dict[str, Any]:
         """Generate data for AGX RFC Memo (CUI-Procurement).
 
         Same structure as RFC Memo with slightly different contract format.
         """
-        mod_type = random.choice(['Administrative', 'No-Cost Extension', 'Option Exercise',
-                                   'Incremental Funding', 'Change Order'])
-        return {
-            'XX/XX/XXXX': datetime.now().strftime('%m/%d/%Y'),
-            '75FCMC 23F0113 / (if applicable) 75FCMCXXXXXXXX':
-                f"{self._contract_number()} / {self._task_order_number()}",
-            'TBD': f"APP-{random.randint(2024, 2026)}-{random.randint(100, 999)}",
-            '_underline_fills': [
-                f"__X__ {mod_type}" if mod_type in ['Administrative', 'No-Cost Extension', 'Option Exercise'] else f"_____ {mod_type}",
-                f"__X__ {mod_type}" if mod_type in ['Incremental Funding', 'Change Order'] else f"_____ {mod_type}",
-                '',
-                self.fake.name(),
-            ],
-        }
+        return self._rfc_memo_base_data('75FCMC 23F0113 / (if applicable) 75FCMCXXXXXXXX')
 
     def generate_ja_limited_source_data(self) -> Dict[str, Any]:
         """Generate data for JA Limited Source Justification (CUI-Procurement).
@@ -981,7 +977,6 @@ class PDFFormPopulator:
 
         Fills Table 0 (basic info header) and underline blanks.
         """
-        CMS_COMPONENTS = ['OAGM', 'OIT', 'CMCS', 'CCIIO', 'CM', 'OFM']
         project_titles = [
             'Enterprise Cloud Hosting Services',
             'Medicare Beneficiary Data Analytics',
@@ -1002,7 +997,7 @@ class PDFFormPopulator:
                     'start_row': 0,
                     'rows': [
                         [None, ''],  # Row 0 header
-                        [None, random.choice(CMS_COMPONENTS)],
+                        [None, random.choice(self.CMS_OFFICES)],
                         [None, random.choice(project_titles)],
                         [None, self.fake.name()],
                         [None, self.fake.phone_number()],
@@ -1021,7 +1016,6 @@ class PDFFormPopulator:
         Fills 4 tables: acquisition team, vendor assessments, business size
         counts, and vendor capability list.
         """
-        CMS_OFFICES = ['OAGM', 'OIT', 'CMCS', 'CCIIO', 'CM', 'OFM', 'OA']
         ROLES = [
             'Requirements development and technical evaluation',
             'Acquisition planning and contract execution',
@@ -1047,7 +1041,7 @@ class PDFFormPopulator:
         team_rows = []
         for ri in range(6):
             name = self.fake.name()
-            office = random.choice(CMS_OFFICES)
+            office = random.choice(self.CMS_OFFICES)
             phone = self.fake.phone_number()
             email = f"{name.split()[0].lower()}.{name.split()[-1].lower()}@cms.hhs.gov"
             role = ROLES[ri] if ri < len(ROLES) else random.choice(ROLES)
