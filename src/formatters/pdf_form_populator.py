@@ -1182,20 +1182,20 @@ class CustomerTemplateManager:
         # Map templates to data generators
         self.template_mappings = {
             'Medical Inquiry  Form': {
-                'template': 'Medical Inquiry  Form_508-blank-PHI-negative.pdf',
+                'template': 'saved_templates/Medical Inquiry  Form_508-blank-PHI-negative.pdf',
                 'generator': self.populator.generate_medical_inquiry_data,
                 'category': 'PHI',
                 'clean_name': 'MedicalInquiryForm'
             },
             'EFT Authorization Form': {
-                'template_positive': 'EFT Authorization Form-blank-CUI-Finance-positive.pdf',  # Elizabeth's perfect filled example
-                'template_negative': 'EFT Authorization Form-blank-CUI-Finance-negative.pdf',  # Blank for negatives
+                'template_positive': 'EFT Authorization Form-blank-CUI-Finance-positive.pdf',  # Filled example
+                'template_negative': 'saved_templates/EFT Authorization Form-blank-CUI-Finance-negative.pdf',  # Blank for negatives
                 'generator': self.populator.generate_eft_authorization_data,
                 'category': 'CUI-Finance',
                 'clean_name': 'EFTAuthorizationForm'
             },
             'ReasonableAccommodationRequest': {
-                'template': 'ReasonableAccommodationRequest-blank-CUI-negative.pdf',
+                'template': 'saved_templates/ReasonableAccommodationRequest-blank-CUI-negative.pdf',
                 'generator': self.populator.generate_reasonable_accommodation_data,
                 'category': 'CUI',
                 'clean_name': 'ReasonableAccommodationRequest'
@@ -1266,21 +1266,21 @@ class CustomerTemplateManager:
             # Critical Infrastructure: fillable DOCX pairs
             'KMP': {
                 'template': 'KMP-MockSystem-CUI-Critical Infrastructure-Positive.docx',
-                'template_negative': 'KMPTemplate-CUI-Critical Infrastructure-negative.docx',
+                'template_negative': 'saved_templates/KMPTemplate-CUI-Critical Infrastructure-negative.docx',
                 'generator': self.populator.generate_kmp_data,
                 'category': 'CUI-CritInfra',
                 'clean_name': 'KMP',
             },
             'RulesOfBehavior': {
                 'template': '2025 PQCRA Rules of Behavior - MAC NAME-CUI-Critical Infrastructure-positive.docx',
-                'template_negative': '2025 PQCRA Rules of Behavior - MAC NAME-CUI-Critical Infrastructure-negative.docx',
+                'template_negative': 'saved_templates/2025 PQCRA Rules of Behavior - MAC NAME-CUI-Critical Infrastructure-negative.docx',
                 'generator': self.populator.generate_rules_of_behavior_data,
                 'category': 'CUI-CritInfra',
                 'clean_name': 'RulesOfBehavior',
             },
             'IncidentResponse': {
                 'template': 'rmh-chapter-08-incident-response-incident-report-template-CUI-Critical Infrastructure-positive.docx',
-                'template_negative': 'rmh-chapter-08-incident-response-incident-report-template-CUI-Critical Infrastructure-negative.docx',
+                'template_negative': 'saved_templates/rmh-chapter-08-incident-response-incident-report-template-CUI-Critical Infrastructure-negative.docx',
                 'generator': self.populator.generate_incident_response_data,
                 'category': 'CUI-CritInfra',
                 'clean_name': 'IncidentResponse',
@@ -1288,35 +1288,35 @@ class CustomerTemplateManager:
             # Financial: fillable DOCX pairs
             'AFRAdditionalInfo': {
                 'template': 'Additional Information OIT FO-Mock AFR-CUI-Budget-positive.docx',
-                'template_negative': 'Additional Information OIT FO form-CUI-Budget-negative.docx',
+                'template_negative': 'saved_templates/Additional Information OIT FO form-CUI-Budget-negative.docx',
                 'generator': self.populator.generate_afr_additional_info_data,
                 'category': 'CUI-Financial',
                 'clean_name': 'AFRAdditionalInfo',
             },
             'DIBOAFR': {
                 'template': 'DIBO AFR -AMI-CUI-Budget-Positive.docx',
-                'template_negative': 'DIBO AFR Guidance-template-CUI-Budget-Negative.docx',
+                'template_negative': 'saved_templates/DIBO AFR Guidance-template-CUI-Budget-Negative.docx',
                 'generator': self.populator.generate_dibo_afr_data,
                 'category': 'CUI-Financial',
                 'clean_name': 'DIBOAFR',
             },
             'SupplementalAFR': {
                 'template': 'Supplemental AFR Information-MockProject-CUI-Budget-Positive.docx',
-                'template_negative': 'Supplemental AFR Information-template-CUI-Budget-negative.docx',
+                'template_negative': 'saved_templates/Supplemental AFR Information-template-CUI-Budget-negative.docx',
                 'generator': self.populator.generate_supplemental_afr_data,
                 'category': 'CUI-Financial',
                 'clean_name': 'SupplementalAFR',
             },
             # Financial: additional fillable templates
             'OITFOAdditionalInfo': {
-                'template': 'OIT FO - AIF-CUI-Budget-negative.docx',
+                'template': 'saved_templates/OIT FO - AIF-CUI-Budget-negative.docx',
                 'generator': self.populator.generate_oit_fo_aif_data,
                 'category': 'CUI-Financial',
                 'clean_name': 'OITFOAdditionalInfo',
                 'positive_only': True,
             },
             'SupplementalAFRBlank': {
-                'template': 'Supplemental AFR-CUI-Budget-negative.docx',
+                'template': 'saved_templates/Supplemental AFR-CUI-Budget-negative.docx',
                 'generator': self.populator.generate_supplemental_afr_blank_data,
                 'category': 'CUI-Financial',
                 'clean_name': 'SupplementalAFRBlank',
@@ -1325,7 +1325,7 @@ class CustomerTemplateManager:
             # Critical Infrastructure: HHS RBD fillable PDF (pos+neg pair)
             'HHSRBD': {
                 'template': 'hhs-RBD-CUI-Critical Infrastructure-positive.pdf',
-                'template_negative': 'hhs-RBD-CUI-Critical Infrastructure-negative.pdf',
+                'template_negative': 'saved_templates/hhs-RBD-CUI-Critical Infrastructure-negative.pdf',
                 'generator': self.populator.generate_hhs_rbd_data,
                 'category': 'CUI-CritInfra',
                 'clean_name': 'HHSRBD',
@@ -1346,28 +1346,28 @@ class CustomerTemplateManager:
             # Legal / FOIA: fillable positives with negative pairs
             'B6Letter': {
                 'template': 'B6 Letter-CUI-Legal-positive.docx',
-                'template_negative': 'FOIA RequestLetter-CUI-Legal-negative.pdf',
+                'template_negative': 'saved_templates/FOIA RequestLetter-CUI-Legal-negative.pdf',
                 'generator': self.populator.generate_b6_letter_data,
                 'category': 'CUI-Legal',
                 'clean_name': 'B6Letter',
             },
             'FullRelease': {
                 'template': 'Full Release-CUI-Legal-positive.docx',
-                'template_negative': 'FOIA RequestLetterLivingBene-CUI-Legal-negative.pdf',
+                'template_negative': 'saved_templates/FOIA RequestLetterLivingBene-CUI-Legal-negative.pdf',
                 'generator': self.populator.generate_full_release_data,
                 'category': 'CUI-Legal',
                 'clean_name': 'FullRelease',
             },
             'Form339Letter': {
                 'template': 'Form339 Letter-CUI-Legal-positive.docx',
-                'template_negative': 'FOIA RequestLetterOwnRecords-CUI-Legal-negative.pdf',
+                'template_negative': 'saved_templates/FOIA RequestLetterOwnRecords-CUI-Legal-negative.pdf',
                 'generator': self.populator.generate_form339_letter_data,
                 'category': 'CUI-Legal',
                 'clean_name': 'Form339Letter',
             },
             'SubpoenaResponse': {
                 'template': 'Subpoena Response-CUI-Legal-positive.docx',
-                'template_negative': 'FOIA Appeal-CUI-Legal-negative.pdf',
+                'template_negative': 'saved_templates/FOIA Appeal-CUI-Legal-negative.pdf',
                 'generator': self.populator.generate_subpoena_response_data,
                 'category': 'CUI-Legal',
                 'clean_name': 'SubpoenaResponse',
@@ -1382,13 +1382,13 @@ class CustomerTemplateManager:
             },
             # Legal / FOIA: copy-only negatives
             'FOIAGuidance': {
-                'template_positive': 'FOIA Guidance-CUI-Legal-negative.docx',
+                'template_positive': 'saved_templates/FOIA Guidance-CUI-Legal-negative.docx',
                 'category': 'CUI-Legal',
                 'clean_name': 'FOIAGuidance',
                 'negative_only': True,
             },
             'FOIARequestDeceasedBene': {
-                'template_positive': 'FOIA RequestLetterDeceasedBene-CUI-Legal-negative.pdf',
+                'template_positive': 'saved_templates/FOIA RequestLetterDeceasedBene-CUI-Legal-negative.pdf',
                 'category': 'CUI-Legal',
                 'clean_name': 'FOIARequestDeceasedBene',
                 'negative_only': True,

@@ -1,0 +1,134 @@
+Received: from BY3PR09MB8754.namprd09.prod.outlook.com (2603:10b6:a03:343::10)
+ by MN2PR09MB5099.namprd09.prod.outlook.com with HTTPS; Tue, 7 Jan 2025
+ 19:42:03 +0000
+Received: from CYXPR09CA0012.namprd09.prod.outlook.com (2603:10b6:930:d4::16)
+ by BY3PR09MB8754.namprd09.prod.outlook.com (2603:10b6:a03:343::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8335.10; Tue, 7 Jan
+ 2025 19:42:00 +0000
+Received: from BL02EPF0001B419.namprd09.prod.outlook.com
+ (2603:10b6:930:d4:cafe::de) by CYXPR09CA0012.outlook.office365.com
+ (2603:10b6:930:d4::16) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8335.11 via Frontend Transport; Tue,
+ 7 Jan 2025 19:41:59 +0000
+Authentication-Results: spf=pass (sender IP is 15.200.32.126)
+ smtp.mailfrom=cms.hhs.gov; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=cms.hhs.gov;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of cms.hhs.gov designates
+ 15.200.32.126 as permitted sender) receiver=protection.outlook.com;
+ client-ip=15.200.32.126; helo=mta-8f063r9.email.us.etp.fireeyegov.com; pr=C
+Received: from mta-8f063r9.email.us.etp.fireeyegov.com (15.200.32.126) by
+ BL02EPF0001B419.mail.protection.outlook.com (10.167.242.198) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8335.7
+ via Frontend Transport; Tue, 7 Jan 2025 19:41:59 +0000
+Return-Path: cmsitsm@cms.hhs.gov
+Received: from [10.152.59.230] ([10.152.59.230:65286] helo=ugw1-etp-mta-inbound-edge-prd10-04.cso.fireeye.com)
+	by etp-prd10-07 (envelope-from <cmsitsm@cms.hhs.gov>)
+	(ecelerity 4.7.0.20111 r(msys-ecelerity:tags/4.7.0-ga^0)) with ESMTPS (cipher=TLS_AES_256_GCM_SHA384) 
+	id 7F/4D-12646-6838D776; Tue, 07 Jan 2025 19:41:58 +0000
+Authentication-Results-Original: mta-8f063r9.email.us.etp.fireeyegov.com;
+	dmarc=pass (p=reject; dis=none) header.from=cms.hhs.gov
+Received: from outbound01.servicenowservices.com (outbound01.servicenowservices.com [149.96.192.2])
+	by etp-prd10-04 (envelope-from <cmsitsm@cms.hhs.gov>)
+	FireEye ETP with ESMTPS (cipher=TLS_AES_256_GCM_SHA384)
+	id 3z2pRnD-21472-10g8C41086596838D776307e7e7; batch_id 8C/41-08659-6838D776; Tue,  7 Jan 2025 19:41:58 +0000 (UTC)
+Received: from app133054.hef201.service-now.com (unknown [10.249.31.169])
+	by outbound01.servicenowservices.com (Postfix) with ESMTP id DEAA260000A2
+	for <elizabeth.schweinsberg@cms.hhs.gov>; Tue,  7 Jan 2025 11:41:57 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 outbound01.servicenowservices.com DEAA260000A2
+Date: Tue, 7 Jan 2025 11:41:57 -0800
+From: CMSConnect <CMSITSM@cms.hhs.gov>
+Reply-To: CMSConnect <CMSITSM@cms.hhs.gov>
+To: <first.last@cms.hhs.gov>
+Message-ID: <2035548357.56177.1736278917907@app133054.hef201.service-now.com>
+Subject: Ticket #REQ0307095 has been opened
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ServiceNow-Source: Notification-ef4bc7c3db9217005f4af4821f961906
+List-Unsubscribe: <mailto:CMSITSM@cms.hhs.gov?subject=Unsubscribe+from+%22CMS_ENT_RITM_Opened%22&body=Sending+this+email+with+the+predefined+content+in+the+subject+and+body+will+unsubscribe+you+from+the+notification+%22CMS_ENT_RITM_Opened%22.+%0D%0A%0D%0AUnsubscribe%3A%7B%22id%22%3A%22ef4bc7c3db9217005f4af4821f961906%22%2C%22token%22%3A%22c797e62132%22%7D>
+X-ServiceNow-SysEmail-Version: 2
+Precedence: bulk
+Auto-Submitted: auto-generated
+X-ServiceNow-Generated: true
+X-FE-ETP-METADATA: eyAidGlkIjogIjN6MnBSbkQtMjE0NzItMTBnOEM0MTA4NjU5NjgzOEQ3NzYzMDdlN2U3IiwgImFj
+ Y2VwdGVkX3RpbWVzdGFtcCI6ICIyMDI1MDEwNzE5NDE1OCIsICJhY2NlcHRlZF90aW1lc3RhbXBf
+ ZXBvY2giOiAiMTczNjI3ODkxOCIsICJkb21haW5fbmFtZSI6ICJjbXMuaGhzLmdvdiIsICJhdHRf
+ Y291bnQiOiAtMiwgInNyY19pcCI6ICIxNDkuOTYuMTkyLjIiIH0=
+X-MS-Exchange-Organization-ExpirationStartTime: 07 Jan 2025 19:41:59.7785
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 5c39e309-1d2e-424a-29e8-08dd2f535a27
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: fbdcedc1-70a9-414b-bfa5-c3063fc3395e:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-Exchange-SkipListedInternetSender: ip=[149.96.192.2];domain=outbound01.servicenowservices.com
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL02EPF0001B419:EE_|BY3PR09MB8754:EE_|MN2PR09MB5099:EE_
+X-MS-Exchange-Organization-AuthSource: BL02EPF0001B419.namprd09.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: 5c39e309-1d2e-424a-29e8-08dd2f535a27
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: -1
+X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|4022899009|8096899003;
+X-Forefront-Antispam-Report: CIP:15.200.32.126;CTRY:US;LANG:en;SCL:-1;SRV:;IPV:CAL;SFV:SKN;H:mta-8f063r9.email.us.etp.fireeyegov.com;PTR:mta-8f063r9.email.us.etp.fireeyegov.com;CAT:NONE;SFS:(13230040)(82310400026)(4022899009)(8096899003);DIR:INB;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jan 2025 19:41:59.5285
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5c39e309-1d2e-424a-29e8-08dd2f535a27
+X-MS-Exchange-CrossTenant-Id: fbdcedc1-70a9-414b-bfa5-c3063fc3395e
+X-MS-Exchange-CrossTenant-AuthSource: BL02EPF0001B419.namprd09.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY3PR09MB8754
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:03.9416468
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.8335.010
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?bFphZ2loYXBaTERtd1FPTFRCS0dRM0k0Nm5XR2RMN2s2T0JnWERUUjdMSUJj?=
+ =?utf-8?B?SkQxK0tyajU3cjdndWZQVkZ0S1duYjJrZ2tEMXdZRWhGWWt0a2d1U2I4YzVV?=
+ =?utf-8?B?S09nL1I4VHlOYzl4bzlNcVFwZ1dka0FkamVxb01NbXlEV0FvK2JJZnFKWStZ?=
+ =?utf-8?B?ZWFkeitCb2RyaGxxRGE3dm56K1VPTW53K0xRSVNHaGJNV3ZITkdMNjNVSC9z?=
+ =?utf-8?B?MG5nUXhBVFBTc2N2NGZUOHZtSWRWMHIxa0orRFliMU11Sm5BWGxwSDZWT09J?=
+ =?utf-8?B?eHp1MFpqNEEzLzZ3NzFJRHIxcmYxKzk1djZTY0lBeU00K09pcmdXaWlTdEJB?=
+ =?utf-8?B?YTJFQW9hdXhFaHYxL1I4a296azNGbHNCV08yT2pjdWhKWk5xK0dZZHZFcDZt?=
+ =?utf-8?B?bUxOTEQxOWVFWGs5OU9vVjBqcW5hbmNTY3kyMGJuaFFsOHY1dk04YmFGckhk?=
+ =?utf-8?B?bVVWYytzTEZLVW90ZVZWemJHNmxsclRLNFN4MWlXbHNsRC8wT1B6SHF2NGFo?=
+ =?utf-8?B?YnlubDloaEhEcVRTSDlOc2ZYWjltLytJN0NkVDRHa3JWYlRvakJYVEFRbHgy?=
+ =?utf-8?B?Y1JZKzVBdjl1dkx1bm1CTStXUUlNWE9OMXhsdHV3Vk5kbDRTVDhleVlZQUtW?=
+ =?utf-8?B?NHJ2bEFWRjRSZUd0aDg0ODlJL1crZ1lGZ2lYaHJ2NHJQMXMvTkd5UGROOURG?=
+ =?utf-8?B?T0RUbDZoS1B5bGUzWW9yTUVjU1RBOXkxSkNDcjlidnl0U3gvQlpWYmJoRG1S?=
+ =?utf-8?B?Ukd5M0VvUmxMTUlqQW93ZFIxN3B5akdLbDNtczdSZHQ3WDhtYUFZRUdIb1JG?=
+ =?utf-8?B?WW9EcG9NeGdjc25vYUovb25qbTZjVzhxTjF0UjZRSU5SZFMxeXU3QjR5ZUlI?=
+ =?utf-8?B?aUFPUHM3SjU0QzVBdDlpWEM0NTdEQTRxbXkxYTZITXhMM053QjVmV3ozdk9v?=
+ =?utf-8?B?NVFqUk53TWlhVTZ5MFRucFNTYnB3WWZKK1U1T1RLOXNRVlFFWFFZbTJmcTV3?=
+ =?utf-8?B?Y2s1Z1dyTW1id3ZUZnVCeUVlL1cvK1BUaWlxT1pTNFUxUlJZMEU4U2VrNHVu?=
+ =?utf-8?B?WTU3TkJyYmZzUm1zWXBBUXkxMnowWDI1SUlwc3daU0txRlMxd3gxMnBMRmI3?=
+ =?utf-8?B?ODUvNURzK1J4eEo1MjA1SFkzTzZ5SVRVbmJHVitnK3RSZHJXakp2WHF4QlRx?=
+ =?utf-8?B?RlljTmtzUE04ZUVrOVJhZVptalF4K3d3dlhkYS9BZHZCTzVFaG9KOWZIcVVC?=
+ =?utf-8?B?QWczeFlHMjgvTkp3NUpubExDaVF4eGl3ZkRjdkhkTXZlY0J2VmM4Y3lLeWph?=
+ =?utf-8?B?cjVkdWx3cThrcGpaekdKSnNYQ3MrbFlTNVd1ZDdaUmhhb1dsd2pMQTVrTUNY?=
+ =?utf-8?B?TFRCOGlYc3VYczBQeVJWM2F4RjIyK0dQZjN3SHF6RC81SURxcGJ4TlM2TjBk?=
+ =?utf-8?B?emZ5YzNFVnlsVll3VkRvdHRSS0lRTFRGYk1CSlJjN1daWGhjVmY0aytzMWFM?=
+ =?utf-8?B?d0x1VkJjMEhJeXRja1JCM2YyUkp3cE5iU3R0SnVaZWc0THk0TFc3VVgzVkZV?=
+ =?utf-8?B?QTVzdlhRR0xJR3VxMlB6TU1lSE53Sy96RXRGME44aS9NNHJIKzEwS3JnR0ZL?=
+ =?utf-8?B?ZG03WHpSWVNkbU5wQUtDR3p5TmZmSlNUTXo3WUthRkNLTWxJV0t2bXRNekxI?=
+ =?utf-8?B?WDc5Rk8rWTFJb2FQOWhjc0FINkNvQjNab3V5SEFOYld6Z0lQK0IvWjF3PT0=?=
+MIME-Version: 1.0
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><div>First Last,</div>
+<div>&nbsp;</div>
+<div>Thank you for contacting the End User Support desk. Your request REQ0307095 has generated the following item:&nbsp;</div>
+<div>&nbsp;</div>
+<div>RITM0309721:  CMS 508 App Testing <br></div>
+<div>&nbsp;</div>
+<div>An agent will follow up with you shortly to provide further assistance if required.</div>
+<div>&nbsp;</div>
+<div>If you should have any additional questions or concerns, please respond to this email.</div>
+<div>&nbsp;</div>
+<div>Thank you,</div>
+<div>&nbsp;</div>
+<div>End User Support Desk</div><div>&nbsp;</div><div style="display:inline">Ref:MSG36593810</div></body></html>
