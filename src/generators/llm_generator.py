@@ -1117,6 +1117,60 @@ Return as valid JSON: {{"subject": "...", "body": "..."}}"""
             logger.debug(f"Cover email generation failed for {template_key}: {e}")
             return {}
 
+    def generate_announcement_content(self, topic_mix: list, week_date: str,
+                                       is_positive: bool) -> list:
+        """Generate LLM-written announcement items for an internal newsletter.
+
+        Args:
+            topic_mix: List of topic categories (e.g. ['budget', 'it_security', 'personnel'])
+            week_date: Formatted date string for the newsletter week
+            is_positive: True for CUI-positive (internal), False for public
+
+        Returns:
+            List of dicts with 'headline', 'summary', and 'links' keys, or empty list on failure.
+        """
+        audience = "internal CMS staff" if is_positive else "the general public"
+        link_type = "internal CMS links (SharePoint, Confluence, JIRA, intranet)" if is_positive else "public links (CMS.gov, HHS.gov, Medicare.gov, Federal Register)"
+
+        prompt = f"""Generate {len(topic_mix)} announcement items for a CMS internal newsletter dated {week_date}.
+
+Topics to cover: {', '.join(topic_mix)}
+
+Audience: {audience}
+Links: Use realistic {link_type}
+
+For each item, generate:
+- headline: A concise headline (under 80 characters)
+- summary: 2-3 sentences describing the announcement
+- links: 1-2 relevant URLs
+
+Write as a CMS communications officer would write an internal digest.
+DO NOT include classification markings, CUI labels, or real employee names.
+
+Return as valid JSON array: [{{"headline": "...", "summary": "...", "links": ["..."]}}]"""
+
+        try:
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=1024,
+                messages=[{"role": "user", "content": prompt}]
+            )
+
+            text = response.content[0].text
+            if "```json" in text:
+                text = text.split("```json")[1].split("```")[0]
+            elif "```" in text:
+                text = text.split("```")[1].split("```")[0]
+            text = repair_json_string(text)
+            result = json.loads(text)
+            if isinstance(result, list) and all('headline' in item for item in result):
+                return result
+            return []
+
+        except Exception as e:
+            logger.debug(f"Announcement content generation failed: {e}")
+            return []
+
     def generate_cui_negative_narrative(self, category: str, document_type: str,
                                          context: dict) -> CUIDocumentNarrative:
         """
