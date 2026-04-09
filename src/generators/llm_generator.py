@@ -1054,6 +1054,69 @@ DO NOT include real employee names, real medical diagnoses, or specific PII. Wri
             logger.debug(f"Template narrative enrichment failed: {e}")
             return {}
 
+    def generate_cover_email(self, template_key: str, category: str,
+                             clean_name: str, context: Dict) -> Dict[str, str]:
+        """Generate an LLM-written cover email for a template attachment.
+
+        Args:
+            template_key: Template identifier (e.g. 'AcquisitionPlan')
+            category: CUI category (e.g. 'procurement', 'legal')
+            clean_name: Human-readable document name
+            context: Faker-generated data dict from the template's generator
+
+        Returns:
+            Dict with 'subject' and 'body' keys, or empty dict on failure.
+        """
+        CATEGORY_ROLES = {
+            'procurement': 'contracting officer or program manager',
+            'legal': 'FOIA officer or government attorney',
+            'financial': 'budget analyst or financial manager',
+            'critical_infrastructure': 'ISSO or system security officer',
+        }
+        role = CATEGORY_ROLES.get(category, 'CMS government employee')
+
+        context_lines = []
+        for k, v in context.items():
+            if isinstance(v, str) and v and not k.startswith('_'):
+                context_lines.append(f"  {k}: {v}")
+        context_str = '\n'.join(context_lines[:10])
+
+        prompt = f"""Generate a realistic internal CMS email that introduces an attached {clean_name} document.
+
+Context from the document:
+{context_str}
+
+Category: {category}
+
+Write as a {role} would write an internal government email. Generate:
+1. subject: A concise email subject line (under 60 characters) referencing the document
+2. body: A 3-5 sentence email body with a greeting, the purpose of the attachment, any action requested, and a sign-off with a realistic name and title
+
+DO NOT include classification markings, CUI labels, or disclaimer text.
+Return as valid JSON: {{"subject": "...", "body": "..."}}"""
+
+        try:
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=512,
+                messages=[{"role": "user", "content": prompt}]
+            )
+
+            text = response.content[0].text
+            if "```json" in text:
+                text = text.split("```json")[1].split("```")[0]
+            elif "```" in text:
+                text = text.split("```")[1].split("```")[0]
+            text = repair_json_string(text)
+            result = json.loads(text)
+            if 'subject' in result and 'body' in result:
+                return result
+            return {}
+
+        except Exception as e:
+            logger.debug(f"Cover email generation failed for {template_key}: {e}")
+            return {}
+
     def generate_cui_negative_narrative(self, category: str, document_type: str,
                                          context: dict) -> CUIDocumentNarrative:
         """
