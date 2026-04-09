@@ -849,6 +849,18 @@ Generate three sections as a program manager would write them:
 
 DO NOT include classification markings or labels. Write naturally as an internal government memo.""",
 
+            'AGXRFCMemo': f"""Generate realistic narrative sections for a CMS AGX Request for Change (RFC) memorandum.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a program manager would write them:
+1. change_justification: 2-3 sentences explaining the business need driving this contract modification, referencing the AGX program
+2. impact_analysis: 2-3 sentences describing the technical, schedule, and cost impact of the proposed change
+3. stakeholder_assessment: 2-3 sentences identifying affected stakeholders and their concurrence status
+
+DO NOT include classification markings or labels. Write naturally as an internal government memo.""",
+
             'RulesOfBehavior': f"""Generate realistic narrative sections for a CMS Post-Quantum Cryptography Readiness Assessment Rules of Behavior document.
 
 Context from the form:
@@ -996,6 +1008,7 @@ DO NOT include real employee names, real medical diagnoses, or specific PII. Wri
                 'JALimitedSource': '{"competition_justification": "...", "efforts_to_compete": "...", "fair_pricing_determination": "..."}',
                 'SubpoenaResponse': '{"response_narrative": "...", "privilege_log_summary": "...", "production_scope": "..."}',
                 'RFCMemo': '{"change_justification": "...", "impact_analysis": "...", "stakeholder_assessment": "..."}',
+                'AGXRFCMemo': '{"change_justification": "...", "impact_analysis": "...", "stakeholder_assessment": "..."}',
                 'RulesOfBehavior': '{"assessment_scope": "...", "compliance_findings": "...", "remediation_plan": "..."}',
                 'DIBOAFR': '{"funding_justification": "...", "cost_analysis": "...", "operational_impact": "..."}',
                 'SupplementalAFR': '{"supplemental_justification": "...", "product_rationale": "...", "budget_impact": "..."}',

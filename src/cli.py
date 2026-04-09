@@ -829,7 +829,7 @@ class MedForgeCUIGenerator:
             'MarketResearch', 'JOFOC', 'JALimitedSource', 'SubpoenaResponse', 'RFCMemo',
             'B6Letter', 'Form339Letter', 'FullRelease',
             'DIBOAFR', 'SupplementalAFR', 'OITFOAdditionalInfo',
-            'RulesOfBehavior',
+            'RulesOfBehavior', 'AGXRFCMemo',
         }
         # PDF templates: LLM narratives are injected as free-text field values
         PDF_ENRICHABLE = {
