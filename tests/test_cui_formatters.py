@@ -295,6 +295,119 @@ class TestSnykEmailGenerator:
         assert 'Business Owner' in html_body
 
 
+class TestPDFFormGenerators:
+    """Tests for PDF form faker-data generators (EFT Authorization, FOIA MedicareAuth)."""
+
+    def test_eft_authorization_data_has_required_fields(self):
+        """generate_eft_authorization_data returns all expected form field keys."""
+        import sys
+        sys.path.insert(0, 'src')
+        from formatters.pdf_form_populator import PDFFormPopulator
+
+        populator = PDFFormPopulator()
+        data = populator.generate_eft_authorization_data()
+
+        # Part 1: Account Holder
+        assert 'txtPayee' in data and data['txtPayee']
+        assert 'txtAHStreet' in data
+        assert 'txtAHCity' in data
+        assert 'txtTIN' in data
+        assert len(data['txtTIN']) == 9
+
+        # Part 2: Financial Institution
+        assert 'txtBankName' in data and data['txtBankName']
+        assert 'txtRoutingNum' in data
+        assert 'txtDepositNum' in data
+        assert data['txtTypeofAccount'] in ('Checking Account', 'Savings Account')
+
+        # Part 3: Administrative
+        assert data['CMS Employee'] in ('Yes', 'No')
+        assert 'txtSignature' in data
+
+    def test_eft_authorization_data_varies_each_call(self):
+        """generate_eft_authorization_data produces different data on successive calls."""
+        import sys
+        sys.path.insert(0, 'src')
+        from formatters.pdf_form_populator import PDFFormPopulator
+
+        populator = PDFFormPopulator()
+        calls = [populator.generate_eft_authorization_data() for _ in range(10)]
+        payees = {d['txtPayee'] for d in calls}
+        assert len(payees) > 1, "Company names should vary across calls"
+
+    def test_foia_medicare_auth_data_has_required_fields(self):
+        """generate_foia_medicare_auth_data returns all expected form field keys."""
+        import sys
+        sys.path.insert(0, 'src')
+        from formatters.pdf_form_populator import PDFFormPopulator
+
+        populator = PDFFormPopulator()
+        data = populator.generate_foia_medicare_auth_data()
+
+        assert 'FirstName' in data and data['FirstName']
+        assert 'LastName' in data and data['LastName']
+        assert 'MedicareID' in data
+        assert 'Birthdate' in data
+        assert 'StreetAddress' in data
+        assert 'TimeframeStart' in data
+        assert 'TimeframeEnd' in data
+        assert isinstance(data['ReleaseRecords'], bool)
+        assert 'Signature1' in data
+
+    def test_foia_medicare_auth_mbi_format(self):
+        """MedicareID follows MBI format: starts with allowed letter, 10 chars total."""
+        import sys
+        sys.path.insert(0, 'src')
+        from formatters.pdf_form_populator import PDFFormPopulator
+
+        populator = PDFFormPopulator()
+        for _ in range(20):
+            data = populator.generate_foia_medicare_auth_data()
+            mbi = data['MedicareID']
+            assert len(mbi) == 10
+            assert mbi[0] in 'ACDEFGHJKMNPQRTUVWXY'
+
+    def test_eft_mapping_uses_blank_template_for_both_polarities(self):
+        """EFT Authorization Form mapping uses faker population for positive and negative."""
+        import sys
+        sys.path.insert(0, 'src')
+        from formatters.pdf_form_populator import CustomerTemplateManager
+
+        mgr = CustomerTemplateManager()
+        info = mgr.template_mappings['EFT Authorization Form']
+
+        # Must use 'template' (single form, faker-populated) not 'template_positive' (copy mode)
+        assert 'template' in info
+        assert 'template_positive' not in info
+        assert 'generator' in info
+        assert 'saved_templates' in info['template']
+
+    def test_foia_medicare_auth_mapping_uses_saved_templates(self):
+        """FOIAMedicareAuth mapping references the saved_templates directory."""
+        import sys
+        sys.path.insert(0, 'src')
+        from formatters.pdf_form_populator import CustomerTemplateManager
+
+        mgr = CustomerTemplateManager()
+        info = mgr.template_mappings['FOIAMedicareAuth']
+        assert 'saved_templates' in info['template']
+        assert 'generator' in info
+
+    def test_llm_enrichable_set_includes_pdf_templates(self):
+        """PDF templates EFT Authorization Form and FOIAMedicareAuth have LLM prompts."""
+        import sys
+        sys.path.insert(0, 'src')
+        from generators.llm_generator import ClaudeGenerator
+
+        gen = ClaudeGenerator.__new__(ClaudeGenerator)
+        # Manually invoke prompt lookup logic via generate_template_narrative
+        # (requires client — just verify prompt keys are registered)
+        import inspect
+        src = inspect.getsource(gen.__class__.generate_template_narrative)
+        assert "'EFT Authorization Form'" in src
+        assert "'FOIAMedicareAuth'" in src
+
+
 class TestNegativeDocumentStructure:
     """Tests for CUI negative document structure."""
 

@@ -848,6 +848,30 @@ Generate three sections as a program manager would write them:
 3. stakeholder_assessment: 2-3 sentences identifying affected stakeholders and their concurrence status
 
 DO NOT include classification markings or labels. Write naturally as an internal government memo.""",
+
+            'EFT Authorization Form': f"""Generate realistic contextual details for a CMS Electronic Funds Transfer (EFT) Authorization Form.
+
+Context from the form:
+{context_str}
+
+Generate three realistic fields as a vendor payment coordinator would write them:
+1. payment_purpose: 1-2 sentences describing the purpose of this EFT setup (e.g., contract payments, recurring service fees, grant disbursements)
+2. business_relationship: 1 sentence describing the nature of the business relationship with CMS
+3. authorizing_official_title: A realistic job title for the authorizing official (e.g., "Chief Financial Officer", "Controller", "Director of Finance")
+
+DO NOT include classification markings, PII, or real company names. Write as realistic internal form narrative.""",
+
+            'FOIAMedicareAuth': f"""Generate realistic contextual details for a CMS FOIA Medicare Records Authorization Form.
+
+Context from the form:
+{context_str}
+
+Generate three realistic fields as a patient or authorized representative would write them:
+1. purpose_of_request: 1-2 sentences describing why the Medicare records are being requested (e.g., legal proceedings, insurance claim, personal review, provider coordination)
+2. requestor_relationship: 1 sentence describing the relationship of the requestor to the beneficiary (e.g., self, legal guardian, authorized representative, attorney)
+3. specific_records_needed: 1-2 sentences describing the specific types of Medicare records requested (e.g., claims history for specific date range, Part D prescription records, Medicare Summary Notices)
+
+DO NOT include real Medicare IDs, real names, or real medical information. Write as realistic FOIA request narrative.""",
         }
 
         prompt = prompts.get(template_key)
@@ -864,6 +888,8 @@ DO NOT include classification markings or labels. Write naturally as an internal
                 'JALimitedSource': '{"competition_justification": "...", "efforts_to_compete": "...", "fair_pricing_determination": "..."}',
                 'SubpoenaResponse': '{"response_narrative": "...", "privilege_log_summary": "...", "production_scope": "..."}',
                 'RFCMemo': '{"change_justification": "...", "impact_analysis": "...", "stakeholder_assessment": "..."}',
+                'EFT Authorization Form': '{"payment_purpose": "...", "business_relationship": "...", "authorizing_official_title": "..."}',
+                'FOIAMedicareAuth': '{"purpose_of_request": "...", "requestor_relationship": "...", "specific_records_needed": "..."}',
             }
             json_prompt = prompt + f"\n\nReturn your response as valid JSON with these exact keys:\n{json_keys[template_key]}"
 

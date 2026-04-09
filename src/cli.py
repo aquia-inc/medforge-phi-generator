@@ -825,11 +825,16 @@ class MedForgeCUIGenerator:
         The LLM narratives are converted to _append_paragraphs format for DOCX
         and plain text substitutions for other formats.
         """
-        ENRICHABLE_TEMPLATES = {
+        # DOCX templates: LLM narratives are appended as labelled paragraphs
+        DOCX_ENRICHABLE = {
             'AcquisitionPlan', 'IncidentResponse', 'KMP',
             'MarketResearch', 'JOFOC', 'JALimitedSource', 'SubpoenaResponse', 'RFCMemo',
         }
-        if template_key not in ENRICHABLE_TEMPLATES:
+        # PDF templates: LLM narratives are injected as free-text field values
+        PDF_ENRICHABLE = {
+            'EFT Authorization Form', 'FOIAMedicareAuth',
+        }
+        if template_key not in DOCX_ENRICHABLE and template_key not in PDF_ENRICHABLE:
             return None
 
         try:
@@ -842,7 +847,13 @@ class MedForgeCUIGenerator:
             if not narratives:
                 return None
 
-            # Convert LLM dict into _append_paragraphs sections for DOCX rendering
+            # PDF templates: return LLM values as direct field substitutions
+            # Field names match or approximate PDF form field names; unmatched keys
+            # are silently ignored by the PDF populator.
+            if template_key in PDF_ENRICHABLE:
+                return {k: v for k, v in narratives.items() if isinstance(v, str) and v.strip()}
+
+            # DOCX templates: convert to _append_paragraphs sections
             heading_map = {
                 # KMP
                 'system_description': 'System Description',

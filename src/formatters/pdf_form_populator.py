@@ -1188,8 +1188,7 @@ class CustomerTemplateManager:
                 'clean_name': 'MedicalInquiryForm'
             },
             'EFT Authorization Form': {
-                'template_positive': 'EFT Authorization Form-blank-CUI-Finance-positive.pdf',  # Filled example
-                'template_negative': 'saved_templates/EFT Authorization Form-blank-CUI-Finance-negative.pdf',  # Blank for negatives
+                'template': 'saved_templates/EFT Authorization Form-blank-CUI-Finance-negative.pdf',
                 'generator': self.populator.generate_eft_authorization_data,
                 'category': 'CUI-Finance',
                 'clean_name': 'EFTAuthorizationForm'
@@ -1374,7 +1373,7 @@ class CustomerTemplateManager:
             },
             # Legal / FOIA: fillable positive only (Medicare Auth — contains PHI-level data)
             'FOIAMedicareAuth': {
-                'template': 'FOIA MedicareAuth-CUI-Legal-positive.pdf',
+                'template': 'saved_templates/FOIA MedicareAuth-CUI-Legal-positive.pdf',
                 'generator': self.populator.generate_foia_medicare_auth_data,
                 'category': 'CUI-Legal',
                 'clean_name': 'FOIAMedicareAuth',
