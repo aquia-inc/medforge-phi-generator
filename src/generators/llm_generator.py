@@ -849,6 +849,42 @@ Generate three sections as a program manager would write them:
 
 DO NOT include classification markings or labels. Write naturally as an internal government memo.""",
 
+            'DIBOAFR': f"""Generate realistic narrative sections for a CMS DIBO Additional Funds Request (AFR) justification.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a CMS budget analyst would write them:
+1. funding_justification: 2-3 sentences explaining why additional funding is required for this cloud service contract, citing operational need and risk if unfunded
+2. cost_analysis: 2-3 sentences analyzing the cost structure including base period, option year escalations, and comparison to market rates or prior year actuals
+3. operational_impact: 2-3 sentences describing the impact on CMS operations if this funding request is not approved, including service continuity risks
+
+DO NOT include classification markings or labels. Write naturally as an internal budget document.""",
+
+            'SupplementalAFR': f"""Generate realistic narrative sections for a CMS Supplemental AFR Information document.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a CMS budget analyst would write them:
+1. supplemental_justification: 2-3 sentences explaining why supplemental funding is needed beyond the original AFR allocation
+2. product_rationale: 2-3 sentences describing why this specific product/service was selected over alternatives, citing technical requirements and compliance needs
+3. budget_impact: 2-3 sentences analyzing the budget impact including current year obligations and out-year projections
+
+DO NOT include classification markings or labels. Write naturally as an internal budget document.""",
+
+            'OITFOAdditionalInfo': f"""Generate realistic narrative sections for a CMS OIT Financial Operations Additional Information Form.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a CMS IT investment manager would write them:
+1. strategic_alignment: 2-3 sentences explaining how this investment aligns with CMS strategic objectives, OIT priorities, and the IT Strategic Blueprint
+2. investment_analysis: 2-3 sentences analyzing the return on investment, including quantified benefits such as cost avoidance, efficiency gains, or risk reduction
+3. stakeholder_impact: 2-3 sentences describing which CMS components benefit and how, including downstream effects on beneficiaries or program operations
+
+DO NOT include classification markings or labels. Write naturally as an internal IT investment justification.""",
+
             'B6Letter': f"""Generate realistic narrative sections for a CMS FOIA B6 (partial release) response letter.
 
 Context from the form:
@@ -948,6 +984,9 @@ DO NOT include real employee names, real medical diagnoses, or specific PII. Wri
                 'JALimitedSource': '{"competition_justification": "...", "efforts_to_compete": "...", "fair_pricing_determination": "..."}',
                 'SubpoenaResponse': '{"response_narrative": "...", "privilege_log_summary": "...", "production_scope": "..."}',
                 'RFCMemo': '{"change_justification": "...", "impact_analysis": "...", "stakeholder_assessment": "..."}',
+                'DIBOAFR': '{"funding_justification": "...", "cost_analysis": "...", "operational_impact": "..."}',
+                'SupplementalAFR': '{"supplemental_justification": "...", "product_rationale": "...", "budget_impact": "..."}',
+                'OITFOAdditionalInfo': '{"strategic_alignment": "...", "investment_analysis": "...", "stakeholder_impact": "..."}',
                 'B6Letter': '{"response_rationale": "...", "exemption_analysis": "...", "disclosure_determination": "..."}',
                 'Form339Letter': '{"withholding_justification": "...", "submitter_notice_summary": "...", "exemption_4_analysis": "..."}',
                 'FullRelease': '{"release_summary": "...", "search_methodology": "...", "processing_notes": "..."}',

@@ -828,6 +828,7 @@ class MedForgeCUIGenerator:
             'AcquisitionPlan', 'IncidentResponse', 'KMP',
             'MarketResearch', 'JOFOC', 'JALimitedSource', 'SubpoenaResponse', 'RFCMemo',
             'B6Letter', 'Form339Letter', 'FullRelease',
+            'DIBOAFR', 'SupplementalAFR', 'OITFOAdditionalInfo',
         }
         # PDF templates: LLM narratives are injected as free-text field values
         PDF_ENRICHABLE = {
@@ -899,6 +900,18 @@ class MedForgeCUIGenerator:
                 'release_summary': 'Release Summary',
                 'search_methodology': 'Search Methodology',
                 'processing_notes': 'Processing Notes',
+                # DIBO AFR
+                'funding_justification': 'Funding Justification',
+                'cost_analysis': 'Cost Analysis',
+                'operational_impact': 'Operational Impact',
+                # Supplemental AFR
+                'supplemental_justification': 'Supplemental Justification',
+                'product_rationale': 'Product Rationale',
+                'budget_impact': 'Budget Impact',
+                # OIT FO Additional Info
+                'strategic_alignment': 'Strategic Alignment',
+                'investment_analysis': 'Investment Analysis',
+                'stakeholder_impact': 'Stakeholder Impact',
             }
 
             sections = []

@@ -586,7 +586,11 @@ class PDFFormPopulator:
         }
 
     def generate_dibo_afr_data(self) -> Dict[str, Any]:
-        """Generate data for DIBO AFR (CUI-Financial)."""
+        """Generate data for DIBO AFR (CUI-Financial).
+
+        Replaces contract identifiers, product name, and multi-year budget figures
+        with calculated escalations.
+        """
         CLOUD_PRODUCTS = [
             'CloudSecure', 'GovCloud Pro', 'FedConnect', 'DataVault Enterprise',
             'SecureHost', 'CipherStack', 'NetShield Pro', 'InfoGuard Cloud',
@@ -596,6 +600,8 @@ class PDFFormPopulator:
         task_order = self._contract_number()
         base_budget = random.randint(300000, 800000)
         base_cost = random.randint(1000000, 3000000)
+        fy = random.randint(2024, 2027)
+        need_date = self.fake.date_between(start_date='+30d', end_date='+180d')
         return {
             "HHSM-500-2034-00016I_75FCMC34R0002 BestCloud (BestCloud)":
                 f"{contract_num}_{task_order} {product} ({product})",
@@ -607,22 +613,36 @@ class PDFFormPopulator:
             "$1,525,836": self.format_currency(base_cost * 1.046 - base_budget),
             "$2,044,024": self.format_currency(base_cost * 1.094),
             "$1,615,731": self.format_currency(base_cost * 1.094 - base_budget),
+            '4/1/2025': need_date.strftime('%-m/%-d/%Y'),
+            'FY25': f"FY{fy % 100}",
         }
 
     def generate_supplemental_afr_data(self) -> Dict[str, Any]:
-        """Generate data for Supplemental AFR (CUI-Financial)."""
+        """Generate data for Supplemental AFR (CUI-Financial).
+
+        Replaces product names, vendor refs, and security key references.
+        """
         PRODUCTS = [
             'Zero Trust Gateway', 'Cloud Access Broker', 'Privileged Access Manager',
             'Threat Intelligence Platform', 'Container Security Suite',
             'API Gateway Manager', 'Identity Governance Platform',
         ]
+        CONTRACTORS = [
+            'Accenture Federal', 'Deloitte', 'GDIT', 'Booz Allen Hamilton',
+            'Leidos', 'CGI Federal', 'Perspecta',
+        ]
         product = random.choice(PRODUCTS)
+        contractor = random.choice(CONTRACTORS)
+        contract = self._contract_number()
+        cost = self.generate_currency_amount(200000, 2000000)
         return {
             'SuperSecure Support': f"{product} Support",
             'Internal Products and Service Now': f"{product} and ServiceNow",
             'Internal Products': product,
-            'SSS solution': f"{self.fake.company()} solution",
+            'SSS solution': f"{contractor} solution",
             'SecurityKeys': random.choice(['YubiKeys', 'PIV cards', 'FIDO2 tokens', 'smart cards']),
+            'ContractorFirm': contractor,
+            'MockProject': f"{product} ({contract})",
         }
 
     def generate_oit_fo_aif_data(self) -> Dict[str, Any]:
