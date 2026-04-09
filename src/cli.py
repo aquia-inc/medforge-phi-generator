@@ -49,6 +49,7 @@ from formatters.cui_formatter import CUIDocxFormatter, CUIEmailFormatter, CUIPdf
 from formatters.cui_pptx_formatter import CUIPPTXFormatter
 from formatters.cui_nested_formatter import CUINestedEmailFormatter
 from formatters.cui_html_email_formatter import CUIHTMLEmailFormatter
+from formatters.template_email_wrapper import TemplateEmailWrapper
 from formatters.snyk_email_generator import SnykEmailGenerator
 from formatters.pdf_form_populator import CustomerTemplateManager
 from templates.components import ComponentMixer, CUI_SECTION_ORDERS
@@ -570,6 +571,7 @@ class MedForgeCUIGenerator:
         llm_percentage: float = 0.2,
         cui_notice: str = "random",
         cui_classification: str = "never",
+        template_email_ratio: float = 0.8,
     ):
         """
         Initialize CUI generator
@@ -582,6 +584,7 @@ class MedForgeCUIGenerator:
             llm_percentage: Percentage of LLM-enhanced documents (0.0-1.0)
             cui_notice: Include CUI notice (random/always/never)
             cui_classification: Include CUI classification headers (always/never)
+            template_email_ratio: Fraction of customer templates wrapped in email (0.0-1.0)
         """
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -617,6 +620,7 @@ class MedForgeCUIGenerator:
         self.llm_percentage = llm_percentage
         self.cui_notice = cui_notice
         self.cui_classification = cui_classification
+        self.template_email_ratio = template_email_ratio
 
         if seed is not None:
             random.seed(seed)
@@ -668,6 +672,10 @@ class MedForgeCUIGenerator:
                 llm_percentage=llm_percentage,
             ),
         }
+
+        # Initialize template email wrapper for wrapping templates as attachments
+        self.template_email_wrapper = TemplateEmailWrapper(
+            output_dir=str(self.output_dir), seed=seed)
 
         # Initialize customer template manager for real CMS forms
         # Templates are in ./cust_templates directory
@@ -768,6 +776,58 @@ class MedForgeCUIGenerator:
                 field_data=pre_generated_data,
             )
 
+            template_info = self.customer_templates.template_mappings[template_key]
+            clean_name = template_info['clean_name']
+
+            # Decide whether to wrap in email or return bare file
+            wrap_in_email = random.random() < self.template_email_ratio
+            email_llm_used = False
+
+            if wrap_in_email and filepath:
+                # Pick tier: LLM (detailed) or random minimal/medium
+                if self.llm_generator and random.random() < self.llm_percentage:
+                    # Tier 3: LLM-generated cover email
+                    llm_email = self.llm_generator.generate_cover_email(
+                        template_key, category, clean_name,
+                        pre_generated_data or {})
+                    if llm_email.get('subject') and llm_email.get('body'):
+                        subject = llm_email['subject']
+                        body = llm_email['body']
+                        email_llm_used = True
+                    else:
+                        # LLM failed, fall back to medium
+                        sender_name, _, sender_title, sender_office = self.template_email_wrapper._get_sender()
+                        subject, body = self.template_email_wrapper._medium_body(
+                            clean_name, category, sender_name, sender_title, sender_office)
+                elif random.random() < 0.5:
+                    # Tier 1: Minimal
+                    subject, body = self.template_email_wrapper._minimal_body(clean_name)
+                else:
+                    # Tier 2: Medium
+                    sender_name, _, sender_title, sender_office = self.template_email_wrapper._get_sender()
+                    subject, body = self.template_email_wrapper._medium_body(
+                        clean_name, category, sender_name, sender_title, sender_office)
+
+                # Wrap the template file in an email
+                eml_path = self.template_email_wrapper.wrap(
+                    template_path=filepath,
+                    template_key=template_key,
+                    clean_name=clean_name,
+                    category=category,
+                    subject=subject,
+                    body=body,
+                    output_dir=output_subdir,
+                    index=index,
+                )
+
+                # Delete the intermediate bare file — content is now in the .eml
+                try:
+                    os.remove(filepath)
+                except OSError:
+                    pass
+
+                filepath = eml_path
+
             # Detect format from output filepath extension
             detected_ext = os.path.splitext(filepath)[1].lstrip('.').lower()
             detected_format = detected_ext if detected_ext else 'pdf'
@@ -783,24 +843,25 @@ class MedForgeCUIGenerator:
             else:
                 self.stats["cui_negative"] += 1
 
-            template_info = self.customer_templates.template_mappings[template_key]
-
             # Add to manifest
+            was_llm_enhanced = (llm_enriched if populate else False) or email_llm_used
+            variant = 'email_wrapped' if wrap_in_email else 'standard'
             self.manifest.append({
                 "file_path": str(Path(filepath).relative_to(self.output_dir)),
                 "cui_status": "positive" if is_positive else "negative",
                 "category": category,
                 "subcategory": "",
-                "document_type": template_info['clean_name'],
+                "document_type": clean_name,
                 "classification": "CUI" if is_positive else "",
                 "authority": "",
                 "format": detected_format,
                 "index": index,
-                "llm_enhanced": llm_enriched if populate else False,
+                "llm_enhanced": was_llm_enhanced,
                 "source": "customer_template",
+                "variant": variant,
             })
 
-            if llm_enriched:
+            if was_llm_enhanced:
                 self.stats["llm_enhanced"] += 1
 
             return filepath
@@ -1717,6 +1778,7 @@ def generate(
     formats: str = typer.Option("pdf,docx,xlsx,eml,pptx", "--formats", "-f", help="Comma-separated list of formats"),
     output: str = typer.Option("output", "--output", "-o", help="Output directory"),
     llm_percentage: float = typer.Option(0.2, "--llm-percentage", help="Percentage of LLM-enhanced docs (0.0-1.0)"),
+    template_email_ratio: float = typer.Option(0.8, "--template-email-ratio", help="Fraction of customer templates wrapped in email (0.0=all bare, 1.0=all email)"),
     seed: Optional[int] = typer.Option(None, "--seed", "-s", help="Random seed for reproducibility"),
     parallel_workers: int = typer.Option(1, "--parallel-workers", "-p", help="Number of parallel workers"),
     config: Optional[str] = typer.Option(None, "--config", help="Path to YAML config file"),
@@ -1906,6 +1968,7 @@ def generate(
                 llm_percentage=llm_percentage,
                 cui_notice=cui_notice,
                 cui_classification=cui_classification,
+                template_email_ratio=template_email_ratio,
             )
             all_stats["cui"] = cui_generator.generate_batch(
                 cui_positive_count=cui_positive,
