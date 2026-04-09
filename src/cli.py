@@ -50,6 +50,7 @@ from formatters.cui_pptx_formatter import CUIPPTXFormatter
 from formatters.cui_nested_formatter import CUINestedEmailFormatter
 from formatters.cui_html_email_formatter import CUIHTMLEmailFormatter
 from formatters.template_email_wrapper import TemplateEmailWrapper
+from formatters.bugcrowd_email_generator import BugCrowdEmailGenerator
 from formatters.snyk_email_generator import SnykEmailGenerator
 from formatters.pdf_form_populator import CustomerTemplateManager
 from templates.components import ComponentMixer, CUI_SECTION_ORDERS
@@ -671,6 +672,11 @@ class MedForgeCUIGenerator:
                 llm_generator=self.llm_generator,
                 llm_percentage=llm_percentage,
             ),
+            "bugcrowd_eml": BugCrowdEmailGenerator(
+                output_dir=str(self.output_dir),
+                llm_generator=self.llm_generator,
+                llm_percentage=llm_percentage,
+            ),
         }
 
         # Initialize template email wrapper for wrapping templates as attachments
@@ -1267,12 +1273,20 @@ class MedForgeCUIGenerator:
 
             # ~7% chance of nested email (matching PHI pipeline)
             use_nested = random.random() < 0.07 and "eml" in available_formats
-            # ~50% Snyk for critical_infrastructure vulnerability alerts
+            # ~40% Snyk for critical_infrastructure vulnerability alerts
             use_snyk = (
                 category == "critical_infrastructure"
                 and doc_type in ["vulnerability_alert", "fisma_report"]
                 and "eml" in available_formats
-                and random.random() < 0.5
+                and random.random() < 0.4
+            )
+            # ~20% BugCrowd for critical_infrastructure vulnerability alerts
+            use_bugcrowd = (
+                category == "critical_infrastructure"
+                and doc_type in ["vulnerability_alert", "fisma_report"]
+                and "eml" in available_formats
+                and not use_snyk
+                and random.random() < 0.33  # ~20% of total (33% of remaining 60%)
             )
             # ~30% HTML email for vulnerability alerts
             use_html_email = (
@@ -1280,9 +1294,12 @@ class MedForgeCUIGenerator:
                 and "eml" in available_formats
                 and random.random() < 0.3
                 and not use_snyk
+                and not use_bugcrowd
             )
 
             if use_snyk:
+                fmt = "eml"
+            elif use_bugcrowd:
                 fmt = "eml"
             elif use_nested:
                 fmt = "eml"
@@ -1306,6 +1323,11 @@ class MedForgeCUIGenerator:
             if use_snyk:
                 self.formatters["snyk_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["snyk_eml"].create_snyk_vulnerability_alert(
+                    filename, is_positive=True)
+                fmt = "eml"
+            elif use_bugcrowd:
+                self.formatters["bugcrowd_eml"].output_dir = str(category_dir)
+                filepath = self.formatters["bugcrowd_eml"].create_bugcrowd_alert(
                     filename, is_positive=True)
                 fmt = "eml"
             elif use_nested:
@@ -1360,6 +1382,8 @@ class MedForgeCUIGenerator:
             variant = "standard"
             if use_snyk:
                 variant = "snyk_alert"
+            elif use_bugcrowd:
+                variant = "bugcrowd_alert"
             elif use_nested:
                 variant = "nested_attachment"
             elif use_html_email:
@@ -1422,22 +1446,32 @@ class MedForgeCUIGenerator:
             if not available_formats:
                 return None
 
-            # ~7% nested email, ~50% Snyk for servicenow_ticket negatives
+            # ~7% nested email, ~40% Snyk, ~20% BugCrowd for servicenow_ticket negatives
             use_nested = random.random() < 0.07 and "eml" in available_formats
             use_snyk = (
                 category == "critical_infrastructure"
                 and doc_type == "servicenow_ticket"
                 and "eml" in available_formats
-                and random.random() < 0.5
+                and random.random() < 0.4
+            )
+            use_bugcrowd = (
+                category == "critical_infrastructure"
+                and doc_type == "servicenow_ticket"
+                and "eml" in available_formats
+                and not use_snyk
+                and random.random() < 0.33
             )
             use_html_email = (
                 doc_type in ["servicenow_ticket", "policy_update", "compliance_report"]
                 and "eml" in available_formats
                 and random.random() < 0.3
                 and not use_snyk
+                and not use_bugcrowd
             )
 
             if use_snyk:
+                fmt = "eml"
+            elif use_bugcrowd:
                 fmt = "eml"
             elif use_nested:
                 fmt = "eml"
@@ -1457,6 +1491,11 @@ class MedForgeCUIGenerator:
             if use_snyk:
                 self.formatters["snyk_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["snyk_eml"].create_snyk_vulnerability_alert(
+                    filename, is_positive=False)
+                fmt = "eml"
+            elif use_bugcrowd:
+                self.formatters["bugcrowd_eml"].output_dir = str(category_dir)
+                filepath = self.formatters["bugcrowd_eml"].create_bugcrowd_alert(
                     filename, is_positive=False)
                 fmt = "eml"
             elif use_nested:
@@ -1505,6 +1544,8 @@ class MedForgeCUIGenerator:
             variant = "standard"
             if use_snyk:
                 variant = "snyk_alert"
+            elif use_bugcrowd:
+                variant = "bugcrowd_alert"
             elif use_nested:
                 variant = "nested_attachment"
             elif use_html_email:
