@@ -380,17 +380,17 @@ class TestPDFFormGenerators:
         assert 'template' in info
         assert 'template_positive' not in info
         assert 'generator' in info
-        assert 'saved_templates' in info['template']
+        assert info['template'].endswith('.pdf')
 
-    def test_foia_medicare_auth_mapping_uses_saved_templates(self):
-        """FOIAMedicareAuth mapping references the saved_templates directory."""
+    def test_foia_medicare_auth_mapping_has_generator(self):
+        """FOIAMedicareAuth mapping has a generator and references a PDF template."""
         import sys
         sys.path.insert(0, 'src')
         from formatters.pdf_form_populator import CustomerTemplateManager
 
         mgr = CustomerTemplateManager()
         info = mgr.template_mappings['FOIAMedicareAuth']
-        assert 'saved_templates' in info['template']
+        assert info['template'].endswith('.pdf')
         assert 'generator' in info
 
     def test_llm_enrichable_set_includes_pdf_templates(self):

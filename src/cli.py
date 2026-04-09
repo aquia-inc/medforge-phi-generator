@@ -52,6 +52,7 @@ from formatters.cui_html_email_formatter import CUIHTMLEmailFormatter
 from formatters.template_email_wrapper import TemplateEmailWrapper
 from formatters.bugcrowd_email_generator import BugCrowdEmailGenerator
 from formatters.internal_announcement_generator import InternalAnnouncementGenerator
+from formatters.servicenow_email_generator import ServiceNowEmailGenerator
 from formatters.snyk_email_generator import SnykEmailGenerator
 from formatters.pdf_form_populator import CustomerTemplateManager
 from templates.components import ComponentMixer, CUI_SECTION_ORDERS
@@ -696,6 +697,11 @@ class MedForgeCUIGenerator:
                 llm_generator=self.llm_generator,
                 llm_percentage=llm_percentage,
             ),
+            "servicenow_eml": ServiceNowEmailGenerator(
+                output_dir=str(self.output_dir),
+                llm_generator=self.llm_generator,
+                llm_percentage=llm_percentage,
+            ),
         }
 
         # Initialize template email wrapper for wrapping templates as attachments
@@ -1313,6 +1319,14 @@ class MedForgeCUIGenerator:
                 and "eml" in available_formats
                 and random.random() < 0.3
             )
+            # ~10% ServiceNow ticket notification (any category)
+            use_servicenow = (
+                "eml" in available_formats
+                and not use_snyk
+                and not use_bugcrowd
+                and not use_announcement
+                and random.random() < 0.1
+            )
             # ~30% HTML email for vulnerability alerts
             use_html_email = (
                 doc_type in ["vulnerability_alert", "budget_memo", "investigation_summary"]
@@ -1327,6 +1341,8 @@ class MedForgeCUIGenerator:
             elif use_bugcrowd:
                 fmt = "eml"
             elif use_announcement:
+                fmt = "eml"
+            elif use_servicenow:
                 fmt = "eml"
             elif use_nested:
                 fmt = "eml"
@@ -1360,6 +1376,11 @@ class MedForgeCUIGenerator:
             elif use_announcement:
                 self.formatters["announcement_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["announcement_eml"].create_announcement_email(
+                    filename, is_positive=True)
+                fmt = "eml"
+            elif use_servicenow:
+                self.formatters["servicenow_eml"].output_dir = str(category_dir)
+                filepath = self.formatters["servicenow_eml"].create_servicenow_notification(
                     filename, is_positive=True)
                 fmt = "eml"
             elif use_nested:
@@ -1418,6 +1439,8 @@ class MedForgeCUIGenerator:
                 variant = "bugcrowd_alert"
             elif use_announcement:
                 variant = "internal_announcement"
+            elif use_servicenow:
+                variant = "servicenow_ticket"
             elif use_nested:
                 variant = "nested_attachment"
             elif use_html_email:
@@ -1500,6 +1523,13 @@ class MedForgeCUIGenerator:
                 and "eml" in available_formats
                 and random.random() < 0.3
             )
+            use_servicenow = (
+                "eml" in available_formats
+                and not use_snyk
+                and not use_bugcrowd
+                and not use_announcement
+                and random.random() < 0.1
+            )
             use_html_email = (
                 doc_type in ["servicenow_ticket", "policy_update", "compliance_report"]
                 and "eml" in available_formats
@@ -1513,6 +1543,8 @@ class MedForgeCUIGenerator:
             elif use_bugcrowd:
                 fmt = "eml"
             elif use_announcement:
+                fmt = "eml"
+            elif use_servicenow:
                 fmt = "eml"
             elif use_nested:
                 fmt = "eml"
@@ -1542,6 +1574,11 @@ class MedForgeCUIGenerator:
             elif use_announcement:
                 self.formatters["announcement_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["announcement_eml"].create_announcement_email(
+                    filename, is_positive=False)
+                fmt = "eml"
+            elif use_servicenow:
+                self.formatters["servicenow_eml"].output_dir = str(category_dir)
+                filepath = self.formatters["servicenow_eml"].create_servicenow_notification(
                     filename, is_positive=False)
                 fmt = "eml"
             elif use_nested:
@@ -1594,6 +1631,8 @@ class MedForgeCUIGenerator:
                 variant = "bugcrowd_alert"
             elif use_announcement:
                 variant = "internal_announcement"
+            elif use_servicenow:
+                variant = "servicenow_ticket"
             elif use_nested:
                 variant = "nested_attachment"
             elif use_html_email:
