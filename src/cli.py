@@ -715,6 +715,92 @@ class MedForgeCUIGenerator:
             output_dir=str(self.output_dir)
         )
 
+    def _select_cui_variant(self, category: str, doc_type: str,
+                            available_formats: list, is_positive: bool):
+        """Select email variant and output format for a CUI document.
+
+        Encapsulates the probability logic for Snyk, BugCrowd, announcements,
+        ServiceNow, nested emails, and HTML emails. Used by both positive
+        and negative generation to avoid duplicating ~40 lines of branching.
+
+        Returns:
+            Tuple of (fmt, variant_name, handler_key) where handler_key is
+            the formatter dict key to use, or None for standard format dispatch.
+        """
+        eml_available = "eml" in available_formats
+
+        # Security email doc types differ for positive vs negative
+        security_doc_types = (
+            ["vulnerability_alert", "fisma_report"] if is_positive
+            else ["servicenow_ticket"]
+        )
+
+        use_nested = random.random() < 0.07 and eml_available
+        use_snyk = (
+            category == "critical_infrastructure"
+            and doc_type in security_doc_types
+            and eml_available
+            and random.random() < 0.4
+        )
+        use_bugcrowd = (
+            category == "critical_infrastructure"
+            and doc_type in security_doc_types
+            and eml_available
+            and not use_snyk
+            and random.random() < 0.33
+        )
+        use_announcement = (
+            category == "proprietary"
+            and eml_available
+            and random.random() < 0.3
+        )
+        use_servicenow = (
+            eml_available
+            and not use_snyk
+            and not use_bugcrowd
+            and not use_announcement
+            and random.random() < 0.1
+        )
+
+        # HTML email doc types also differ
+        html_doc_types = (
+            ["vulnerability_alert", "budget_memo", "investigation_summary"] if is_positive
+            else ["servicenow_ticket", "policy_update", "compliance_report"]
+        )
+        use_html_email = (
+            doc_type in html_doc_types
+            and eml_available
+            and random.random() < 0.3
+            and not use_snyk
+            and not use_bugcrowd
+        )
+
+        if use_snyk:
+            return "eml", "snyk_alert", "snyk_eml"
+        elif use_bugcrowd:
+            return "eml", "bugcrowd_alert", "bugcrowd_eml"
+        elif use_announcement:
+            return "eml", "internal_announcement", "announcement_eml"
+        elif use_servicenow:
+            return "eml", "servicenow_ticket", "servicenow_eml"
+        elif use_nested:
+            return "eml", "nested_attachment", "nested_eml"
+        elif use_html_email:
+            return "eml", "html_styled", "html_eml"
+
+        # No special variant — use standard format selection
+        if is_positive:
+            if doc_type in ["vulnerability_alert", "servicenow_ticket"]:
+                fmt = "eml" if eml_available else random.choice(available_formats)
+            elif doc_type in ["taxpayer_record", "eft_authorization", "sam_registration"]:
+                fmt = "xlsx" if "xlsx" in available_formats else random.choice(available_formats)
+            else:
+                fmt = random.choice(available_formats)
+        else:
+            fmt = random.choice(available_formats)
+
+        return fmt, "standard", None
+
     def _generate_from_customer_template(self, index: int, populate: bool, is_positive: bool) -> Optional[str]:
         """
         Generate a document from customer CMS template.
@@ -1296,64 +1382,8 @@ class MedForgeCUIGenerator:
             if not available_formats:
                 return None
 
-            # ~7% chance of nested email (matching PHI pipeline)
-            use_nested = random.random() < 0.07 and "eml" in available_formats
-            # ~40% Snyk for critical_infrastructure vulnerability alerts
-            use_snyk = (
-                category == "critical_infrastructure"
-                and doc_type in ["vulnerability_alert", "fisma_report"]
-                and "eml" in available_formats
-                and random.random() < 0.4
-            )
-            # ~20% BugCrowd for critical_infrastructure vulnerability alerts
-            use_bugcrowd = (
-                category == "critical_infrastructure"
-                and doc_type in ["vulnerability_alert", "fisma_report"]
-                and "eml" in available_formats
-                and not use_snyk
-                and random.random() < 0.33  # ~20% of total (33% of remaining 60%)
-            )
-            # ~30% internal announcement for proprietary business docs
-            use_announcement = (
-                category == "proprietary"
-                and "eml" in available_formats
-                and random.random() < 0.3
-            )
-            # ~10% ServiceNow ticket notification (any category)
-            use_servicenow = (
-                "eml" in available_formats
-                and not use_snyk
-                and not use_bugcrowd
-                and not use_announcement
-                and random.random() < 0.1
-            )
-            # ~30% HTML email for vulnerability alerts
-            use_html_email = (
-                doc_type in ["vulnerability_alert", "budget_memo", "investigation_summary"]
-                and "eml" in available_formats
-                and random.random() < 0.3
-                and not use_snyk
-                and not use_bugcrowd
-            )
-
-            if use_snyk:
-                fmt = "eml"
-            elif use_bugcrowd:
-                fmt = "eml"
-            elif use_announcement:
-                fmt = "eml"
-            elif use_servicenow:
-                fmt = "eml"
-            elif use_nested:
-                fmt = "eml"
-            elif use_html_email:
-                fmt = "eml"
-            elif doc_type in ["vulnerability_alert", "servicenow_ticket"]:
-                fmt = "eml" if "eml" in available_formats else random.choice(available_formats)
-            elif doc_type in ["taxpayer_record", "eft_authorization", "sam_registration"]:
-                fmt = "xlsx" if "xlsx" in available_formats else random.choice(available_formats)
-            else:
-                fmt = random.choice(available_formats)
+            fmt, variant, handler_key = self._select_cui_variant(
+                category, doc_type, available_formats, is_positive=True)
 
             # Generate filename
             type_prefix = doc_type.replace("_", "").title()[:15]
@@ -1363,35 +1393,29 @@ class MedForgeCUIGenerator:
             category_dir = self.category_positive_dirs.get(category, self.output_dir)
 
             # Create document based on format and variant
-            if use_snyk:
+            if handler_key == "snyk_eml":
                 self.formatters["snyk_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["snyk_eml"].create_snyk_vulnerability_alert(
                     filename, is_positive=True)
-                fmt = "eml"
-            elif use_bugcrowd:
+            elif handler_key == "bugcrowd_eml":
                 self.formatters["bugcrowd_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["bugcrowd_eml"].create_bugcrowd_alert(
                     filename, is_positive=True)
-                fmt = "eml"
-            elif use_announcement:
+            elif handler_key == "announcement_eml":
                 self.formatters["announcement_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["announcement_eml"].create_announcement_email(
                     filename, is_positive=True)
-                fmt = "eml"
-            elif use_servicenow:
+            elif handler_key == "servicenow_eml":
                 self.formatters["servicenow_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["servicenow_eml"].create_servicenow_notification(
                     filename, is_positive=True)
-                fmt = "eml"
-            elif use_nested:
+            elif handler_key == "nested_eml":
                 self.formatters["nested_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["nested_eml"].create_cui_email_with_attachment(
                     doc_data, filename, is_positive=True)
-                fmt = "eml"
-            elif use_html_email:
+            elif handler_key == "html_eml":
                 self.formatters["html_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["html_eml"].create_cui_html_email(doc_data, filename)
-                fmt = "eml"
             elif fmt == "docx":
                 self.formatters[fmt].output_dir = str(category_dir)
                 component_config = self.component_mixer.get_random_configuration(
@@ -1431,22 +1455,7 @@ class MedForgeCUIGenerator:
             self.stats["by_format"][fmt] += 1
             self.stats["by_category"][category] += 1
 
-            # Determine variant for manifest
-            variant = "standard"
-            if use_snyk:
-                variant = "snyk_alert"
-            elif use_bugcrowd:
-                variant = "bugcrowd_alert"
-            elif use_announcement:
-                variant = "internal_announcement"
-            elif use_servicenow:
-                variant = "servicenow_ticket"
-            elif use_nested:
-                variant = "nested_attachment"
-            elif use_html_email:
-                variant = "html_styled"
-
-            # Add to manifest
+            # Add to manifest (variant already set by _select_cui_variant)
             manifest_entry = {
                 "file_path": str(Path(filepath).relative_to(self.output_dir)),
                 "cui_status": "positive",
@@ -1503,55 +1512,8 @@ class MedForgeCUIGenerator:
             if not available_formats:
                 return None
 
-            # ~7% nested email, ~40% Snyk, ~20% BugCrowd for servicenow_ticket negatives
-            use_nested = random.random() < 0.07 and "eml" in available_formats
-            use_snyk = (
-                category == "critical_infrastructure"
-                and doc_type == "servicenow_ticket"
-                and "eml" in available_formats
-                and random.random() < 0.4
-            )
-            use_bugcrowd = (
-                category == "critical_infrastructure"
-                and doc_type == "servicenow_ticket"
-                and "eml" in available_formats
-                and not use_snyk
-                and random.random() < 0.33
-            )
-            use_announcement = (
-                category == "proprietary"
-                and "eml" in available_formats
-                and random.random() < 0.3
-            )
-            use_servicenow = (
-                "eml" in available_formats
-                and not use_snyk
-                and not use_bugcrowd
-                and not use_announcement
-                and random.random() < 0.1
-            )
-            use_html_email = (
-                doc_type in ["servicenow_ticket", "policy_update", "compliance_report"]
-                and "eml" in available_formats
-                and random.random() < 0.3
-                and not use_snyk
-                and not use_bugcrowd
-            )
-
-            if use_snyk:
-                fmt = "eml"
-            elif use_bugcrowd:
-                fmt = "eml"
-            elif use_announcement:
-                fmt = "eml"
-            elif use_servicenow:
-                fmt = "eml"
-            elif use_nested:
-                fmt = "eml"
-            elif use_html_email:
-                fmt = "eml"
-            else:
-                fmt = random.choice(available_formats)
+            fmt, variant, handler_key = self._select_cui_variant(
+                category, doc_type, available_formats, is_positive=False)
 
             # Generate filename
             type_prefix = doc_type.replace("_", "").title()[:15]
@@ -1561,35 +1523,29 @@ class MedForgeCUIGenerator:
             category_dir = self.category_negative_dirs.get(category, self.output_dir)
 
             # Create document based on format and variant
-            if use_snyk:
+            if handler_key == "snyk_eml":
                 self.formatters["snyk_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["snyk_eml"].create_snyk_vulnerability_alert(
                     filename, is_positive=False)
-                fmt = "eml"
-            elif use_bugcrowd:
+            elif handler_key == "bugcrowd_eml":
                 self.formatters["bugcrowd_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["bugcrowd_eml"].create_bugcrowd_alert(
                     filename, is_positive=False)
-                fmt = "eml"
-            elif use_announcement:
+            elif handler_key == "announcement_eml":
                 self.formatters["announcement_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["announcement_eml"].create_announcement_email(
                     filename, is_positive=False)
-                fmt = "eml"
-            elif use_servicenow:
+            elif handler_key == "servicenow_eml":
                 self.formatters["servicenow_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["servicenow_eml"].create_servicenow_notification(
                     filename, is_positive=False)
-                fmt = "eml"
-            elif use_nested:
+            elif handler_key == "nested_eml":
                 self.formatters["nested_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["nested_eml"].create_cui_email_with_attachment(
                     doc_data, filename, is_positive=False)
-                fmt = "eml"
-            elif use_html_email:
+            elif handler_key == "html_eml":
                 self.formatters["html_eml"].output_dir = str(category_dir)
                 filepath = self.formatters["html_eml"].create_cui_html_email(doc_data, filename)
-                fmt = "eml"
             elif fmt == "docx":
                 self.formatters[fmt].output_dir = str(category_dir)
                 component_config = self.component_mixer.get_random_configuration(
@@ -1623,22 +1579,7 @@ class MedForgeCUIGenerator:
             else:
                 return None
 
-            # Determine variant for manifest
-            variant = "standard"
-            if use_snyk:
-                variant = "snyk_alert"
-            elif use_bugcrowd:
-                variant = "bugcrowd_alert"
-            elif use_announcement:
-                variant = "internal_announcement"
-            elif use_servicenow:
-                variant = "servicenow_ticket"
-            elif use_nested:
-                variant = "nested_attachment"
-            elif use_html_email:
-                variant = "html_styled"
-
-            # Update statistics
+            # Update statistics (variant already set by _select_cui_variant)
             self.stats["total_generated"] += 1
             self.stats["cui_negative"] += 1
             self.stats["by_format"][fmt] += 1
