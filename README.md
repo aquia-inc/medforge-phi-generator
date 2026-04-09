@@ -185,6 +185,8 @@ Each document has a configurable chance (`--llm-percentage`, default 0.2) of bei
 
 Set `--template-email-ratio 0` to disable email wrapping (bare files only, original behavior).
 
+**Excluded templates:** PNG/XML diagram files (infrastructure diagrams) were removed — SharePoint/Purview does not classify image formats. The FISMA reporting XLSX (~6MB) is deferred pending Purview size limit validation. CMS Things to Know (newsletter PDF) was skipped as a static document with no variance.
+
 **LLM-enriched templates:** 17 templates across all 4 categories can receive LLM-generated narrative sections appended to the filled document. This is controlled by the same `--llm-percentage` rate.
 
 See [docs/adding-customer-templates.md](docs/adding-customer-templates.md) for the full registration guide.

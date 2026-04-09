@@ -1343,7 +1343,7 @@ class CustomerTemplateManager:
             },
             # Procurement: IGCE XLSX (positive-only, copy mode — openpyxl can't parse drawings)
             'IGCE': {
-                'template_positive': 'IaaS Mainframe MFA IGCE OY1-CUI-Procurement and Acquisition-positive.xlsx',
+                'template_positive': 'saved_templates/IaaS Mainframe MFA IGCE OY1-CUI-Procurement and Acquisition-positive.xlsx',
                 'category': 'CUI-Procurement',
                 'clean_name': 'IGCE',
                 'positive_only': True,
