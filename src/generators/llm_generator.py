@@ -849,6 +849,18 @@ Generate three sections as a program manager would write them:
 
 DO NOT include classification markings or labels. Write naturally as an internal government memo.""",
 
+            'OAGMSourceSelection': f"""Generate realistic narrative sections for a CMS OAGM Source Selection Determination document.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a source selection authority would write them:
+1. evaluation_summary: 2-3 sentences summarizing the evaluation results across all offerors, including the range of technical scores and proposed costs
+2. tradeoff_analysis: 2-3 sentences describing the tradeoff analysis between technical merit and cost, explaining why the best-value determination favors the selected offeror
+3. selection_rationale: 2-3 sentences documenting the final selection rationale, citing FAR 15.308 authority and the basis for the award decision
+
+DO NOT include classification markings or labels. Write naturally as an internal procurement document.""",
+
             'AGXRFCMemo': f"""Generate realistic narrative sections for a CMS AGX Request for Change (RFC) memorandum.
 
 Context from the form:
@@ -1008,6 +1020,7 @@ DO NOT include real employee names, real medical diagnoses, or specific PII. Wri
                 'JALimitedSource': '{"competition_justification": "...", "efforts_to_compete": "...", "fair_pricing_determination": "..."}',
                 'SubpoenaResponse': '{"response_narrative": "...", "privilege_log_summary": "...", "production_scope": "..."}',
                 'RFCMemo': '{"change_justification": "...", "impact_analysis": "...", "stakeholder_assessment": "..."}',
+                'OAGMSourceSelection': '{"evaluation_summary": "...", "tradeoff_analysis": "...", "selection_rationale": "..."}',
                 'AGXRFCMemo': '{"change_justification": "...", "impact_analysis": "...", "stakeholder_assessment": "..."}',
                 'RulesOfBehavior': '{"assessment_scope": "...", "compliance_findings": "...", "remediation_plan": "..."}',
                 'DIBOAFR': '{"funding_justification": "...", "cost_analysis": "...", "operational_impact": "..."}',

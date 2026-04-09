@@ -959,12 +959,25 @@ class PDFFormPopulator:
     def generate_ja_limited_source_data(self) -> Dict[str, Any]:
         """Generate data for JA Limited Source Justification (CUI-Procurement).
 
-        Fills 9 underline blanks (signature/approval lines).
+        Fills header fields and 9 underline blanks (signature/approval lines).
         """
+        ACQUISITION_TITLES = [
+            'Enterprise Cloud Hosting Services',
+            'Cybersecurity Operations Center Support',
+            'Medicare Claims Processing Modernization',
+            'IT Service Management Platform Upgrade',
+            'Data Analytics and Business Intelligence',
+            'Identity and Access Management Services',
+        ]
+        contractor = self.fake.company()
         names = [self.fake.name() for _ in range(5)]
         dates = [self.fake.date_between(start_date='-90d', end_date='today').strftime('%m/%d/%Y')
                  for _ in range(5)]
         return {
+            'Acquisition Title:': f"Acquisition Title: {random.choice(ACQUISITION_TITLES)}",
+            'Agency:': f"Agency: Centers for Medicare & Medicaid Services ({random.choice(self.CMS_OFFICES)})",
+            'Acquisition Year:': f"Acquisition Year: FY{random.randint(24, 27)}",
+            'Author:': f"Author: {names[0]}",
             '_underline_fills': [
                 names[0],  # COR signature
                 dates[0],
@@ -981,14 +994,27 @@ class PDFFormPopulator:
     def generate_jofoc_data(self) -> Dict[str, Any]:
         """Generate data for JOFOC (CUI-Procurement).
 
-        Fills 4 underline blanks and 1 table (option year cost estimates).
+        Fills header fields, 4 underline blanks, and 1 table (option year costs).
         """
+        ACQUISITION_TITLES = [
+            'Enterprise Cloud Hosting Services',
+            'Cybersecurity Operations Center Support',
+            'Medicare Claims Processing Modernization',
+            'IT Service Management Platform Upgrade',
+            'Data Analytics and Business Intelligence',
+        ]
+        contractor = self.fake.company()
+        cor = self.fake.name()
         base_cost = self.generate_currency_amount(500000, 5000000)
         return {
+            'Acquisition Title:': f"Acquisition Title: {random.choice(ACQUISITION_TITLES)}",
+            'Acquisition Year:': f"Acquisition Year: FY{random.randint(24, 27)}",
+            'Author/COR:': f"Author/COR: {cor}",
+            'Name/Address of Proposed Contractor:': f"Name/Address of Proposed Contractor: {contractor}, {self.fake.city()}, {self.fake.state_abbr()} {self.fake.zipcode()}",
             '_underline_fills': [
                 random.choice(['Unique Source', 'Unusual and Compelling Urgency',
                                'Statutory Authority', 'National Security']),
-                self.fake.name(),  # COR
+                cor,  # COR
                 self.fake.name(),  # CO
                 self.fake.name(),  # Competition Advocate
             ],
