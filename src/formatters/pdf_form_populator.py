@@ -1321,7 +1321,7 @@ class CustomerTemplateManager:
                 'clean_name': 'RulesOfBehavior',
             },
             'IncidentResponse': {
-                'template': 'rmh-chapter-08-incident-response-incident-report-template-CUI-Critical Infrastructure-positive.docx',
+                'template': 'saved_templates/rmh-chapter-08-incident-response-incident-report-template-CUI-Critical Infrastructure-positive.docx',
                 'template_negative': 'saved_templates/rmh-chapter-08-incident-response-incident-report-template-CUI-Critical Infrastructure-negative.docx',
                 'generator': self.populator.generate_incident_response_data,
                 'category': 'CUI-CritInfra',
