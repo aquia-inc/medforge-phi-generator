@@ -400,12 +400,72 @@ class TestPDFFormGenerators:
         from generators.llm_generator import ClaudeGenerator
 
         gen = ClaudeGenerator.__new__(ClaudeGenerator)
-        # Manually invoke prompt lookup logic via generate_template_narrative
-        # (requires client — just verify prompt keys are registered)
         import inspect
         src = inspect.getsource(gen.__class__.generate_template_narrative)
         assert "'EFT Authorization Form'" in src
         assert "'FOIAMedicareAuth'" in src
+
+    def test_acroform_flag_on_all_pdf_templates(self):
+        """All fillable-PDF templates have acroform: True so routing hits populate_acroform()."""
+        import sys
+        sys.path.insert(0, 'src')
+        from formatters.pdf_form_populator import CustomerTemplateManager
+
+        mgr = CustomerTemplateManager()
+        acroform_keys = [
+            'EFT Authorization Form',
+            'ReasonableAccommodationRequest',
+            'Medical Inquiry  Form',
+            'HHSRBD',
+            'FOIAMedicareAuth',
+        ]
+        for key in acroform_keys:
+            assert mgr.template_mappings[key].get('acroform') is True, \
+                f"Expected acroform: True on template '{key}'"
+
+    def test_populate_acroform_routing(self, tmp_output_dir):
+        """generate_from_template() calls populate_acroform when acroform flag is set."""
+        import sys
+        sys.path.insert(0, 'src')
+        from formatters.pdf_form_populator import CustomerTemplateManager
+        from unittest.mock import patch
+
+        mgr = CustomerTemplateManager(template_dir='cust_templates', output_dir=tmp_output_dir)
+        fake_data = {'Name': 'Test User', 'Date of Birth': '01/01/1980'}
+
+        with patch.object(mgr.populator, 'populate_acroform', return_value='/fake/path.pdf') as mock_acro, \
+             patch.object(mgr.populator, 'populate_form') as mock_form:
+            mgr.generate_from_template(
+                'ReasonableAccommodationRequest',
+                tmp_output_dir,
+                index=1,
+                populate=True,
+                field_data=fake_data,
+            )
+        mock_acro.assert_called_once()
+        mock_form.assert_not_called()
+
+    def test_medical_inquiry_llm_prompt_registered(self):
+        """Medical Inquiry Form has an LLM prompt in generate_template_narrative."""
+        import sys
+        sys.path.insert(0, 'src')
+        from generators.llm_generator import ClaudeGenerator
+        import inspect
+
+        src = inspect.getsource(ClaudeGenerator.generate_template_narrative)
+        assert "'Medical Inquiry  Form'" in src
+        assert 'functional_limitations_detail' in src
+
+    def test_ra_request_llm_prompt_registered(self):
+        """ReasonableAccommodationRequest has an LLM prompt in generate_template_narrative."""
+        import sys
+        sys.path.insert(0, 'src')
+        from generators.llm_generator import ClaudeGenerator
+        import inspect
+
+        src = inspect.getsource(ClaudeGenerator.generate_template_narrative)
+        assert "'ReasonableAccommodationRequest'" in src
+        assert 'accommodation_justification' in src
 
 
 class TestNegativeDocumentStructure:
