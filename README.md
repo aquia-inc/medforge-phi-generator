@@ -185,7 +185,10 @@ Each document has a configurable chance (`--llm-percentage`, default 0.2) of bei
 
 Set `--template-email-ratio 0` to disable email wrapping (bare files only, original behavior).
 
-**Excluded templates:** PNG/XML diagram files (infrastructure diagrams) were removed — SharePoint/Purview does not classify image formats. The FISMA reporting XLSX (~6MB) is deferred pending Purview size limit validation. CMS Things to Know (newsletter PDF) was skipped as a static document with no variance.
+**Excluded templates:** Not every customer file makes a good template. Files are excluded when they offer zero training variance (static copies), rely on visual elements Purview can't classify (charts, images, diagrams), or are too complex to fill programmatically (cross-sheet formulas, data validation cascades). Specific exclusions:
+- **FISMA Reporting XLSX** (5.8MB, 14 sheets) — charts break on fill, cross-sheet formulas create inconsistencies, copy-only = zero variance, file size risks Purview limits. The right approach for complex files like this is to build a lightweight generator that captures the document type pattern, not force-fill the original.
+- **PNG/XML diagrams** — Purview classifies text, not images
+- **CMS Things to Know** (newsletter PDF) — static content, no fill points, every copy identical
 
 **LLM-enriched templates:** 17 templates across all 4 categories can receive LLM-generated narrative sections appended to the filled document. This is controlled by the same `--llm-percentage` rate.
 
@@ -326,7 +329,7 @@ medforge-phi-generator/
 | [docs/test-coverage-tracker.md](docs/test-coverage-tracker.md) | Test coverage status and outstanding gaps |
 | [docs/adding-customer-templates.md](docs/adding-customer-templates.md) | Step-by-step guide for registering new CMS templates |
 | [docs/DEMO.md](docs/DEMO.md) | Customer demo script with talking points |
-| [CLAUDE.md](CLAUDE.md) | Developer notes: PDF filling, template patterns, CMS requirements |
+
 
 ## License
 
