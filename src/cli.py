@@ -829,6 +829,7 @@ class MedForgeCUIGenerator:
             'MarketResearch', 'JOFOC', 'JALimitedSource', 'SubpoenaResponse', 'RFCMemo',
             'B6Letter', 'Form339Letter', 'FullRelease',
             'DIBOAFR', 'SupplementalAFR', 'OITFOAdditionalInfo',
+            'RulesOfBehavior',
         }
         # PDF templates: LLM narratives are injected as free-text field values
         PDF_ENRICHABLE = {
@@ -912,6 +913,10 @@ class MedForgeCUIGenerator:
                 'strategic_alignment': 'Strategic Alignment',
                 'investment_analysis': 'Investment Analysis',
                 'stakeholder_impact': 'Stakeholder Impact',
+                # Rules of Behavior
+                'assessment_scope': 'Assessment Scope',
+                'compliance_findings': 'Compliance Findings',
+                'remediation_plan': 'Remediation Plan',
             }
 
             sections = []

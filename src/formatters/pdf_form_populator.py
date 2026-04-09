@@ -376,29 +376,83 @@ class PDFFormPopulator:
         }
 
     def generate_kmp_data(self) -> Dict[str, Any]:
-        """Generate data for Key Management Plan (CUI-Critical Infrastructure)."""
+        """Generate data for Key Management Plan (CUI-Critical Infrastructure).
+
+        Replaces system name variants, contact info, review date, and phone.
+        """
         system = random.choice(self.SYSTEM_NAMES)
         system_lower = system.lower().replace(' ', '-')
+        review_date = self.fake.date_between(start_date='-1y', end_date='today')
+        phone = self.fake.numerify('443-555-####')
         return {
             'Mock System': system,
-            'Mock-system': f"{system_lower}",
+            'Mock-system': system_lower,
+            'mock-system': system_lower,
             'MockSystem': system.replace(' ', ''),
             'Mock system': system,
+            'Dec 2, 2024': review_date.strftime('%b %-d, %Y'),
+            '443-555-1236': phone,
         }
 
     def generate_rules_of_behavior_data(self) -> Dict[str, Any]:
         """Generate data for Rules of Behavior (CUI-Critical Infrastructure).
 
-        The negative template has [MAC NAME] placeholders; positive is pre-filled.
+        Replaces MAC name, assessment team personnel (Table 1), MAC POCs (Table 2),
+        schedule dates (Table 3), vendor references, and version date.
         """
         MAC_NAMES = [
             'CCSQ MAC', 'FISS MAC', 'HIGLAS MAC', 'MCS MAC', 'VMS MAC',
             'BCRC MAC', 'EDPS MAC', 'HETS MAC', 'MFFS MAC', 'SPS MAC',
         ]
+        ASSESSMENT_VENDORS = [
+            'Guidehouse', 'Deloitte', 'KPMG', 'Ernst & Young', 'PwC',
+            'Booz Allen Hamilton', 'ICF', 'MITRE',
+        ]
         mac = random.choice(MAC_NAMES)
+        vendor = random.choice(ASSESSMENT_VENDORS)
+        partner = self.fake.company()
+        rob_date = self.fake.date_between(start_date='-6m', end_date='today')
+
+        # Assessment team (Table 1, rows 1-4)
+        team = [self.fake.name() for _ in range(4)]
+        phones = [self.fake.numerify('###-555-####') for _ in range(4)]
+        emails = [f"Email{i+1}@{vendor.lower().replace(' ', '')}.com" for i in range(4)]
+
+        # MAC POCs (Table 2, rows 1-3)
+        pocs = [self.fake.name() for _ in range(3)]
+        poc_phones = [self.fake.numerify('443-555-####') for _ in range(3)]
+        poc_emails = [f"Email{i+1}@{partner.lower().replace(' ', '')}.com" for i in range(3)]
+
         return {
             '[MAC NAME]': mac,
             'MAC NAME': mac,
+            '10/27/2025': rob_date.strftime('%m/%d/%Y'),
+            'Guidehouse': vendor,
+            'SuperPartner': partner,
+            # Table 1: Assessment team personnel
+            'Caroline Bingley': team[0],
+            'Mark Darcy': team[1],
+            'Georgiana Darcy': team[2],
+            'Charles Bingley': team[3],
+            '443-555-3519': phones[0],
+            '571-555-1327': phones[1],
+            '443-555-3167': phones[2],
+            '843-555-6163': phones[3],
+            'Email1@vendor.com': emails[0],
+            'Email2@vendor.com': emails[1],
+            'Email3@vendor.com': emails[2],
+            'Email4@vendor.com': emails[3],
+            'Vendor': vendor,
+            # Table 2: MAC POCs
+            'Mary Bennet': pocs[0],
+            'Elizabeth Bennet': pocs[1],
+            'Jane Bennet': pocs[2],
+            '443-555-1237': poc_phones[0],
+            '443-555-1238': poc_phones[1],
+            '443-555-1239': poc_phones[2],
+            'Email1@superpartner.com': poc_emails[0],
+            'Email2@superpartner.com': poc_emails[1],
+            'Email3@superpartner.com': poc_emails[2],
         }
 
     def generate_hhs_rbd_data(self) -> Dict[str, Any]:

@@ -849,6 +849,18 @@ Generate three sections as a program manager would write them:
 
 DO NOT include classification markings or labels. Write naturally as an internal government memo.""",
 
+            'RulesOfBehavior': f"""Generate realistic narrative sections for a CMS Post-Quantum Cryptography Readiness Assessment Rules of Behavior document.
+
+Context from the form:
+{context_str}
+
+Generate three sections as a cybersecurity assessor would write them:
+1. assessment_scope: 2-3 sentences describing the scope of the PQC readiness assessment, including which cryptographic components and systems are covered
+2. compliance_findings: 2-3 sentences summarizing the current compliance posture against NIST PQC migration guidelines, including any gaps identified
+3. remediation_plan: 2-3 sentences outlining the recommended remediation timeline and priority actions for transitioning to quantum-resistant algorithms
+
+DO NOT include classification markings or labels. Write naturally as an internal security assessment document.""",
+
             'DIBOAFR': f"""Generate realistic narrative sections for a CMS DIBO Additional Funds Request (AFR) justification.
 
 Context from the form:
@@ -984,6 +996,7 @@ DO NOT include real employee names, real medical diagnoses, or specific PII. Wri
                 'JALimitedSource': '{"competition_justification": "...", "efforts_to_compete": "...", "fair_pricing_determination": "..."}',
                 'SubpoenaResponse': '{"response_narrative": "...", "privilege_log_summary": "...", "production_scope": "..."}',
                 'RFCMemo': '{"change_justification": "...", "impact_analysis": "...", "stakeholder_assessment": "..."}',
+                'RulesOfBehavior': '{"assessment_scope": "...", "compliance_findings": "...", "remediation_plan": "..."}',
                 'DIBOAFR': '{"funding_justification": "...", "cost_analysis": "...", "operational_impact": "..."}',
                 'SupplementalAFR': '{"supplemental_justification": "...", "product_rationale": "...", "budget_impact": "..."}',
                 'OITFOAdditionalInfo': '{"strategic_alignment": "...", "investment_analysis": "...", "stakeholder_impact": "..."}',
