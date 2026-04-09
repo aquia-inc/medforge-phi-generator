@@ -1327,6 +1327,13 @@ class CustomerTemplateManager:
                 'clean_name': 'MedicalInquiryForm',
                 'acroform': True,
             },
+            # PHI: CMS-2567 facility survey form (negative only — no patient data)
+            'CMS2567': {
+                'template_positive': 'CMS-2567-PHI-negative.pdf',
+                'category': 'PHI',
+                'clean_name': 'CMS2567',
+                'negative_only': True,
+            },
             'EFT Authorization Form': {
                 'template': 'EFT Authorization Form-blank-CUI-Finance-negative.pdf',
                 'generator': self.populator.generate_eft_authorization_data,

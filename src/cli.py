@@ -142,6 +142,12 @@ class MedForgeGenerator:
             self.formatters["nested_eml"] = NestedEmailFormatter(output_dir=str(self.output_dir))
             self.formatters["html_lab"] = HTMLLabFormatter(output_dir=str(self.output_dir))
 
+        # Customer template manager for PHI templates (CMS-2567, Medical Inquiry)
+        self.customer_templates = CustomerTemplateManager(
+            template_dir='./cust_templates',
+            output_dir=str(self.output_dir)
+        )
+
     def generate_single_phi_positive(self, index: int) -> Optional[str]:
         """Generate a single PHI positive document"""
         try:
@@ -314,6 +320,7 @@ class MedForgeGenerator:
                 doc_types = []
                 if "pdf" in self.formats:
                     doc_types.append("policy_pdf")
+                    doc_types.append("cms2567")  # CMS facility survey form
                 if "docx" in self.formats:
                     doc_types.extend(["policy_docx", "blank_form"])
                 if "eml" in self.formats:
@@ -333,6 +340,12 @@ class MedForgeGenerator:
                 filepath = self.formatters["pdf"].create_generic_medical_policy(facility, filename)
                 self.stats["by_format"]["pdf"] += 1
                 self.stats["by_category"]["policies"] += 1
+
+            elif doc_type == "cms2567":
+                filepath = self.customer_templates.generate_from_template(
+                    'CMS2567', str(self.phi_negative_dir), index, populate=False)
+                self.stats["by_format"]["pdf"] += 1
+                self.stats["by_category"]["blank_forms"] += 1
 
             elif doc_type == "policy_docx":
                 filename = f"MedicalPolicy_{index:04d}.docx"
