@@ -18,7 +18,7 @@ Templates are registered in two places:
 
 ---
 
-## Step 1: Place the File in `cust_templates/saved_templates/`
+## Step 1: Place the File in `cust_templates/`
 
 Use the naming convention:
 

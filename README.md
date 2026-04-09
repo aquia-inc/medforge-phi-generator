@@ -165,7 +165,7 @@ Each document has a configurable chance (`--llm-percentage`, default 0.2) of bei
 
 ### Customer Templates (20% of CUI documents)
 
-27 registered CMS templates (from `cust_templates/saved_templates/`) are mixed into CUI generation with a 20% selection rate. Templates span 4 categories:
+27 registered CMS templates (from `cust_templates/`) are mixed into CUI generation with a 20% selection rate. Templates span 4 categories:
 
 | Category | Count | Examples |
 |----------|-------|----------|
@@ -301,8 +301,7 @@ medforge-phi-generator/
 │   │   └── llm_generator.py         # Claude API integration with structured outputs
 │   ├── templates/                   # Component mixing system (~240 layout variations)
 │   └── validators/                  # PHI validation
-├── cust_templates/                  # CMS template files
-│   └── saved_templates/             # 27 registered templates (+ negatives, retired files)
+├── cust_templates/                  # 27 registered CMS templates (+ negatives)
 ├── tests/
 │   ├── conftest.py                  # Shared pytest fixtures
 │   ├── test_component_mixer.py      # ComponentMixer + font mapping tests (17 tests)
