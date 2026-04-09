@@ -10,6 +10,7 @@ During generation, each document has a 20% chance of using a customer template i
 2. Picks one at random
 3. For **positives**: populates it with Faker data (PDF/DOCX) or copies it as-is (XLSX/EML)
 4. For **negatives**: copies the blank/negative variant, or skips if the template is positive-only
+5. **Email wrapping** (default 80%): wraps the generated file in an email as an attachment with varying body detail (minimal/medium/LLM-detailed). Controlled by `--template-email-ratio`. The remaining 20% are output as bare files.
 
 Templates are registered in two places:
 - `src/formatters/pdf_form_populator.py` — the `template_mappings` dict (~line 345)
@@ -17,7 +18,7 @@ Templates are registered in two places:
 
 ---
 
-## Step 1: Place the File in `cust_templates/`
+## Step 1: Place the File in `cust_templates/saved_templates/`
 
 Use the naming convention:
 

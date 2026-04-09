@@ -61,6 +61,7 @@ General Options:
   --formats, -f TEXT               Formats: pdf,docx,xlsx,eml,pptx [default: all]
   --output, -o PATH                Output directory [default: output]
   --llm-percentage FLOAT           LLM enhancement rate 0.0-1.0 [default: 0.2]
+  --template-email-ratio FLOAT     Fraction of customer templates wrapped in email 0.0-1.0 [default: 0.8]
   --seed, -s INTEGER               Random seed for reproducibility
   --parallel-workers, -p INTEGER   Worker count [default: 1]
   --config PATH                    YAML config file (see: medforge setup --example)
@@ -148,7 +149,8 @@ Each document has a configurable chance (`--llm-percentage`, default 0.2) of bei
 - **PHI:** Clinical SOAP notes, provider-to-provider correspondence, patient communications
 - **CUI Positive:** Budget memos, SAR narratives, comptroller findings, retirement analyses, security vulnerability reports, legal memos (IRAC format), procurement rationale, tax written determinations (facts/law/analysis/conclusion)
 - **CUI Negative:** Public-facing prose for hard negatives — policy overviews, training descriptions, published guidance, taxpayer advice (at half the positive LLM rate)
-- **Customer Templates:** 8 enrichable templates get LLM-generated narrative sections appended (acquisition strategy, market research, justification narratives, incident summaries)
+- **Customer Templates:** 17 enrichable templates get LLM-generated narrative sections appended (acquisition strategy, market research, justification narratives, incident summaries, FOIA analyses, budget justifications)
+- **Template Cover Emails:** When templates are email-wrapped, the detailed tier generates an LLM-written cover email introducing the attached document
 - **Snyk Emails:** Highest-severity vulnerability finding gets LLM-generated description, impact analysis, and remediation narrative
 
 **When the LLM is NOT used:**
@@ -163,20 +165,27 @@ Each document has a configurable chance (`--llm-percentage`, default 0.2) of bei
 
 ### Customer Templates (20% of CUI documents)
 
-27 registered CMS templates (from `cust_templates/`) are mixed into CUI generation with a 20% selection rate. Templates span 4 categories:
+27 registered CMS templates (from `cust_templates/saved_templates/`) are mixed into CUI generation with a 20% selection rate. Templates span 4 categories:
 
 | Category | Count | Examples |
 |----------|-------|----------|
 | Procurement | 9 | IGCE, CLIN Templates, Market Research, RFC Memo, Acquisition Plan |
 | Legal | 7 | B6 Letter, FOIA requests, Subpoena Response, Reasonable Accommodation |
-| Critical Infrastructure | 6 | KMP, Rules of Behavior, Incident Response, Test Validation Reports |
+| Critical Infrastructure | 6 | KMP, Rules of Behavior, Incident Response, HHS RBD |
 | Financial | 5 | AFR Additional Info, DIBO AFR, Supplemental AFR, OIT FO |
 
 **Category-weighted selection** picks a category first (uniform random), then a template within that category. This prevents bias when one category has more templates than others.
 
-**Five fill patterns** are supported: PDF fillable (reportlab overlay), PDF copy pair, DOCX placeholder substitution, DOCX table fill, and DOCX underline fill. Synthetic data is generated via Faker (names, addresses, contract numbers, prices, system names).
+**Five fill patterns** are supported: PDF fillable (pikepdf AcroForm), PDF copy pair, DOCX placeholder substitution, DOCX table fill, and DOCX underline fill. Synthetic data is generated via Faker (names, addresses, contract numbers, prices, system names).
 
-**LLM-enriched templates:** 8 templates (AcquisitionPlan, IncidentResponse, KMP, MarketResearch, JOFOC, JALimitedSource, SubpoenaResponse, RFCMemo) can receive LLM-generated narrative sections appended to the filled document. This is controlled by the same `--llm-percentage` rate.
+**Email wrapping:** By default, 80% of customer templates are wrapped in emails as attachments (`--template-email-ratio 0.8`). This produces realistic email-with-attachment patterns that Purview classifiers learn from. The remaining 20% are output as bare files. Email body detail varies across three tiers:
+- **Minimal** (~40%): Stub phrases like "See attached." or "FYI"
+- **Medium** (~40%): Category-matched boilerplate with Faker-generated sender, title, and office
+- **Detailed** (~20%): LLM-generated cover email introducing the specific document (gated by `--llm-percentage`)
+
+Set `--template-email-ratio 0` to disable email wrapping (bare files only, original behavior).
+
+**LLM-enriched templates:** 17 templates across all 4 categories can receive LLM-generated narrative sections appended to the filled document. This is controlled by the same `--llm-percentage` rate.
 
 See [docs/adding-customer-templates.md](docs/adding-customer-templates.md) for the full registration guide.
 
@@ -218,7 +227,7 @@ output/production_run_YYYYMMDD_HHMMSS/
     └── cui_manifest.json              # CUI document index with category, variant, source
 ```
 
-Manifest files track each document's format, polarity, category, whether it was LLM-enhanced, and whether it came from a customer template. The CUI manifest also records the `variant` field (`standard`, `nested_attachment`, `html_styled`, `snyk_alert`).
+Manifest files track each document's format, polarity, category, whether it was LLM-enhanced, and whether it came from a customer template. The CUI manifest also records the `variant` field (`standard`, `nested_attachment`, `html_styled`, `snyk_alert`, `email_wrapped`).
 
 ---
 
@@ -280,13 +289,15 @@ medforge-phi-generator/
 │   ├── formatters/                  # Document generators (6 formats + customer templates)
 │   │   ├── base_email_formatter.py  # Shared MIME construction base
 │   │   ├── pdf_form_populator.py    # Customer template manager + PDF form filling
+│   │   ├── template_email_wrapper.py # Wraps templates as email attachments (3 detail tiers)
 │   │   └── ...                      # DOCX, PDF, XLSX, PPTX, EML, nested, HTML, Snyk formatters
 │   ├── generators/                  # Data & LLM generators
 │   │   ├── patient_generator.py     # Faker-based synthetic patient/provider/facility data
 │   │   └── llm_generator.py         # Claude API integration with structured outputs
 │   ├── templates/                   # Component mixing system (~240 layout variations)
 │   └── validators/                  # PHI validation
-├── cust_templates/                  # 56 CMS template files (27 registered, 1 disabled)
+├── cust_templates/                  # CMS template files
+│   └── saved_templates/             # 27 registered templates (+ negatives, retired files)
 ├── tests/
 │   ├── conftest.py                  # Shared pytest fixtures
 │   ├── test_component_mixer.py      # ComponentMixer + font mapping tests (17 tests)
