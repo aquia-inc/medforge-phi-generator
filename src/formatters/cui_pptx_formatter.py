@@ -12,6 +12,7 @@ from datetime import datetime
 import os
 from typing import Any, Dict, Optional
 
+from formatters.base_email_formatter import CUI_SKIP_FIELDS
 from templates.components import ComponentConfiguration, get_docx_font_name
 
 # LLM narrative fields that get dedicated slides when present
@@ -224,11 +225,7 @@ class CUIPPTXFormatter:
         tf = txBox.text_frame
         tf.word_wrap = True
 
-        skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
-                       'has_cui', 'classification', 'generated_date', 'title',
-                       'confidentiality_notice', 'document_date', 'agency', 'authority',
-                       'executive_summary', 'body_content', 'recommendations',
-                       'risk_assessment', 'analysis', 'justification'}
+        skip_fields = CUI_SKIP_FIELDS
 
         for key, value in doc_data.items():
             if key in skip_fields:
@@ -255,11 +252,7 @@ class CUIPPTXFormatter:
         tf = txBox.text_frame
         tf.word_wrap = True
 
-        skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
-                       'has_cui', 'classification', 'generated_date', 'title',
-                       'confidentiality_notice', 'document_date', 'agency', 'authority',
-                       'executive_summary', 'body_content', 'recommendations',
-                       'risk_assessment', 'analysis', 'justification'}
+        skip_fields = CUI_SKIP_FIELDS
 
         for key, value in doc_data.items():
             if key in skip_fields:

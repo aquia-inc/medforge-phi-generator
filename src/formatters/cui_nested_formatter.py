@@ -16,7 +16,7 @@ from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from docx import Document
 
-from formatters.base_email_formatter import BaseEmailFormatter
+from formatters.base_email_formatter import BaseEmailFormatter, CUI_SKIP_FIELDS
 
 
 class CUINestedEmailFormatter(BaseEmailFormatter):
@@ -139,9 +139,7 @@ class CUINestedEmailFormatter(BaseEmailFormatter):
         story.append(Spacer(1, 0.3 * inch))
 
         # Content
-        skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
-                       'has_cui', 'classification', 'generated_date', 'title',
-                       'confidentiality_notice', 'document_date', 'agency', 'authority'}
+        skip_fields = CUI_SKIP_FIELDS
 
         for key, value in doc_data.items():
             if key in skip_fields:
@@ -198,9 +196,7 @@ class CUINestedEmailFormatter(BaseEmailFormatter):
         doc.add_paragraph()
 
         # Content
-        skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
-                       'has_cui', 'classification', 'generated_date', 'title',
-                       'confidentiality_notice', 'document_date', 'agency', 'authority'}
+        skip_fields = CUI_SKIP_FIELDS
 
         for key, value in doc_data.items():
             if key in skip_fields:

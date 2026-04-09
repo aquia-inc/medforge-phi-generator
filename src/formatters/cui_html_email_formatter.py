@@ -8,7 +8,7 @@ financial tables, legal memos get formal styling.
 import random
 from typing import Any, Dict
 
-from formatters.base_email_formatter import BaseEmailFormatter
+from formatters.base_email_formatter import BaseEmailFormatter, CUI_SKIP_FIELDS
 
 
 # Color palettes per content type — randomly selected per email
@@ -111,9 +111,7 @@ class CUIHTMLEmailFormatter(BaseEmailFormatter):
         lines.append('=' * 50)
         lines.append('')
 
-        skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
-                       'has_cui', 'classification', 'generated_date', 'title',
-                       'confidentiality_notice', 'document_date', 'agency', 'authority'}
+        skip_fields = CUI_SKIP_FIELDS
 
         for key, value in doc_data.items():
             if key in skip_fields:
@@ -244,9 +242,7 @@ class CUIHTMLEmailFormatter(BaseEmailFormatter):
     def _build_financial_html(self, doc_data, classification, has_cui, palette=None):
         """Build financial document HTML with table layout."""
         rows = ''
-        skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
-                       'has_cui', 'classification', 'generated_date', 'title',
-                       'confidentiality_notice', 'document_date', 'agency', 'authority'}
+        skip_fields = CUI_SKIP_FIELDS
         i = 0
         for key, value in doc_data.items():
             if key in skip_fields:
@@ -273,9 +269,7 @@ class CUIHTMLEmailFormatter(BaseEmailFormatter):
     def _build_legal_html(self, doc_data, classification, has_cui, palette=None):
         """Build legal document HTML with formal styling."""
         rows = ''
-        skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
-                       'has_cui', 'classification', 'generated_date', 'title',
-                       'confidentiality_notice', 'document_date', 'agency', 'authority'}
+        skip_fields = CUI_SKIP_FIELDS
         for key, value in doc_data.items():
             if key in skip_fields:
                 continue
@@ -299,9 +293,7 @@ class CUIHTMLEmailFormatter(BaseEmailFormatter):
     def _build_generic_html(self, doc_data, classification, has_cui, palette=None):
         """Build generic CUI HTML email."""
         rows = ''
-        skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
-                       'has_cui', 'classification', 'generated_date', 'title',
-                       'confidentiality_notice', 'document_date', 'agency', 'authority'}
+        skip_fields = CUI_SKIP_FIELDS
         i = 0
         for key, value in doc_data.items():
             if key in skip_fields:

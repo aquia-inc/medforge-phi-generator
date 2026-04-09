@@ -7,7 +7,7 @@ with proper classification headers, footers, and markings.
 from docx import Document
 from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from formatters.base_email_formatter import BaseEmailFormatter
+from formatters.base_email_formatter import BaseEmailFormatter, CUI_SKIP_FIELDS
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -598,10 +598,7 @@ class CUIDocxFormatter:
     def _add_generic_content(self, doc: Document, doc_data: Dict[str, Any],
                               style_cfg: Optional[Dict] = None):
         """Add generic document content with optional narrative rendering."""
-        skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
-                       'has_cui', 'classification', 'authority', 'distribution',
-                       'generated_date', 'document_date', 'agency', 'title',
-                       'confidentiality_notice'}
+        skip_fields = CUI_SKIP_FIELDS
         # Fields that contain LLM narrative text (render as multi-paragraph)
         narrative_fields = {'executive_summary', 'body_content', 'analysis',
                            'recommendations', 'risk_assessment', 'justification',
@@ -791,9 +788,7 @@ class CUIEmailFormatter(BaseEmailFormatter):
     def _format_generic_text(self, doc_data: Dict[str, Any]) -> list:
         """Format generic document for plain text."""
         lines = []
-        skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
-                       'has_cui', 'classification', 'generated_date', 'title',
-                       'confidentiality_notice'}
+        skip_fields = CUI_SKIP_FIELDS
 
         for key, value in doc_data.items():
             if key in skip_fields:
@@ -855,9 +850,7 @@ class CUIEmailFormatter(BaseEmailFormatter):
     def _format_generic_html(self, doc_data: Dict[str, Any]) -> str:
         """Format generic document for HTML."""
         html = '<table border="1" cellpadding="5" style="border-collapse: collapse;">'
-        skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
-                       'has_cui', 'classification', 'generated_date', 'title',
-                       'confidentiality_notice', 'document_date', 'agency'}
+        skip_fields = CUI_SKIP_FIELDS
 
         for key, value in doc_data.items():
             if key in skip_fields:
@@ -965,10 +958,7 @@ class CUIPdfFormatter:
 
     def _add_pdf_content(self, story: list, doc_data: Dict[str, Any], styles):
         """Add content to PDF story."""
-        skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
-                       'has_cui', 'classification', 'authority', 'distribution',
-                       'generated_date', 'document_date', 'agency', 'title',
-                       'confidentiality_notice'}
+        skip_fields = CUI_SKIP_FIELDS
 
         for key, value in doc_data.items():
             if key in skip_fields:
@@ -1077,10 +1067,7 @@ class CUIXlsxFormatter:
 
     def _add_xlsx_content(self, ws, row: int, doc_data: Dict[str, Any]) -> int:
         """Add content to worksheet."""
-        skip_fields = {'document_id', 'document_type', 'category', 'subcategory',
-                       'has_cui', 'classification', 'authority', 'distribution',
-                       'generated_date', 'document_date', 'agency', 'title',
-                       'confidentiality_notice'}
+        skip_fields = CUI_SKIP_FIELDS
 
         for key, value in doc_data.items():
             if key in skip_fields:

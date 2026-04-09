@@ -13,6 +13,17 @@ import random
 from typing import List, Optional, Tuple
 
 
+# Metadata fields to skip when rendering doc_data as document content.
+# Used by all CUI formatters (DOCX, PDF, XLSX, EML, PPTX, HTML) to filter
+# out structural fields that are handled separately (headers, footers, etc.).
+CUI_SKIP_FIELDS = frozenset({
+    'document_id', 'document_type', 'category', 'subcategory',
+    'has_cui', 'classification', 'authority', 'distribution',
+    'generated_date', 'document_date', 'agency', 'title',
+    'confidentiality_notice',
+})
+
+
 class BaseEmailFormatter:
     """Shared MIME email construction base class.
 
