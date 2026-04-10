@@ -321,3 +321,172 @@ class TestCUINestedEmailFormatter:
             fn.endswith(('.pdf', '.docx', '.zip'))
             for fn in filenames if fn
         )
+
+
+class TestTemplateEmailWrapper:
+    """Tests for TemplateEmailWrapper — wraps template files as email attachments."""
+
+    def test_minimal_body_returns_subject_and_body(self, tmp_output_dir):
+        from formatters.template_email_wrapper import TemplateEmailWrapper
+
+        w = TemplateEmailWrapper(output_dir=tmp_output_dir)
+        subject, body = w._minimal_body('TestDoc')
+        assert len(subject) > 0
+        assert body in TemplateEmailWrapper.MINIMAL_PHRASES
+
+    def test_medium_body_contains_doc_name(self, tmp_output_dir):
+        from formatters.template_email_wrapper import TemplateEmailWrapper
+
+        w = TemplateEmailWrapper(output_dir=tmp_output_dir)
+        subject, body = w._medium_body('KMP', 'critical_infrastructure',
+                                        'Jane Doe', 'ISSO', 'OIT')
+        assert 'KMP' in body
+        assert 'Jane Doe' in body
+
+    def test_wrap_creates_eml_with_attachment(self, tmp_output_dir):
+        from formatters.template_email_wrapper import TemplateEmailWrapper
+
+        w = TemplateEmailWrapper(output_dir=tmp_output_dir)
+        pdf_path = os.path.join(tmp_output_dir, "test.pdf")
+        with open(pdf_path, 'wb') as f:
+            f.write(b"%PDF-1.4 fake content")
+
+        eml_path = w.wrap(pdf_path, 'TestKey', 'TestDoc', 'procurement',
+                          'Test Subject', 'Test body.', tmp_output_dir, 1)
+
+        assert os.path.exists(eml_path)
+        with open(eml_path, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        attachments = [p for p in msg.walk() if p.get_content_disposition() == 'attachment']
+        assert len(attachments) == 1
+        assert attachments[0].get_filename().endswith('.pdf')
+
+
+class TestBugCrowdEmailGenerator:
+    """Tests for BugCrowdEmailGenerator."""
+
+    def test_positive_email_has_cms_recipient(self, tmp_output_dir):
+        from formatters.bugcrowd_email_generator import BugCrowdEmailGenerator
+
+        gen = BugCrowdEmailGenerator(output_dir=tmp_output_dir)
+        path = gen.create_bugcrowd_alert('bc_pos.eml', is_positive=True)
+
+        with open(path, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        assert 'bugcrowd.com' in msg['From']
+        assert 'cms.hhs.gov' in msg['To']
+
+    def test_negative_email_has_generic_recipient(self, tmp_output_dir):
+        from formatters.bugcrowd_email_generator import BugCrowdEmailGenerator
+
+        gen = BugCrowdEmailGenerator(output_dir=tmp_output_dir)
+        path = gen.create_bugcrowd_alert('bc_neg.eml', is_positive=False)
+
+        with open(path, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        assert 'example.com' in msg['To']
+
+    def test_subject_has_engagement_code(self, tmp_output_dir):
+        from formatters.bugcrowd_email_generator import BugCrowdEmailGenerator
+
+        gen = BugCrowdEmailGenerator(output_dir=tmp_output_dir)
+        path = gen.create_bugcrowd_alert('bc_code.eml', is_positive=True)
+
+        with open(path, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        assert '[' in msg['Subject'] and ']' in msg['Subject']
+
+
+class TestServiceNowEmailGenerator:
+    """Tests for ServiceNowEmailGenerator."""
+
+    def test_positive_has_cms_sender(self, tmp_output_dir):
+        from formatters.servicenow_email_generator import ServiceNowEmailGenerator
+
+        gen = ServiceNowEmailGenerator(output_dir=tmp_output_dir)
+        path = gen.create_servicenow_notification('sn_pos.eml', is_positive=True)
+
+        with open(path, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        assert 'CMSITSM@cms.hhs.gov' in msg['From']
+
+    def test_email_has_ticket_number(self, tmp_output_dir):
+        from formatters.servicenow_email_generator import ServiceNowEmailGenerator
+
+        gen = ServiceNowEmailGenerator(output_dir=tmp_output_dir)
+        path = gen.create_servicenow_notification('sn_ticket.eml', is_positive=True)
+
+        with open(path, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        body = msg.get_payload(decode=True).decode() if not msg.is_multipart() else ''
+        if msg.is_multipart():
+            for part in msg.walk():
+                if part.get_content_type() == 'text/plain':
+                    body = part.get_payload(decode=True).decode()
+        assert 'REQ' in body
+
+    def test_negative_has_generic_request(self, tmp_output_dir):
+        from formatters.servicenow_email_generator import ServiceNowEmailGenerator
+
+        gen = ServiceNowEmailGenerator(output_dir=tmp_output_dir)
+        # Generate several to check none have CMS-specific items
+        cms_terms = {'EIDM', 'HPMS', 'CFACTS', 'MACPro', 'QPP Portal', 'AWS GovCloud'}
+        for i in range(5):
+            path = gen.create_servicenow_notification(f'sn_neg_{i}.eml', is_positive=False)
+            with open(path, 'rb') as f:
+                msg = email.message_from_bytes(f.read())
+            for part in msg.walk():
+                if part.get_content_type() == 'text/plain':
+                    body = part.get_payload(decode=True).decode()
+                    for term in cms_terms:
+                        assert term not in body, f"Negative email should not contain '{term}'"
+
+
+class TestInternalAnnouncementGenerator:
+    """Tests for InternalAnnouncementGenerator."""
+
+    def test_positive_has_internal_links(self, tmp_output_dir):
+        from formatters.internal_announcement_generator import InternalAnnouncementGenerator
+
+        gen = InternalAnnouncementGenerator(output_dir=tmp_output_dir)
+        path = gen.create_announcement_email('ann_pos.eml', is_positive=True)
+
+        with open(path, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        for part in msg.walk():
+            if part.get_content_type() == 'text/plain':
+                body = part.get_payload(decode=True).decode()
+                internal_domains = ['share.cms.gov', 'confluence.cms.gov', 'jira.cms.gov',
+                                    'cms.sharepoint.com', 'cmsintranet.cms.gov',
+                                    'eua.cms.gov', 'cfacts.cms.gov', 'hpms.cms.gov',
+                                    'lms.cms.gov']
+                assert any(d in body for d in internal_domains), \
+                    "Positive announcement should contain internal CMS links"
+
+    def test_negative_has_public_links(self, tmp_output_dir):
+        from formatters.internal_announcement_generator import InternalAnnouncementGenerator
+
+        gen = InternalAnnouncementGenerator(output_dir=tmp_output_dir)
+        path = gen.create_announcement_email('ann_neg.eml', is_positive=False)
+
+        with open(path, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        for part in msg.walk():
+            if part.get_content_type() == 'text/plain':
+                body = part.get_payload(decode=True).decode()
+                public_domains = ['www.cms.gov', 'www.hhs.gov', 'medicare.gov',
+                                  'federalregister.gov', 'sam.gov', 'usajobs.gov']
+                assert any(d in body for d in public_domains), \
+                    "Negative announcement should contain public links"
+
+    def test_email_is_valid_eml(self, tmp_output_dir):
+        from formatters.internal_announcement_generator import InternalAnnouncementGenerator
+
+        gen = InternalAnnouncementGenerator(output_dir=tmp_output_dir)
+        path = gen.create_announcement_email('ann_valid.eml', is_positive=True)
+
+        assert os.path.exists(path)
+        with open(path, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        assert msg['Subject'] is not None
+        assert 'cms.hhs.gov' in msg['From'] or 'cms.hhs.gov' in (msg['To'] or '')
