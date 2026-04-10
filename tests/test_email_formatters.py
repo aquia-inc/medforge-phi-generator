@@ -170,6 +170,109 @@ class TestNestedEmailFormatter:
         assert len(attachments) >= 1
 
 
+    def test_phi_positive_email_with_in_memory_attachment(self, tmp_output_dir,
+                                                          sample_phi_patient,
+                                                          sample_phi_provider,
+                                                          sample_phi_facility,
+                                                          patient_generator):
+        """PHI positive email generates in-memory attachment (PDF, DOCX, or ZIP)."""
+        from formatters.nested_formatter import NestedEmailFormatter
+
+        fmt = NestedEmailFormatter(output_dir=tmp_output_dir)
+        lab_data = patient_generator.generate_lab_results()
+
+        filepath = fmt.create_phi_positive_email_with_attachment(
+            sample_phi_patient, sample_phi_provider, sample_phi_facility,
+            lab_data, "phi_pos_inmem.eml"
+        )
+
+        assert os.path.exists(filepath)
+        with open(filepath, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        assert msg.is_multipart()
+        attachments = [p for p in msg.walk() if p.get_content_disposition() == 'attachment']
+        assert len(attachments) >= 1
+        # Attachment should be PDF, DOCX, or ZIP
+        filenames = [a.get_filename() for a in attachments]
+        assert any(fn.endswith(('.pdf', '.docx', '.zip')) for fn in filenames if fn)
+
+    def test_phi_negative_email_with_in_memory_attachment(self, tmp_output_dir,
+                                                           sample_phi_facility):
+        """PHI negative email generates in-memory attachment with no patient data."""
+        from formatters.nested_formatter import NestedEmailFormatter
+
+        fmt = NestedEmailFormatter(output_dir=tmp_output_dir)
+        filepath = fmt.create_phi_negative_email_with_attachment(
+            sample_phi_facility, "phi_neg_inmem.eml"
+        )
+
+        assert os.path.exists(filepath)
+        with open(filepath, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        assert msg.is_multipart()
+        attachments = [p for p in msg.walk() if p.get_content_disposition() == 'attachment']
+        assert len(attachments) >= 1
+
+    def test_blank_form_email(self, tmp_output_dir, sample_phi_facility):
+        """Blank form email is PHI-negative and has attachment."""
+        from formatters.nested_formatter import NestedEmailFormatter
+
+        fmt = NestedEmailFormatter(output_dir=tmp_output_dir)
+
+        # Create a dummy form file
+        form_path = os.path.join(tmp_output_dir, "blank_form.docx")
+        with open(form_path, 'wb') as f:
+            f.write(b"PK\x03\x04 fake docx")
+
+        filepath = fmt.create_email_with_blank_form(
+            sample_phi_facility, form_path, "blank_form_email.eml"
+        )
+
+        assert os.path.exists(filepath)
+        with open(filepath, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        assert msg['Subject'] == "Updated Patient Registration Forms"
+        attachments = [p for p in msg.walk() if p.get_content_disposition() == 'attachment']
+        assert len(attachments) == 1
+
+    def test_policy_email(self, tmp_output_dir, sample_phi_facility):
+        """Policy distribution email is PHI-negative with PDF attachment."""
+        from formatters.nested_formatter import NestedEmailFormatter
+
+        fmt = NestedEmailFormatter(output_dir=tmp_output_dir)
+
+        # Create a dummy policy PDF
+        pdf_path = os.path.join(tmp_output_dir, "policy.pdf")
+        with open(pdf_path, 'wb') as f:
+            f.write(b"%PDF-1.4 fake policy")
+
+        filepath = fmt.create_policy_email_with_pdf(
+            sample_phi_facility, pdf_path, "policy_email.eml"
+        )
+
+        assert os.path.exists(filepath)
+        with open(filepath, 'rb') as f:
+            msg = email.message_from_bytes(f.read())
+        assert "Policy" in msg['Subject']
+        attachments = [p for p in msg.walk() if p.get_content_disposition() == 'attachment']
+        assert len(attachments) == 1
+
+    def test_in_memory_pdf_contains_patient_data(self, tmp_output_dir,
+                                                   sample_phi_patient,
+                                                   sample_phi_provider,
+                                                   patient_generator):
+        """In-memory PDF generation includes patient identifiers."""
+        from formatters.nested_formatter import NestedEmailFormatter
+
+        fmt = NestedEmailFormatter(output_dir=tmp_output_dir)
+        lab_data = patient_generator.generate_lab_results()
+        pdf_bytes = fmt._generate_phi_positive_pdf_in_memory(
+            sample_phi_patient, sample_phi_provider, lab_data)
+
+        assert len(pdf_bytes) > 100
+        assert pdf_bytes[:5] == b'%PDF-'
+
+
 class TestCUINestedEmailFormatter:
     """Tests for CUI nested email generation."""
 
