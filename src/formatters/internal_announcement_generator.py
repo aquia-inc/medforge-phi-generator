@@ -291,14 +291,33 @@ class InternalAnnouncementGenerator(BaseEmailFormatter):
         week_date = self.fake.date_between(
             start_date='-30d', end_date='+7d').strftime('%B %-d, %Y')
 
+        # Generate items (faker-driven)
         if variant == 'digest':
-            items = self._generate_items(random.randint(3, 6), is_positive)
+            item_count = random.randint(3, 6)
+        elif variant == 'single':
+            item_count = 1
+        else:
+            item_count = random.randint(2, 4)
+        items = self._generate_items(item_count, is_positive)
+
+        # LLM tier: replace faker items with LLM-generated content
+        if self.llm_generator and random.random() < self.llm_percentage:
+            topic_pool = self.TOPICS_POSITIVE if is_positive else self.TOPICS_NEGATIVE
+            topic_mix = random.sample(
+                list(topic_pool.keys()),
+                min(len(topic_pool), item_count))
+            llm_items = self.llm_generator.generate_announcement_content(
+                topic_mix, week_date, is_positive)
+            if llm_items:
+                items = llm_items
+
+        # Build body based on variant
+        if variant == 'digest':
             subject = f"CMS Things to Know — Week of {week_date}"
             body = self._build_digest_body(items, week_date)
             sender_name, sender_email = random.choice(self.CMS_COMM_SENDERS)
             from_addr = f"{sender_name} <{sender_email}>"
         elif variant == 'single':
-            items = self._generate_items(1, is_positive)
             sender_name = self.fake.name()
             sender_title = random.choice(self.CMS_LEADERSHIP_TITLES)
             subject = f"Important: {items[0]['headline']}"
@@ -307,7 +326,6 @@ class InternalAnnouncementGenerator(BaseEmailFormatter):
             last = sender_name.split()[-1].lower()
             from_addr = f"{sender_name} <{first}.{last}@cms.hhs.gov>"
         else:  # leadership
-            items = self._generate_items(random.randint(2, 4), is_positive)
             leader_name = self.fake.name()
             leader_title = random.choice(self.CMS_LEADERSHIP_TITLES)
             subject = f"Message from the {leader_title}: Weekly Update"
