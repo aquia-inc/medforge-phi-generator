@@ -269,7 +269,7 @@ uv run python tests/generate_artifact_matrix.py
 uv run python tests/test_llm_smoke.py
 ```
 
-See [docs/testing.md](docs/testing.md) for the full testing guide and [docs/test-coverage-tracker.md](docs/test-coverage-tracker.md) for coverage status.
+See [docs/testing/testing.md](docs/testing/testing.md) for the full testing guide and [docs/testing/test-coverage-tracker.md](docs/testing/test-coverage-tracker.md) for coverage status.
 
 ---
 
@@ -324,10 +324,12 @@ medforge-phi-generator/
 
 | Document | Purpose |
 |----------|---------|
-| [docs/testing.md](docs/testing.md) | Full testing guide: architecture, how to run, how to add tests |
-| [docs/test-coverage-tracker.md](docs/test-coverage-tracker.md) | Test coverage status and outstanding gaps |
+| [docs/DEMO.md](docs/DEMO.md) | Demo guide: generation modes, LLM control, CUI categories, output structure |
 | [docs/adding-customer-templates.md](docs/adding-customer-templates.md) | Step-by-step guide for registering new CMS templates |
-| [docs/DEMO.md](docs/DEMO.md) | Customer demo script with talking points |
+| [docs/testing/testing.md](docs/testing/testing.md) | Full testing guide: architecture, how to run, how to add tests |
+| [docs/testing/test-coverage-tracker.md](docs/testing/test-coverage-tracker.md) | Test coverage status and outstanding gaps |
+| [docs/customer_requirements/](docs/customer_requirements/) | CMS requirements, template inventory, evaluation criteria |
+| [docs/feature_proposals/](docs/feature_proposals/) | Future: containerization, MSG format support |
 
 
 ## License
