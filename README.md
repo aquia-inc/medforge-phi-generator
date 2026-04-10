@@ -54,7 +54,7 @@ CUI Options:
   --cui-negative INTEGER           CUI negative documents
   --cui-categories TEXT            Specific categories (comma-separated)
   --cui-all                        Generate all 7 CUI categories
-  --cui-notice TEXT                Confidentiality notice: random/always/never [default: random]
+  --cui-notice TEXT                Confidentiality notice: never/random/always [default: never]
   --cui-classification TEXT        Classification headers: always/never [default: never]
 
 General Options:

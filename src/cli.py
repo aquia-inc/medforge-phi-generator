@@ -585,7 +585,7 @@ class MedForgeCUIGenerator:
         categories: Optional[List[str]] = None,
         formats: Optional[List[str]] = None,
         llm_percentage: float = 0.2,
-        cui_notice: str = "random",
+        cui_notice: str = "never",
         cui_classification: str = "never",
         template_email_ratio: float = 0.8,
     ):
@@ -1841,7 +1841,7 @@ def generate(
     cui_negative: Optional[int] = typer.Option(None, "--cui-negative", help="Number of CUI negative documents"),
     cui_categories: Optional[str] = typer.Option(None, "--cui-categories", help="Comma-separated CUI categories: financial,legal,tax,procurement,proprietary,law_enforcement,critical_infrastructure"),
     cui_all: bool = typer.Option(False, "--cui-all", help="Generate all CUI categories"),
-    cui_notice: str = typer.Option("random", "--cui-notice", help="CUI confidentiality notice: random (default), always, never"),
+    cui_notice: str = typer.Option("never", "--cui-notice", help="CUI confidentiality notice: never (default), random, always"),
     cui_classification: str = typer.Option("never", "--cui-classification", help="CUI classification headers: always, never (default)"),
     # General options
     formats: str = typer.Option("pdf,docx,xlsx,eml,pptx", "--formats", "-f", help="Comma-separated list of formats"),

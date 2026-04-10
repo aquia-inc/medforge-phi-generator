@@ -301,7 +301,7 @@ The built-in validator runs 19 fidelity checks: file integrity, MIME structure, 
 | `--cui-all` | false | Generate all 7 CUI categories |
 | `--llm-percentage` | 0.2 | Fraction of docs with LLM enhancement (0.0-1.0) |
 | `--template-email-ratio` | 0.8 | Fraction of templates wrapped in emails (0.0-1.0) |
-| `--cui-notice` | random | Confidentiality footers: `random`, `always`, `never` |
+| `--cui-notice` | never | Confidentiality footers: `never`, `random`, `always` |
 | `--cui-classification` | never | Classification headers: `always`, `never` |
 | `--formats` | pdf,docx,xlsx,eml,pptx | Output format filter |
 | `--seed` | — | Random seed for reproducibility |
