@@ -311,6 +311,45 @@ The built-in validator runs 19 fidelity checks: file integrity, MIME structure, 
 
 ---
 
+## 10. Troubleshooting
+
+### LLM not available
+
+If `medforge version` shows "LLM Available: No", the API key is not set:
+
+```bash
+# Set the key
+export ANTHROPIC_API_KEY="your-key"
+
+# Or generate without LLM (template-only, no API needed)
+uv run python -m src.cli generate --count 200 --llm-percentage 0
+```
+
+### Memory issues with parallel workers
+
+If generation fails with memory errors when using multiple workers:
+
+```bash
+# Reduce to single worker
+uv run python -m src.cli generate --count 500 --parallel-workers 1
+
+# Or generate in smaller batches
+uv run python -m src.cli generate --count 500 --output output/batch1
+uv run python -m src.cli generate --count 500 --output output/batch2
+```
+
+Each parallel worker needs ~200-500MB RAM. Use `--parallel-workers` no higher than your CPU count minus one.
+
+### File permission errors
+
+If output files can't be written:
+
+```bash
+chmod -R u+w output/
+```
+
+---
+
 ## Commands Cheat Sheet
 
 ```bash
